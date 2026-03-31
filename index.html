@@ -1624,7 +1624,7 @@ async function submitFormData() {
 
   // Нууц үг хадгалахгүй — зориудаар орхисон
 
-  if (GAS_URL !== 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE') {
+  if (GAS_URL !== 'https://script.google.com/macros/s/AKfycbxWYQK5Tz8id7gflUr3arB0w9FjVKbmWjxgl2jA6RBmPmA9btl5EOtBl3pNlmQgXoJD/exec') {
     try {
       const r = await gasCall('saveForm', data);
       if (r.ok) {
