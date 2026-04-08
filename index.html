@@ -1001,6 +1001,7 @@ textarea.fc{resize:vertical;min-height:80px}
         <div style="margin-top:24px;padding:14px;background:var(--g50);border-radius:8px;border:1px solid var(--g200)">
           <div style="font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Хандах эрх</div>
           <div style="font-size:12.5px;color:var(--slate);line-height:1.6">Бүх аудиторууд нэг нууц үгээр нэвтэрнэ.
+            </div>
         </div>
       </div>
     </div>
@@ -1114,16 +1115,17 @@ textarea.fc{resize:vertical;min-height:80px}
    CONFIG — GOOGLE APPS SCRIPT WEB APP URL
    Apps Script deploy хийсний дараа URL-г энд оруулна
 ══════════════════════════════════════════ */
-// GAS URL — auto-detect if served from GAS, otherwise use hardcoded
-const GAS_URL = (function() {
-  const hardcoded = 'https://script.google.com/macros/s/AKfycbxWYQK5Tz8id7gflUr3arB0w9FjVKbmWjxgl2jA6RBmPmA9btl5EOtBl3pNlmQgXoJD/exec';
-  // If page is served from GAS itself, use current URL base
-  if (window.location.href.includes('script.google.com/macros')) {
-    return window.location.href.split('?')[0];
+const GAS_URL = (() => {
+  const hardcoded = 'https://script.google.com/macros/s/AKfycbzxkLUqW9fjQIJn0rzxPNTeHrU56n8g_9UV04MUu-3a9l2LJOp5SeGn3rLWtn_KrwrA/exec';
+
+  const url = window.location.origin + window.location.pathname;
+
+  if (url.includes('/macros/')) {
+    return url.replace('/dev', '/exec'); // force production
   }
+
   return hardcoded;
 })();
-// Жишээ: 'https://script.google.com/macros/s/AKfycbXXXXXXX/exec'
 
 /* ══════════════════════════════════════════
    STATE
