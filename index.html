@@ -30,21 +30,15 @@ body{font-family:var(--fb);color:var(--ink);background:var(--bg);-webkit-font-sm
 a{text-decoration:none;color:inherit}
 button{font-family:var(--fb);cursor:pointer}
 input,select,textarea{font-family:var(--fb)}
-
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .fade-in.visible{opacity:1;transform:none}
-
-/* BTN */
 .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:var(--r);font-size:13.5px;font-weight:600;border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
 .btn-p{background:var(--g800);color:#fff}.btn-p:hover{background:var(--g700);transform:translateY(-1px);box-shadow:0 0 18px rgba(76,255,178,.3)}
 .btn-s{background:var(--white);color:var(--g800);border:1.5px solid var(--g600)}.btn-s:hover{background:var(--g100)}
 .btn-g{background:transparent;color:var(--slate);border:1.5px solid var(--line)}.btn-g:hover{background:var(--bg);color:var(--ink)}
-.btn-d{background:var(--miss-bg);color:var(--miss);border:1.5px solid #f5c6c3}.btn-d:hover{background:#fad4d1}
 .btn-sm{padding:7px 13px;font-size:12.5px}
 .btn-lg{padding:13px 26px;font-size:15px}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
-
-/* FORM */
 .fg{display:flex;flex-direction:column;gap:5px}
 .fg label{font-size:12.5px;font-weight:600;color:var(--ink2)}
 .fg label .req{color:var(--g600)}
@@ -54,30 +48,20 @@ input,select,textarea{font-family:var(--fb)}
 select.fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 5L10 1' stroke='%234d6355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
 textarea.fc{resize:vertical;min-height:80px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px 18px}
 .full{grid-column:1/-1}
-
-/* CARD */
 .card{background:var(--white);border:1px solid var(--line);border-radius:var(--rlg);padding:24px;transition:all .25s}
 .card-sm{padding:18px;border-radius:var(--r)}
-
-/* BADGE */
 .badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:100px;font-size:11.5px;font-weight:600}
 .b-ok{background:var(--ok-bg);color:var(--ok)}
 .b-wait{background:var(--wait-bg);color:var(--wait)}
 .b-miss{background:var(--miss-bg);color:var(--miss)}
 .b-rev{background:var(--rev-bg);color:var(--rev)}
-.bdot{width:6px;height:6px;border-radius:50%;background:currentColor}
-
-/* ALERT */
 .alert{display:flex;gap:10px;padding:12px 15px;border-radius:var(--r);font-size:13px;line-height:1.55}
 .alert svg{width:15px;height:15px;flex-shrink:0;margin-top:1px;fill:none;stroke-width:2}
 .a-warn{background:var(--wait-bg);border:1px solid #f2cc82;color:#7a4f00}.a-warn svg{stroke:var(--wait)}
 .a-info{background:var(--rev-bg);border:1px solid #b3ccee;color:#1a4a7a}.a-info svg{stroke:var(--rev)}
 .a-ok{background:var(--ok-bg);border:1px solid #a3d4b3;color:#0f4a22}.a-ok svg{stroke:var(--ok)}
 .a-err{background:var(--miss-bg);border:1px solid #f5c6c3;color:#7a1a1a}.a-err svg{stroke:var(--miss)}
-
-/* PROGRESS */
 .prog-track{height:8px;background:var(--g50);border-radius:10px;overflow:hidden;box-shadow:inset 0 1px 3px rgba(15,45,28,.06)}
 .prog-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--g800),var(--g500));transition:width .8s cubic-bezier(.23,1,.32,1)}
 .prog-circle{position:relative;width:90px;height:90px;flex-shrink:0}
@@ -85,8 +69,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .prog-circle .track{fill:none;stroke:#e8f5ee;stroke-width:7}
 .prog-circle .fill{fill:none;stroke:url(#progGrad);stroke-width:7;stroke-linecap:round;transition:stroke-dashoffset .9s cubic-bezier(.23,1,.32,1)}
 .prog-circle .label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:17px;font-weight:700;color:var(--g800)}
-
-/* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(16px);transition:box-shadow .3s}
 #nav.scrolled{box-shadow:0 4px 32px rgba(15,45,28,.1)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:62px}
@@ -106,23 +88,14 @@ textarea.fc{resize:vertical;min-height:80px}
 .mob-menu{display:none;position:fixed;inset:0;z-index:800;background:#fff;padding:76px 1.5rem 2rem;flex-direction:column;gap:4px}
 .mob-menu.open{display:flex}
 .mob-menu a{font-size:17px;font-weight:500;color:var(--ink2);padding:12px 0;border-bottom:1px solid var(--line)}
-
-/* PAGES */
 .page{display:none;min-height:calc(100vh - 62px);padding-top:62px}
 .page.act{display:block}
-
-/* BANNER */
 .banner{background:linear-gradient(135deg,var(--g900),#1a5c35);padding:54px 0;text-align:center;position:relative;overflow:hidden}
 .banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(76,255,178,.06),transparent 60%)}
 .banner h1{font-family:var(--fd);font-size:clamp(24px,3.5vw,42px);color:#fff;position:relative;z-index:1}
 .banner p{font-size:14.5px;color:rgba(255,255,255,.52);margin-top:9px;max-width:500px;margin-left:auto;margin-right:auto;position:relative;z-index:1}
 .label-tag{font-size:11px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:var(--g500);margin-bottom:8px;display:block}
-
-/* WRAP */
 .wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-.wrap-md{max-width:900px;margin:0 auto;padding:0 1.5rem}
-
-/* TOPBAR */
 .topbar{background:var(--white);border-bottom:1px solid var(--line);padding:12px 0;position:sticky;top:62px;z-index:100}
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .client-pill{display:flex;align-items:center;gap:10px}
@@ -130,8 +103,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .client-name{font-size:13.5px;font-weight:600;color:var(--ink)}
 .client-reg{font-size:11.5px;color:var(--muted);font-family:var(--fm)}
 .topbar-acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-
-/* PROGRESS CARDS */
 .prog-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .pc{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;position:relative;overflow:hidden;transition:all .25s}
 .pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g700),var(--g500));opacity:0;transition:opacity .25s}
@@ -142,23 +113,17 @@ textarea.fc{resize:vertical;min-height:80px}
 .pc-ok .pc-num{color:var(--ok)}
 .pc-mis .pc-num{color:var(--miss)}
 .pc-pct .pc-num{color:var(--g700)}
-
-/* TABS */
 .tabs{display:flex;gap:2px;background:var(--g50);border:1px solid var(--line);border-radius:var(--r);padding:3px;width:fit-content;flex-wrap:wrap;margin-bottom:22px}
 .tab{padding:8px 16px;border-radius:5px;font-size:13px;font-weight:500;color:var(--slate);cursor:pointer;background:none;border:none;transition:all .2s;white-space:nowrap;position:relative}
 .tab.act{background:var(--white);color:var(--g800);font-weight:600;box-shadow:0 2px 12px rgba(15,45,28,.1)}
 .tab:hover:not(.act){color:var(--g800)}
 .panel{display:none}
 .panel.act{display:block}
-
-/* CI GRID */
 .ci-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
 .sensitive-box{border:1.5px solid #f2cc82;border-radius:var(--r);padding:20px;background:#fffbf0;margin-top:22px}
 .sensitive-hd{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .sensitive-hd svg{width:15px;height:15px;stroke:var(--wait);fill:none;stroke-width:2}
 .sensitive-hd span{font-size:13px;font-weight:700;color:#7a4f00}
-
-/* DOC TABLE */
 .tbl-wrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line)}
 .doc-tbl{width:100%;border-collapse:collapse;background:var(--white);min-width:820px}
 .doc-tbl th{text-align:left;padding:10px 13px;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);background:var(--g50);border-bottom:1px solid var(--line);white-space:nowrap}
@@ -173,17 +138,8 @@ textarea.fc{resize:vertical;min-height:80px}
 .doc-req{font-size:12px;color:var(--slate)}
 .ssel{padding:5px 8px;border-radius:var(--r);border:1px solid var(--line);font-size:12px;font-weight:600;cursor:pointer;outline:none;background:var(--white);min-width:128px;font-family:var(--fb)}
 .ssel:focus{border-color:var(--g600)}
-
-/* FILE UPLOAD */
-.up-mini{position:relative;display:inline-flex;align-items:center}
-.up-mini input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.up-mini-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:var(--r);border:1.5px dashed var(--line);background:var(--g50);font-size:12px;color:var(--slate);font-weight:500;cursor:pointer;transition:all .18s;white-space:nowrap}
-.up-mini-btn:hover{border-color:var(--g600);color:var(--g800);background:var(--g100)}
-.up-mini-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
 .note-mini{width:110px;padding:5px 8px;border:1px solid var(--line);border-radius:var(--r);font-size:12px;outline:none;background:var(--white);transition:border-color .18s;font-family:var(--fb)}
 .note-mini:focus{border-color:var(--g600)}
-
-/* FILES LIST */
 .sf-list{display:flex;flex-direction:column;gap:9px}
 .sf-item{display:flex;align-items:center;gap:11px;padding:11px 15px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);transition:all .2s}
 .sf-item:hover{background:var(--g50);transform:translateX(2px)}
@@ -197,8 +153,7 @@ textarea.fc{resize:vertical;min-height:80px}
 .sf-del{background:none;border:none;cursor:pointer;color:var(--muted);padding:4px;border-radius:4px;transition:color .15s;display:flex}
 .sf-del:hover{color:var(--miss)}
 .sf-del svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
-
-/* AUDIT TIMELINE — IMPROVED */
+/* AUDIT TIMELINE */
 .stl{display:flex;flex-direction:column;gap:0}
 .stl-item{display:flex;gap:16px;position:relative}
 .stl-track{display:flex;flex-direction:column;align-items:center;width:24px;flex-shrink:0}
@@ -215,15 +170,15 @@ textarea.fc{resize:vertical;min-height:80px}
 .stl-desc{font-size:12.5px;color:var(--muted);margin-top:3px}
 .stl-note{font-size:12px;color:var(--g700);margin-top:5px;padding:7px 10px;background:var(--g50);border-radius:var(--r);border-left:2px solid var(--g500);font-style:italic}
 .stl-date{font-size:11.5px;font-family:var(--fm);color:var(--muted);margin-top:4px}
-
-/* STATUS GRID */
+/* TIMELINE PROGRESS BAR */
+.tl-progress-wrap{background:var(--g50);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:18px}
+.tl-progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.tl-progress-title{font-size:12px;font-weight:600;color:var(--slate)}
+.tl-progress-pct{font-size:13px;font-weight:700;color:var(--g800);font-family:var(--fd)}
 .status-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
-
 /* PORTAL LOGIN */
 #portal-login{min-height:calc(100vh - 62px);display:flex;align-items:center;justify-content:center;padding:48px 1.5rem;background:linear-gradient(135deg,var(--bg),#eef6f1)}
-.login-wrap{width:100%;max-width:420px}
 .login-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:0 24px 80px rgba(15,45,28,.12)}
-
 /* CHAT */
 .chat-wrap{display:flex;flex-direction:column;height:420px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
@@ -235,16 +190,14 @@ textarea.fc{resize:vertical;min-height:80px}
 .chat-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--white)}
 .chat-input-row textarea{flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:var(--r);font-size:13px;font-family:var(--fb);outline:none;resize:none;min-height:40px;max-height:80px}
 .chat-input-row textarea:focus{border-color:var(--g600)}
-
-/* SAVED INDICATOR */
+/* AUTO-SAVE INDICATOR — топ баруун */
 .save-indicator{font-size:11.5px;color:var(--ok);display:none;align-items:center;gap:4px}
 .save-indicator.show{display:flex}
-
+/* FIELD SAVING pulse */
+@keyframes fieldSaved{0%{border-color:var(--ok);box-shadow:0 0 0 3px rgba(26,122,60,.2)}100%{border-color:var(--line);box-shadow:none}}
+.field-saving{animation:fieldSaved 1.2s ease forwards}
 /* ADMIN */
 #admin-login{min-height:calc(100vh - 62px);display:flex;align-items:stretch}
-#admin-dashboard{display:none}
-#admin-dashboard.show{display:block}
-
 /* SERVICES */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
 .svc-card{background:var(--white);border:1px solid var(--line);border-radius:var(--rlg);padding:24px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
@@ -255,7 +208,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .svc-name{font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:7px}
 .svc-desc{font-size:13px;color:var(--slate);line-height:1.65}
 .svc-lnk{margin-top:14px;font-size:13px;font-weight:600;color:var(--g700);display:flex;align-items:center;gap:4px}
-
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
 .tl-item{display:flex;gap:14px;margin-bottom:22px}
@@ -275,7 +227,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .as{text-align:center;padding:18px 10px;background:var(--white);border:1px solid var(--line);border-radius:var(--r)}
 .as-n{font-family:var(--fd);font-size:30px;font-weight:700;color:var(--g800)}
 .as-l{font-size:11.5px;color:var(--muted);margin-top:4px}
-
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
 .cd{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
@@ -283,18 +234,11 @@ textarea.fc{resize:vertical;min-height:80px}
 .cd-icon svg{width:14px;height:14px;stroke:var(--g800);fill:none;stroke-width:2}
 .cd strong{font-size:12.5px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px}
 .cd span{font-size:13.5px;color:var(--slate)}
-
-/* SPINNER */
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:var(--accent-glow);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
 .spinner-dark{border-color:rgba(26,92,53,.2);border-top-color:var(--g700)}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(26,122,60,.4)}70%{box-shadow:0 0 0 6px rgba(26,122,60,0)}}
-
-/* TOAST */
 #toast{display:none;position:fixed;bottom:24px;right:24px;z-index:1000;background:linear-gradient(135deg,var(--g900),var(--g800));color:#fff;padding:12px 22px 12px 16px;border-radius:10px;font-size:13.5px;box-shadow:0 12px 48px rgba(15,45,28,.3);max-width:320px;border-left:3px solid var(--accent-glow)}
 #toast.err{background:linear-gradient(135deg,#7a1a1a,var(--miss));border-left-color:#ff6b6b}
-
-/* FOOTER */
 .site-footer{background:linear-gradient(180deg,var(--g900),#040e08);color:rgba(255,255,255,.45);padding:52px 0 28px}
 .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.08)}
 .ft-brand-name{font-family:var(--fd);font-size:16px;color:#fff}
@@ -304,16 +248,12 @@ textarea.fc{resize:vertical;min-height:80px}
 .ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);margin-bottom:8px;transition:color .18s}
 .ft-col a:hover{color:var(--g200)}
 .ft-cr{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:8px;font-size:12px}
-
-/* TRUST STRIP */
 .trust-strip{background:var(--white);border-bottom:1px solid var(--line);padding:16px 0}
 .trust-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .ti{display:flex;align-items:center;gap:8px}
 .ti svg{width:15px;height:15px;stroke:var(--g600);fill:none;stroke-width:2}
 .ti span{font-size:13px;color:var(--slate);font-weight:500}
 .tsep{width:1px;height:22px;background:var(--line)}
-
-/* RESPONSIVE */
 @media(max-width:900px){
   .about-grid{grid-template-columns:1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -333,29 +273,23 @@ textarea.fc{resize:vertical;min-height:80px}
   .wrap{padding:0 1rem}
   #admin-login-img{display:none!important}
 }
-
-/* AUTO-SAVE pulse */
-@keyframes saveFlash{0%{background:var(--ok-bg)}100%{background:transparent}}
-.field-saved{animation:saveFlash 1s ease}
-
-/* DROP ZONE */
 .drop-zone{border:2px dashed var(--g200);border-radius:12px;padding:36px 24px;text-align:center;transition:all .25s;cursor:pointer;background:linear-gradient(135deg,var(--g50),var(--white))}
 .drop-zone.drag-over{border-color:var(--accent-glow);background:var(--g50);box-shadow:0 0 24px rgba(76,255,178,.15)}
-
-/* Multi-file list per doc */
 .doc-files-list{margin-top:5px;display:flex;flex-direction:column;gap:3px}
 .doc-file-chip{display:inline-flex;align-items:center;gap:6px;background:var(--ok-bg);color:var(--ok);border-radius:100px;padding:2px 8px;font-size:11px;font-weight:600;max-width:180px}
 .doc-file-chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .doc-file-chip button{background:none;border:none;cursor:pointer;color:var(--ok);line-height:1;font-size:13px;padding:0;flex-shrink:0}
-
-/* Unread badge */
 .unread-badge{background:var(--miss);color:#fff;border-radius:100px;font-size:10px;font-weight:700;padding:1px 6px;margin-left:4px;vertical-align:middle}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .fu{animation:fadeUp .5s ease both}
 .fu2{animation:fadeUp .5s .1s ease both}
 .fu3{animation:fadeUp .5s .2s ease both}
 .fu4{animation:fadeUp .5s .3s ease both}
+/* INFO SAVE STATUS inline */
+#info-save-status{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;transition:all .3s}
+#info-save-status.saving{color:var(--wait)}
+#info-save-status.saved{color:var(--ok)}
+#info-save-status.error{color:var(--miss)}
 </style>
 </head>
 <body>
@@ -398,9 +332,7 @@ textarea.fc{resize:vertical;min-height:80px}
             <div style="width:6px;height:6px;border-radius:50%;background:var(--g500)"></div>
             <span style="font-size:11px;color:var(--g200);letter-spacing:.7px">1996 · ММНБИ · ISA · IFRS · СЗХ</span>
           </div>
-          <h1 class="fu2" style="font-family:var(--fd);font-size:clamp(34px,4.8vw,62px);color:#fff;line-height:1.07;font-weight:700;margin-bottom:16px">
-            Их Наяд<br><em style="font-style:normal;color:var(--g500)">Аудит</em> ХХК
-          </h1>
+          <h1 class="fu2" style="font-family:var(--fd);font-size:clamp(34px,4.8vw,62px);color:#fff;line-height:1.07;font-weight:700;margin-bottom:16px">Их Наяд<br><em style="font-style:normal;color:var(--g500)">Аудит</em> ХХК</h1>
           <p class="fu2" style="font-family:var(--fd);font-size:clamp(14px,1.5vw,17px);color:rgba(255,255,255,.4);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:24px">Таны итгэлт аудитор</p>
           <p class="fu3" style="font-size:15.5px;color:rgba(255,255,255,.58);line-height:1.85;max-width:420px;margin-bottom:38px">Монголын анхны аудитын компаниудын нэг. Аудит, татварын зөвлөх, баримт бичгийн дижитал workflow — клиент порталд бүгдийг нэг дороос.</p>
           <div class="fu4" style="display:flex;gap:12px;flex-wrap:wrap">
@@ -434,88 +366,59 @@ textarea.fc{resize:vertical;min-height:80px}
       </div>
     </div>
   </section>
-
-  <div class="trust-strip">
-    <div class="wrap">
-      <div class="trust-inner">
-        <div class="ti"><svg viewBox="0 0 16 16"><path d="M8 1l1.5 5h5l-4 3 1.7 5.2L8 11 4.3 14l1.7-5.2L1.5 7h5z"/></svg><span>Монголын анхны аудитын компаниудын нэг</span></div>
-        <div class="tsep"></div>
-        <div class="ti"><svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M5 4V3a3 3 0 016 0v1"/></svg><span>СЗХ-ын тусгай зөвшөөрөлтэй</span></div>
-        <div class="tsep"></div>
-        <div class="ti"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg><span>29 дэх жилдээ тасралтгүй</span></div>
-        <div class="tsep"></div>
-        <div class="ti"><svg viewBox="0 0 16 16"><path d="M2 14V8l6-5 6 5v6"/><rect x="6" y="9" width="4" height="5" rx=".5"/></svg><span>2010 оноос 80+ төсвийн байгууллага</span></div>
-      </div>
+  <div class="trust-strip"><div class="wrap"><div class="trust-inner">
+    <div class="ti"><svg viewBox="0 0 16 16"><path d="M8 1l1.5 5h5l-4 3 1.7 5.2L8 11 4.3 14l1.7-5.2L1.5 7h5z"/></svg><span>Монголын анхны аудитын компаниудын нэг</span></div>
+    <div class="tsep"></div>
+    <div class="ti"><svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M5 4V3a3 3 0 016 0v1"/></svg><span>СЗХ-ын тусгай зөвшөөрөлтэй</span></div>
+    <div class="tsep"></div>
+    <div class="ti"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg><span>29 дэх жилдээ тасралтгүй</span></div>
+    <div class="tsep"></div>
+    <div class="ti"><svg viewBox="0 0 16 16"><path d="M2 14V8l6-5 6 5v6"/><rect x="6" y="9" width="4" height="5" rx=".5"/></svg><span>2010 оноос 80+ төсвийн байгууллага</span></div>
+  </div></div></div>
+  <section style="padding:64px 0;background:var(--white)"><div class="wrap">
+    <span class="label-tag">Үйлчилгээний чиглэл</span>
+    <h2 style="font-family:var(--fd);font-size:clamp(24px,3vw,38px);color:var(--ink)">Иж бүрэн санхүүгийн үйлчилгээ</h2>
+    <div class="svc-grid fade-in">
+      <div class="svc-card" onclick="showPage('services')"><div class="svc-icon"><svg viewBox="0 0 18 18"><path d="M9 1.5l2 5.5h5.5l-4.5 3.3 1.7 5.2L9 12.5 4.3 15.5l1.7-5.2L1.5 7h5.5z"/></svg></div><div class="svc-name">Аудитын үйлчилгээ</div><div class="svc-desc">Санхүүгийн тайлан, төсөл хөтөлбөр, СЗХ-д хамаарах байгууллагын аудит. ISA стандарт.</div><div class="svc-lnk">Дэлгэрэнгүй <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div></div>
+      <div class="svc-card" onclick="showPage('services')"><div class="svc-icon"><svg viewBox="0 0 18 18"><path d="M14 2H8a2 2 0 00-2 2v10a2 2 0 002 2h6a2 2 0 002-2V6l-4-4z"/><path d="M14 6h-4V2"/><path d="M7 11h4M7 14h3"/></svg></div><div class="svc-name">Татварын зөвлөх</div><div class="svc-desc">Татварын хууль мөрдөлт, эрсдэлийн үнэлгээ, маргаан шийдвэрлэлт. ТМЗ мэргэжилтнүүд.</div><div class="svc-lnk">Дэлгэрэнгүй <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div></div>
+      <div class="svc-card" onclick="showPage('services')"><div class="svc-icon"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></div><div class="svc-name">НББ Аутсорсинг</div><div class="svc-desc">Гэрээт нягтлан бодох бүртгэл, чадавхжуулалт, МУУСНББ/IFRS дэмжлэг.</div><div class="svc-lnk">Дэлгэрэнгүй <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div></div>
     </div>
-  </div>
-
-  <section style="padding:64px 0;background:var(--white)">
-    <div class="wrap">
-      <span class="label-tag">Үйлчилгээний чиглэл</span>
-      <h2 style="font-family:var(--fd);font-size:clamp(24px,3vw,38px);color:var(--ink)">Иж бүрэн санхүүгийн үйлчилгээ</h2>
-      <div class="svc-grid fade-in">
-        <div class="svc-card" onclick="showPage('services')">
-          <div class="svc-icon"><svg viewBox="0 0 18 18"><path d="M9 1.5l2 5.5h5.5l-4.5 3.3 1.7 5.2L9 12.5 4.3 15.5l1.7-5.2L1.5 7h5.5z"/></svg></div>
-          <div class="svc-name">Аудитын үйлчилгээ</div>
-          <div class="svc-desc">Санхүүгийн тайлан, төсөл хөтөлбөр, СЗХ-д хамаарах байгууллагын аудит. ISA стандарт.</div>
-          <div class="svc-lnk">Дэлгэрэнгүй <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-        </div>
-        <div class="svc-card" onclick="showPage('services')">
-          <div class="svc-icon"><svg viewBox="0 0 18 18"><path d="M14 2H8a2 2 0 00-2 2v10a2 2 0 002 2h6a2 2 0 002-2V6l-4-4z"/><path d="M14 6h-4V2"/><path d="M7 11h4M7 14h3"/></svg></div>
-          <div class="svc-name">Татварын зөвлөх</div>
-          <div class="svc-desc">Татварын хууль мөрдөлт, эрсдэлийн үнэлгээ, маргаан шийдвэрлэлт. ТМЗ мэргэжилтнүүд.</div>
-          <div class="svc-lnk">Дэлгэрэнгүй <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-        </div>
-        <div class="svc-card" onclick="showPage('services')">
-          <div class="svc-icon"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></div>
-          <div class="svc-name">НББ Аутсорсинг</div>
-          <div class="svc-desc">Гэрээт нягтлан бодох бүртгэл, чадавхжуулалт, МУУСНББ/IFRS дэмжлэг.</div>
-          <div class="svc-lnk">Дэлгэрэнгүй <svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 12 12"><path d="M2 6h8M6 2l4 4-4 4"/></svg></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer class="site-footer"><div class="wrap">
-    <div class="ft-grid">
-      <div class="ft-brand"><div class="ft-brand-name">Их Наяд Аудит ХХК</div><div class="ft-brand-sub">Est. 1996 · Улаанбаатар</div><p>Монгол улсад аудит, санхүүгийн үйлчилгээний итгэлцэл, ил тод байдлыг төлөвшүүлж байна.</p></div>
-      <div class="ft-col"><h4>Хуудас</h4><a href="#" onclick="showPage('home');return false">Нүүр</a><a href="#" onclick="showPage('about');return false">Бидний тухай</a><a href="#" onclick="showPage('services');return false">Үйлчилгээ</a><a href="#" onclick="showPage('portal');return false">Клиент портал</a></div>
-      <div class="ft-col"><h4>Үйлчилгээ</h4><a href="#" onclick="showPage('services');return false">Санхүүгийн аудит</a><a href="#" onclick="showPage('services');return false">Татварын зөвлөх</a><a href="#" onclick="showPage('services');return false">Дотоод хяналт</a><a href="#" onclick="showPage('services');return false">НББ аутсорсинг</a></div>
-      <div class="ft-col"><h4>Холбоо барих</h4><p style="font-size:13px;line-height:1.8">ikhnayadaudit@gmail.com<br>+976 9907-7062<br>СБД, 8-р хороо,<br>River Castle Apt, 624</p></div>
-    </div>
-    <div class="ft-cr"><span>© 2025 Их Наяд Аудит ХХК. Бүх эрх хуулиар хамгаалагдсан.</span></div>
-  </div></footer>
+  </div></section>
+  <footer class="site-footer"><div class="wrap"><div class="ft-grid">
+    <div class="ft-brand"><div class="ft-brand-name">Их Наяд Аудит ХХК</div><div class="ft-brand-sub">Est. 1996 · Улаанбаатар</div><p>Монгол улсад аудит, санхүүгийн үйлчилгээний итгэлцэл, ил тод байдлыг төлөвшүүлж байна.</p></div>
+    <div class="ft-col"><h4>Хуудас</h4><a href="#" onclick="showPage('home');return false">Нүүр</a><a href="#" onclick="showPage('about');return false">Бидний тухай</a><a href="#" onclick="showPage('services');return false">Үйлчилгээ</a><a href="#" onclick="showPage('portal');return false">Клиент портал</a></div>
+    <div class="ft-col"><h4>Үйлчилгээ</h4><a href="#" onclick="showPage('services');return false">Санхүүгийн аудит</a><a href="#" onclick="showPage('services');return false">Татварын зөвлөх</a><a href="#" onclick="showPage('services');return false">Дотоод хяналт</a><a href="#" onclick="showPage('services');return false">НББ аутсорсинг</a></div>
+    <div class="ft-col"><h4>Холбоо барих</h4><p style="font-size:13px;line-height:1.8">ikhnayadaudit@gmail.com<br>+976 9907-7062<br>СБД, 8-р хороо,<br>River Castle Apt, 624</p></div>
+  </div><div class="ft-cr"><span>© 2025 Их Наяд Аудит ХХК. Бүх эрх хуулиар хамгаалагдсан.</span></div></div></footer>
 </main>
 
 <!-- ═══ ABOUT ═══ -->
 <main id="page-about" class="page">
   <div class="banner"><span class="label-tag" style="color:rgba(255,255,255,.4)">Бидний тухай</span><h1>Монголын анхны аудитын<br>компаниудын нэг</h1><p>1996 оны 10-р сарын 23-нд Монгол улсын Сангийн сайдын тушаалаар үүсгэн байгуулагдсан.</p></div>
-  <section style="padding:64px 0"><div class="wrap">
-    <div class="about-grid fade-in">
-      <div>
-        <h3 style="font-family:var(--fd);font-size:20px;margin-bottom:22px;color:var(--ink)">Компанийн товч түүх</h3>
-        <div class="tl-item"><div class="tl-year">1996</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>Үүсгэн байгуулагдсан.</strong> Монгол улсын анхны МНБ Б.Хорлоо өөрийн 100% хөрөнгө оруулалтаар байгуулсан.</p></div></div>
-        <div class="tl-item"><div class="tl-year">2010</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>Удирдлагын залгамж.</strong> Ууган охин Х.Ариунзул захирлаар томилогдон, өнөөг хүртэл амжилттай удирдаж байна.</p></div></div>
-        <div class="tl-item"><div class="tl-year">2011</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>Дотоод стандарт.</strong> ISA-д нийцсэн аудитын дотоод үйл ажиллагааны стандартыг батласан.</p></div></div>
-        <div class="tl-item"><div class="tl-year">2012</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>INTOSAI стандарт.</strong> Төрийн аудитын байгууллагатай хамтран INTOSAI стандартыг нэвтрүүлсэн.</p></div></div>
-        <div class="tl-item"><div class="tl-year">2025</div><div class="tl-line"><div class="tl-dot" style="background:var(--g600)"></div></div><div class="tl-body"><p><strong>29 дэх жилдээ.</strong> 14 ажилтантай, 406+ сая ₮ орлоготой тогтвортой компани.</p></div></div>
+  <section style="padding:64px 0"><div class="wrap"><div class="about-grid fade-in">
+    <div>
+      <h3 style="font-family:var(--fd);font-size:20px;margin-bottom:22px;color:var(--ink)">Компанийн товч түүх</h3>
+      <div class="tl-item"><div class="tl-year">1996</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>Үүсгэн байгуулагдсан.</strong> Монгол улсын анхны МНБ Б.Хорлоо өөрийн 100% хөрөнгө оруулалтаар байгуулсан.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2010</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>Удирдлагын залгамж.</strong> Ууган охин Х.Ариунзул захирлаар томилогдон, өнөөг хүртэл амжилттай удирдаж байна.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2011</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>Дотоод стандарт.</strong> ISA-д нийцсэн аудитын дотоод үйл ажиллагааны стандартыг батласан.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2012</div><div class="tl-line"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><p><strong>INTOSAI стандарт.</strong> Төрийн аудитын байгууллагатай хамтран INTOSAI стандартыг нэвтрүүлсэн.</p></div></div>
+      <div class="tl-item"><div class="tl-year">2025</div><div class="tl-line"><div class="tl-dot" style="background:var(--g600)"></div></div><div class="tl-body"><p><strong>29 дэх жилдээ.</strong> 14 ажилтантай, 406+ сая ₮ орлоготой тогтвортой компани.</p></div></div>
+    </div>
+    <div>
+      <div class="vision-box"><span class="label-tag" style="color:rgba(255,255,255,.4)">Алсын Хараа</span><p>"Монгол Улсад аудит, санхүүгийн үйлчилгээний итгэлцэл, ил тод байдлыг төлөвшүүлж, хараат бус үнэлгээний жишиг компани байх."</p></div>
+      <div class="val-grid">
+        <div class="val-item"><div class="val-name">Хараат бус байдал</div><div class="val-desc">Дүгнэлт зөвхөн бодит нотолгоонд тулгуурлана.</div></div>
+        <div class="val-item"><div class="val-name">Мэргэжлийн ур чадвар</div><div class="val-desc">Олон улсын стандартаар тасралтгүй хөгжинэ.</div></div>
+        <div class="val-item"><div class="val-name">Ёс зүй & Хариуцлага</div><div class="val-desc">Бүх шатанд шударга, хүндэтгэлтэй хандана.</div></div>
+        <div class="val-item"><div class="val-name">Итгэлцэл</div><div class="val-desc">Урт хугацааны түншлэлийг эрхэмлэнэ.</div></div>
       </div>
-      <div>
-        <div class="vision-box"><span class="label-tag" style="color:rgba(255,255,255,.4)">Алсын Хараа</span><p>"Монгол Улсад аудит, санхүүгийн үйлчилгээний итгэлцэл, ил тод байдлыг төлөвшүүлж, хараат бус үнэлгээний жишиг компани байх."</p></div>
-        <div class="val-grid">
-          <div class="val-item"><div class="val-name">Хараат бус байдал</div><div class="val-desc">Дүгнэлт зөвхөн бодит нотолгоонд тулгуурлана.</div></div>
-          <div class="val-item"><div class="val-name">Мэргэжлийн ур чадвар</div><div class="val-desc">Олон улсын стандартаар тасралтгүй хөгжинэ.</div></div>
-          <div class="val-item"><div class="val-name">Ёс зүй & Хариуцлага</div><div class="val-desc">Бүх шатанд шударга, хүндэтгэлтэй хандана.</div></div>
-          <div class="val-item"><div class="val-name">Итгэлцэл</div><div class="val-desc">Урт хугацааны түншлэлийг эрхэмлэнэ.</div></div>
-        </div>
-        <div class="a-stats">
-          <div class="as"><div class="as-n">4</div><div class="as-l">Аудитор</div></div>
-          <div class="as"><div class="as-n">3</div><div class="as-l">ТМЗ</div></div>
-          <div class="as"><div class="as-n">14</div><div class="as-l">Нийт ажилтан</div></div>
-        </div>
+      <div class="a-stats">
+        <div class="as"><div class="as-n">4</div><div class="as-l">Аудитор</div></div>
+        <div class="as"><div class="as-n">3</div><div class="as-l">ТМЗ</div></div>
+        <div class="as"><div class="as-n">14</div><div class="as-l">Нийт ажилтан</div></div>
       </div>
     </div>
-  </div></section>
+  </div></div></section>
   <footer class="site-footer"><div class="wrap"><div class="ft-grid"><div class="ft-brand"><div class="ft-brand-name">Их Наяд Аудит ХХК</div><p>1996 оноос Монгол улсад итгэлцлийн аудитын үйлчилгээ.</p></div><div class="ft-col"><h4>Хуудас</h4><a href="#" onclick="showPage('home');return false">Нүүр</a><a href="#" onclick="showPage('portal');return false">Клиент портал</a></div><div class="ft-col"></div><div class="ft-col"><h4>Холбоо</h4><p style="font-size:13px;line-height:1.8">ikhnayadaudit@gmail.com<br>+976 9907-7062</p></div></div><div class="ft-cr"><span>© 2025 Их Наяд Аудит ХХК.</span></div></div></footer>
 </main>
 
@@ -525,15 +428,15 @@ textarea.fc{resize:vertical;min-height:80px}
   <section style="padding:64px 0"><div class="wrap">
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;padding:44px 0;border-bottom:1px solid var(--line)">
       <div><div style="font-family:var(--fm);font-size:12px;color:var(--muted);margin-bottom:7px">01</div><div style="width:48px;height:48px;border-radius:var(--r);background:var(--g100);display:flex;align-items:center;justify-content:center"><svg style="width:20px;height:20px;stroke:var(--g800);fill:none;stroke-width:1.7" viewBox="0 0 20 20"><path d="M10 1.5l2.5 6h6l-5 3.7 1.9 5.8L10 13.5l-5.4 3.5 1.9-5.8L1.5 7.5h6z"/></svg></div></div>
-      <div><div style="font-family:var(--fd);font-size:21px;color:var(--ink);margin:10px 0 9px">Санхүүгийн Тайлангийн Аудит</div><p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:14px">ISA стандарт болон Монгол Улсын холбогдох хуульд нийцсэн аудит. Төрийн байгууллага, хувийн хэвшил, ТББ, ББСБ зэрэг байгууллагад үйлчилдэг.</p><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">Төрийн байгууллага</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">Хувийн хэвшил</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">ТББ / Хоршоо</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">СЗХ-д хамаарах</span></div></div>
+      <div><div style="font-family:var(--fd);font-size:21px;color:var(--ink);margin:10px 0 9px">Санхүүгийн Тайлангийн Аудит</div><p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:14px">ISA стандарт болон Монгол Улсын холбогдох хуульд нийцсэн аудит.</p><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">Төрийн байгууллага</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">Хувийн хэвшил</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">ТББ / Хоршоо</span></div></div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;padding:44px 0;border-bottom:1px solid var(--line)">
-      <div><div style="font-family:var(--fm);font-size:12px;color:var(--muted);margin-bottom:7px">02</div><div style="width:48px;height:48px;border-radius:var(--r);background:var(--g100);display:flex;align-items:center;justify-content:center"><svg style="width:20px;height:20px;stroke:var(--g800);fill:none;stroke-width:1.7" viewBox="0 0 20 20"><path d="M15 2H8a2 2 0 00-2 2v12a2 2 0 002 2h7a2 2 0 002-2V6l-4-4z"/><path d="M15 6h-4V2"/><path d="M8 12h6M8 15h4"/></svg></div></div>
-      <div><div style="font-family:var(--fd);font-size:21px;color:var(--ink);margin:10px 0 9px">Татварын Зөвлөх Үйлчилгээ</div><p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:14px">Татварын хууль мөрдөлт, эрсдэлийн үнэлгээ, маргаан шийдвэрлэлт. ТМЗ гэрчилгээтэй мэргэжилтнүүд.</p><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">ТМЗ гэрчилгээтэй</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">ААНОАТ / ХХОАТ</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">НӨАТ</span></div></div>
+      <div><div style="font-family:var(--fm);font-size:12px;color:var(--muted);margin-bottom:7px">02</div><div style="width:48px;height:48px;border-radius:var(--r);background:var(--g100);display:flex;align-items:center;justify-content:center"><svg style="width:20px;height:20px;stroke:var(--g800);fill:none;stroke-width:1.7" viewBox="0 0 20 20"><path d="M15 2H8a2 2 0 00-2 2v12a2 2 0 002 2h7a2 2 0 002-2V6l-4-4z"/><path d="M15 6h-4V2"/></svg></div></div>
+      <div><div style="font-family:var(--fd);font-size:21px;color:var(--ink);margin:10px 0 9px">Татварын Зөвлөх Үйлчилгээ</div><p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:14px">Татварын хууль мөрдөлт, эрсдэлийн үнэлгээ, маргаан шийдвэрлэлт.</p><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">ТМЗ гэрчилгээтэй</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">ААНОАТ / НӨАТ</span></div></div>
     </div>
     <div style="display:grid;grid-template-columns:180px 1fr;gap:40px;padding:44px 0">
       <div><div style="font-family:var(--fm);font-size:12px;color:var(--muted);margin-bottom:7px">03</div><div style="width:48px;height:48px;border-radius:var(--r);background:var(--g100);display:flex;align-items:center;justify-content:center"><svg style="width:20px;height:20px;stroke:var(--g800);fill:none;stroke-width:1.7" viewBox="0 0 20 20"><path d="M17 21H5a2 2 0 01-2-2V5a2 2 0 012-2h8l6 6v10a2 2 0 01-2 2z"/><path d="M12 3v6h6"/></svg></div></div>
-      <div><div style="font-family:var(--fd);font-size:21px;color:var(--ink);margin:10px 0 9px">НББ Аутсорсинг & Чадавхжуулалт</div><p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:14px">Гэрээт нягтлан бодох бүртгэл, Smart програм, МУУСНББ/IFRS стандарт, аккруэл суурь.</p><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">Smart програм</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">МУУСНББ / IFRS</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">МНБ шалгалтын бэлтгэл</span></div></div>
+      <div><div style="font-family:var(--fd);font-size:21px;color:var(--ink);margin:10px 0 9px">НББ Аутсорсинг & Чадавхжуулалт</div><p style="font-size:14px;color:var(--slate);line-height:1.75;margin-bottom:14px">Гэрээт нягтлан бодох бүртгэл, МУУСНББ/IFRS стандарт.</p><div style="display:flex;flex-wrap:wrap;gap:7px"><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">Smart програм</span><span style="font-size:12px;font-weight:500;padding:4px 11px;border-radius:var(--r);background:var(--g50);border:1px solid var(--g200);color:var(--g700)">МУУСНББ / IFRS</span></div></div>
     </div>
   </div></section>
   <footer class="site-footer"><div class="wrap"><div class="ft-grid"><div class="ft-brand"><div class="ft-brand-name">Их Наяд Аудит ХХК</div></div><div class="ft-col"><h4>Хуудас</h4><a href="#" onclick="showPage('home');return false">Нүүр</a><a href="#" onclick="showPage('portal');return false">Клиент портал</a></div><div class="ft-col"></div><div class="ft-col"><h4>Холбоо</h4><p style="font-size:13px;line-height:1.8">ikhnayadaudit@gmail.com<br>+976 9907-7062</p></div></div><div class="ft-cr"><span>© 2025 Их Наяд Аудит ХХК.</span></div></div></footer>
@@ -542,39 +445,36 @@ textarea.fc{resize:vertical;min-height:80px}
 <!-- ═══ CONTACT ═══ -->
 <main id="page-contact" class="page">
   <div class="banner"><span class="label-tag" style="color:rgba(255,255,255,.4)">Холбоо барих</span><h1>Бидэнтэй холбоо барих</h1></div>
-  <section style="padding:64px 0"><div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><path d="M7 1C4.2 1 2 3.2 2 6c0 4 5 8 5 8s5-4 5-8c0-2.8-2.2-5-5-5z"/><circle cx="7" cy="6" r="1.5"/></svg></div><div><strong>Хаяг</strong><span>СБД, 8-р хороо, River Castle Business Apartment, 624</span></div></div>
-        <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg></div><div><strong>Утас</strong><span>+976 9907-7062</span></div></div>
-        <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1.5"/><path d="M1 5l6 4 6-4"/></svg></div><div><strong>И-мэйл</strong><span>ikhnayadaudit@gmail.com</span></div></div>
-        <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5"/><path d="M7 4v3l2 2"/></svg></div><div><strong>Ажлын цаг</strong><span>Даваа–Баасан: 09:00–18:00</span></div></div>
-      </div>
-      <div class="card" style="padding:28px">
-        <h2 style="font-family:var(--fd);font-size:21px;margin-bottom:5px">Мессеж илгээх</h2>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:22px">24 цагийн дотор хариу өгнө.</p>
-        <div style="display:flex;flex-direction:column;gap:13px">
-          <div class="g2">
-            <div class="fg"><label>Байгууллагын нэр <span class="req">*</span></label><input class="fc" id="cnt-org" type="text" placeholder="Байгууллагын нэр"></div>
-            <div class="fg"><label>Холбоо барих хүн</label><input class="fc" id="cnt-name" type="text" placeholder="Овог Нэр"></div>
-          </div>
-          <div class="g2">
-            <div class="fg"><label>И-мэйл</label><input class="fc" id="cnt-email" type="email" placeholder="email@company.mn"></div>
-            <div class="fg"><label>Утас</label><input class="fc" id="cnt-phone" type="tel" placeholder="+976"></div>
-          </div>
-          <div class="fg"><label>Мессеж</label><textarea class="fc" id="cnt-msg" placeholder="Таны асуулт, хүсэлт..."></textarea></div>
-          <button class="btn btn-p btn-lg" onclick="contactSubmit(this)" style="width:100%">Илгээх</button>
-          <div id="contact-ok" style="display:none" class="alert a-ok"><svg viewBox="0 0 16 16"><path d="M3 8l4 4 6-6"/></svg><div><strong>Мессеж хүлээн авлаа.</strong> Бид 24 цагийн дотор тантай холбогдоно.</div></div>
+  <section style="padding:64px 0"><div class="wrap"><div class="contact-grid">
+    <div>
+      <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><path d="M7 1C4.2 1 2 3.2 2 6c0 4 5 8 5 8s5-4 5-8c0-2.8-2.2-5-5-5z"/><circle cx="7" cy="6" r="1.5"/></svg></div><div><strong>Хаяг</strong><span>СБД, 8-р хороо, River Castle Business Apartment, 624</span></div></div>
+      <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg></div><div><strong>Утас</strong><span>+976 9907-7062</span></div></div>
+      <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1.5"/><path d="M1 5l6 4 6-4"/></svg></div><div><strong>И-мэйл</strong><span>ikhnayadaudit@gmail.com</span></div></div>
+      <div class="cd"><div class="cd-icon"><svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="5.5"/><path d="M7 4v3l2 2"/></svg></div><div><strong>Ажлын цаг</strong><span>Даваа–Баасан: 09:00–18:00</span></div></div>
+    </div>
+    <div class="card" style="padding:28px">
+      <h2 style="font-family:var(--fd);font-size:21px;margin-bottom:5px">Мессеж илгээх</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:22px">24 цагийн дотор хариу өгнө.</p>
+      <div style="display:flex;flex-direction:column;gap:13px">
+        <div class="g2">
+          <div class="fg"><label>Байгууллагын нэр <span class="req">*</span></label><input class="fc" id="cnt-org" type="text" placeholder="Байгууллагын нэр"></div>
+          <div class="fg"><label>Холбоо барих хүн</label><input class="fc" id="cnt-name" type="text" placeholder="Овог Нэр"></div>
         </div>
+        <div class="g2">
+          <div class="fg"><label>И-мэйл</label><input class="fc" id="cnt-email" type="email" placeholder="email@company.mn"></div>
+          <div class="fg"><label>Утас</label><input class="fc" id="cnt-phone" type="tel" placeholder="+976"></div>
+        </div>
+        <div class="fg"><label>Мессеж</label><textarea class="fc" id="cnt-msg" placeholder="Таны асуулт, хүсэлт..."></textarea></div>
+        <button class="btn btn-p btn-lg" onclick="contactSubmit(this)" style="width:100%">Илгээх</button>
+        <div id="contact-ok" style="display:none" class="alert a-ok"><svg viewBox="0 0 16 16"><path d="M3 8l4 4 6-6"/></svg><div><strong>Мессеж хүлээн авлаа.</strong> Бид 24 цагийн дотор тантай холбогдоно.</div></div>
       </div>
     </div>
-  </div></section>
+  </div></div></section>
   <footer class="site-footer"><div class="wrap"><div class="ft-grid"><div class="ft-brand"><div class="ft-brand-name">Их Наяд Аудит ХХК</div></div><div class="ft-col"><h4>Хуудас</h4><a href="#" onclick="showPage('home');return false">Нүүр</a><a href="#" onclick="showPage('portal');return false">Клиент портал</a></div><div class="ft-col"></div><div class="ft-col"></div></div><div class="ft-cr"><span>© 2025 Их Наяд Аудит ХХК.</span></div></div></footer>
 </main>
 
 <!-- ═══ PORTAL ═══ -->
 <main id="page-portal" class="page">
-
   <!-- LOGIN -->
   <div id="portal-login" style="min-height:calc(100vh - 62px);display:flex;align-items:center;justify-content:center;padding:48px 1.5rem;background:linear-gradient(135deg,var(--bg),#eef6f1)">
     <div style="width:100%;max-width:440px">
@@ -614,16 +514,12 @@ textarea.fc{resize:vertical;min-height:80px}
             </div>
           </div>
           <div class="topbar-acts">
-            <!-- Auto-save indicator -->
+            <!-- ✦ ШИНЭ: auto-save indicator -->
             <span id="save-indicator" class="save-indicator">
               <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
               Хадгалагдлаа
             </span>
             <span style="font-size:12px;color:var(--muted)">Аудитын жил: <strong style="color:var(--ink)">2024</strong></span>
-            <button class="btn btn-g btn-sm" onclick="manualSave()">
-              <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M11 1H3a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4l-3-3z"/><path d="M9 1v3h3M4 8h6M4 11h4"/></svg>
-              Хадгалах
-            </button>
             <button class="btn btn-g btn-sm" onclick="doLogout()">Гарах</button>
           </div>
         </div>
@@ -632,7 +528,6 @@ textarea.fc{resize:vertical;min-height:80px}
 
     <section style="padding:24px 0 40px">
       <div class="wrap">
-        <!-- Progress cards -->
         <div class="prog-cards">
           <div class="pc"><div class="pc-num" id="p-tot">37</div><div class="pc-lbl">Нийт баримт бичиг</div></div>
           <div class="pc pc-ok"><div class="pc-num" id="p-ok">0</div><div class="pc-lbl">Бүрдсэн</div></div>
@@ -650,7 +545,6 @@ textarea.fc{resize:vertical;min-height:80px}
           <div class="prog-track"><div class="prog-fill" id="p-bar" style="width:0%"></div></div>
         </div>
 
-        <!-- TABS — with Зурвас -->
         <div class="tabs">
           <button class="tab act" onclick="switchTab('t-info')">Байгууллагын мэдээлэл</button>
           <button class="tab" onclick="switchTab('t-perm')">Байнгын баримт бичиг</button>
@@ -663,12 +557,16 @@ textarea.fc{resize:vertical;min-height:80px}
           </button>
         </div>
 
-        <!-- PANEL: Company Info -->
+        <!-- PANEL: Company Info — ✦ ШИНЭ: автоматаар GAS-д хадгалагдана -->
         <div class="panel act" id="t-info">
           <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
-              <h3 style="font-size:16px;font-weight:600;color:var(--ink)">Байгууллагын үндсэн мэдээлэл</h3>
-              <div id="info-save-status" style="font-size:11.5px;color:var(--muted)"></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:8px">
+              <div>
+                <h3 style="font-size:16px;font-weight:600;color:var(--ink)">Байгууллагын үндсэн мэдээлэл</h3>
+                <p style="font-size:12px;color:var(--muted);margin-top:3px">Талбар бөглөхөд автоматаар хадгалагдана</p>
+              </div>
+              <!-- ✦ ШИНЭ: inline save status -->
+              <div id="info-save-status"></div>
             </div>
             <div class="ci-grid">
               <div class="fg"><label>1. Байгуулагдсан огноо</label><input class="fc ci-field" type="date" id="ci1" data-ls="ci1"></div>
@@ -686,7 +584,6 @@ textarea.fc{resize:vertical;min-height:80px}
               <div class="fg"><label>13. НБ-ийн утас</label><input class="fc ci-field" type="tel" id="ci13" data-ls="ci13" placeholder="+976"></div>
               <div class="fg full"><label>14. Харилцах и-мэйл</label><input class="fc ci-field" type="email" id="ci14" data-ls="ci14" placeholder="accountant@company.mn"></div>
             </div>
-
             <div class="sensitive-box">
               <div class="sensitive-hd"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>Системийн нэвтрэх мэдээлэл</span></div>
               <div class="alert a-warn" style="margin-bottom:14px;font-size:12px"><svg viewBox="0 0 16 16"><path d="M8 1L1 14h14L8 1z"/><path d="M8 6v4M8 12v1"/></svg><div>Нууц үгийн талбарууд <strong>хадгалагдахгүй</strong>. Зөвхөн аудиторт шаардлагатай үед шуудаар дамжуулна уу.</div></div>
@@ -699,27 +596,19 @@ textarea.fc{resize:vertical;min-height:80px}
                 <div class="fg"><label>20. НДаатгал — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci20" placeholder="••••••••" autocomplete="new-password"></div>
               </div>
             </div>
-
-            <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;align-items:center">
-              <button class="btn btn-p" id="submit-info-btn" onclick="submitFormData()">
-                <svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 6l3 4 3-4"/><path d="M1 11v2h12v-2"/></svg>
-                Google Sheets-д хадгалах
-              </button>
-              <span id="info-saved-note" style="font-size:12px;color:var(--ok);display:none">✓ Автоматаар локал хадгалагдсан</span>
-            </div>
             <div id="form-msg" style="display:none;margin-top:12px"></div>
           </div>
         </div>
 
         <!-- PANEL: Perm docs -->
         <div class="panel" id="t-perm">
-          <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>НЭГ. БАЙНГЫН БАРИМТ БИЧИГ</strong> — Байгууллагын үндсэн бүртгэл, эрхийн баримтууд. Нэг удаа илгээсэн бол дараагийн жилд шаардахгүй. Нэг баримтад хэд хэдэн файл хавсаргаж болно.</div></div>
+          <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>НЭГ. БАЙНГЫН БАРИМТ БИЧИГ</strong> — Байгууллагын үндсэн бүртгэл, эрхийн баримтууд. Нэг баримтад хэд хэдэн файл хавсаргаж болно.</div></div>
           <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичгийн нэр</th><th>Шаардлага</th><th>Төлөв</th><th>Файл</th><th>Тайлбар</th></tr></thead><tbody id="perm-body"></tbody></table></div>
         </div>
 
         <!-- PANEL: Work docs -->
         <div class="panel" id="t-work">
-          <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>ХОЁР. АЖЛЫН БАРИМТ БИЧИГ</strong> — Тайлант жилийн санхүүгийн бүртгэл, татварын болон НД тайлангууд. Нэг баримтад хэд хэдэн файл хавсаргаж болно.</div></div>
+          <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>ХОЁР. АЖЛЫН БАРИМТ БИЧИГ</strong> — Тайлант жилийн санхүүгийн бүртгэл, татварын болон НД тайлангууд.</div></div>
           <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичиг</th><th>Хугацаа</th><th>Хэлбэр</th><th>Төлөв</th><th>Файл</th><th>Тайлбар</th></tr></thead><tbody id="work-body"></tbody></table></div>
         </div>
 
@@ -728,7 +617,7 @@ textarea.fc{resize:vertical;min-height:80px}
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
             <div>
               <h3 style="font-size:15px;font-weight:600;color:var(--ink)">Илгээсэн файлууд</h3>
-              <p style="font-size:13px;color:var(--muted);margin-top:3px">Хавсаргасан болон Drive-д хадгалагдсан файлуудын жагсаалт</p>
+              <p style="font-size:13px;color:var(--muted);margin-top:3px">Drive-д хадгалагдсан файлуудын жагсаалт</p>
             </div>
             <label style="display:inline-flex;align-items:center;gap:5px;padding:8px 15px;border-radius:var(--r);border:1.5px solid var(--g200);background:var(--g100);color:var(--g800);font-size:12px;font-weight:600;cursor:pointer">
               <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
@@ -738,21 +627,28 @@ textarea.fc{resize:vertical;min-height:80px}
           </div>
           <div class="sf-list" id="sf-list">
             <div class="drop-zone" id="main-drop-zone" onclick="document.getElementById('gen-file-input').click()">
-              <div style="margin-bottom:12px">
-                <svg style="width:36px;height:36px;stroke:var(--g600);fill:none;stroke-width:1.4;opacity:.7" viewBox="0 0 48 48"><path d="M24 8v24M16 16l8-8 8 8"/><rect x="8" y="32" width="32" height="10" rx="3" stroke-dasharray="4 2"/></svg>
-              </div>
+              <div style="margin-bottom:12px"><svg style="width:36px;height:36px;stroke:var(--g600);fill:none;stroke-width:1.4;opacity:.7" viewBox="0 0 48 48"><path d="M24 8v24M16 16l8-8 8 8"/><rect x="8" y="32" width="32" height="10" rx="3" stroke-dasharray="4 2"/></svg></div>
               <div style="font-size:14px;font-weight:600;color:var(--g800);margin-bottom:4px">Файл чирж оруулах эсвэл дарж сонгоно уу</div>
-              <div style="font-size:12.5px;color:var(--muted)">PDF · DOCX · XLSX · XLS · Хэд хэдэн файл нэгэн зэрэг</div>
+              <div style="font-size:12.5px;color:var(--muted)">PDF · DOCX · XLSX · Хэд хэдэн файл нэгэн зэрэг</div>
               <input id="gen-file-input" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" style="display:none" onchange="uploadGeneralFiles(this.files)">
             </div>
           </div>
         </div>
 
-        <!-- PANEL: Status / Audit timeline -->
+        <!-- PANEL: Status / Audit timeline — ✦ ШИНЭ: явцын хувь нэмэгдсэн -->
         <div class="panel" id="t-status">
           <div class="status-grid">
             <div class="card">
-              <h3 style="font-size:15px;font-weight:600;margin-bottom:18px;color:var(--ink)">Аудитын явц</h3>
+              <h3 style="font-size:15px;font-weight:600;margin-bottom:14px;color:var(--ink)">Аудитын явц</h3>
+              <!-- ✦ ШИНЭ: Timeline progress bar -->
+              <div class="tl-progress-wrap" id="tl-progress-wrap" style="display:none">
+                <div class="tl-progress-label">
+                  <span class="tl-progress-title">Аудитын үе шатын явц</span>
+                  <span class="tl-progress-pct" id="tl-progress-pct">0%</span>
+                </div>
+                <div class="prog-track"><div class="prog-fill" id="tl-progress-bar" style="width:0%"></div></div>
+                <div style="font-size:11.5px;color:var(--muted);margin-top:6px" id="tl-progress-label">0 / 5 үе шат</div>
+              </div>
               <div class="stl" id="audit-timeline">
                 <div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Уншиж байна...</div>
               </div>
@@ -779,14 +675,14 @@ textarea.fc{resize:vertical;min-height:80px}
           </div>
         </div>
 
-        <!-- PANEL: Chat / Зурвас -->
+        <!-- PANEL: Chat — ✦ ШИНЭ: 30с тутамд auto-poll, мэндчилгээний зурвас -->
         <div class="panel" id="t-chat">
           <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
             <div>
               <h3 style="font-size:15px;font-weight:600;color:var(--ink)">Аудитортой харилцах зурвас</h3>
-              <p style="font-size:13px;color:var(--muted);margin-top:3px">Асуулт, тайлбар, хүсэлтийг энд бичнэ үү</p>
+              <p style="font-size:13px;color:var(--muted);margin-top:3px" id="chat-poll-status">Асуулт, тайлбар, хүсэлтийг энд бичнэ үү</p>
             </div>
-            <button onclick="loadChatMessages()" class="btn btn-g btn-sm">
+            <button onclick="loadChatMessages(true)" class="btn btn-g btn-sm">
               <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M12 7A5 5 0 112 7"/><path d="M12 4v3h-3"/></svg>
               Шинэчлэх
             </button>
@@ -796,8 +692,8 @@ textarea.fc{resize:vertical;min-height:80px}
               <div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Зурвас ачааллаж байна...</div>
             </div>
             <div class="chat-input-row">
-              <textarea id="chat-input" placeholder="Зурвас бичнэ үү... (Enter — шинэ мөр, Ctrl+Enter — илгээх)" rows="2"></textarea>
-              <button class="btn btn-p btn-sm" onclick="sendChatMessage()" style="align-self:flex-end;flex-shrink:0">
+              <textarea id="chat-input" placeholder="Зурвас бичнэ үү... (Ctrl+Enter — илгээх)" rows="2"></textarea>
+              <button class="btn btn-p btn-sm" onclick="sendChatMessage()" id="chat-send-btn" style="align-self:flex-end;flex-shrink:0">
                 <svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M1 1l12 6-12 6V8l8-2-8-2V1z"/></svg>
                 Илгээх
               </button>
@@ -812,9 +708,7 @@ textarea.fc{resize:vertical;min-height:80px}
 
 <!-- ═══ ADMIN ═══ -->
 <main id="page-admin" class="page">
-  <!-- LOGIN -->
   <div id="admin-login" style="min-height:calc(100vh - 62px);display:flex;align-items:stretch">
-    <!-- Left image panel -->
     <div id="admin-login-img" style="flex:1;background:linear-gradient(135deg,var(--g900),#0d2e1e);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:48px">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(76,255,178,.08),transparent 60%)"></div>
       <div style="position:relative;z-index:1">
@@ -830,7 +724,6 @@ textarea.fc{resize:vertical;min-height:80px}
         </div>
       </div>
     </div>
-    <!-- Right login -->
     <div style="width:100%;max-width:460px;display:flex;align-items:center;justify-content:center;padding:48px 2rem;background:#fff;box-shadow:-8px 0 40px rgba(0,0,0,.06)">
       <div style="width:100%">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--g900);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
@@ -840,7 +733,7 @@ textarea.fc{resize:vertical;min-height:80px}
         <p style="font-size:13.5px;color:var(--muted);margin-bottom:28px">Зөвхөн мэргэжлийн аудиторуудад зориулсан</p>
         <div style="display:flex;flex-direction:column;gap:14px">
           <div class="fg"><label style="font-size:12.5px;font-weight:600;color:var(--ink2)">Нууц үг</label><input class="fc" id="a-pw" type="password" placeholder="Нууц үгээ оруулна уу" style="padding:12px 14px;font-size:14px"></div>
-          <div id="a-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>Нууц үг буруу байна. Дахин оролдоно уу.</span></div>
+          <div id="a-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>Нууц үг буруу байна.</span></div>
           <button class="btn btn-p" onclick="adminLogin()" style="width:100%;padding:13px;font-size:14.5px;border-radius:9px;justify-content:center">
             <svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><rect x="2" y="6" width="10" height="7" rx="1"/><path d="M5 6V4a3 3 0 016 0v2"/></svg>
             Нэвтрэх
@@ -854,7 +747,6 @@ textarea.fc{resize:vertical;min-height:80px}
     </div>
   </div>
 
-  <!-- ADMIN DASHBOARD -->
   <div id="admin-dashboard" style="display:none;min-height:calc(100vh - 62px);background:var(--bg)">
     <div style="background:var(--g900);padding:28px 0;position:relative;overflow:hidden">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(76,255,178,.06),transparent 60%)"></div>
@@ -881,12 +773,10 @@ textarea.fc{resize:vertical;min-height:80px}
       </div>
     </div>
     <div class="wrap" style="padding-top:28px;padding-bottom:48px">
-      <!-- Admin tabs -->
       <div class="tabs" style="margin-bottom:20px">
         <button class="tab act" onclick="adminSwitchTab('clients')">Клиентүүд</button>
         <button class="tab" onclick="adminSwitchTab('messages')">Зурвасууд <span class="unread-badge" id="admin-unread" style="display:none">!</span></button>
       </div>
-      <!-- Clients tab -->
       <div id="admin-tab-clients">
         <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center">
           <input id="admin-search" type="text" class="fc" placeholder="Клиент хайх..." style="max-width:280px" oninput="filterAdminClients()">
@@ -900,7 +790,6 @@ textarea.fc{resize:vertical;min-height:80px}
         </div>
         <div id="admin-list"></div>
       </div>
-      <!-- Admin messages tab -->
       <div id="admin-tab-messages" style="display:none">
         <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
           <h3 style="font-size:15px;font-weight:600;color:var(--ink)">Клиентийн зурвасууд</h3>
@@ -951,1110 +840,901 @@ textarea.fc{resize:vertical;min-height:80px}
 <div id="toast"></div>
 
 <script>
-/* ══════════════════════════════════════════
-   CONFIG
-══════════════════════════════════════════ */
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbw3gCFNSRfGpJKTwuTlL6dOr6Q1heynrqiXG24H-KUqTWNworuKkvYz9xbHRRjhItSl/exec';
 
-/* ══════════════════════════════════════════
-   STATE
-══════════════════════════════════════════ */
-let SESSION = { reg: '', code: '', org: '' };
-let docStatuses = {};
-let sentFiles   = [];
-let chatMessages = [];
-let adminAuthed = false;
+// ── STATE ─────────────────────────────────────────────────────
+let SESSION       = { reg: '', code: '', org: '' };
+let docStatuses   = {};
+let sentFiles     = [];
+let chatMessages  = [];
+let adminAuthed   = false;
 let adminClientsCache = [];
 let currentClientReg  = null;
 let currentClientData = {};
 let auditorStatuses   = {};
 let auditorStages     = {};
+let chatPollTimer     = null;
+let formSaveTimer     = null;
+let formSavePending   = false;
 
-let autoSaveTimer = null;
 const LS_FIELDS = ['ci1','ci2','ci3','ci4','ci5','ci6','ci7','ci8','ci9',
                    'ci10','ci11','ci12','ci13','ci14','ci15','ci17','ci18','ci19'];
 
-/* ══════════════════════════════════════════
-   NAV
-══════════════════════════════════════════ */
+// ── NAV ───────────────────────────────────────────────────────
 const PAGES = ['home','about','services','contact','portal','admin'];
 function showPage(id) {
-  PAGES.forEach(p => {
-    const el = document.getElementById('page-' + p);
-    if (el) { el.style.display = 'none'; el.classList.remove('act'); }
-  });
-  const t = document.getElementById('page-' + id);
-  if (t) { t.style.display = 'block'; t.classList.add('act'); }
-  window.scrollTo(0, 0);
-  document.querySelectorAll('.nav-links a[id^="nl-"]').forEach(a => a.classList.remove('act'));
-  const na = document.getElementById('nl-' + id);
-  if (na) na.classList.add('act');
+  PAGES.forEach(p => { const el=document.getElementById('page-'+p); if(el){el.style.display='none';el.classList.remove('act');} });
+  const t = document.getElementById('page-'+id);
+  if(t){t.style.display='block';t.classList.add('act');}
+  window.scrollTo(0,0);
+  document.querySelectorAll('.nav-links a[id^="nl-"]').forEach(a=>a.classList.remove('act'));
+  const na=document.getElementById('nl-'+id); if(na) na.classList.add('act');
   closeMob();
 }
-window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', scrollY > 16));
-function toggleMob() { document.getElementById('mobMenu').classList.toggle('open'); }
-function closeMob()  { document.getElementById('mobMenu').classList.remove('open'); }
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>16));
+function toggleMob(){document.getElementById('mobMenu').classList.toggle('open');}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
 
-/* ══════════════════════════════════════════
-   GAS CALL
-══════════════════════════════════════════ */
-async function gasCall(action, body = {}) {
+// ── GAS ───────────────────────────────────────────────────────
+async function gasCall(action, body={}) {
   const url = GAS_URL + '?action=' + encodeURIComponent(action);
   const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify({ action, ...body }),
+    method:'POST', headers:{'Content-Type':'text/plain'},
+    body: JSON.stringify({action,...body}),
   });
-  if (!res.ok) throw new Error('Network error ' + res.status);
-  return await res.json();
+  if(!res.ok) throw new Error('Network error '+res.status);
+  return res.json();
 }
 
-/* ══════════════════════════════════════════
-   CONTACT
-══════════════════════════════════════════ */
+// ── CONTACT ───────────────────────────────────────────────────
 function contactSubmit(btn) {
-  const org   = document.getElementById('cnt-org')?.value || '';
-  const name  = document.getElementById('cnt-name')?.value || '';
-  const email = document.getElementById('cnt-email')?.value || '';
-  const phone = document.getElementById('cnt-phone')?.value || '';
-  const msg   = document.getElementById('cnt-msg')?.value || '';
-  const subject = encodeURIComponent('Их Наяд Аудит — Хүсэлт: ' + org);
-  const body    = encodeURIComponent('Байгууллага: '+org+'\nХолбоо барих хүн: '+name+'\nУтас: '+phone+'\nИ-мэйл: '+email+'\n\nМессеж:\n'+msg);
-  window.open('mailto:ikhnayadaudit@gmail.com?subject='+subject+'&body='+body,'_blank');
-  btn.disabled = true; btn.textContent = 'Илгэгдлээ ✓';
-  document.getElementById('contact-ok').style.display = 'flex';
+  const org=document.getElementById('cnt-org')?.value||'';
+  const name=document.getElementById('cnt-name')?.value||'';
+  const email=document.getElementById('cnt-email')?.value||'';
+  const phone=document.getElementById('cnt-phone')?.value||'';
+  const msg=document.getElementById('cnt-msg')?.value||'';
+  window.open('mailto:ikhnayadaudit@gmail.com?subject='+encodeURIComponent('Их Наяд Аудит — Хүсэлт: '+org)+'&body='+encodeURIComponent('Байгууллага: '+org+'\nХолбоо барих: '+name+'\nУтас: '+phone+'\nИ-мэйл: '+email+'\n\n'+msg),'_blank');
+  btn.disabled=true; btn.textContent='Илгэгдлээ ✓';
+  document.getElementById('contact-ok').style.display='flex';
 }
 
-/* ══════════════════════════════════════════
-   DOC DATA
-══════════════════════════════════════════ */
+// ── DOC DATA ──────────────────────────────────────────────────
 const PERM = [
-  {id:'p1', n:'Улсын бүртгэлийн гэрчилгээ', r:'Хуулбар, цаасаар'},
-  {id:'p2', n:'Компанийн дүрэм', r:'Хуулбар, цаасаар'},
-  {id:'p3', n:'Компанийн танилцуулга, брошур', r:'Хуулбар, цаасаар'},
-  {id:'p4', n:'Тусгай зөвшөөрлийн гэрчилгээ', r:'Хуулбар, цаасаар'},
-  {id:'p5', n:'Үл хөдлөх хөрөнгийн гэрчилгээ', r:'Хуулбар, цаасаар'},
-  {id:'p6', n:'Газрын гэрчилгээ', r:'Хуулбар, цаасаар'},
-  {id:'p7', n:'Урт болон богино хугацаат зээлийн гэрээ', r:'Хуулбар, цаасаар'},
-  {id:'p8', n:'Хөрөнгийн дахин үнэлгээний тайлан', r:'Хуулбар, цаасаар'},
-  {id:'p9', n:'Шалгалтын дүгнэлт, үнэлгээний тайлан', r:'Хуулбар, цаасаар'},
-  {id:'p10',n:'Өмнөх аудитын компанийн дүгнэлт', r:'Хуулбар, цаасаар'},
+  {id:'p1',n:'Улсын бүртгэлийн гэрчилгээ',r:'Хуулбар, цаасаар'},
+  {id:'p2',n:'Компанийн дүрэм',r:'Хуулбар, цаасаар'},
+  {id:'p3',n:'Компанийн танилцуулга, брошур',r:'Хуулбар, цаасаар'},
+  {id:'p4',n:'Тусгай зөвшөөрлийн гэрчилгээ',r:'Хуулбар, цаасаар'},
+  {id:'p5',n:'Үл хөдлөх хөрөнгийн гэрчилгээ',r:'Хуулбар, цаасаар'},
+  {id:'p6',n:'Газрын гэрчилгээ',r:'Хуулбар, цаасаар'},
+  {id:'p7',n:'Урт болон богино хугацаат зээлийн гэрээ',r:'Хуулбар, цаасаар'},
+  {id:'p8',n:'Хөрөнгийн дахин үнэлгээний тайлан',r:'Хуулбар, цаасаар'},
+  {id:'p9',n:'Шалгалтын дүгнэлт, үнэлгээний тайлан',r:'Хуулбар, цаасаар'},
+  {id:'p10',n:'Өмнөх аудитын компанийн дүгнэлт',r:'Хуулбар, цаасаар'},
 ];
 const WORK = [
-  {id:'w11',n:'Аудит хийлгэхийг хүссэн албан бичиг', p:'4-р улирал', f:'Эх хувь, цаасаар'},
-  {id:'w12',n:'Жилийн эцсийн санхүүгийн тайлан', p:'4-р улирал', f:'Эх хувь / Excel'},
-  {id:'w13',n:'Татварын тайлангууд — ААНОАТ, ХХОАТ, НӨАТ г.м', p:'4-р улирал', f:'Цаасаар'},
-  {id:'w14',n:'НӨАТ-ын тайлан', p:'1–12 сар', f:'Цаасаар / Excel'},
-  {id:'w15',n:'Татварын тодорхойлолт', p:'Тайлант жил', f:'Цаасаар'},
-  {id:'w16',n:'НДШ-ийн тайлангийн хуулбар', p:'10–12 сар', f:'Хуулбар, цаасаар'},
-  {id:'w17',n:'Ерөнхий данс', p:'01.01–12.31', f:'Excel'},
-  {id:'w18',n:'Ерөнхий журнал', p:'01.01–12.31', f:'Excel'},
-  {id:'w19',n:'Гүйлгээ баланс', p:'01.01–12.31', f:'Excel'},
-  {id:'w20',n:'Кассын дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w21',n:'Кассын тайлан', p:'01.01–12.31', f:'Excel'},
-  {id:'w22',n:'12-р сарын 31-ний бэлэн мөнгөний тооллогын акт', p:'12.31', f:'Цаасаар'},
-  {id:'w23',n:'Харилцах дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w24',n:'Харилцах дансдын хуулга', p:'01.01–12.31', f:'Цаасаар / Excel'},
-  {id:'w25',n:'Бараа материалын дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w26',n:'Бараа материалын тооллогын акт', p:'01.01–12.31', f:'Цаасаар'},
-  {id:'w27',n:'Үндсэн хөрөнгийн дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w28',n:'Үндсэн хөрөнгийн тооллогын акт', p:'01.01–12.31', f:'Цаасаар'},
-  {id:'w29',n:'Авлага, өглөгийн дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w30',n:'Авлага, өглөгийн тооцоо нийлсэн акт', p:'01.01–12.31', f:'Цаасаар'},
-  {id:'w31',n:'Цалингийн тооцооны хүснэгт', p:'01.01–12.31', f:'Excel'},
-  {id:'w32',n:'Борлуулалтын орлогын дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w33',n:'Борлуулсан бүтээгдэхүүний өртгийн бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w34',n:'Үйл ажиллагааны зардлын дэлгэрэнгүй бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w35',n:'Үйл ажиллагааны бус орлогын бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w36',n:'Үйл ажиллагааны бус зардлын бүртгэл', p:'01.01–12.31', f:'Excel'},
-  {id:'w37',n:'Санхүүгийн зохицуулах хорооны тайлан', p:'01.01–12.31', f:'Цаасаар'},
+  {id:'w11',n:'Аудит хийлгэхийг хүссэн албан бичиг',p:'4-р улирал',f:'Эх хувь, цаасаар'},
+  {id:'w12',n:'Жилийн эцсийн санхүүгийн тайлан',p:'4-р улирал',f:'Эх хувь / Excel'},
+  {id:'w13',n:'Татварын тайлангууд — ААНОАТ, ХХОАТ, НӨАТ г.м',p:'4-р улирал',f:'Цаасаар'},
+  {id:'w14',n:'НӨАТ-ын тайлан',p:'1–12 сар',f:'Цаасаар / Excel'},
+  {id:'w15',n:'Татварын тодорхойлолт',p:'Тайлант жил',f:'Цаасаар'},
+  {id:'w16',n:'НДШ-ийн тайлангийн хуулбар',p:'10–12 сар',f:'Хуулбар, цаасаар'},
+  {id:'w17',n:'Ерөнхий данс',p:'01.01–12.31',f:'Excel'},
+  {id:'w18',n:'Ерөнхий журнал',p:'01.01–12.31',f:'Excel'},
+  {id:'w19',n:'Гүйлгээ баланс',p:'01.01–12.31',f:'Excel'},
+  {id:'w20',n:'Кассын дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w21',n:'Кассын тайлан',p:'01.01–12.31',f:'Excel'},
+  {id:'w22',n:'12-р сарын 31-ний бэлэн мөнгөний тооллогын акт',p:'12.31',f:'Цаасаар'},
+  {id:'w23',n:'Харилцах дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w24',n:'Харилцах дансдын хуулга',p:'01.01–12.31',f:'Цаасаар / Excel'},
+  {id:'w25',n:'Бараа материалын дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w26',n:'Бараа материалын тооллогын акт',p:'01.01–12.31',f:'Цаасаар'},
+  {id:'w27',n:'Үндсэн хөрөнгийн дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w28',n:'Үндсэн хөрөнгийн тооллогын акт',p:'01.01–12.31',f:'Цаасаар'},
+  {id:'w29',n:'Авлага, өглөгийн дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w30',n:'Авлага, өглөгийн тооцоо нийлсэн акт',p:'01.01–12.31',f:'Цаасаар'},
+  {id:'w31',n:'Цалингийн тооцооны хүснэгт',p:'01.01–12.31',f:'Excel'},
+  {id:'w32',n:'Борлуулалтын орлогын дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w33',n:'Борлуулсан бүтээгдэхүүний өртгийн бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w34',n:'Үйл ажиллагааны зардлын дэлгэрэнгүй бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w35',n:'Үйл ажиллагааны бус орлогын бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w36',n:'Үйл ажиллагааны бус зардлын бүртгэл',p:'01.01–12.31',f:'Excel'},
+  {id:'w37',n:'Санхүүгийн зохицуулах хорооны тайлан',p:'01.01–12.31',f:'Цаасаар'},
 ];
 const S_OPTS = [{v:'',l:'— Сонгоно уу —'},{v:'ok',l:'✓ Бүрдсэн'},{v:'miss',l:'✗ Дутуу'},{v:'wait',l:'⏳ Хүлээгдэж байна'},{v:'rev',l:'👁 Хянагдаж байна'}];
 
-/* ══════════════════════════════════════════
-   PORTAL LOGIN / LOGOUT
-══════════════════════════════════════════ */
+// ── LOGIN / LOGOUT ────────────────────────────────────────────
 async function doLogin() {
   const reg  = document.getElementById('l-reg').value.trim();
   const code = document.getElementById('l-code').value.trim();
   const err  = document.getElementById('l-err');
   const btn  = document.getElementById('l-btn');
-  if (!reg || !code) { showErr(err, 'Бүх талбарыг бөглөнө үү.'); return; }
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Нэвтэрч байна...';
+  if(!reg||!code){showErr(err,'Бүх талбарыг бөглөнө үү.');return;}
+  btn.disabled=true;
+  btn.innerHTML='<span class="spinner"></span> Нэвтэрч байна...';
   try {
-    let result;
-    if (!GAS_URL || GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-      if (code.length < 3) { showErr(err,'Код богино байна'); btn.disabled=false; btn.innerHTML='<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 7h7M9 5l3 2-3 2"/><path d="M5 4H3a1 1 0 00-1 1v4a1 1 0 001 1h2"/></svg> Нэвтрэх'; return; }
-      result = { ok: true, org_name: 'Demo Байгууллага', statusMap: {}, stageMap: {} };
-    } else {
-      result = await gasCall('login', { reg_number: reg, access_code: code });
-    }
-    if (!result.ok) { showErr(err, result.error || 'Нэвтрэх код буруу байна. Дахин оролдоно уу.'); btn.disabled=false; btn.innerHTML='<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 7h7M9 5l3 2-3 2"/><path d="M5 4H3a1 1 0 00-1 1v4a1 1 0 001 1h2"/></svg> Нэвтрэх'; return; }
-    err.style.display = 'none';
-    SESSION = { reg, code, org: result.org_name };
-    localStorage.setItem('ina_reg', reg);
-    localStorage.setItem('ina_org', result.org_name);
-    const av = result.org_name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-    document.getElementById('d-av').textContent   = av || 'ИН';
+    const result = await gasCall('login',{reg_number:reg,access_code:code});
+    if(!result.ok){showErr(err,result.error||'Нэвтрэх код буруу байна.');resetLoginBtn();return;}
+    err.style.display='none';
+    SESSION={reg,code,org:result.org_name};
+    localStorage.setItem('ina_reg',reg);
+    localStorage.setItem('ina_org',result.org_name);
+    const av=result.org_name.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    document.getElementById('d-av').textContent   = av||'ИН';
     document.getElementById('d-name').textContent = result.org_name;
-    document.getElementById('d-reg').textContent  = 'Регистр: ' + reg;
-    if (result.statusMap) docStatuses = result.statusMap;
+    document.getElementById('d-reg').textContent  = 'Регистр: '+reg;
+
+    // ✦ FIX: statusMap-г зөвхөн login-ийн үр дүнгээс авна, loadClientFiles дарахгүй
+    if(result.statusMap) docStatuses = {...result.statusMap};
     loadFromLS();
     initAutoSave();
     renderTables();
     updateProgress();
-    renderAuditTimeline(result.stageMap || {});
-    loadChatMessages();
-    if (GAS_URL && !GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-      loadClientFiles();
-    }
-    document.getElementById('portal-login').style.display     = 'none';
+    renderAuditTimeline(result.stageMap||{});
+
+    // ✦ ШИНЭ: мэндчилгээний зурвас оруулж chat-г ачаална
+    await loadChatMessages(false);
+    // Server-ийн файлуудыг ачаалах — statusMap-г дарахгүй
+    loadClientFilesOnly();
+
+    document.getElementById('portal-login').style.display    = 'none';
     document.getElementById('portal-dashboard').style.display = 'block';
+
+    // ✦ ШИНЭ: 30 секунд тутамд chat poll
+    startChatPoll();
   } catch(e) {
-    showErr(err, 'Холболтын алдаа: ' + e.message);
+    showErr(err,'Холболтын алдаа: '+e.message);
   }
-  btn.disabled = false;
-  btn.innerHTML = '<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 7h7M9 5l3 2-3 2"/><path d="M5 4H3a1 1 0 00-1 1v4a1 1 0 001 1h2"/></svg> Нэвтрэх';
+  resetLoginBtn();
+}
+
+function resetLoginBtn() {
+  const btn=document.getElementById('l-btn');
+  btn.disabled=false;
+  btn.innerHTML='<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 7h7M9 5l3 2-3 2"/><path d="M5 4H3a1 1 0 00-1 1v4a1 1 0 001 1h2"/></svg> Нэвтрэх';
 }
 
 function doLogout() {
-  SESSION = { reg: '', code: '', org: '' };
-  sentFiles = []; chatMessages = [];
-  document.getElementById('portal-login').style.display     = 'flex';
+  stopChatPoll();
+  SESSION={reg:'',code:'',org:''};
+  sentFiles=[]; chatMessages=[];
+  document.getElementById('portal-login').style.display    = 'flex';
   document.getElementById('portal-dashboard').style.display = 'none';
-  // Clear sensitive fields only
-  ['ci16','ci20'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  ['ci16','ci20'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
 }
 
-function showErr(el, msg) {
-  el.style.display = 'flex';
-  el.querySelector('span').textContent = msg;
-}
+function showErr(el,msg){el.style.display='flex';el.querySelector('span').textContent=msg;}
 
-async function loadClientFiles() {
+// ✦ FIX: файл ачаалах үед statusMap дарахгүй — merge хийнэ
+async function loadClientFilesOnly() {
   try {
-    const r = await gasCall('getClientData', { reg_number: SESSION.reg, access_code: SESSION.code });
-    if (r.ok && r.files) {
-      sentFiles = r.files.map(f => ({
-        name: f.file_name, size: f.file_size, ext: f.file_type,
-        id: f.id, viewUrl: f.drive_view_url, docId: f.doc_id, fromServer: true,
-      }));
-      renderSentFiles();
-      if (r.statusMap) { docStatuses = r.statusMap; renderTables(); updateProgress(); }
-      if (r.stageMap)  { renderAuditTimeline(r.stageMap); }
+    const r = await gasCall('getClientData',{reg_number:SESSION.reg,access_code:SESSION.code});
+    if(r.ok) {
+      if(r.files) {
+        sentFiles = r.files.map(f=>({
+          name:f.file_name,size:f.file_size,ext:f.file_type,
+          id:f.id,viewUrl:f.drive_view_url,docId:f.doc_id,fromServer:true,
+        }));
+        renderSentFiles();
+        // Drive файлуудыг doc chips-д харуулна
+        sentFiles.forEach(f => {
+          if(f.docId && f.docId !== 'general') {
+            if(!docFileMap[f.docId]) docFileMap[f.docId] = [];
+            if(!docFileMap[f.docId].find(x=>x.id===f.id)) {
+              docFileMap[f.docId].push({name:f.name,viewUrl:f.viewUrl,id:f.id});
+            }
+          }
+        });
+        // Chip-үүдийг шинэчлэнэ
+        [...PERM,...WORK].forEach(d => renderDocFileChips(d.id,null));
+      }
+      // ✦ FIX: statusMap merge — server-ийн утгыг зөвхөн хоосон байвал ашиглана
+      if(r.statusMap) {
+        Object.entries(r.statusMap).forEach(([k,v]) => { if(!docStatuses[k]) docStatuses[k]=v; });
+        renderTables(); updateProgress();
+      }
+      if(r.stageMap) renderAuditTimeline(r.stageMap);
     }
-  } catch(e) { console.warn('loadClientFiles:', e); }
+  } catch(e){console.warn('loadClientFilesOnly:',e);}
 }
 
-/* ══════════════════════════════════════════
-   AUTO-SAVE — COMPANY INFO
-══════════════════════════════════════════ */
+// ── ✦ ШИНЭ: AUTO-SAVE TO GAS ─────────────────────────────────
 function initAutoSave() {
   document.querySelectorAll('.ci-field').forEach(el => {
-    el.addEventListener('input', () => {
-      clearTimeout(autoSaveTimer);
-      autoSaveTimer = setTimeout(() => {
-        saveToLS();
-        showSaveIndicator();
-      }, 800);
-    });
-    el.addEventListener('change', () => {
-      saveToLS();
-      showSaveIndicator();
-    });
+    el.addEventListener('input', onFieldChange);
+    el.addEventListener('change', onFieldChange);
   });
+}
+
+function onFieldChange() {
+  saveToLS();
+  setInfoStatus('saving','⏳ Хадгалж байна...');
+  clearTimeout(formSaveTimer);
+  formSavePending = true;
+  formSaveTimer = setTimeout(autoSaveToGAS, 1500);
+}
+
+async function autoSaveToGAS() {
+  if(!formSavePending || !SESSION.reg) return;
+  formSavePending = false;
+  try {
+    const data = buildFormData();
+    const r = await gasCall('saveForm', data);
+    if(r.ok) {
+      setInfoStatus('saved','✓ Хадгалагдлаа');
+      showSaveIndicator();
+      setTimeout(()=>setInfoStatus('',''), 3000);
+    } else {
+      setInfoStatus('error','⚠ Хадгалах алдаа');
+    }
+  } catch(e) {
+    setInfoStatus('error','⚠ Холболтын алдаа');
+  }
+}
+
+function setInfoStatus(cls, txt) {
+  const el = document.getElementById('info-save-status');
+  if(!el) return;
+  el.className = cls;
+  el.textContent = txt;
+}
+
+function buildFormData() {
+  return {
+    reg_number:       document.getElementById('ci2').value.trim()||SESSION.reg,
+    org_name:         document.getElementById('ci3').value.trim(),
+    contact_email:    document.getElementById('ci14').value.trim(),
+    contact_phone:    document.getElementById('ci11').value.trim(),
+    director_name:    document.getElementById('ci10').value.trim(),
+    accountant_name:  document.getElementById('ci12').value.trim(),
+    accountant_phone: document.getElementById('ci13').value.trim(),
+    activity_type:    document.getElementById('ci4').value.trim(),
+    ownership_type:   document.getElementById('ci5').value,
+    address:          document.getElementById('ci6').value.trim(),
+    district:         document.getElementById('ci7').value,
+    branch_count:     document.getElementById('ci8').value||0,
+    employee_count:   document.getElementById('ci9').value||0,
+    etax_username:    document.getElementById('ci15').value.trim(),
+    nda_employer_id:  document.getElementById('ci18').value.trim(),
+    nda_username:     document.getElementById('ci19').value.trim(),
+    notes:            document.getElementById('s-note')?.value||'',
+    audit_year:       2024,
+    access_code:      SESSION.code,
+  };
 }
 
 function saveToLS() {
-  const d = {};
-  LS_FIELDS.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) d[id] = el.value;
-  });
-  localStorage.setItem('ina_draft', JSON.stringify(d));
-  localStorage.setItem('ina_statuses', JSON.stringify(docStatuses));
-  const sn = document.getElementById('s-note');
-  if (sn) localStorage.setItem('ina_note', sn.value);
+  const d={};
+  LS_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el)d[id]=el.value;});
+  localStorage.setItem('ina_draft',JSON.stringify(d));
+  localStorage.setItem('ina_statuses',JSON.stringify(docStatuses));
+  const sn=document.getElementById('s-note');
+  if(sn) localStorage.setItem('ina_note',sn.value);
 }
 
 function showSaveIndicator() {
-  const ind = document.getElementById('save-indicator');
-  const note = document.getElementById('info-saved-note');
-  if (ind) { ind.classList.add('show'); setTimeout(() => ind.classList.remove('show'), 2000); }
-  if (note) { note.style.display = 'inline'; setTimeout(() => note.style.display = 'none', 2500); }
+  const ind=document.getElementById('save-indicator');
+  if(ind){ind.classList.add('show');setTimeout(()=>ind.classList.remove('show'),2500);}
 }
 
 function loadFromLS() {
   try {
-    const d = JSON.parse(localStorage.getItem('ina_draft') || '{}');
-    LS_FIELDS.forEach(id => {
-      const el = document.getElementById(id);
-      if (el && d[id] !== undefined) el.value = d[id];
-    });
-  } catch(e) {}
+    const d=JSON.parse(localStorage.getItem('ina_draft')||'{}');
+    LS_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el&&d[id]!==undefined)el.value=d[id];});
+  } catch(e){}
   try {
-    const s = JSON.parse(localStorage.getItem('ina_statuses') || '{}');
-    if (Object.keys(docStatuses).length === 0) docStatuses = s;
-  } catch(e) {}
-  const sn = document.getElementById('s-note');
-  if (sn) sn.value = localStorage.getItem('ina_note') || '';
-  // Pre-fill from login if empty
-  const org = localStorage.getItem('ina_org') || '';
-  const reg = localStorage.getItem('ina_reg') || '';
-  const el3 = document.getElementById('ci3'); if (el3 && !el3.value && org) el3.value = org;
-  const el2 = document.getElementById('ci2'); if (el2 && !el2.value && reg) el2.value = reg;
+    const s=JSON.parse(localStorage.getItem('ina_statuses')||'{}');
+    if(Object.keys(docStatuses).length===0) docStatuses=s;
+  } catch(e){}
+  const sn=document.getElementById('s-note');
+  if(sn) sn.value=localStorage.getItem('ina_note')||'';
+  const org=localStorage.getItem('ina_org')||'';
+  const reg=localStorage.getItem('ina_reg')||'';
+  const el3=document.getElementById('ci3'); if(el3&&!el3.value&&org)el3.value=org;
+  const el2=document.getElementById('ci2'); if(el2&&!el2.value&&reg)el2.value=reg;
 }
 
-function manualSave() {
-  saveToLS();
-  toast('✓ Мэдээлэл хадгалагдлаа');
-}
-
-/* ══════════════════════════════════════════
-   TABS
-══════════════════════════════════════════ */
-const TAB_ORDER = ['t-info','t-perm','t-work','t-files','t-status','t-chat'];
+// ── TABS ──────────────────────────────────────────────────────
+const TAB_ORDER=['t-info','t-perm','t-work','t-files','t-status','t-chat'];
 function switchTab(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('act'));
-  document.querySelectorAll('.tab').forEach((b, i) => b.classList.toggle('act', TAB_ORDER[i] === id));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('act'));
+  document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('act',TAB_ORDER[i]===id));
   document.getElementById(id)?.classList.add('act');
-  if (id === 't-chat') loadChatMessages();
+  if(id==='t-chat') loadChatMessages(true);
 }
 
-/* ══════════════════════════════════════════
-   RENDER TABLES
-══════════════════════════════════════════ */
-// Track files per document
-const docFileMap = {}; // docId -> [{name, viewUrl, id}]
+// ── RENDER TABLES ─────────────────────────────────────────────
+const docFileMap = {};
 
 function mkSel(docId) {
-  const sel = document.createElement('select');
-  sel.className = 'ssel';
-  sel.id = 'sel-' + docId;
-  S_OPTS.forEach(o => {
-    const opt = document.createElement('option');
-    opt.value = o.v; opt.textContent = o.l; sel.appendChild(opt);
-  });
-  sel.value = docStatuses[docId] || '';
-  applyRowCls(docId, sel.value);
-  sel.addEventListener('change', function() {
-    docStatuses[docId] = this.value;
-    applyRowCls(docId, this.value);
-    updateProgress();
-    saveToLS();
-    if (GAS_URL && !GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-      gasCall('saveStatuses', { reg_number: SESSION.reg, access_code: SESSION.code, statuses: { [docId]: this.value } }).catch(()=>{});
-    }
+  const sel=document.createElement('select');
+  sel.className='ssel'; sel.id='sel-'+docId;
+  S_OPTS.forEach(o=>{const opt=document.createElement('option');opt.value=o.v;opt.textContent=o.l;sel.appendChild(opt);});
+  sel.value=docStatuses[docId]||'';
+  applyRowCls(docId,sel.value);
+  sel.addEventListener('change',function(){
+    docStatuses[docId]=this.value;
+    applyRowCls(docId,this.value);
+    updateProgress(); saveToLS();
+    gasCall('saveStatuses',{reg_number:SESSION.reg,access_code:SESSION.code,statuses:{[docId]:this.value}}).catch(()=>{});
   });
   return sel;
 }
 
 function mkUpload(docId, docName) {
-  const wrap = document.createElement('div');
-  wrap.style.cssText = 'display:flex;flex-direction:column;gap:5px;min-width:160px';
-
-  const btnRow = document.createElement('div');
-  btnRow.style.cssText = 'display:flex;align-items:center;gap:6px';
-
-  const label = document.createElement('label');
-  label.style.cssText = 'display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--r);border:1.5px dashed var(--line);background:var(--g50);font-size:11.5px;color:var(--slate);font-weight:500;cursor:pointer;white-space:nowrap;transition:all .18s';
-  label.onmouseover = () => label.style.borderColor = 'var(--g600)';
-  label.onmouseout  = () => label.style.borderColor = 'var(--line)';
-  label.innerHTML = '<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Хавсаргах';
-
-  const inp = document.createElement('input');
-  inp.type = 'file';
-  inp.accept = '.pdf,.doc,.docx,.xls,.xlsx';
-  inp.multiple = true;
-  inp.style.display = 'none';
-  inp.addEventListener('change', async function() {
-    if (!this.files.length) return;
-    label.style.background = 'var(--wait-bg)';
-    label.innerHTML = '<span class="spinner" style="border-top-color:var(--wait)"></span> Хадгалж...';
-    for (const file of Array.from(this.files)) {
-      await handleFileUpload(file, docId, docName);
-    }
-    label.style.background = 'var(--ok-bg)';
-    label.style.color = 'var(--ok)';
-    label.style.borderColor = 'var(--ok)';
-    label.innerHTML = '<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалагдлаа';
-    setTimeout(() => {
-      label.style.background = 'var(--g50)'; label.style.color = 'var(--slate)';
-      label.style.borderColor = 'var(--line)';
-      label.innerHTML = '<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Нэмэх';
-    }, 2000);
-    renderDocFileChips(docId, wrap);
-    // Auto-set status to ok
-    const s = document.getElementById('sel-' + docId);
-    if (s && !s.value) { s.value = 'ok'; s.dispatchEvent(new Event('change')); }
+  const wrap=document.createElement('div');
+  wrap.style.cssText='display:flex;flex-direction:column;gap:5px;min-width:160px';
+  const label=document.createElement('label');
+  label.style.cssText='display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--r);border:1.5px dashed var(--line);background:var(--g50);font-size:11.5px;color:var(--slate);font-weight:500;cursor:pointer;white-space:nowrap;transition:all .18s';
+  label.onmouseover=()=>label.style.borderColor='var(--g600)';
+  label.onmouseout=()=>label.style.borderColor='var(--line)';
+  label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Хавсаргах';
+  const inp=document.createElement('input');
+  inp.type='file'; inp.accept='.pdf,.doc,.docx,.xls,.xlsx'; inp.multiple=true; inp.style.display='none';
+  inp.addEventListener('change',async function(){
+    if(!this.files.length)return;
+    label.style.background='var(--wait-bg)';
+    label.innerHTML='<span class="spinner" style="border-top-color:var(--wait)"></span> Хадгалж...';
+    for(const file of Array.from(this.files)) await handleFileUpload(file,docId,docName);
+    label.style.background='var(--ok-bg)';label.style.color='var(--ok)';label.style.borderColor='var(--ok)';
+    label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалагдлаа';
+    setTimeout(()=>{label.style.background='var(--g50)';label.style.color='var(--slate)';label.style.borderColor='var(--line)';label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Нэмэх';},2000);
+    renderDocFileChips(docId,wrap);
+    const s=document.getElementById('sel-'+docId);
+    if(s&&!s.value){s.value='ok';s.dispatchEvent(new Event('change'));}
   });
   label.appendChild(inp);
-  btnRow.appendChild(label);
-  wrap.appendChild(btnRow);
-  // Chips placeholder
-  const chips = document.createElement('div');
-  chips.className = 'doc-files-list';
-  chips.id = 'chips-' + docId;
+  wrap.appendChild(label);
+  const chips=document.createElement('div');
+  chips.className='doc-files-list'; chips.id='chips-'+docId;
   wrap.appendChild(chips);
   return wrap;
 }
 
-function renderDocFileChips(docId, container) {
-  const chips = container ? container.querySelector('#chips-' + docId) : document.getElementById('chips-' + docId);
-  if (!chips) return;
-  chips.innerHTML = '';
-  const files = docFileMap[docId] || [];
-  files.forEach((f, i) => {
-    const chip = document.createElement('div');
-    chip.className = 'doc-file-chip';
-    chip.title = f.name;
-    chip.innerHTML = `${f.viewUrl ? `<a href="${f.viewUrl}" target="_blank" style="color:var(--ok);font-size:10px;text-decoration:none;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.name}</a>` : `<span>${f.name}</span>`}<button onclick="removeDocFile('${docId}',${i})" title="Устгах">×</button>`;
+function renderDocFileChips(docId,container) {
+  const chips=container?container.querySelector('#chips-'+docId):document.getElementById('chips-'+docId);
+  if(!chips)return;
+  chips.innerHTML='';
+  const files=docFileMap[docId]||[];
+  files.forEach((f,i)=>{
+    const chip=document.createElement('div');
+    chip.className='doc-file-chip'; chip.title=f.name;
+    chip.innerHTML=`${f.viewUrl?`<a href="${f.viewUrl}" target="_blank" style="color:var(--ok);font-size:10px;text-decoration:none;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.name}</a>`:`<span>${f.name}</span>`}<button onclick="removeDocFile('${docId}',${i})" title="Устгах">×</button>`;
     chips.appendChild(chip);
   });
 }
 
-function removeDocFile(docId, idx) {
-  if (!docFileMap[docId]) return;
-  docFileMap[docId].splice(idx, 1);
-  const chips = document.getElementById('chips-' + docId);
-  if (chips) renderDocFileChips(docId, chips.parentElement);
+function removeDocFile(docId,idx){
+  if(!docFileMap[docId])return;
+  docFileMap[docId].splice(idx,1);
+  renderDocFileChips(docId,null);
 }
 
-function mkNote(docId) {
-  const inp = document.createElement('input');
-  inp.type = 'text'; inp.className = 'note-mini'; inp.placeholder = 'Тайлбар...';
-  const key = 'ina_n_' + docId;
-  inp.value = localStorage.getItem(key) || '';
-  inp.addEventListener('change', () => localStorage.setItem(key, inp.value));
+function mkNote(docId){
+  const inp=document.createElement('input');
+  inp.type='text';inp.className='note-mini';inp.placeholder='Тайлбар...';
+  const key='ina_n_'+docId;
+  inp.value=localStorage.getItem(key)||'';
+  inp.addEventListener('change',()=>localStorage.setItem(key,inp.value));
   return inp;
 }
 
-function applyRowCls(docId, val) {
-  const row = document.getElementById('row-' + docId);
-  if (!row) return;
-  row.className = '';
-  const m = {ok:'r-ok', miss:'r-miss', wait:'r-wait', rev:'r-rev'};
-  if (m[val]) row.classList.add(m[val]);
+function applyRowCls(docId,val){
+  const row=document.getElementById('row-'+docId);
+  if(!row)return; row.className='';
+  const m={ok:'r-ok',miss:'r-miss',wait:'r-wait',rev:'r-rev'};
+  if(m[val])row.classList.add(m[val]);
 }
 
-function renderTables() {
-  const pb = document.getElementById('perm-body');
-  pb.innerHTML = '';
-  PERM.forEach((d, i) => {
-    const tr = document.createElement('tr');
-    tr.id = 'row-' + d.id;
-    tr.innerHTML = `<td class="doc-num">${i+1}</td><td class="doc-name">${d.n}</td><td class="doc-req">${d.r}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
+function renderTables(){
+  const pb=document.getElementById('perm-body'); pb.innerHTML='';
+  PERM.forEach((d,i)=>{
+    const tr=document.createElement('tr'); tr.id='row-'+d.id;
+    tr.innerHTML=`<td class="doc-num">${i+1}</td><td class="doc-name">${d.n}</td><td class="doc-req">${d.r}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
     pb.appendChild(tr);
-    document.getElementById('sel-wrap-' + d.id).appendChild(mkSel(d.id));
-    document.getElementById('up-wrap-'  + d.id).appendChild(mkUpload(d.id, d.n));
-    document.getElementById('note-wrap-'+ d.id).appendChild(mkNote(d.id));
-    applyRowCls(d.id, docStatuses[d.id] || '');
+    document.getElementById('sel-wrap-'+d.id).appendChild(mkSel(d.id));
+    document.getElementById('up-wrap-'+d.id).appendChild(mkUpload(d.id,d.n));
+    document.getElementById('note-wrap-'+d.id).appendChild(mkNote(d.id));
+    applyRowCls(d.id,docStatuses[d.id]||'');
   });
-  const wb = document.getElementById('work-body');
-  wb.innerHTML = '';
-  WORK.forEach((d, i) => {
-    const tr = document.createElement('tr');
-    tr.id = 'row-' + d.id;
-    tr.innerHTML = `<td class="doc-num">${i+11}</td><td class="doc-name">${d.n}</td><td class="doc-per">${d.p}</td><td class="doc-req">${d.f}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
+  const wb=document.getElementById('work-body'); wb.innerHTML='';
+  WORK.forEach((d,i)=>{
+    const tr=document.createElement('tr'); tr.id='row-'+d.id;
+    tr.innerHTML=`<td class="doc-num">${i+11}</td><td class="doc-name">${d.n}</td><td>${d.p}</td><td class="doc-req">${d.f}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
     wb.appendChild(tr);
-    document.getElementById('sel-wrap-' + d.id).appendChild(mkSel(d.id));
-    document.getElementById('up-wrap-'  + d.id).appendChild(mkUpload(d.id, d.n));
-    document.getElementById('note-wrap-'+ d.id).appendChild(mkNote(d.id));
-    applyRowCls(d.id, docStatuses[d.id] || '');
+    document.getElementById('sel-wrap-'+d.id).appendChild(mkSel(d.id));
+    document.getElementById('up-wrap-'+d.id).appendChild(mkUpload(d.id,d.n));
+    document.getElementById('note-wrap-'+d.id).appendChild(mkNote(d.id));
+    applyRowCls(d.id,docStatuses[d.id]||'');
   });
 }
 
-/* ══════════════════════════════════════════
-   PROGRESS
-══════════════════════════════════════════ */
-function updateProgress() {
-  const all = [...PERM, ...WORK];
-  const tot = all.length;
-  let done = 0;
-  all.forEach(d => { const v = docStatuses[d.id] || ''; if (v==='ok'||v==='rev') done++; });
-  const pct = Math.round(done/tot*100);
-  document.getElementById('p-tot').textContent = tot;
-  document.getElementById('p-ok').textContent  = done;
-  document.getElementById('p-mis').textContent = tot - done;
-  document.getElementById('p-pct').textContent = pct + '%';
-  document.getElementById('p-bar').style.width = pct + '%';
-  document.getElementById('p-lbl').textContent = done + ' / ' + tot;
-  renderProgressCircle(pct, 'prog-circle-dash');
+// ── PROGRESS ──────────────────────────────────────────────────
+function updateProgress(){
+  const all=[...PERM,...WORK]; const tot=all.length; let done=0;
+  all.forEach(d=>{const v=docStatuses[d.id]||'';if(v==='ok'||v==='rev')done++;});
+  const pct=Math.round(done/tot*100);
+  document.getElementById('p-tot').textContent=tot;
+  document.getElementById('p-ok').textContent=done;
+  document.getElementById('p-mis').textContent=tot-done;
+  document.getElementById('p-pct').textContent=pct+'%';
+  document.getElementById('p-bar').style.width=pct+'%';
+  document.getElementById('p-lbl').textContent=done+' / '+tot;
+  renderProgressCircle(pct,'prog-circle-dash');
 }
 
-function renderProgressCircle(pct, id) {
-  const c = document.getElementById(id);
-  if (!c) return;
-  const r = 36, circ = 2*Math.PI*r, offset = circ - (pct/100)*circ;
-  c.innerHTML = `<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#22733f"/><stop offset="100%" stop-color="#4CFFB2"/></linearGradient></defs><circle class="track" cx="45" cy="45" r="${r}"/><circle class="fill" cx="45" cy="45" r="${r}" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="label">${pct}%</div>`;
+function renderProgressCircle(pct,id){
+  const c=document.getElementById(id); if(!c)return;
+  const r=36,circ=2*Math.PI*r,offset=circ-(pct/100)*circ;
+  c.innerHTML=`<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#22733f"/><stop offset="100%" stop-color="#4CFFB2"/></linearGradient></defs><circle class="track" cx="45" cy="45" r="${r}"/><circle class="fill" cx="45" cy="45" r="${r}" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="label">${pct}%</div>`;
 }
 
-/* ══════════════════════════════════════════
-   AUDIT TIMELINE — IMPROVED ✓
-══════════════════════════════════════════ */
+// ── ✦ ШИНЭ: AUDIT TIMELINE + ЯВЦЫН ХУВЬ ─────────────────────
 const AUDIT_STAGES_DEF = [
-  {id:'s1', title:'Ерөнхий мэдээлэл бүртгэгдлээ', desc:'Клиент порталд бүртгэл хийсэн', auditorOnly:false},
-  {id:'s2', title:'Баримт бичиг цуглуулалт', desc:'Үйлчлүүлэгч баримтуудыг илгээж байна', auditorOnly:false},
-  {id:'s3', title:'Аудитын ажил', desc:'Аудиторын баримт шалгах, үнэлэх ажил', auditorOnly:true},
-  {id:'s4', title:'Дүгнэлтийн төсөл', desc:'Аудитын дүгнэлтийн төслийг хүргүүлэх', auditorOnly:true},
-  {id:'s5', title:'Эцсийн дүгнэлт', desc:'Гарын үсэг, тамгатай эцсийн аудитын дүгнэлт', auditorOnly:true},
+  {id:'s1',title:'Ерөнхий мэдээлэл бүртгэгдлээ',desc:'Клиент порталд бүртгэл хийсэн',auditorOnly:false},
+  {id:'s2',title:'Баримт бичиг цуглуулалт',desc:'Үйлчлүүлэгч баримтуудыг илгээж байна',auditorOnly:false},
+  {id:'s3',title:'Аудитын ажил',desc:'Аудиторын баримт шалгах, үнэлэх ажил',auditorOnly:true},
+  {id:'s4',title:'Дүгнэлтийн төсөл',desc:'Аудитын дүгнэлтийн төслийг хүргүүлэх',auditorOnly:true},
+  {id:'s5',title:'Эцсийн дүгнэлт',desc:'Гарын үсэг, тамгатай эцсийн аудитын дүгнэлт',auditorOnly:true},
 ];
 
-function renderAuditTimeline(stageMap) {
-  const el = document.getElementById('audit-timeline');
-  if (!el) return;
-  let html = '';
-  AUDIT_STAGES_DEF.forEach((stage, i) => {
-    const isLast = i === AUDIT_STAGES_DEF.length - 1;
-    const sData  = (stageMap || {})[stage.id] || {};
-    const status = sData.status || '';
-    const note   = sData.note || '';
+function renderAuditTimeline(stageMap){
+  const el=document.getElementById('audit-timeline'); if(!el)return;
 
-    let iconHtml = '', iconClass = 'pending', titleClass = '';
-    let dateText = 'Хүлээгдэж байна';
-
-    if (status === 'done') {
-      iconClass = 'done';
-      titleClass = 'done';
-      dateText = '✓ Дууссан';
-      iconHtml = '<svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>';
-    } else if (status === 'active') {
-      iconClass = 'active';
-      titleClass = 'active';
-      dateText = '🔄 Явагдаж байна';
-      iconHtml = '<svg style="width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 12 12"><circle cx="6" cy="6" r="3" fill="#fff"/></svg>';
-    } else {
-      iconHtml = '<div style="width:8px;height:8px;border-radius:50%;background:var(--line)"></div>';
-    }
-
-    const connColor = status === 'done' ? 'var(--ok)' : 'var(--line)';
-
-    html += `
-      <div class="stl-item">
-        <div class="stl-track">
-          <div class="stl-icon ${iconClass}">${iconHtml}</div>
-          ${!isLast ? `<div class="stl-connector ${status==='done'?'done':''}"></div>` : ''}
-        </div>
-        <div class="stl-body">
-          <div class="stl-title ${titleClass}">${stage.title}</div>
-          <div class="stl-desc">${stage.desc}</div>
-          ${note ? `<div class="stl-note">${note}</div>` : ''}
-          <div class="stl-date">${dateText}</div>
-        </div>
-      </div>`;
+  // ✦ ШИНЭ: явцын хувь тооцоолно
+  let doneStages=0;
+  AUDIT_STAGES_DEF.forEach(s=>{
+    const st=(stageMap[s.id]||{}).status||'';
+    if(st==='done'||st==='active') doneStages++;
   });
-  el.innerHTML = html;
-}
-
-/* ══════════════════════════════════════════
-   FILE UPLOAD
-══════════════════════════════════════════ */
-const FT = {pdf:'ft-pdf',xlsx:'ft-xlsx',xls:'ft-xlsx',docx:'ft-docx',doc:'ft-docx'};
-
-async function handleFileUpload(file, docId, docName) {
-  const ext = file.name.split('.').pop().toLowerCase();
-  const fileObj = { name: file.name, size: file.size, ext, id: Date.now(), viewUrl: null, docId, fromServer: false };
-
-  if (GAS_URL && !GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-    try {
-      const b64 = await fileToBase64(file);
-      const r = await gasCall('uploadFile', {
-        reg_number: SESSION.reg, access_code: SESSION.code, org_name: SESSION.org,
-        doc_id: docId, doc_name: docName, file_name: file.name,
-        file_data: b64, file_type: file.type || 'application/octet-stream', file_size: file.size,
-      });
-      if (r.ok) {
-        fileObj.viewUrl = r.view_url;
-        fileObj.fromServer = true;
-        toast('✓ ' + file.name + ' хадгалагдлаа');
-      } else {
-        toast('Алдаа: ' + r.error, true);
-      }
-    } catch(e) { toast('Upload алдаа: ' + e.message, true); }
-  } else {
-    toast('✓ ' + file.name + ' (demo)');
+  const tlPct=Math.round(doneStages/AUDIT_STAGES_DEF.length*100);
+  const wrap=document.getElementById('tl-progress-wrap');
+  if(wrap){
+    wrap.style.display = doneStages>0 ? 'block' : 'none';
+    const pctEl=document.getElementById('tl-progress-pct');
+    const barEl=document.getElementById('tl-progress-bar');
+    const lblEl=document.getElementById('tl-progress-label');
+    if(pctEl) pctEl.textContent=tlPct+'%';
+    if(barEl) barEl.style.width=tlPct+'%';
+    if(lblEl) lblEl.textContent=doneStages+' / '+AUDIT_STAGES_DEF.length+' үе шат';
   }
 
-  sentFiles.push(fileObj);
-  // Track per-document
-  if (!docFileMap[docId]) docFileMap[docId] = [];
-  docFileMap[docId].push({ name: file.name, viewUrl: fileObj.viewUrl, id: fileObj.id });
-  renderSentFiles();
-  renderDocFileChips(docId, null);
+  let html='';
+  AUDIT_STAGES_DEF.forEach((stage,i)=>{
+    const isLast=i===AUDIT_STAGES_DEF.length-1;
+    const sData=(stageMap||{})[stage.id]||{};
+    const status=sData.status||'';
+    const note=sData.note||'';
+    let iconHtml='',iconClass='pending',titleClass='',dateText='Хүлээгдэж байна';
+    if(status==='done'){
+      iconClass='done';titleClass='done';dateText='✓ Дууссан';
+      iconHtml='<svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>';
+    } else if(status==='active'){
+      iconClass='active';titleClass='active';dateText='🔄 Явагдаж байна';
+      iconHtml='<svg style="width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 12 12"><circle cx="6" cy="6" r="3" fill="#fff"/></svg>';
+    } else {
+      iconHtml='<div style="width:8px;height:8px;border-radius:50%;background:var(--line)"></div>';
+    }
+    html+=`<div class="stl-item"><div class="stl-track"><div class="stl-icon ${iconClass}">${iconHtml}</div>${!isLast?`<div class="stl-connector ${status==='done'?'done':''}"></div>`:''}</div><div class="stl-body"><div class="stl-title ${titleClass}">${stage.title}</div><div class="stl-desc">${stage.desc}</div>${note?`<div class="stl-note">${note}</div>`:''}<div class="stl-date">${dateText}</div></div></div>`;
+  });
+  el.innerHTML=html;
 }
 
-function fileToBase64(file) {
-  return new Promise((res, rej) => {
-    const r = new FileReader();
-    r.onload  = () => res(r.result.split(',')[1]);
-    r.onerror = () => rej(new Error('File read error'));
+// ── FILE UPLOAD ───────────────────────────────────────────────
+const FT={pdf:'ft-pdf',xlsx:'ft-xlsx',xls:'ft-xlsx',docx:'ft-docx',doc:'ft-docx'};
+
+async function handleFileUpload(file,docId,docName){
+  const ext=file.name.split('.').pop().toLowerCase();
+  const fileObj={name:file.name,size:file.size,ext,id:Date.now(),viewUrl:null,docId,fromServer:false};
+  try {
+    const b64=await fileToBase64(file);
+    const r=await gasCall('uploadFile',{
+      reg_number:SESSION.reg,access_code:SESSION.code,org_name:SESSION.org,
+      doc_id:docId,doc_name:docName,file_name:file.name,
+      file_data:b64,file_type:file.type||'application/octet-stream',file_size:file.size,
+    });
+    if(r.ok){fileObj.viewUrl=r.view_url;fileObj.fromServer=true;toast('✓ '+file.name+' хадгалагдлаа');}
+    else toast('Алдаа: '+r.error,true);
+  } catch(e){toast('Upload алдаа: '+e.message,true);}
+  sentFiles.push(fileObj);
+  if(!docFileMap[docId])docFileMap[docId]=[];
+  docFileMap[docId].push({name:file.name,viewUrl:fileObj.viewUrl,id:fileObj.id});
+  renderSentFiles();
+  renderDocFileChips(docId,null);
+}
+
+function fileToBase64(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=()=>res(r.result.split(',')[1]);
+    r.onerror=()=>rej(new Error('File read error'));
     r.readAsDataURL(file);
   });
 }
 
-async function uploadGeneralFiles(files) {
-  for (const f of Array.from(files)) {
-    await handleFileUpload(f, 'general', 'Ерөнхий баримт');
-  }
+async function uploadGeneralFiles(files){
+  for(const f of Array.from(files)) await handleFileUpload(f,'general','Ерөнхий баримт');
 }
 
-function renderSentFiles() {
-  const el = document.getElementById('sf-list');
-  if (!el) return;
-  if (!sentFiles.length) {
-    el.innerHTML = '<div class="drop-zone" onclick="document.getElementById(\'gen-file-input\').click()"><div style="margin-bottom:12px"><svg style="width:36px;height:36px;stroke:var(--g600);fill:none;stroke-width:1.4;opacity:.7" viewBox="0 0 48 48"><path d="M24 8v24M16 16l8-8 8 8"/><rect x="8" y="32" width="32" height="10" rx="3" stroke-dasharray="4 2"/></svg></div><div style="font-size:14px;font-weight:600;color:var(--g800);margin-bottom:4px">Файл чирж оруулах эсвэл дарж сонгоно уу</div><div style="font-size:12.5px;color:var(--muted)">PDF · DOCX · XLSX · Хэд хэдэн файл нэгэн зэрэг</div><input id="gen-file-input" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" style="display:none" onchange="uploadGeneralFiles(this.files)"></div>';
+function renderSentFiles(){
+  const el=document.getElementById('sf-list'); if(!el)return;
+  if(!sentFiles.length){
+    el.innerHTML='<div class="drop-zone" onclick="document.getElementById(\'gen-file-input\').click()"><div style="margin-bottom:12px"><svg style="width:36px;height:36px;stroke:var(--g600);fill:none;stroke-width:1.4;opacity:.7" viewBox="0 0 48 48"><path d="M24 8v24M16 16l8-8 8 8"/><rect x="8" y="32" width="32" height="10" rx="3" stroke-dasharray="4 2"/></svg></div><div style="font-size:14px;font-weight:600;color:var(--g800);margin-bottom:4px">Файл чирж оруулах эсвэл дарж сонгоно уу</div><div style="font-size:12.5px;color:var(--muted)">PDF · DOCX · XLSX · Хэд хэдэн файл нэгэн зэрэг</div><input id="gen-file-input" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" style="display:none" onchange="uploadGeneralFiles(this.files)"></div>';
     return;
   }
-  // Group files summary then list
-  let html = '';
-  // Summary chips
-  const grouped = {};
-  sentFiles.forEach(f => { if (!grouped[f.docId]) grouped[f.docId] = 0; grouped[f.docId]++; });
-  el.innerHTML = '';
-  sentFiles.forEach((f, i) => {
-    const cls = FT[f.ext] || 'ft-docx';
-    const kb  = typeof f.size === 'number' ? (f.size/1024).toFixed(1) + ' KB' : '';
-    const item = document.createElement('div');
-    item.className = 'sf-item';
-    item.innerHTML = `
-      <div class="ft-badge ${cls}">${(f.ext||'').toUpperCase()}</div>
-      <div class="sf-info">
-        <div class="sf-name">${f.name}</div>
-        <div class="sf-meta">${kb}${f.docId&&f.docId!=='general'?' · '+f.docId:''}</div>
-      </div>
-      ${f.fromServer && f.viewUrl ? `<a style="font-size:12px;color:var(--g600);font-weight:500;white-space:nowrap" href="${f.viewUrl}" target="_blank">Drive →</a>` : '<span style="font-size:11px;color:var(--muted)">Локал</span>'}
-      <button class="sf-del" onclick="removeFile(${i})"><svg viewBox="0 0 14 14"><path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8"/></svg></button>
-    `;
+  el.innerHTML='';
+  sentFiles.forEach((f,i)=>{
+    const cls=FT[f.ext]||'ft-docx';
+    const kb=typeof f.size==='number'?(f.size/1024).toFixed(1)+' KB':'';
+    const item=document.createElement('div'); item.className='sf-item';
+    item.innerHTML=`<div class="ft-badge ${cls}">${(f.ext||'').toUpperCase()}</div><div class="sf-info"><div class="sf-name">${f.name}</div><div class="sf-meta">${kb}${f.docId&&f.docId!=='general'?' · '+f.docId:''}</div></div>${f.fromServer&&f.viewUrl?`<a style="font-size:12px;color:var(--g600);font-weight:500;white-space:nowrap" href="${f.viewUrl}" target="_blank">Drive →</a>`:'<span style="font-size:11px;color:var(--muted)">Локал</span>'}<button class="sf-del" onclick="removeFile(${i})"><svg viewBox="0 0 14 14"><path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8"/></svg></button>`;
     el.appendChild(item);
   });
 }
 
-function removeFile(i) {
-  sentFiles.splice(i, 1);
-  renderSentFiles();
+function removeFile(i){sentFiles.splice(i,1);renderSentFiles();}
+
+// ── ✦ ШИНЭ: CHAT AUTO-POLL ────────────────────────────────────
+// Login хийхэд аудиторын мэндчилгээний зурвас + 30с тутамд poll
+
+const WELCOME_MSG = {
+  sender:'auditor',
+  text:'Сайн байна уу! Их Наяд Аудит порталд тавтай морилно уу.\n\nБаримт бичгийн жагсаалтыг харж, файлуудаа илгээж эхэлнэ үү. Дутуу баримт байвал тухайн баримтыг "Дутуу" гэж тэмдэглэнэ үү.\n\nАсуулт, хүсэлт байвал энэ зурвасаар бичнэ үү. Ажлын өдрүүдэд 24 цагийн дотор хариу өгнө.\n\nАмжилт хүсье! 🌿',
+  time:'Х. Ариунзул — Их Наяд Аудит ХХК',
+  isWelcome: true,
+};
+
+function startChatPoll(){
+  stopChatPoll();
+  chatPollTimer = setInterval(()=>loadChatMessages(false), 30000);
 }
 
-/* ══════════════════════════════════════════
-   FORM SUBMIT
-══════════════════════════════════════════ */
-async function submitFormData() {
-  const btn = document.getElementById('submit-info-btn');
-  const msg = document.getElementById('form-msg');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Хадгалж байна...';
-  msg.style.display = 'none';
-  const data = {
-    reg_number:      document.getElementById('ci2').value.trim() || SESSION.reg,
-    org_name:        document.getElementById('ci3').value.trim(),
-    contact_email:   document.getElementById('ci14').value.trim(),
-    contact_phone:   document.getElementById('ci11').value.trim(),
-    director_name:   document.getElementById('ci10').value.trim(),
-    accountant_name: document.getElementById('ci12').value.trim(),
-    accountant_phone:document.getElementById('ci13').value.trim(),
-    activity_type:   document.getElementById('ci4').value.trim(),
-    ownership_type:  document.getElementById('ci5').value,
-    address:         document.getElementById('ci6').value.trim(),
-    district:        document.getElementById('ci7').value,
-    branch_count:    document.getElementById('ci8').value || 0,
-    employee_count:  document.getElementById('ci9').value || 0,
-    etax_username:   document.getElementById('ci15').value.trim(),
-    nda_employer_id: document.getElementById('ci18').value.trim(),
-    nda_username:    document.getElementById('ci19').value.trim(),
-    notes:           document.getElementById('s-note').value,
-    audit_year:      2024,
-    access_code:     SESSION.code,
-  };
-  if (GAS_URL && !GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-    try {
-      const r = await gasCall('saveForm', data);
-      if (r.ok) { showFormMsg('ok','✓ Google Sheets-д амжилттай хадгалагдлаа.'); toast('Мэдээлэл хадгалагдлаа ✓'); }
-      else { showFormMsg('err','Алдаа: ' + r.error); }
-    } catch(e) { showFormMsg('err','Холболтын алдаа: ' + e.message); }
-  } else {
-    saveToLS();
-    showFormMsg('warn','Demo горим: Локал хадгалагдлаа.');
-  }
-  btn.disabled = false;
-  btn.innerHTML = '<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 6l3 4 3-4"/><path d="M1 11v2h12v-2"/></svg> Google Sheets-д хадгалах';
+function stopChatPoll(){
+  if(chatPollTimer){clearInterval(chatPollTimer);chatPollTimer=null;}
 }
 
-function showFormMsg(type, text) {
-  const el = document.getElementById('form-msg');
-  const map = {ok:'a-ok',err:'a-err',warn:'a-warn'};
-  el.className = 'alert ' + (map[type]||'a-info');
-  el.innerHTML = `<svg viewBox="0 0 16 16" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>${text}</span>`;
-  el.style.display = 'flex';
-}
+async function loadChatMessages(showLoader=true){
+  const el=document.getElementById('chat-messages'); if(!el)return;
+  if(showLoader) el.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Ачааллаж байна...</div>';
 
-/* ══════════════════════════════════════════
-   CHAT / ЗУРВАС
-══════════════════════════════════════════ */
-async function loadChatMessages() {
-  const el = document.getElementById('chat-messages');
-  if (!el) return;
-  el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Ачааллаж байна...</div>';
   try {
-    if (!GAS_URL || GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-      // Demo messages
-      chatMessages = [
-        {sender:'auditor', text:'Сайн байна уу! Порталд тавтай морилно уу. Баримт бичгийн жагсаалтыг харж илгээж эхэлнэ үү.', time:'2025-01-15 09:00'},
-        {sender:'auditor', text:'Асуулт байвал энэ хэсэгт бичнэ үү. Ажлын өдрүүдэд 24 цагийн дотор хариу өгнө.', time:'2025-01-15 09:01'},
-      ];
+    const r=await gasCall('getMessages',{reg_number:SESSION.reg,access_code:SESSION.code});
+    const serverMsgs = r.ok ? (r.messages||[]) : [];
+
+    // ✦ ШИНЭ: сервер зурвас хоосон бол мэндчилгээний зурвас харуулна
+    if(serverMsgs.length===0){
+      chatMessages=[WELCOME_MSG];
     } else {
-      const r = await gasCall('getMessages', { reg_number: SESSION.reg, access_code: SESSION.code });
-      chatMessages = r.ok ? r.messages : [];
+      chatMessages=serverMsgs;
     }
+
+    // Шинэ зурвас ирсэн эсэх шалгана (poll)
+    const lastCount = parseInt(localStorage.getItem('ina_chat_count')||'0');
+    if(serverMsgs.length > lastCount && lastCount > 0){
+      // Шинэ аудиторын зурвас ирсэн
+      const newMsgs = serverMsgs.slice(lastCount);
+      const hasNewAuditor = newMsgs.some(m=>m.sender==='auditor');
+      if(hasNewAuditor){
+        const badge=document.getElementById('unread-cnt');
+        if(badge) badge.style.display='inline';
+        // Зурвас tab нээлттэй биш бол notification харуулна
+        if(!document.getElementById('t-chat').classList.contains('act')){
+          toast('📩 Аудиторын шинэ зурвас ирлээ');
+        }
+      }
+    }
+    localStorage.setItem('ina_chat_count', serverMsgs.length);
+
     renderChatMessages();
-  } catch(e) {
-    el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Зурвас ачааллахад алдаа гарлаа.</div>';
+  } catch(e){
+    // Алдаа гарвал мэндчилгээний зурвас харуулна
+    chatMessages=[WELCOME_MSG];
+    renderChatMessages();
   }
+
+  // Poll status шинэчлэх
+  const ps=document.getElementById('chat-poll-status');
+  if(ps) ps.textContent='Сүүлд шинэчлэгдсэн: '+new Date().toLocaleTimeString('mn-MN',{hour:'2-digit',minute:'2-digit'});
 }
 
-function renderChatMessages() {
-  const el = document.getElementById('chat-messages');
-  if (!el) return;
-  if (!chatMessages.length) {
-    el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:40px">Зурвас байхгүй байна. Анхны зурвасаа илгээнэ үү.</div>';
-    return;
-  }
-  el.innerHTML = '';
-  chatMessages.forEach(m => {
-    const isClient = m.sender === 'client';
-    const div = document.createElement('div');
-    div.className = 'chat-bubble ' + (isClient ? 'client' : 'auditor');
-    div.innerHTML = `<div class="chat-who">${isClient ? 'Та' : 'Аудитор'}</div>${m.text}<div class="chat-time">${m.time || ''}</div>`;
+function renderChatMessages(){
+  const el=document.getElementById('chat-messages'); if(!el)return;
+  el.innerHTML='';
+  chatMessages.forEach(m=>{
+    const isClient=m.sender==='client';
+    const div=document.createElement('div');
+    div.className='chat-bubble '+(isClient?'client':'auditor');
+    // Зурвасын текстийг мөр мөрөөр харуулна
+    const textHtml = (m.text||'').replace(/\n/g,'<br>');
+    div.innerHTML=`<div class="chat-who">${isClient?'Та':'Аудитор'}</div>${textHtml}<div class="chat-time">${m.time||''}</div>`;
     el.appendChild(div);
   });
-  el.scrollTop = el.scrollHeight;
+  el.scrollTop=el.scrollHeight;
+
+  // Unread badge арилгана (tab нээлттэй бол)
+  if(document.getElementById('t-chat').classList.contains('act')){
+    const badge=document.getElementById('unread-cnt');
+    if(badge) badge.style.display='none';
+  }
 }
 
-async function sendChatMessage() {
-  const inp = document.getElementById('chat-input');
-  const text = inp.value.trim();
-  if (!text) return;
-  const msg = { sender: 'client', text, time: new Date().toLocaleString('mn-MN') };
-  chatMessages.push(msg);
-  inp.value = '';
+async function sendChatMessage(){
+  const inp=document.getElementById('chat-input');
+  const text=inp.value.trim(); if(!text)return;
+  const btn=document.getElementById('chat-send-btn');
+  btn.disabled=true;
+  const msg={sender:'client',text,time:new Date().toLocaleString('mn-MN')};
+  // Welcome msg-г хэвээр үлдээж шинэ зурвас нэмнэ
+  if(chatMessages.length===1&&chatMessages[0].isWelcome){
+    chatMessages=[WELCOME_MSG,msg];
+  } else {
+    chatMessages.push(msg);
+  }
+  inp.value='';
   renderChatMessages();
-  if (GAS_URL && !GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-    try {
-      await gasCall('sendMessage', { reg_number: SESSION.reg, access_code: SESSION.code, message: text, sender: 'client', org_name: SESSION.org });
-    } catch(e) { console.warn('sendMessage:', e); }
-  }
+  try {
+    await gasCall('sendMessage',{reg_number:SESSION.reg,access_code:SESSION.code,message:text,sender:'client',org_name:SESSION.org});
+    localStorage.setItem('ina_chat_count',(parseInt(localStorage.getItem('ina_chat_count')||'0')+1).toString());
+  } catch(e){console.warn('sendMessage:',e);}
+  btn.disabled=false;
 }
 
-/* ══════════════════════════════════════════
-   ADMIN LOGIN / LOGOUT
-══════════════════════════════════════════ */
-async function adminLogin() {
-  const pw  = document.getElementById('a-pw').value;
-  const err = document.getElementById('a-err');
-  err.style.display = 'none';
-  if (!pw) { err.style.display='flex'; err.querySelector('span').textContent='Нууц үг оруулна уу'; return; }
+// ── ADMIN ─────────────────────────────────────────────────────
+async function adminLogin(){
+  const pw=document.getElementById('a-pw').value;
+  const err=document.getElementById('a-err'); err.style.display='none';
+  if(!pw){err.style.display='flex';err.querySelector('span').textContent='Нууц үг оруулна уу';return;}
   try {
-    let ok = false;
-    if (!GAS_URL || GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-      ok = pw === 'admin2024'; // Demo password
-    } else {
-      const r = await gasCall('adminLogin', { password: pw });
-      ok = r.ok;
-    }
-    if (!ok) { err.style.display='flex'; err.querySelector('span').textContent='Нууц үг буруу байна. Дахин оролдоно уу.'; return; }
-    adminAuthed = true;
-    document.getElementById('admin-login').style.display    = 'none';
-    document.getElementById('admin-dashboard').style.display = 'block';
+    const r=await gasCall('adminLogin',{password:pw});
+    if(!r.ok){err.style.display='flex';err.querySelector('span').textContent='Нууц үг буруу байна.';return;}
+    adminAuthed=true;
+    document.getElementById('admin-login').style.display='none';
+    document.getElementById('admin-dashboard').style.display='block';
     loadAdminData();
-  } catch(e) {
-    err.style.display='flex';
-    err.querySelector('span').textContent = 'Холболтын алдаа: ' + e.message;
-  }
+  } catch(e){err.style.display='flex';err.querySelector('span').textContent='Холболтын алдаа: '+e.message;}
 }
 
-function adminLogout() {
-  adminAuthed = false;
-  adminClientsCache = [];
-  document.getElementById('admin-login').style.display    = 'flex';
-  document.getElementById('admin-dashboard').style.display = 'none';
-  // NOTE: Do NOT clear password field — user can re-enter quickly
-  document.getElementById('a-err').style.display = 'none';
+function adminLogout(){
+  adminAuthed=false; adminClientsCache=[];
+  document.getElementById('admin-login').style.display='flex';
+  document.getElementById('admin-dashboard').style.display='none';
+  document.getElementById('a-err').style.display='none';
 }
 
-/* ══════════════════════════════════════════
-   ADMIN DATA
-══════════════════════════════════════════ */
-async function loadAdminData() {
-  const list = document.getElementById('admin-list');
-  list.innerHTML = '<div style="text-align:center;padding:60px;color:var(--muted)"><div class="spinner spinner-dark" style="margin:0 auto 12px"></div><div>Клиентийн мэдээлэл татаж байна...</div></div>';
+async function loadAdminData(){
+  const list=document.getElementById('admin-list');
+  list.innerHTML='<div style="text-align:center;padding:60px;color:var(--muted)"><div class="spinner spinner-dark" style="margin:0 auto 12px"></div><div>Клиентийн мэдээлэл татаж байна...</div></div>';
   try {
-    const pw = document.getElementById('a-pw').value;
-    let r;
-    if (!GAS_URL || GAS_URL.includes('YOUR_APPS_SCRIPT')) {
-      r = { ok: true, clients: [] };
-    } else {
-      r = await gasCall('adminGetAll', { password: pw });
-    }
-    if (!r.ok) { list.innerHTML = '<div class="alert a-err">'+r.error+'</div>'; return; }
-    adminClientsCache = r.clients || [];
+    const pw=document.getElementById('a-pw').value;
+    const r=await gasCall('adminGetAll',{password:pw});
+    if(!r.ok){list.innerHTML='<div class="alert a-err">'+r.error+'</div>';return;}
+    adminClientsCache=r.clients||[];
     updateAdminStats();
     renderAdminClients(adminClientsCache);
-  } catch(e) {
-    list.innerHTML = '<div class="alert a-err">Холболтын алдаа: '+e.message+'</div>';
-  }
+  } catch(e){list.innerHTML='<div class="alert a-err">Холболтын алдаа: '+e.message+'</div>';}
 }
 
-function adminSwitchTab(tab) {
-  ['clients','messages'].forEach(t => {
-    const el = document.getElementById('admin-tab-'+t);
-    if (el) el.style.display = t===tab?'block':'none';
-  });
-  document.querySelectorAll('#admin-dashboard .tab').forEach((b,i) => b.classList.toggle('act', i===['clients','messages'].indexOf(tab)));
-  if (tab==='messages') loadAdminMessages();
+function adminSwitchTab(tab){
+  ['clients','messages'].forEach(t=>{const el=document.getElementById('admin-tab-'+t);if(el)el.style.display=t===tab?'block':'none';});
+  document.querySelectorAll('#admin-dashboard .tab').forEach((b,i)=>b.classList.toggle('act',i===['clients','messages'].indexOf(tab)));
+  if(tab==='messages')loadAdminMessages();
 }
 
-async function loadAdminMessages() {
-  const el = document.getElementById('admin-messages-list');
-  if (!el) return;
-  el.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted)">Зурвасуудыг ачааллаж байна...</div>';
+async function loadAdminMessages(){
+  const el=document.getElementById('admin-messages-list'); if(!el)return;
+  el.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Ачааллаж байна...</div>';
   try {
-    const pw = document.getElementById('a-pw').value;
-    const r  = await gasCall('adminGetMessages', { password: pw });
-    if (!r.ok || !r.messages || !r.messages.length) {
-      el.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted)">Зурвас байхгүй байна.</div>';
-      return;
-    }
-    // Group by client
-    const grouped = {};
-    r.messages.forEach(m => {
-      if (!grouped[m.reg_number]) grouped[m.reg_number] = { org: m.org_name, msgs: [] };
-      grouped[m.reg_number].msgs.push(m);
-    });
-    el.innerHTML = '';
-    Object.entries(grouped).forEach(([reg, g]) => {
-      const div = document.createElement('div');
-      div.className = 'card card-sm';
-      div.style.marginBottom = '12px';
-      const msgs = g.msgs.map(m => `<div style="padding:10px 14px;border-radius:8px;background:${m.sender==='client'?'var(--g50)':'var(--rev-bg)'};margin-bottom:8px"><div style="font-size:10.5px;font-weight:600;color:var(--muted);margin-bottom:4px">${m.sender==='client'?g.org:'Аудитор'} · ${m.time||''}</div><div style="font-size:13px;color:var(--ink)">${m.text}</div></div>`).join('');
-      div.innerHTML = `<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">${g.org} <span style="font-size:11.5px;font-family:var(--fm);color:var(--muted)">${reg}</span></div>${msgs}<div style="display:flex;gap:8px;margin-top:10px"><input class="fc" id="reply-${reg}" type="text" placeholder="Хариу бичнэ үү..." style="flex:1"><button class="btn btn-p btn-sm" onclick="sendAdminReply('${reg}')">Илгээх</button></div>`;
+    const pw=document.getElementById('a-pw').value;
+    const r=await gasCall('adminGetMessages',{password:pw});
+    if(!r.ok||!r.messages||!r.messages.length){el.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Зурвас байхгүй байна.</div>';return;}
+    const grouped={};
+    r.messages.forEach(m=>{if(!grouped[m.reg_number])grouped[m.reg_number]={org:m.org_name,msgs:[]};grouped[m.reg_number].msgs.push(m);});
+    el.innerHTML='';
+    Object.entries(grouped).forEach(([reg,g])=>{
+      const div=document.createElement('div'); div.className='card card-sm'; div.style.marginBottom='12px';
+      const msgs=g.msgs.map(m=>`<div style="padding:10px 14px;border-radius:8px;background:${m.sender==='client'?'var(--g50)':'var(--rev-bg)'};margin-bottom:8px"><div style="font-size:10.5px;font-weight:600;color:var(--muted);margin-bottom:4px">${m.sender==='client'?g.org:'Аудитор'} · ${m.time||''}</div><div style="font-size:13px;color:var(--ink)">${(m.text||'').replace(/\n/g,'<br>')}</div></div>`).join('');
+      div.innerHTML=`<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">${g.org} <span style="font-size:11.5px;font-family:var(--fm);color:var(--muted)">${reg}</span></div>${msgs}<div style="display:flex;gap:8px;margin-top:10px"><input class="fc" id="reply-${reg}" type="text" placeholder="Хариу бичнэ үү..." style="flex:1"><button class="btn btn-p btn-sm" onclick="sendAdminReply('${reg}')">Илгээх</button></div>`;
       el.appendChild(div);
     });
-  } catch(e) {
-    el.innerHTML = '<div class="alert a-err">Алдаа: '+e.message+'</div>';
-  }
+  } catch(e){el.innerHTML='<div class="alert a-err">Алдаа: '+e.message+'</div>';}
 }
 
-async function sendAdminReply(reg) {
-  const inp  = document.getElementById('reply-' + reg);
-  const text = inp?.value?.trim();
-  if (!text) return;
+async function sendAdminReply(reg){
+  const inp=document.getElementById('reply-'+reg);
+  const text=inp?.value?.trim(); if(!text)return;
   try {
-    const pw = document.getElementById('a-pw').value;
-    await gasCall('sendMessage', { password: pw, reg_number: reg, message: text, sender: 'auditor' });
-    inp.value = '';
-    toast('✓ Хариу илгэгдлээ');
-    loadAdminMessages();
-  } catch(e) { toast('Алдаа: '+e.message, true); }
+    const pw=document.getElementById('a-pw').value;
+    await gasCall('sendMessage',{password:pw,reg_number:reg,message:text,sender:'auditor'});
+    inp.value=''; toast('✓ Хариу илгэгдлээ'); loadAdminMessages();
+  } catch(e){toast('Алдаа: '+e.message,true);}
 }
 
-function updateAdminStats() {
-  const total = adminClientsCache.length;
-  const totalFiles = adminClientsCache.reduce((s,c) => s+(c.file_count||0), 0);
-  const avgPct = total ? Math.round(adminClientsCache.reduce((s,c)=>s+Math.round((c.done_count||0)/37*100),0)/total) : 0;
-  const missingCount = adminClientsCache.filter(c => Math.round((c.done_count||0)/37*100) < 40).length;
-  document.getElementById('as-total').textContent   = total;
-  document.getElementById('as-avg').textContent     = avgPct + '%';
-  document.getElementById('as-files').textContent   = totalFiles;
-  document.getElementById('as-missing').textContent = missingCount;
+function updateAdminStats(){
+  const total=adminClientsCache.length;
+  const totalFiles=adminClientsCache.reduce((s,c)=>s+(c.file_count||0),0);
+  const avgPct=total?Math.round(adminClientsCache.reduce((s,c)=>s+Math.round((c.done_count||0)/37*100),0)/total):0;
+  const missingCount=adminClientsCache.filter(c=>Math.round((c.done_count||0)/37*100)<40).length;
+  document.getElementById('as-total').textContent=total;
+  document.getElementById('as-avg').textContent=avgPct+'%';
+  document.getElementById('as-files').textContent=totalFiles;
+  document.getElementById('as-missing').textContent=missingCount;
 }
 
-function filterAdminClients() {
-  const q   = (document.getElementById('admin-search').value||'').toLowerCase();
-  const flt = document.getElementById('admin-filter').value;
-  let list  = adminClientsCache;
-  if (q) list = list.filter(c => (c.org_name||'').toLowerCase().includes(q) || String(c.reg_number).includes(q));
-  if (flt==='done') list = list.filter(c => Math.round((c.done_count||0)/37*100) >= 80);
-  if (flt==='half') list = list.filter(c => { const p=Math.round((c.done_count||0)/37*100); return p>=40&&p<80; });
-  if (flt==='low')  list = list.filter(c => Math.round((c.done_count||0)/37*100) < 40);
+function filterAdminClients(){
+  const q=(document.getElementById('admin-search').value||'').toLowerCase();
+  const flt=document.getElementById('admin-filter').value;
+  let list=adminClientsCache;
+  if(q)list=list.filter(c=>(c.org_name||'').toLowerCase().includes(q)||String(c.reg_number).includes(q));
+  if(flt==='done')list=list.filter(c=>Math.round((c.done_count||0)/37*100)>=80);
+  if(flt==='half')list=list.filter(c=>{const p=Math.round((c.done_count||0)/37*100);return p>=40&&p<80;});
+  if(flt==='low')list=list.filter(c=>Math.round((c.done_count||0)/37*100)<40);
   renderAdminClients(list);
 }
 
-function renderAdminClients(clients) {
-  const list = document.getElementById('admin-list');
-  const cntEl = document.getElementById('admin-count');
-  if (cntEl) cntEl.textContent = clients.length + ' клиент';
-  if (!clients.length) {
-    list.innerHTML = '<div style="text-align:center;padding:60px;color:var(--muted)">Клиент олдсонгүй</div>';
-    return;
-  }
-  list.innerHTML = '';
-  clients.forEach(c => {
-    const pct  = Math.round((c.done_count||0)/37*100);
-    const miss = 37 - (c.done_count||0);
-    const pctColor = pct>=80?'var(--ok)':pct>=40?'var(--wait)':'var(--miss)';
-    const av = (c.org_name||'ХХ').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-    const div = document.createElement('div');
-    div.style.cssText = 'display:grid;grid-template-columns:2.5fr 1.5fr 1fr auto;gap:16px;align-items:center;padding:16px 20px;background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;transition:all .18s;cursor:pointer';
-    div.onmouseover = () => { div.style.boxShadow='var(--sh)'; div.style.borderColor='var(--g200)'; };
-    div.onmouseout  = () => { div.style.boxShadow='none';      div.style.borderColor='var(--line)'; };
-    div.onclick = () => openClientDetail(c.reg_number);
-    div.innerHTML = `
-      <div style="display:flex;gap:12px;align-items:center;min-width:0">
-        <div style="width:42px;height:42px;border-radius:10px;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;font-weight:700;color:var(--g800);flex-shrink:0">${av}</div>
-        <div style="min-width:0">
-          <div style="font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.org_name||'—'}</div>
-          <div style="font-size:11.5px;font-family:var(--fm);color:var(--muted);margin-top:2px">${c.reg_number} · ${c.contact_email||''}</div>
-        </div>
-      </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:11.5px;color:var(--slate)">${c.done_count||0} / 37</span><span style="font-size:11.5px;font-weight:700;color:${pctColor}">${pct}%</span></div>
-        <div class="prog-track"><div class="prog-fill" style="width:${pct}%;background:${pct>=80?'linear-gradient(90deg,var(--ok),#2ea84a)':pct>=40?'linear-gradient(90deg,var(--wait),#e09800)':'linear-gradient(90deg,var(--miss),#e05040)'}"></div></div>
-        <div style="font-size:11px;color:${pct===100?'var(--ok)':'var(--muted)'};margin-top:4px">${pct===100?'✓ Бүрэн бүрдсэн':miss+' баримт дутуу'}</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:13px;font-weight:600;color:var(--ink)">${c.file_count||0} файл</div>
-        <span class="badge ${pct>=80?'b-ok':pct>=40?'b-wait':'b-miss'}" style="margin-top:5px">${pct>=80?'Бүрдсэн':pct>=40?'Хагас':'Дутуу'}</span>
-      </div>
-      <button class="btn btn-s btn-sm" onclick="event.stopPropagation();openClientDetail('${c.reg_number}')">Дэлгэрэнгүй</button>
-    `;
+function renderAdminClients(clients){
+  const list=document.getElementById('admin-list');
+  const cntEl=document.getElementById('admin-count');
+  if(cntEl)cntEl.textContent=clients.length+' клиент';
+  if(!clients.length){list.innerHTML='<div style="text-align:center;padding:60px;color:var(--muted)">Клиент олдсонгүй</div>';return;}
+  list.innerHTML='';
+  clients.forEach(c=>{
+    const pct=Math.round((c.done_count||0)/37*100);
+    const miss=37-(c.done_count||0);
+    const pctColor=pct>=80?'var(--ok)':pct>=40?'var(--wait)':'var(--miss)';
+    const av=(c.org_name||'ХХ').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    const div=document.createElement('div');
+    div.style.cssText='display:grid;grid-template-columns:2.5fr 1.5fr 1fr auto;gap:16px;align-items:center;padding:16px 20px;background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;transition:all .18s;cursor:pointer';
+    div.onmouseover=()=>{div.style.boxShadow='var(--sh)';div.style.borderColor='var(--g200)';};
+    div.onmouseout=()=>{div.style.boxShadow='none';div.style.borderColor='var(--line)';};
+    div.onclick=()=>openClientDetail(c.reg_number);
+    div.innerHTML=`<div style="display:flex;gap:12px;align-items:center;min-width:0"><div style="width:42px;height:42px;border-radius:10px;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;font-weight:700;color:var(--g800);flex-shrink:0">${av}</div><div style="min-width:0"><div style="font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.org_name||'—'}</div><div style="font-size:11.5px;font-family:var(--fm);color:var(--muted);margin-top:2px">${c.reg_number} · ${c.contact_email||''}</div></div></div><div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:11.5px;color:var(--slate)">${c.done_count||0} / 37</span><span style="font-size:11.5px;font-weight:700;color:${pctColor}">${pct}%</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%;background:${pct>=80?'linear-gradient(90deg,var(--ok),#2ea84a)':pct>=40?'linear-gradient(90deg,var(--wait),#e09800)':'linear-gradient(90deg,var(--miss),#e05040)'}"></div></div><div style="font-size:11px;color:${pct===100?'var(--ok)':'var(--muted)'};margin-top:4px">${pct===100?'✓ Бүрэн бүрдсэн':miss+' баримт дутуу'}</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:600;color:var(--ink)">${c.file_count||0} файл</div><span class="badge ${pct>=80?'b-ok':pct>=40?'b-wait':'b-miss'}" style="margin-top:5px">${pct>=80?'Бүрдсэн':pct>=40?'Хагас':'Дутуу'}</span></div><button class="btn btn-s btn-sm" onclick="event.stopPropagation();openClientDetail('${c.reg_number}')">Дэлгэрэнгүй</button>`;
     list.appendChild(div);
   });
 }
 
-/* Client detail modal */
-async function openClientDetail(reg) {
-  currentClientReg = reg;
-  auditorStatuses  = {};
-  auditorStages    = {};
-  const client = adminClientsCache.find(c => String(c.reg_number) === String(reg)) || {};
-  document.getElementById('cdm-org').textContent = client.org_name || reg;
-  document.getElementById('cdm-reg').textContent = 'Регистр: ' + reg;
-  const pct = Math.round((client.done_count||0)/37*100);
-  document.getElementById('cdm-pct-badge').textContent = pct + '%';
-  document.getElementById('cdm-prog').style.width = pct + '%';
-  document.getElementById('client-detail-modal').style.display = 'block';
+async function openClientDetail(reg){
+  currentClientReg=reg; auditorStatuses={}; auditorStages={};
+  const client=adminClientsCache.find(c=>String(c.reg_number)===String(reg))||{};
+  document.getElementById('cdm-org').textContent=client.org_name||reg;
+  document.getElementById('cdm-reg').textContent='Регистр: '+reg;
+  const pct=Math.round((client.done_count||0)/37*100);
+  document.getElementById('cdm-pct-badge').textContent=pct+'%';
+  document.getElementById('cdm-prog').style.width=pct+'%';
+  document.getElementById('client-detail-modal').style.display='block';
   cdmTab('stages');
   try {
-    const pw = document.getElementById('a-pw').value;
-    const r  = await gasCall('adminGetFiles', { password: pw, reg_number: reg });
-    currentClientData.files = r.ok ? r.files : [];
-  } catch(e) { currentClientData.files = []; }
+    const pw=document.getElementById('a-pw').value;
+    const r=await gasCall('adminGetFiles',{password:pw,reg_number:reg});
+    currentClientData.files=r.ok?r.files:[];
+  } catch(e){currentClientData.files=[];}
 }
 
-function cdmTab(tab) {
-  ['stages','docs','files','info','chat'].forEach(t => {
-    const btn = document.getElementById('cdm-tab-'+t);
-    if (btn) {
-      btn.style.color = t===tab ? 'var(--g800)' : 'var(--muted)';
-      btn.style.borderBottomColor = t===tab ? 'var(--g800)' : 'transparent';
-      btn.style.fontWeight = t===tab ? '600' : '500';
-    }
+function cdmTab(tab){
+  ['stages','docs','files','info','chat'].forEach(t=>{
+    const btn=document.getElementById('cdm-tab-'+t);
+    if(btn){btn.style.color=t===tab?'var(--g800)':'var(--muted)';btn.style.borderBottomColor=t===tab?'var(--g800)':'transparent';btn.style.fontWeight=t===tab?'600':'500';}
   });
-  const body = document.getElementById('cdm-body');
-  const client = adminClientsCache.find(c => String(c.reg_number) === String(currentClientReg)) || {};
-  const files  = currentClientData.files || [];
+  const body=document.getElementById('cdm-body');
+  const client=adminClientsCache.find(c=>String(c.reg_number)===String(currentClientReg))||{};
+  const files=currentClientData.files||[];
 
-  if (tab === 'stages') {
-    const stageMap = client.stageMap || {};
-    let html = '<div style="display:flex;flex-direction:column;gap:12px">';
-    AUDIT_STAGES_DEF.forEach(stage => {
-      const sData  = stageMap[stage.id] || {};
-      const status = auditorStages[stage.id]?.status ?? (sData.status || '');
-      const note   = auditorStages[stage.id]?.note   ?? (sData.note   || '');
-      const badge  = stage.auditorOnly
-        ? '<span style="font-size:10px;background:var(--g100);color:var(--g700);padding:2px 7px;border-radius:100px;font-weight:600;margin-left:6px">Аудитор</span>'
-        : '<span style="font-size:10px;background:var(--rev-bg);color:var(--rev);padding:2px 7px;border-radius:100px;font-weight:600;margin-left:6px">Автомат</span>';
-      const dotColor = status==='done'?'var(--ok)':status==='active'?'var(--wait)':'var(--line)';
-      html += `<div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:${status==='done'?'#fafdf9':status==='active'?'#fffdf0':'#fff'}">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-          <div style="width:10px;height:10px;border-radius:50%;background:${dotColor}"></div>
-          <div style="font-size:13.5px;font-weight:600;color:var(--ink);flex:1">${stage.title}${badge}</div>
-        </div>
-        <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px">${stage.desc}</div>
-        ${stage.auditorOnly ? `
-        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-          <select id="stage-sel-${stage.id}" style="padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-weight:600;background:#fff;cursor:pointer;outline:none;font-family:var(--fb)" onchange="auditorStages['${stage.id}']={status:this.value,note:(auditorStages['${stage.id}']?.note||'${note}')}">
-            <option value="" ${!status?'selected':''}>— Тодорхойгүй —</option>
-            <option value="pending" ${status==='pending'?'selected':''}>⏳ Хүлээгдэж байна</option>
-            <option value="active"  ${status==='active' ?'selected':''}>🔄 Явагдаж байна</option>
-            <option value="done"    ${status==='done'   ?'selected':''}>✓ Дууссан</option>
-          </select>
-          <input type="text" placeholder="Клиентэд харагдах тэмдэглэл..." value="${note}" id="stage-note-${stage.id}"
-            oninput="auditorStages['${stage.id}']={status:(document.getElementById('stage-sel-${stage.id}').value),note:this.value}"
-            style="flex:1;min-width:160px;padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-family:var(--fb);outline:none;color:var(--ink)">
-        </div>` : `<div style="font-size:12px;color:var(--slate);font-style:italic">Клиент мэдээлэл бүртгэснээр автоматаар тохируулагдана</div>`}
-      </div>`;
+  if(tab==='stages'){
+    const stageMap=client.stageMap||{};
+    let html='<div style="display:flex;flex-direction:column;gap:12px">';
+    AUDIT_STAGES_DEF.forEach(stage=>{
+      const sData=stageMap[stage.id]||{};
+      const status=auditorStages[stage.id]?.status??(sData.status||'');
+      const note=auditorStages[stage.id]?.note??(sData.note||'');
+      const badge=stage.auditorOnly?'<span style="font-size:10px;background:var(--g100);color:var(--g700);padding:2px 7px;border-radius:100px;font-weight:600;margin-left:6px">Аудитор</span>':'<span style="font-size:10px;background:var(--rev-bg);color:var(--rev);padding:2px 7px;border-radius:100px;font-weight:600;margin-left:6px">Автомат</span>';
+      const dotColor=status==='done'?'var(--ok)':status==='active'?'var(--wait)':'var(--line)';
+      html+=`<div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:${status==='done'?'#fafdf9':status==='active'?'#fffdf0':'#fff'}"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:10px;height:10px;border-radius:50%;background:${dotColor}"></div><div style="font-size:13.5px;font-weight:600;color:var(--ink);flex:1">${stage.title}${badge}</div></div><div style="font-size:12.5px;color:var(--muted);margin-bottom:10px">${stage.desc}</div>${stage.auditorOnly?`<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><select id="stage-sel-${stage.id}" style="padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-weight:600;background:#fff;cursor:pointer;outline:none;font-family:var(--fb)" onchange="auditorStages['${stage.id}']={status:this.value,note:(auditorStages['${stage.id}']?.note||'${note}')}"><option value="" ${!status?'selected':''}>— Тодорхойгүй —</option><option value="pending" ${status==='pending'?'selected':''}>⏳ Хүлээгдэж байна</option><option value="active" ${status==='active'?'selected':''}>🔄 Явагдаж байна</option><option value="done" ${status==='done'?'selected':''}>✓ Дууссан</option></select><input type="text" placeholder="Клиентэд харагдах тэмдэглэл..." value="${note}" id="stage-note-${stage.id}" oninput="auditorStages['${stage.id}']={status:(document.getElementById('stage-sel-${stage.id}').value),note:this.value}" style="flex:1;min-width:160px;padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-family:var(--fb);outline:none;color:var(--ink)"></div>`:`<div style="font-size:12px;color:var(--slate);font-style:italic">Клиент мэдээлэл бүртгэснээр автоматаар тохируулагдана</div>`}</div>`;
     });
-    html += '</div>';
-    body.innerHTML = html;
+    html+='</div>'; body.innerHTML=html;
 
-  } else if (tab === 'docs') {
-    const allDocs = [...PERM, ...WORK];
-    let html = '<div style="display:flex;flex-direction:column;gap:7px">';
-    allDocs.forEach(d => {
-      const hasFile = files.some(f => String(f.doc_id) === String(d.id));
-      const srvStatus = (client.statusMap||{})[d.id] || auditorStatuses[d.id] || (hasFile?'ok':'');
-      const statusColor = srvStatus==='ok'?'var(--ok)':srvStatus==='miss'?'var(--miss)':srvStatus==='wait'?'var(--wait)':srvStatus==='rev'?'var(--rev)':'var(--muted)';
-      html += `<div style="display:flex;gap:10px;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:${srvStatus==='ok'?'#fafdf9':'#fff'}">
-        <div style="font-family:var(--fm);font-size:10px;color:var(--muted);min-width:28px">${d.id}</div>
-        <div style="flex:1;font-size:13px;color:var(--ink2)">${d.n}</div>
-        ${hasFile ? '<svg style="width:13px;height:13px;stroke:var(--ok);fill:none;stroke-width:2.5;flex-shrink:0" viewBox="0 0 14 14"><path d="M2 7.5l3.5 3.5 6.5-7"/></svg>' : '<div style="width:13px;flex-shrink:0"></div>'}
-        <select onchange="auditorStatuses['${d.id}']=this.value" style="padding:4px 8px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;font-weight:600;color:${statusColor};background:#fff;cursor:pointer;outline:none;min-width:140px;font-family:var(--fb)">
-          <option value="" ${!srvStatus?'selected':''}>— Сонгоно уу —</option>
-          <option value="ok"   ${srvStatus==='ok'  ?'selected':''} style="color:var(--ok)">✓ Бүрдсэн</option>
-          <option value="miss" ${srvStatus==='miss' ?'selected':''} style="color:var(--miss)">✗ Дутуу</option>
-          <option value="wait" ${srvStatus==='wait' ?'selected':''} style="color:var(--wait)">⏳ Хүлээгдэж байна</option>
-          <option value="rev"  ${srvStatus==='rev'  ?'selected':''} style="color:var(--rev)">👁 Хянагдаж байна</option>
-        </select>
-      </div>`;
+  } else if(tab==='docs'){
+    const allDocs=[...PERM,...WORK]; let html='<div style="display:flex;flex-direction:column;gap:7px">';
+    allDocs.forEach(d=>{
+      const hasFile=files.some(f=>String(f.doc_id)===String(d.id));
+      const srvStatus=(client.statusMap||{})[d.id]||auditorStatuses[d.id]||(hasFile?'ok':'');
+      const statusColor=srvStatus==='ok'?'var(--ok)':srvStatus==='miss'?'var(--miss)':srvStatus==='wait'?'var(--wait)':srvStatus==='rev'?'var(--rev)':'var(--muted)';
+      html+=`<div style="display:flex;gap:10px;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:${srvStatus==='ok'?'#fafdf9':'#fff'}"><div style="font-family:var(--fm);font-size:10px;color:var(--muted);min-width:28px">${d.id}</div><div style="flex:1;font-size:13px;color:var(--ink2)">${d.n}</div>${hasFile?'<svg style="width:13px;height:13px;stroke:var(--ok);fill:none;stroke-width:2.5;flex-shrink:0" viewBox="0 0 14 14"><path d="M2 7.5l3.5 3.5 6.5-7"/></svg>':'<div style="width:13px;flex-shrink:0"></div>'}<select onchange="auditorStatuses['${d.id}']=this.value" style="padding:4px 8px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;font-weight:600;color:${statusColor};background:#fff;cursor:pointer;outline:none;min-width:140px;font-family:var(--fb)"><option value="" ${!srvStatus?'selected':''}>— Сонгоно уу —</option><option value="ok" ${srvStatus==='ok'?'selected':''}>✓ Бүрдсэн</option><option value="miss" ${srvStatus==='miss'?'selected':''}>✗ Дутуу</option><option value="wait" ${srvStatus==='wait'?'selected':''}>⏳ Хүлээгдэж байна</option><option value="rev" ${srvStatus==='rev'?'selected':''}>👁 Хянагдаж байна</option></select></div>`;
     });
-    html += '</div>';
-    body.innerHTML = html;
+    html+='</div>'; body.innerHTML=html;
 
-  } else if (tab === 'files') {
-    if (!files.length) { body.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted)">Файл байхгүй байна.</div>'; return; }
-    let html = '<div style="display:flex;flex-direction:column;gap:8px">';
-    files.forEach(f => {
-      const ext = (f.file_name||'').split('.').pop().toUpperCase();
-      html += `<div style="display:flex;gap:12px;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:8px">
-        <div style="width:36px;height:36px;border-radius:7px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;font-weight:700;color:var(--g800);flex-shrink:0">${ext}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.file_name}</div>
-          <div style="font-size:11.5px;color:var(--muted);margin-top:2px">${f.doc_id||'general'}</div>
-        </div>
-        <a href="${f.drive_view_url}" target="_blank" class="btn btn-s btn-sm">Нээх</a>
-      </div>`;
+  } else if(tab==='files'){
+    if(!files.length){body.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Файл байхгүй байна.</div>';return;}
+    let html='<div style="display:flex;flex-direction:column;gap:8px">';
+    files.forEach(f=>{
+      const ext=(f.file_name||'').split('.').pop().toUpperCase();
+      html+=`<div style="display:flex;gap:12px;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:8px"><div style="width:36px;height:36px;border-radius:7px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;font-weight:700;color:var(--g800);flex-shrink:0">${ext}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.file_name}</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">${f.doc_id||'general'}</div></div><a href="${f.drive_view_url}" target="_blank" class="btn btn-s btn-sm">Нээх</a></div>`;
     });
-    html += '</div>';
-    body.innerHTML = html;
+    html+='</div>'; body.innerHTML=html;
 
-  } else if (tab === 'info') {
-    const c = client;
-    const fields = [
-      ['Байгууллагын нэр',c.org_name],['Регистр',c.reg_number],['И-мэйл',c.contact_email],
-      ['Утас',c.contact_phone],['Захирал',c.director_name],['Нягтлан',c.accountant_name],
-      ['Үйл ажиллагаа',c.activity_type],['Өмчийн хэлбэр',c.ownership_type],
-      ['Хаяг',c.address],['Ажилтан тоо',c.employee_count],['Салбар тоо',c.branch_count],
-    ];
-    let html = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">';
-    fields.forEach(([k,v]) => {
-      if (!v) return;
-      html += `<div style="padding:12px 14px;border:1px solid var(--line);border-radius:8px"><div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px">${k}</div><div style="font-size:13.5px;color:var(--ink)">${v}</div></div>`;
-    });
-    html += '</div>';
-    body.innerHTML = html || '<div style="text-align:center;padding:32px;color:var(--muted)">Мэдээлэл байхгүй</div>';
+  } else if(tab==='info'){
+    const fields=[['Байгууллагын нэр',client.org_name],['Регистр',client.reg_number],['И-мэйл',client.contact_email],['Утас',client.contact_phone],['Захирал',client.director_name],['Нягтлан',client.accountant_name],['Үйл ажиллагаа',client.activity_type],['Өмчийн хэлбэр',client.ownership_type],['Хаяг',client.address],['Ажилтан тоо',client.employee_count],['Салбар тоо',client.branch_count]];
+    let html='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">';
+    fields.forEach(([k,v])=>{if(!v)return;html+=`<div style="padding:12px 14px;border:1px solid var(--line);border-radius:8px"><div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px">${k}</div><div style="font-size:13.5px;color:var(--ink)">${v}</div></div>`;});
+    html+='</div>'; body.innerHTML=html||'<div style="text-align:center;padding:32px;color:var(--muted)">Мэдээлэл байхгүй</div>';
 
-  } else if (tab === 'chat') {
-    // Show conversation with this client
-    body.innerHTML = `
-      <div style="margin-bottom:12px;font-size:13px;color:var(--muted)">Клиент: <strong>${client.org_name}</strong> — ${currentClientReg}</div>
-      <div id="cdm-chat-msgs" style="height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:8px;margin-bottom:10px">
-        <div style="text-align:center;color:var(--muted);font-size:13px">Ачааллаж байна...</div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <input class="fc" id="cdm-chat-input" type="text" placeholder="Хариу зурвас бичнэ үү...">
-        <button class="btn btn-p btn-sm" onclick="cdmSendReply()">Илгээх</button>
-      </div>`;
+  } else if(tab==='chat'){
+    body.innerHTML=`<div style="margin-bottom:12px;font-size:13px;color:var(--muted)">Клиент: <strong>${client.org_name}</strong> — ${currentClientReg}</div><div id="cdm-chat-msgs" style="height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:8px;margin-bottom:10px"><div style="text-align:center;color:var(--muted);font-size:13px">Ачааллаж байна...</div></div><div style="display:flex;gap:8px"><input class="fc" id="cdm-chat-input" type="text" placeholder="Хариу зурвас бичнэ үү..."><button class="btn btn-p btn-sm" onclick="cdmSendReply()">Илгээх</button></div>`;
     cdmLoadChat();
   }
 }
 
-async function cdmLoadChat() {
-  const el = document.getElementById('cdm-chat-msgs');
-  if (!el) return;
+async function cdmLoadChat(){
+  const el=document.getElementById('cdm-chat-msgs'); if(!el)return;
   try {
-    const pw = document.getElementById('a-pw').value;
-    const r  = await gasCall('adminGetClientMessages', { password: pw, reg_number: currentClientReg });
-    const msgs = r.ok ? r.messages : [];
-    if (!msgs.length) { el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">Зурвас байхгүй</div>'; return; }
-    el.innerHTML = '';
-    msgs.forEach(m => {
-      const isClient = m.sender === 'client';
-      const div = document.createElement('div');
-      div.className = 'chat-bubble ' + (isClient?'client':'auditor');
-      div.innerHTML = `<div class="chat-who">${isClient?'Клиент':'Аудитор'}</div>${m.text}<div class="chat-time">${m.time||''}</div>`;
+    const pw=document.getElementById('a-pw').value;
+    const r=await gasCall('adminGetClientMessages',{password:pw,reg_number:currentClientReg});
+    const msgs=r.ok?r.messages:[];
+    if(!msgs.length){el.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">Зурвас байхгүй</div>';return;}
+    el.innerHTML='';
+    msgs.forEach(m=>{
+      const isClient=m.sender==='client';
+      const div=document.createElement('div');
+      div.className='chat-bubble '+(isClient?'client':'auditor');
+      div.innerHTML=`<div class="chat-who">${isClient?'Клиент':'Аудитор'}</div>${(m.text||'').replace(/\n/g,'<br>')}<div class="chat-time">${m.time||''}</div>`;
       el.appendChild(div);
     });
-    el.scrollTop = el.scrollHeight;
-  } catch(e) { el.innerHTML = '<div style="color:var(--muted);font-size:13px">Зурвас ачааллахад алдаа гарлаа.</div>'; }
+    el.scrollTop=el.scrollHeight;
+  } catch(e){el.innerHTML='<div style="color:var(--muted);font-size:13px">Зурвас ачааллахад алдаа гарлаа.</div>';}
 }
 
-async function cdmSendReply() {
-  const inp  = document.getElementById('cdm-chat-input');
-  const text = inp?.value?.trim();
-  if (!text) return;
+async function cdmSendReply(){
+  const inp=document.getElementById('cdm-chat-input');
+  const text=inp?.value?.trim(); if(!text)return;
   try {
-    const pw = document.getElementById('a-pw').value;
-    await gasCall('sendMessage', { password: pw, reg_number: currentClientReg, message: text, sender: 'auditor' });
-    inp.value = '';
-    toast('✓ Хариу илгэгдлээ');
-    cdmLoadChat();
-  } catch(e) { toast('Алдаа: '+e.message, true); }
+    const pw=document.getElementById('a-pw').value;
+    await gasCall('sendMessage',{password:pw,reg_number:currentClientReg,message:text,sender:'auditor'});
+    inp.value=''; toast('✓ Хариу илгэгдлээ'); cdmLoadChat();
+  } catch(e){toast('Алдаа: '+e.message,true);}
 }
 
-async function saveAuditorStatuses() {
-  const btn = document.getElementById('cdm-save-btn');
-  const hasStatus = Object.keys(auditorStatuses).length > 0;
-  const hasStages = Object.keys(auditorStages).length > 0;
-  if (!hasStatus && !hasStages) { toast('Өөрчлөлт байхгүй'); return; }
-  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Хадгалж байна...';
+async function saveAuditorStatuses(){
+  const btn=document.getElementById('cdm-save-btn');
+  const hasStatus=Object.keys(auditorStatuses).length>0;
+  const hasStages=Object.keys(auditorStages).length>0;
+  if(!hasStatus&&!hasStages){toast('Өөрчлөлт байхгүй');return;}
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Хадгалж байна...';
   try {
-    const pw = document.getElementById('a-pw').value;
-    const promises = [];
-    if (hasStatus) promises.push(gasCall('adminSaveStatuses', { password: pw, reg_number: currentClientReg, statuses: auditorStatuses }));
-    if (hasStages)  promises.push(gasCall('adminSaveStages',  { password: pw, reg_number: currentClientReg, stages: auditorStages }));
-    const results = await Promise.all(promises);
-    const err = results.find(r => !r.ok);
-    if (err) { toast('Алдаа: '+err.error, true); }
-    else { toast('✓ Хадгалагдлаа'); auditorStatuses={}; auditorStages={}; loadAdminData(); }
-  } catch(e) { toast('Алдаа: '+e.message, true); }
-  btn.disabled = false; btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
+    const pw=document.getElementById('a-pw').value;
+    const promises=[];
+    if(hasStatus)promises.push(gasCall('adminSaveStatuses',{password:pw,reg_number:currentClientReg,statuses:auditorStatuses}));
+    if(hasStages)promises.push(gasCall('adminSaveStages',{password:pw,reg_number:currentClientReg,stages:auditorStages}));
+    const results=await Promise.all(promises);
+    const err=results.find(r=>!r.ok);
+    if(err){toast('Алдаа: '+err.error,true);}
+    else{toast('✓ Хадгалагдлаа');auditorStatuses={};auditorStages={};loadAdminData();}
+  } catch(e){toast('Алдаа: '+e.message,true);}
+  btn.disabled=false; btn.innerHTML='<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
 }
 
-/* ══════════════════════════════════════════
-   TOAST
-══════════════════════════════════════════ */
+// ── TOAST ─────────────────────────────────────────────────────
 let toastTimer;
-function toast(msg, isErr=false) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = isErr ? 'err' : '';
-  t.style.display = 'block';
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.style.display='none'; }, 3200);
+function toast(msg,isErr=false){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className=isErr?'err':'';
+  t.style.display='block'; clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{t.style.display='none';},3200);
 }
 
-/* ══════════════════════════════════════════
-   INIT
-══════════════════════════════════════════ */
-document.addEventListener('DOMContentLoaded', () => {
-  // Enter keys
-  ['l-reg','l-code'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
-  });
-  document.getElementById('a-pw')?.addEventListener('keydown', e => { if (e.key==='Enter') adminLogin(); });
-  document.getElementById('chat-input')?.addEventListener('keydown', e => {
-    if (e.ctrlKey && e.key==='Enter') { e.preventDefault(); sendChatMessage(); }
-  });
+// ── INIT ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  ['l-reg','l-code'].forEach(id=>{const el=document.getElementById(id);if(el)el.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});});
+  document.getElementById('a-pw')?.addEventListener('keydown',e=>{if(e.key==='Enter')adminLogin();});
+  document.getElementById('chat-input')?.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key==='Enter'){e.preventDefault();sendChatMessage();}});
 
-  // Drag & drop on file zone
-  const dropZone = document.getElementById('main-drop-zone');
-  if (dropZone) {
-    ['dragenter','dragover'].forEach(ev => dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.add('drag-over'); }));
-    ['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => {
+  const dropZone=document.getElementById('main-drop-zone');
+  if(dropZone){
+    ['dragenter','dragover'].forEach(ev=>dropZone.addEventListener(ev,e=>{e.preventDefault();dropZone.classList.add('drag-over');}));
+    ['dragleave','drop'].forEach(ev=>dropZone.addEventListener(ev,e=>{
       dropZone.classList.remove('drag-over');
-      if (ev==='drop' && e.dataTransfer?.files?.length) { e.preventDefault(); uploadGeneralFiles(e.dataTransfer.files); }
+      if(ev==='drop'&&e.dataTransfer?.files?.length){e.preventDefault();uploadGeneralFiles(e.dataTransfer.files);}
     }));
   }
 
-  // Scroll fade-in
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i*60); obs.unobserve(e.target); } });
-  }, {threshold:0.10});
-  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-  // Restore admin session if was authed (page refresh)
-  // (we keep password in field, so re-login is fast)
+  const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.10});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 });
 </script>
 </body>
