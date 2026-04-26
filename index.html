@@ -907,14 +907,25 @@ async function gasCall(action, body={}) {
 
 // ── CONTACT ───────────────────────────────────────────────────
 function contactSubmit(btn) {
-  const org=document.getElementById('cnt-org')?.value||'';
-  const name=document.getElementById('cnt-name')?.value||'';
-  const email=document.getElementById('cnt-email')?.value||'';
-  const phone=document.getElementById('cnt-phone')?.value||'';
-  const msg=document.getElementById('cnt-msg')?.value||'';
-  window.open('mailto:ikhnayadaudit@gmail.com?subject='+encodeURIComponent('Их Наяд Аудит — Хүсэлт: '+org)+'&body='+encodeURIComponent('Байгууллага: '+org+'\nХолбоо барих: '+name+'\nУтас: '+phone+'\nИ-мэйл: '+email+'\n\n'+msg),'_blank');
-  btn.disabled=true; btn.textContent='Илгэгдлээ ✓';
-  document.getElementById('contact-ok').style.display='flex';
+  const org = document.getElementById('cnt-org')?.value || '';
+  const name = document.getElementById('cnt-name')?.value || '';
+  const email = document.getElementById('cnt-email')?.value || '';
+  const phone = document.getElementById('cnt-phone')?.value || '';
+  const msg = document.getElementById('cnt-msg')?.value || '';
+
+  // 👉 ШИНЭ (backend руу явуулна)
+  fetch("https://script.google.com/macros/s/AKfycbztW4YK0N290AQknxgsljG0KjAkhtC3H6iFIYpeNAmFPu0FuFgYo0xC9ulffb-Jw_Wy/exec", {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify({
+      action: "contact",
+      org, name, email, phone, msg
+    })
+  });
+
+  btn.disabled = true;
+  btn.textContent = 'Илгээгдэв ✓';
+  document.getElementById('contact-ok').style.display = 'flex';
 }
 
 // ── DOC DATA ──────────────────────────────────────────────────
