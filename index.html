@@ -138,8 +138,24 @@ textarea.fc{resize:vertical;min-height:80px}
 .doc-req{font-size:12px;color:var(--slate)}
 .ssel{padding:5px 8px;border-radius:var(--r);border:1px solid var(--line);font-size:12px;font-weight:600;cursor:pointer;outline:none;background:var(--white);min-width:128px;font-family:var(--fb)}
 .ssel:focus{border-color:var(--g600)}
-.note-mini{width:110px;padding:5px 8px;border:1px solid var(--line);border-radius:var(--r);font-size:12px;outline:none;background:var(--white);transition:border-color .18s;font-family:var(--fb)}
-.note-mini:focus{border-color:var(--g600)}
+/* AUTO STATUS BADGE — client can't edit */
+.status-auto{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:100px;font-size:11.5px;font-weight:700;white-space:nowrap;min-width:128px;justify-content:center}
+.status-auto.s-ok{background:var(--ok-bg);color:var(--ok);border:1px solid #a3d4b3}
+.status-auto.s-miss{background:var(--miss-bg);color:var(--miss);border:1px solid #f5c6c3}
+.status-auto.s-rev{background:var(--rev-bg);color:var(--rev);border:1px solid #b3ccee}
+.status-auto.s-wait{background:var(--wait-bg);color:var(--wait);border:1px solid #f2cc82}
+/* AUDITOR COMMENT — read only for client */
+.auditor-comment{font-size:12px;line-height:1.5;padding:7px 10px;border-radius:var(--r);min-width:160px;max-width:240px}
+.auditor-comment.has-comment{background:#fffbf0;border-left:3px solid var(--gold);color:#5a4400;font-style:italic}
+.auditor-comment.no-comment{color:var(--muted);font-size:11px;font-style:italic}
+/* INLINE FILE LIST in row */
+.row-files-list{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.row-file-item{display:inline-flex;align-items:center;gap:6px;background:var(--g50);border:1px solid var(--g200);border-radius:5px;padding:3px 8px;font-size:11px;max-width:220px}
+.row-file-item a{color:var(--g700);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-weight:500}
+.row-file-item a:hover{color:var(--g900);text-decoration:underline}
+.row-file-item .ico{flex-shrink:0;width:14px;height:14px;color:var(--g600)}
+.row-file-item button{background:none;border:none;cursor:pointer;color:var(--muted);padding:0;font-size:13px;line-height:1;flex-shrink:0}
+.row-file-item button:hover{color:var(--miss)}
 .sf-list{display:flex;flex-direction:column;gap:9px}
 .sf-item{display:flex;align-items:center;gap:11px;padding:11px 15px;background:var(--white);border:1px solid var(--line);border-radius:var(--r);transition:all .2s}
 .sf-item:hover{background:var(--g50);transform:translateX(2px)}
@@ -603,13 +619,13 @@ textarea.fc{resize:vertical;min-height:80px}
         <!-- PANEL: Perm docs -->
         <div class="panel" id="t-perm">
           <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>НЭГ. БАЙНГЫН БАРИМТ БИЧИГ</strong> — Байгууллагын үндсэн бүртгэл, эрхийн баримтууд. Нэг баримтад хэд хэдэн файл хавсаргаж болно.</div></div>
-          <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичгийн нэр</th><th>Шаардлага</th><th>Төлөв</th><th>Файл</th><th>Тайлбар</th></tr></thead><tbody id="perm-body"></tbody></table></div>
+          <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичгийн нэр</th><th>Шаардлага</th><th>Төлөв</th><th>Файл</th><th>Аудиторын тайлбар</th></tr></thead><tbody id="perm-body"></tbody></table></div>
         </div>
 
         <!-- PANEL: Work docs -->
         <div class="panel" id="t-work">
           <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>ХОЁР. АЖЛЫН БАРИМТ БИЧИГ</strong> — Тайлант жилийн санхүүгийн бүртгэл, татварын болон НД тайлангууд.</div></div>
-          <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичиг</th><th>Хугацаа</th><th>Хэлбэр</th><th>Төлөв</th><th>Файл</th><th>Тайлбар</th></tr></thead><tbody id="work-body"></tbody></table></div>
+          <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичиг</th><th>Хугацаа</th><th>Хэлбэр</th><th>Төлөв</th><th>Файл</th><th>Аудиторын тайлбар</th></tr></thead><tbody id="work-body"></tbody></table></div>
         </div>
 
         <!-- PANEL: Sent files -->
@@ -844,7 +860,9 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbw3gCFNSRfGpJKTwuTlL6dO
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
-let docStatuses   = {};
+let docStatuses   = {};   // ✦ Зөвхөн АУДИТОР-ын тогтоосон төлөв (ok/miss/wait/rev)
+let docComments   = {};   // ✦ ШИНЭ: docId → аудиторын тайлбар
+const docFileMap  = {};   // ✦ ШИНЭ: docId → [{name,viewUrl,id}, ...]
 let sentFiles     = [];
 let chatMessages  = [];
 let adminAuthed   = false;
@@ -853,6 +871,7 @@ let currentClientReg  = null;
 let currentClientData = {};
 let auditorStatuses   = {};
 let auditorStages     = {};
+let auditorComments   = {};   // ✦ ШИНЭ: docId → шинэ тайлбар (хадгалах гэж буй)
 let chatPollTimer     = null;
 let formSaveTimer     = null;
 let formSavePending   = false;
@@ -963,8 +982,9 @@ async function doLogin() {
     document.getElementById('d-name').textContent = result.org_name;
     document.getElementById('d-reg').textContent  = 'Регистр: '+reg;
 
-    // ✦ FIX: statusMap-г зөвхөн login-ийн үр дүнгээс авна, loadClientFiles дарахгүй
+    // ✦ FIX: statusMap, commentMap-г login-аас авна
     if(result.statusMap) docStatuses = {...result.statusMap};
+    if(result.commentMap) docComments = {...result.commentMap};
     loadFromLS();
     initAutoSave();
     renderTables();
@@ -1009,13 +1029,14 @@ async function loadClientFilesOnly() {
   try {
     const r = await gasCall('getClientData',{reg_number:SESSION.reg,access_code:SESSION.code});
     if(r.ok) {
+      // Файлууд
       if(r.files) {
         sentFiles = r.files.map(f=>({
           name:f.file_name,size:f.file_size,ext:f.file_type,
           id:f.id,viewUrl:f.drive_view_url,docId:f.doc_id,fromServer:true,
         }));
         renderSentFiles();
-        // Drive файлуудыг doc chips-д харуулна
+        // Файл бүрийг docFileMap-д хуваарилна
         sentFiles.forEach(f => {
           if(f.docId && f.docId !== 'general') {
             if(!docFileMap[f.docId]) docFileMap[f.docId] = [];
@@ -1024,14 +1045,23 @@ async function loadClientFilesOnly() {
             }
           }
         });
-        // Chip-үүдийг шинэчлэнэ
-        [...PERM,...WORK].forEach(d => renderDocFileChips(d.id,null));
+        // Бүх мөрийн файлын жагсаалт + status badge-г шинэчлэнэ
+        [...PERM,...WORK].forEach(d => {
+          renderDocFileList(d.id);
+          refreshStatusBadge(d.id);
+        });
       }
-      // ✦ FIX: statusMap merge — server-ийн утгыг зөвхөн хоосон байвал ашиглана
+      // Аудиторын тогтоосон status (зөвхөн серверээс ирсэн)
       if(r.statusMap) {
-        Object.entries(r.statusMap).forEach(([k,v]) => { if(!docStatuses[k]) docStatuses[k]=v; });
-        renderTables(); updateProgress();
+        docStatuses = {...r.statusMap};
+        [...PERM,...WORK].forEach(d => refreshStatusBadge(d.id));
       }
+      // ✦ ШИНЭ: Аудиторын тайлбарууд
+      if(r.commentMap) {
+        docComments = {...r.commentMap};
+        [...PERM,...WORK].forEach(d => refreshAuditorNote(d.id));
+      }
+      updateProgress();
       if(r.stageMap) renderAuditTimeline(r.stageMap);
     }
   } catch(e){console.warn('loadClientFilesOnly:',e);}
@@ -1106,7 +1136,7 @@ function saveToLS() {
   const d={};
   LS_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el)d[id]=el.value;});
   localStorage.setItem('ina_draft',JSON.stringify(d));
-  localStorage.setItem('ina_statuses',JSON.stringify(docStatuses));
+  // ✦ docStatuses-г локалд хадгалахгүй — энэ нь зөвхөн серверээс ирнэ
   const sn=document.getElementById('s-note');
   if(sn) localStorage.setItem('ina_note',sn.value);
 }
@@ -1121,10 +1151,7 @@ function loadFromLS() {
     const d=JSON.parse(localStorage.getItem('ina_draft')||'{}');
     LS_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el&&d[id]!==undefined)el.value=d[id];});
   } catch(e){}
-  try {
-    const s=JSON.parse(localStorage.getItem('ina_statuses')||'{}');
-    if(Object.keys(docStatuses).length===0) docStatuses=s;
-  } catch(e){}
+  // ✦ docStatuses нь зөвхөн серверээс ирнэ
   const sn=document.getElementById('s-note');
   if(sn) sn.value=localStorage.getItem('ina_note')||'';
   const org=localStorage.getItem('ina_org')||'';
@@ -1143,28 +1170,49 @@ function switchTab(id) {
 }
 
 // ── RENDER TABLES ─────────────────────────────────────────────
-const docFileMap = {};
+// docFileMap, docComments дээр (let) тодорхойлогдсон
 
-function mkSel(docId) {
-  const sel=document.createElement('select');
-  sel.className='ssel'; sel.id='sel-'+docId;
-  S_OPTS.forEach(o=>{const opt=document.createElement('option');opt.value=o.v;opt.textContent=o.l;sel.appendChild(opt);});
-  sel.value=docStatuses[docId]||'';
-  applyRowCls(docId,sel.value);
-  sel.addEventListener('change',function(){
-    docStatuses[docId]=this.value;
-    applyRowCls(docId,this.value);
-    updateProgress(); saveToLS();
-    gasCall('saveStatuses',{reg_number:SESSION.reg,access_code:SESSION.code,statuses:{[docId]:this.value}}).catch(()=>{});
-  });
-  return sel;
+// ✦ ШИНЭ: Файлын тоо болон аудиторын баталгаагаар автомат төлөв тодорхойлно
+function getEffectiveStatus(docId) {
+  // Аудитор тодорхой төлөв оноосон бол түүнийг ашиглана
+  const auditorSet = docStatuses[docId];
+  if (auditorSet === 'ok' || auditorSet === 'miss' || auditorSet === 'wait') {
+    return auditorSet;
+  }
+  // Үгүй бол файлын тоо — байвал "Хянагдаж байна", байхгүй бол "Дутуу"
+  const fileCount = (docFileMap[docId] || []).length;
+  return fileCount > 0 ? 'rev' : 'miss';
+}
+
+const STATUS_LABELS = {
+  ok:   {l:'✓ Бүрдсэн',         cls:'b-ok'},
+  miss: {l:'✗ Дутуу',            cls:'b-miss'},
+  wait: {l:'⏳ Хүлээгдэж байна',  cls:'b-wait'},
+  rev:  {l:'👁 Хянагдаж байна',   cls:'b-rev'},
+};
+
+// ✦ ШИНЭ: Read-only status badge
+function mkStatusBadge(docId) {
+  const wrap = document.createElement('div');
+  wrap.id = 'badge-wrap-' + docId;
+  refreshStatusBadge(docId, wrap);
+  return wrap;
+}
+
+function refreshStatusBadge(docId, wrap) {
+  const w = wrap || document.getElementById('badge-wrap-' + docId);
+  if (!w) return;
+  const status = getEffectiveStatus(docId);
+  const info = STATUS_LABELS[status] || STATUS_LABELS.miss;
+  w.innerHTML = `<span class="badge ${info.cls}" style="white-space:nowrap;font-size:12px;padding:5px 12px">${info.l}</span>`;
+  applyRowCls(docId, status);
 }
 
 function mkUpload(docId, docName) {
   const wrap=document.createElement('div');
-  wrap.style.cssText='display:flex;flex-direction:column;gap:5px;min-width:160px';
+  wrap.style.cssText='display:flex;flex-direction:column;gap:6px;min-width:200px';
   const label=document.createElement('label');
-  label.style.cssText='display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--r);border:1.5px dashed var(--line);background:var(--g50);font-size:11.5px;color:var(--slate);font-weight:500;cursor:pointer;white-space:nowrap;transition:all .18s';
+  label.style.cssText='display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:var(--r);border:1.5px dashed var(--line);background:var(--g50);font-size:11.5px;color:var(--slate);font-weight:500;cursor:pointer;white-space:nowrap;transition:all .18s;align-self:flex-start';
   label.onmouseover=()=>label.style.borderColor='var(--g600)';
   label.onmouseout=()=>label.style.borderColor='var(--line)';
   label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Хавсаргах';
@@ -1177,39 +1225,77 @@ function mkUpload(docId, docName) {
     for(const file of Array.from(this.files)) await handleFileUpload(file,docId,docName);
     label.style.background='var(--ok-bg)';label.style.color='var(--ok)';label.style.borderColor='var(--ok)';
     label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалагдлаа';
-    setTimeout(()=>{label.style.background='var(--g50)';label.style.color='var(--slate)';label.style.borderColor='var(--line)';label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Нэмэх';},2000);
-    renderDocFileChips(docId,wrap);
-    const s=document.getElementById('sel-'+docId);
-    if(s&&!s.value){s.value='ok';s.dispatchEvent(new Event('change'));}
+    setTimeout(()=>{label.style.background='var(--g50)';label.style.color='var(--slate)';label.style.borderColor='var(--line)';label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Нэмэх файл';},2000);
+    renderDocFileList(docId);
+    refreshStatusBadge(docId);   // ✦ Status автоматаар шинэчлэгдэнэ
+    updateProgress();
   });
   label.appendChild(inp);
   wrap.appendChild(label);
-  const chips=document.createElement('div');
-  chips.className='doc-files-list'; chips.id='chips-'+docId;
-  wrap.appendChild(chips);
+  // ✦ Файлын дэлгэрэнгүй жагсаалт энд гарна
+  const list=document.createElement('div');
+  list.id='filelist-'+docId;
+  list.style.cssText='display:flex;flex-direction:column;gap:4px';
+  wrap.appendChild(list);
   return wrap;
 }
 
-function renderDocFileChips(docId,container) {
-  const chips=container?container.querySelector('#chips-'+docId):document.getElementById('chips-'+docId);
-  if(!chips)return;
-  chips.innerHTML='';
-  const files=docFileMap[docId]||[];
-  files.forEach((f,i)=>{
-    const chip=document.createElement('div');
-    chip.className='doc-file-chip'; chip.title=f.name;
-    chip.innerHTML=`${f.viewUrl?`<a href="${f.viewUrl}" target="_blank" style="color:var(--ok);font-size:10px;text-decoration:none;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.name}</a>`:`<span>${f.name}</span>`}<button onclick="removeDocFile('${docId}',${i})" title="Устгах">×</button>`;
-    chips.appendChild(chip);
+// ✦ ШИНЭ: Тухайн баримтын файлын дэлгэрэнгүй жагсаалт
+function renderDocFileList(docId) {
+  const el = document.getElementById('filelist-' + docId);
+  if (!el) return;
+  const files = docFileMap[docId] || [];
+  el.innerHTML = '';
+  if (!files.length) {
+    el.innerHTML = '<div style="font-size:11px;color:var(--muted);font-style:italic;padding:2px 0">Файл хавсаргаагүй</div>';
+    return;
+  }
+  files.forEach((f, i) => {
+    const ext = (f.name||'').split('.').pop().toUpperCase();
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:6px;padding:4px 8px;background:var(--ok-bg);border-radius:6px;border:1px solid #c0e3cd';
+    const fnameHtml = f.viewUrl
+      ? `<a href="${f.viewUrl}" target="_blank" style="font-size:11.5px;color:var(--ok);font-weight:500;text-decoration:none;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${f.name}">${f.name}</a>`
+      : `<span style="font-size:11.5px;color:var(--ok);font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${f.name}">${f.name}</span>`;
+    row.innerHTML = `
+      <span style="font-size:9px;font-weight:700;font-family:var(--fm);color:var(--ok);background:#fff;padding:1px 5px;border-radius:3px">${ext}</span>
+      ${fnameHtml}
+      <button onclick="removeDocFile('${docId}',${i})" title="Устгах" style="background:none;border:none;cursor:pointer;color:var(--ok);padding:0;font-size:14px;line-height:1;flex-shrink:0">×</button>
+    `;
+    el.appendChild(row);
   });
 }
 
+// ✦ ШИНЭ: Аудиторын тайлбар — read-only клиент талд
+function mkNote(docId){
+  const wrap = document.createElement('div');
+  wrap.id = 'note-wrap-inner-' + docId;
+  wrap.style.cssText = 'min-width:140px;max-width:220px';
+  refreshAuditorNote(docId, wrap);
+  return wrap;
+}
+
+function refreshAuditorNote(docId, wrap) {
+  const w = wrap || document.getElementById('note-wrap-inner-' + docId);
+  if (!w) return;
+  const comment = (docComments && docComments[docId]) || '';
+  if (!comment) {
+    w.innerHTML = '<div style="font-size:11px;color:var(--muted);font-style:italic">Тайлбар байхгүй</div>';
+    return;
+  }
+  w.innerHTML = `<div style="font-size:11.5px;color:var(--ink2);background:var(--wait-bg);border-left:2px solid var(--wait);padding:6px 9px;border-radius:4px;line-height:1.45"><div style="font-size:9.5px;font-weight:700;text-transform:uppercase;color:var(--wait);letter-spacing:.5px;margin-bottom:2px">Аудитор</div>${comment}</div>`;
+}
+
+// ✦ Файл устгахад status дахин тооцоологдоно
 function removeDocFile(docId,idx){
   if(!docFileMap[docId])return;
   docFileMap[docId].splice(idx,1);
-  renderDocFileChips(docId,null);
+  renderDocFileList(docId);
+  refreshStatusBadge(docId);
+  updateProgress();
 }
 
-function mkNote(docId){
+function _oldMkNote(docId){
   const inp=document.createElement('input');
   inp.type='text';inp.className='note-mini';inp.placeholder='Тайлбар...';
   const key='ina_n_'+docId;
@@ -1231,27 +1317,28 @@ function renderTables(){
     const tr=document.createElement('tr'); tr.id='row-'+d.id;
     tr.innerHTML=`<td class="doc-num">${i+1}</td><td class="doc-name">${d.n}</td><td class="doc-req">${d.r}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
     pb.appendChild(tr);
-    document.getElementById('sel-wrap-'+d.id).appendChild(mkSel(d.id));
+    document.getElementById('sel-wrap-'+d.id).appendChild(mkStatusBadge(d.id));
     document.getElementById('up-wrap-'+d.id).appendChild(mkUpload(d.id,d.n));
     document.getElementById('note-wrap-'+d.id).appendChild(mkNote(d.id));
-    applyRowCls(d.id,docStatuses[d.id]||'');
+    renderDocFileList(d.id);
   });
   const wb=document.getElementById('work-body'); wb.innerHTML='';
   WORK.forEach((d,i)=>{
     const tr=document.createElement('tr'); tr.id='row-'+d.id;
     tr.innerHTML=`<td class="doc-num">${i+11}</td><td class="doc-name">${d.n}</td><td>${d.p}</td><td class="doc-req">${d.f}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
     wb.appendChild(tr);
-    document.getElementById('sel-wrap-'+d.id).appendChild(mkSel(d.id));
+    document.getElementById('sel-wrap-'+d.id).appendChild(mkStatusBadge(d.id));
     document.getElementById('up-wrap-'+d.id).appendChild(mkUpload(d.id,d.n));
     document.getElementById('note-wrap-'+d.id).appendChild(mkNote(d.id));
-    applyRowCls(d.id,docStatuses[d.id]||'');
+    renderDocFileList(d.id);
   });
 }
 
 // ── PROGRESS ──────────────────────────────────────────────────
 function updateProgress(){
   const all=[...PERM,...WORK]; const tot=all.length; let done=0;
-  all.forEach(d=>{const v=docStatuses[d.id]||'';if(v==='ok'||v==='rev')done++;});
+  // ✦ Зөвхөн аудитор "ok" болгосон баримт л "Бүрдсэн" гэж тооцно
+  all.forEach(d=>{ if(getEffectiveStatus(d.id)==='ok') done++; });
   const pct=Math.round(done/tot*100);
   document.getElementById('p-tot').textContent=tot;
   document.getElementById('p-ok').textContent=done;
@@ -1339,7 +1426,9 @@ async function handleFileUpload(file,docId,docName){
   if(!docFileMap[docId])docFileMap[docId]=[];
   docFileMap[docId].push({name:file.name,viewUrl:fileObj.viewUrl,id:fileObj.id});
   renderSentFiles();
-  renderDocFileChips(docId,null);
+  renderDocFileList(docId);
+  refreshStatusBadge(docId);
+  updateProgress();
 }
 
 function fileToBase64(file){
@@ -1592,7 +1681,7 @@ function renderAdminClients(clients){
 }
 
 async function openClientDetail(reg){
-  currentClientReg=reg; auditorStatuses={}; auditorStages={};
+  currentClientReg=reg; auditorStatuses={}; auditorStages={}; auditorComments={};
   const client=adminClientsCache.find(c=>String(c.reg_number)===String(reg))||{};
   document.getElementById('cdm-org').textContent=client.org_name||reg;
   document.getElementById('cdm-reg').textContent='Регистр: '+reg;
@@ -1631,14 +1720,62 @@ function cdmTab(tab){
     html+='</div>'; body.innerHTML=html;
 
   } else if(tab==='docs'){
-    const allDocs=[...PERM,...WORK]; let html='<div style="display:flex;flex-direction:column;gap:7px">';
-    allDocs.forEach(d=>{
-      const hasFile=files.some(f=>String(f.doc_id)===String(d.id));
-      const srvStatus=(client.statusMap||{})[d.id]||auditorStatuses[d.id]||(hasFile?'ok':'');
-      const statusColor=srvStatus==='ok'?'var(--ok)':srvStatus==='miss'?'var(--miss)':srvStatus==='wait'?'var(--wait)':srvStatus==='rev'?'var(--rev)':'var(--muted)';
-      html+=`<div style="display:flex;gap:10px;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:8px;background:${srvStatus==='ok'?'#fafdf9':'#fff'}"><div style="font-family:var(--fm);font-size:10px;color:var(--muted);min-width:28px">${d.id}</div><div style="flex:1;font-size:13px;color:var(--ink2)">${d.n}</div>${hasFile?'<svg style="width:13px;height:13px;stroke:var(--ok);fill:none;stroke-width:2.5;flex-shrink:0" viewBox="0 0 14 14"><path d="M2 7.5l3.5 3.5 6.5-7"/></svg>':'<div style="width:13px;flex-shrink:0"></div>'}<select onchange="auditorStatuses['${d.id}']=this.value" style="padding:4px 8px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;font-weight:600;color:${statusColor};background:#fff;cursor:pointer;outline:none;min-width:140px;font-family:var(--fb)"><option value="" ${!srvStatus?'selected':''}>— Сонгоно уу —</option><option value="ok" ${srvStatus==='ok'?'selected':''}>✓ Бүрдсэн</option><option value="miss" ${srvStatus==='miss'?'selected':''}>✗ Дутуу</option><option value="wait" ${srvStatus==='wait'?'selected':''}>⏳ Хүлээгдэж байна</option><option value="rev" ${srvStatus==='rev'?'selected':''}>👁 Хянагдаж байна</option></select></div>`;
+    // ✦ ШИНЭ: Файлуудыг doc_id-аар бүлэглэе
+    const filesByDoc = {};
+    files.forEach(f => {
+      const k = f.doc_id || 'general';
+      if(!filesByDoc[k]) filesByDoc[k] = [];
+      filesByDoc[k].push(f);
     });
-    html+='</div>'; body.innerHTML=html;
+    const cmap = client.commentMap || {};
+    const smap = client.statusMap || {};
+    const allDocs = [...PERM,...WORK];
+
+    let html = `<div style="display:flex;flex-direction:column;gap:10px">
+      <div class="alert a-info" style="margin-bottom:6px;font-size:12.5px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div>Клиент файл хавсаргахад автоматаар <strong>"Хянагдаж байна"</strong> төлөвт орно. Та шалгаж <strong>"Бүрдсэн"</strong> эсвэл <strong>"Дутуу"</strong> гэж тэмдэглээд тайлбар бичнэ үү.</div></div>`;
+
+    allDocs.forEach(d => {
+      const docFiles = filesByDoc[d.id] || [];
+      const hasFile  = docFiles.length > 0;
+      const curStatus = auditorStatuses[d.id] ?? smap[d.id] ?? '';
+      const curComment = (auditorComments[d.id] !== undefined) ? auditorComments[d.id] : (cmap[d.id] || '');
+
+      // Эффектив төлөв (харагдах) — аудитор тогтоосон утга байгаа бол түүнийг, үгүй бол файл байгаа эсэхээр
+      const effStatus = curStatus || (hasFile ? 'rev' : 'miss');
+      const sLabel = {ok:'✓ Бүрдсэн', miss:'✗ Дутуу', wait:'⏳ Хүлээгдэж байна', rev:'👁 Хянагдаж байна'}[effStatus] || '— Тодорхойгүй —';
+      const sCls   = {ok:'b-ok', miss:'b-miss', wait:'b-wait', rev:'b-rev'}[effStatus] || '';
+      const bgColor = effStatus==='ok' ? '#fafdf9' : effStatus==='miss' ? '#fff5f4' : '#fff';
+
+      // Файлуудын HTML
+      const filesHtml = hasFile
+        ? `<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">${docFiles.map(f=>{
+            const ext = (f.file_name||'').split('.').pop().toUpperCase();
+            return `<a href="${f.drive_view_url}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:3px 9px;background:var(--ok-bg);color:var(--ok);border:1px solid #c0e3cd;border-radius:5px;font-size:11px;font-weight:500;text-decoration:none;max-width:200px"><span style="font-size:9px;font-weight:700;font-family:var(--fm);background:#fff;padding:1px 4px;border-radius:3px">${ext}</span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${f.file_name}">${f.file_name}</span></a>`;
+          }).join('')}</div>`
+        : '<div style="font-size:11.5px;color:var(--muted);font-style:italic;margin-top:4px">Файл хавсраагүй</div>';
+
+      html += `
+        <div style="border:1px solid var(--line);border-radius:10px;padding:13px 16px;background:${bgColor}">
+          <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:8px">
+            <div style="font-family:var(--fm);font-size:10px;color:var(--muted);min-width:32px;padding-top:2px">${d.id}</div>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:13px;color:var(--ink2);font-weight:500">${d.n}</div>
+              ${filesHtml}
+            </div>
+            <span class="badge ${sCls}" style="flex-shrink:0;font-size:11px;padding:4px 10px">${sLabel}</span>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:stretch">
+            <div style="display:flex;gap:4px">
+              <button onclick="adminSetStatus('${d.id}','ok',this)" class="adm-act-btn ${curStatus==='ok'?'on-ok':''}" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='ok'?'var(--ok)':'var(--line)'};background:${curStatus==='ok'?'var(--ok)':'#fff'};color:${curStatus==='ok'?'#fff':'var(--ok)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">✓ Бүрдсэн</button>
+              <button onclick="adminSetStatus('${d.id}','miss',this)" class="adm-act-btn ${curStatus==='miss'?'on-miss':''}" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='miss'?'var(--miss)':'var(--line)'};background:${curStatus==='miss'?'var(--miss)':'#fff'};color:${curStatus==='miss'?'#fff':'var(--miss)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">✗ Дутуу</button>
+              <button onclick="adminSetStatus('${d.id}','wait',this)" class="adm-act-btn ${curStatus==='wait'?'on-wait':''}" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='wait'?'var(--wait)':'var(--line)'};background:${curStatus==='wait'?'var(--wait)':'#fff'};color:${curStatus==='wait'?'#fff':'var(--wait)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">⏳ Хүлээгдэж байна</button>
+            </div>
+            <input type="text" id="adm-cmt-${d.id}" value="${curComment.replace(/"/g,'&quot;')}" placeholder="Тайлбар (клиент харна)..." oninput="auditorComments['${d.id}']=this.value" style="flex:1;min-width:180px;padding:5px 10px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;font-family:var(--fb);outline:none">
+          </div>
+        </div>`;
+    });
+    html += '</div>';
+    body.innerHTML = html;
 
   } else if(tab==='files'){
     if(!files.length){body.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Файл байхгүй байна.</div>';return;}
@@ -1694,19 +1831,29 @@ async function saveAuditorStatuses(){
   const btn=document.getElementById('cdm-save-btn');
   const hasStatus=Object.keys(auditorStatuses).length>0;
   const hasStages=Object.keys(auditorStages).length>0;
-  if(!hasStatus&&!hasStages){toast('Өөрчлөлт байхгүй');return;}
+  const hasComments=Object.keys(auditorComments).length>0;
+  if(!hasStatus&&!hasStages&&!hasComments){toast('Өөрчлөлт байхгүй');return;}
   btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Хадгалж байна...';
   try {
     const pw=document.getElementById('a-pw').value;
     const promises=[];
-    if(hasStatus)promises.push(gasCall('adminSaveStatuses',{password:pw,reg_number:currentClientReg,statuses:auditorStatuses}));
-    if(hasStages)promises.push(gasCall('adminSaveStages',{password:pw,reg_number:currentClientReg,stages:auditorStages}));
+    if(hasStatus)  promises.push(gasCall('adminSaveStatuses',{password:pw,reg_number:currentClientReg,statuses:auditorStatuses}));
+    if(hasStages)  promises.push(gasCall('adminSaveStages', {password:pw,reg_number:currentClientReg,stages:auditorStages}));
+    // ✦ ШИНЭ: тайлбаруудыг хадгалах
+    if(hasComments)promises.push(gasCall('adminSaveComments',{password:pw,reg_number:currentClientReg,comments:auditorComments}));
     const results=await Promise.all(promises);
     const err=results.find(r=>!r.ok);
     if(err){toast('Алдаа: '+err.error,true);}
-    else{toast('✓ Хадгалагдлаа');auditorStatuses={};auditorStages={};loadAdminData();}
+    else{toast('✓ Хадгалагдлаа');auditorStatuses={};auditorStages={};auditorComments={};loadAdminData();}
   } catch(e){toast('Алдаа: '+e.message,true);}
   btn.disabled=false; btn.innerHTML='<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
+}
+
+// ✦ ШИНЭ: Аудитор approve/reject товч дээр дарахад
+function adminSetStatus(docId, status, btn) {
+  auditorStatuses[docId] = status;
+  // UI шинэчилнэ — тухайн мөрийг дахин зурна
+  cdmTab('docs');
 }
 
 // ── TOAST ─────────────────────────────────────────────────────
