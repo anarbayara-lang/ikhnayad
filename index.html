@@ -461,6 +461,37 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   .cdm-body{padding:16px 18px}
   .cdm-foot{padding:12px 18px}
 }
+/* ✦ ШИНЭ: Multi-select chips field */
+.multi-select{position:relative;min-height:42px;padding:6px 32px 6px 9px;border:1.5px solid var(--line);border-radius:var(--r);background:#fff;cursor:text;transition:border-color .18s,box-shadow .18s;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.multi-select:focus-within{border-color:var(--g600);box-shadow:0 0 0 3px rgba(46,139,87,.12)}
+.ms-chips{display:contents}
+.ms-chip{display:inline-flex;align-items:center;gap:5px;padding:3px 4px 3px 9px;background:var(--g100);color:var(--g800);border-radius:100px;font-size:12px;font-weight:500;border:1px solid var(--g200);max-width:100%}
+.ms-chip-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px}
+.ms-chip-x{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;border:none;background:rgba(15,45,28,.1);color:var(--g800);cursor:pointer;font-size:11px;line-height:1;flex-shrink:0;transition:all .15s;padding:0}
+.ms-chip-x:hover{background:var(--miss);color:#fff}
+.ms-search{flex:1;min-width:80px;padding:4px 4px;border:none;outline:none;font-size:13px;font-family:var(--fb);background:transparent;color:var(--ink)}
+.ms-arrow{position:absolute;right:11px;top:50%;transform:translateY(-50%);pointer-events:none;transition:transform .2s}
+.multi-select.open .ms-arrow{transform:translateY(-50%) rotate(180deg)}
+.ms-dropdown{display:none;position:absolute;left:0;right:0;top:calc(100% + 4px);background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:0 8px 24px rgba(15,45,28,.12);max-height:240px;overflow-y:auto;z-index:50}
+.multi-select.open .ms-dropdown{display:block}
+.ms-option{padding:8px 13px;font-size:13px;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:8px;transition:background .12s}
+.ms-option:hover{background:var(--g50)}
+.ms-option.selected{color:var(--g800);font-weight:500}
+.ms-option.selected::before{content:'✓';color:var(--ok);font-weight:700;margin-right:2px}
+.ms-option.add-new{border-top:1px solid var(--line);color:var(--g700);font-weight:500;font-style:italic}
+.ms-option.add-new::before{content:'+ ';color:var(--g700)}
+
+/* ✦ ШИНЭ: Системийн нэвтрэх — accordion (нуусан) */
+.creds-accordion{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--white)}
+.creds-toggle{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;background:var(--g50);border:none;width:100%;text-align:left;font-family:var(--fb);font-size:13px;font-weight:600;color:var(--ink2);transition:background .15s}
+.creds-toggle:hover{background:var(--g100)}
+.creds-toggle svg.lock{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:2;flex-shrink:0}
+.creds-toggle svg.chevron{width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;margin-left:auto;transition:transform .2s}
+.creds-accordion.open .creds-toggle svg.chevron{transform:rotate(180deg)}
+.creds-toggle .creds-meta{font-size:11px;color:var(--muted);font-weight:400;margin-left:6px}
+.creds-body{display:none;padding:18px;border-top:1px solid var(--line);background:#fffdf6}
+.creds-accordion.open .creds-body{display:block}
+.creds-warn{font-size:11.5px;color:#7a4f00;background:var(--wait-bg);border-left:2px solid var(--wait);padding:7px 11px;border-radius:5px;margin-bottom:14px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -740,14 +771,14 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           </div>
           <div class="card card-sm" style="padding:16px 18px">
             <div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Хариуцсан аудитор</div>
-            <div style="font-size:14.5px;font-weight:600;color:var(--ink)">Х. Ариунзул</div>
-            <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Захирал · МНБ · ТМЗ</div>
+            <div id="cl-aud-name" style="font-size:14.5px;font-weight:600;color:var(--ink)">— Хариуцагчгүй —</div>
+            <div id="cl-aud-role" style="font-size:11.5px;color:var(--muted);margin-top:2px">Аудитор</div>
             <hr style="border:none;border-top:1px solid var(--line);margin:11px 0">
             <div style="font-size:12.5px;color:var(--slate);line-height:1.7">
-              <div style="display:flex;align-items:center;gap:6px"><svg style="width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0" viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg> ikhnayadaudit@gmail.com</div>
-              <div style="display:flex;align-items:center;gap:6px;margin-top:3px"><svg style="width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0" viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg> +976 9907-7062</div>
+              <div id="cl-aud-email-row" style="display:flex;align-items:center;gap:6px"><svg style="width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0" viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg> <span id="cl-aud-email">ikhnayadaudit@gmail.com</span></div>
+              <div id="cl-aud-phone-row" style="display:flex;align-items:center;gap:6px;margin-top:3px"><svg style="width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0" viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg> <span id="cl-aud-phone">+976 9907-7062</span></div>
             </div>
-            <a href="mailto:ikhnayadaudit@gmail.com" class="btn btn-s btn-sm" style="margin-top:12px;width:100%;justify-content:center;text-decoration:none">
+            <a id="cl-aud-mail-link" href="mailto:ikhnayadaudit@gmail.com" class="btn btn-s btn-sm" style="margin-top:12px;width:100%;justify-content:center;text-decoration:none">
               <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg>
               И-мэйл илгээх
             </a>
@@ -775,7 +806,15 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
               <div class="fg"><label>1. Байгуулагдсан огноо</label><input class="fc ci-field" type="date" id="ci1" data-ls="ci1"></div>
               <div class="fg"><label>2. Регистрийн дугаар <span class="req">*</span></label><input class="fc ci-field" type="text" id="ci2" data-ls="ci2" style="font-family:var(--fm)" placeholder="1234567"></div>
               <div class="fg full"><label>3. Байгууллагын нэр <span class="req">*</span></label><input class="fc ci-field" type="text" id="ci3" data-ls="ci3" placeholder="Бүтэн нэр"></div>
-              <div class="fg"><label>4. Үйл ажиллагааны чиглэл</label><input class="fc ci-field" type="text" id="ci4" data-ls="ci4" placeholder="Барилга, Худалдаа..."></div>
+              <div class="fg"><label>4. Үйл ажиллагааны чиглэл <span style="font-weight:400;color:var(--muted);font-size:11px">(нэгээс олон сонгож болно)</span></label>
+                <div id="ci4-wrap" class="multi-select" onclick="toggleActivityDropdown(event)" tabindex="0">
+                  <div id="ci4-chips" class="ms-chips"></div>
+                  <input type="text" id="ci4-search" class="ms-search" placeholder="Сонгох эсвэл бичиж нэмэх..." onkeydown="onActivityKeydown(event)" oninput="filterActivityOptions()">
+                  <svg class="ms-arrow" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4"/></svg>
+                  <div id="ci4-dropdown" class="ms-dropdown"></div>
+                </div>
+                <input type="hidden" class="ci-field" id="ci4" data-ls="ci4">
+              </div>
               <div class="fg"><label>5. Өмчийн хэлбэр</label><select class="fc ci-field" id="ci5" data-ls="ci5"><option value="">— Сонгоно уу —</option><option>Хувийн ХХК</option><option>Хувийн компани</option><option>Хамтарсан компани</option><option>Төрийн өмчит ААН</option><option>Орон нутгийн өмчит ААН</option><option>Хоршоо</option><option>ТББ</option><option>Гадаадын хөрөнгө оруулалттай</option></select></div>
               <div class="fg full"><label>6. Байгууллагын байршил, хаяг</label><input class="fc ci-field" type="text" id="ci6" data-ls="ci6" placeholder="Дүүрэг, хороо, дэлгэрэнгүй хаяг"></div>
               <div class="fg"><label>7. Харьяа дүүрэг</label><select class="fc ci-field" id="ci7" data-ls="ci7"><option value="">— Сонгоно уу —</option><option>Баянгол</option><option>Баянзүрх</option><option>Сүхбаатар</option><option>Чингэлтэй</option><option>Хан-Уул</option><option>Налайх</option><option>Багануур</option><option>Орон нутаг</option></select></div>
@@ -787,16 +826,25 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
               <div class="fg"><label>13. НБ-ийн утас</label><input class="fc ci-field" type="tel" id="ci13" data-ls="ci13" placeholder="+976"></div>
               <div class="fg full"><label>14. Харилцах и-мэйл</label><input class="fc ci-field" type="email" id="ci14" data-ls="ci14" placeholder="accountant@company.mn"></div>
             </div>
-            <div class="sensitive-box">
-              <div class="sensitive-hd"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>Системийн нэвтрэх мэдээлэл</span></div>
-              <div class="alert a-warn" style="margin-bottom:14px;font-size:12px"><svg viewBox="0 0 16 16"><path d="M8 1L1 14h14L8 1z"/><path d="M8 6v4M8 12v1"/></svg><div>Нууц үгийн талбарууд <strong>хадгалагдахгүй</strong>. Зөвхөн аудиторт шаардлагатай үед шуудаар дамжуулна уу.</div></div>
-              <div class="ci-grid">
-                <div class="fg"><label>15. Etax.mta.mn — Нэвтрэх нэр</label><input class="fc ci-field" type="text" id="ci15" data-ls="ci15" placeholder="Etax хэрэглэгчийн нэр" autocomplete="off"></div>
-                <div class="fg"><label>16. Etax — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci16" placeholder="••••••••" autocomplete="new-password"></div>
-                <div class="fg"><label>17. НДаатгал — Дүүрэг</label><select class="fc ci-field" id="ci17" data-ls="ci17"><option value="">— Сонгоно уу —</option><option>Баянгол</option><option>Баянзүрх</option><option>Сүхбаатар</option><option>Чингэлтэй</option><option>Хан-Уул</option></select></div>
-                <div class="fg"><label>18. Ажил олгогчийн дугаар</label><input class="fc ci-field" type="text" id="ci18" data-ls="ci18" placeholder="NDA дугаар" style="font-family:var(--fm)"></div>
-                <div class="fg"><label>19. НДаатгал — Нэвтрэх нэр</label><input class="fc ci-field" type="text" id="ci19" data-ls="ci19" placeholder="NDA хэрэглэгч" autocomplete="off"></div>
-                <div class="fg"><label>20. НДаатгал — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci20" placeholder="••••••••" autocomplete="new-password"></div>
+            <div class="creds-accordion" id="creds-accordion">
+              <button type="button" class="creds-toggle" onclick="toggleCredsAccordion()">
+                <svg class="lock" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="1"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>
+                <span>Системийн нэвтрэх мэдээлэл</span>
+                <span class="creds-meta">— Шаардлагатай үед бөглөнө (заавал биш)</span>
+                <svg class="chevron" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4"/></svg>
+              </button>
+              <div class="creds-body">
+                <div class="creds-warn">
+                  ⚠ Нууц үгийн талбарууд серверт <strong>хадгалагдахгүй</strong>. Зөвхөн аудиторт шууд дамжуулах зорилгоор бөглөнө үү.
+                </div>
+                <div class="ci-grid">
+                  <div class="fg"><label>15. Etax.mta.mn — Нэвтрэх нэр</label><input class="fc ci-field" type="text" id="ci15" data-ls="ci15" placeholder="Etax хэрэглэгчийн нэр" autocomplete="off"></div>
+                  <div class="fg"><label>16. Etax — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci16" placeholder="••••••••" autocomplete="new-password"></div>
+                  <div class="fg"><label>17. НДаатгал — Дүүрэг</label><select class="fc ci-field" id="ci17" data-ls="ci17"><option value="">— Сонгоно уу —</option><option>Баянгол</option><option>Баянзүрх</option><option>Сүхбаатар</option><option>Чингэлтэй</option><option>Хан-Уул</option></select></div>
+                  <div class="fg"><label>18. Ажил олгогчийн дугаар</label><input class="fc ci-field" type="text" id="ci18" data-ls="ci18" placeholder="NDA дугаар" style="font-family:var(--fm)"></div>
+                  <div class="fg"><label>19. НДаатгал — Нэвтрэх нэр</label><input class="fc ci-field" type="text" id="ci19" data-ls="ci19" placeholder="NDA хэрэглэгч" autocomplete="off"></div>
+                  <div class="fg"><label>20. НДаатгал — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci20" placeholder="••••••••" autocomplete="new-password"></div>
+                </div>
               </div>
             </div>
             <div id="form-msg" style="display:none;margin-top:12px"></div>
@@ -1002,7 +1050,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbysTr763VD_QPVrvzW_oPup3t6nTQcALwAOwn_sA-KwLHeQ6fTh4SV5DHYq_y3baZ2K/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxayJCP-M4ATFpFpFEzvvHmfWqFh_cIxnAQhm7jvwfrLhz5Mi6KEPHV4QDhRWzpeKhT/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -1147,6 +1195,8 @@ async function doLogin() {
     loadFromLS();
     // ✦ Серверээс ирсэн client_data-аар талбаруудыг гүйцэд дүүргэе (LS-ийг override хийнэ)
     populateFormFromServer(result.client_data || {}, reg);
+    // ✦ ШИНЭ: Хариуцсан аудиторын мэдээллийг шинэчлэх
+    updateAssignedAuditorCard(result.client_data || {});
 
     initAutoSave();
     renderTables();
@@ -1169,7 +1219,7 @@ function populateFormFromServer(cd, reg) {
   const map = {
     ci2:  reg || cd.reg_number || '',
     ci3:  cd.org_name        || '',
-    ci4:  cd.activity_type   || '',
+    // ci4 нь multi-select учир тусдаа тохируулна (доор)
     ci5:  cd.ownership_type  || '',
     ci6:  cd.address         || '',
     ci7:  cd.district        || '',
@@ -1189,6 +1239,8 @@ function populateFormFromServer(cd, reg) {
     const el = document.getElementById(id);
     if(el && val !== undefined && val !== null && val !== '') el.value = val;
   });
+  // ✦ Үйл ажиллагааны чиглэл (multi-select)
+  setActivitiesFromString(cd.activity_type || '');
   // Огноо талбар (created_at дээр үндэслэн)
   if(cd.created_at){
     const el = document.getElementById('ci1');
@@ -1209,18 +1261,75 @@ function resetLoginBtn() {
   btn.innerHTML='<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 7h7M9 5l3 2-3 2"/><path d="M5 4H3a1 1 0 00-1 1v4a1 1 0 001 1h2"/></svg> Нэвтрэх';
 }
 
-function doLogout() {
+// ✦ ШИНЭ: Бүртгэлийн заавал шаардлагатай талбарууд
+const REQUIRED_INFO_FIELDS = [
+  { id: 'ci3',  label: 'Байгууллагын нэр' },
+  { id: 'ci2',  label: 'Регистрийн дугаар' },
+  { id: 'ci10', label: 'Удирдлагын овог нэр' },
+  { id: 'ci11', label: 'Удирдлагын утас' },
+  { id: 'ci14', label: 'Харилцах и-мэйл' },
+];
+
+function getMissingRequiredFields() {
+  const missing = [];
+  REQUIRED_INFO_FIELDS.forEach(f => {
+    const el = document.getElementById(f.id);
+    if(!el || !String(el.value || '').trim()) missing.push(f.label);
+  });
+  return missing;
+}
+
+async function doLogout() {
+  // ✦ ШИНЭ: Заавал шаардлагатай мэдээлэл дутуу бол анхааруулна
+  if (SESSION.reg) {
+    const missing = getMissingRequiredFields();
+    if (missing.length > 0) {
+      const proceed = confirm(
+        '⚠️ Анхаар!\n\n' +
+        'Та үндсэн мэдээллээ дутуу бөглөсөн байна:\n\n' +
+        '• ' + missing.join('\n• ') + '\n\n' +
+        'Бөглөсөн мэдээлэл хадгалагдан үлдэх ба дараа нь үргэлжлүүлж бөглөж болно.\n\n' +
+        'Гарах уу?'
+      );
+      if (!proceed) {
+        // Хэрэглэгч "Цуцлах" сонгосон → Байгууллагын мэдээлэл tab руу шилжүүлнэ
+        switchTab('t-info');
+        // Эхний дутуу талбар руу focus хийнэ
+        for (const f of REQUIRED_INFO_FIELDS) {
+          const el = document.getElementById(f.id);
+          if(el && !String(el.value || '').trim()) {
+            el.focus();
+            el.style.borderColor = 'var(--miss)';
+            el.style.boxShadow = '0 0 0 3px rgba(192,57,43,.15)';
+            setTimeout(() => {
+              el.style.borderColor = '';
+              el.style.boxShadow = '';
+            }, 3000);
+            break;
+          }
+        }
+        return;
+      }
+    }
+    // Сүүлийн өөрчлөлтийг GAS-д хадгална
+    try {
+      saveToLS();
+      const data = buildFormData();
+      await gasCall('saveForm', data);
+    } catch(e) {
+      console.warn('logout-save error:', e);
+    }
+  }
+
   SESSION={reg:'',code:'',org:''};
   sentFiles=[]; chatMessages=[];
   docStatuses={}; docComments={};
   // docFileMap-г цэвэрлэнэ
   Object.keys(docFileMap).forEach(k => delete docFileMap[k]);
-  // localStorage цэвэрлэх — өөр клиент дараа нь нэвтэрж болзошгүй
-  localStorage.removeItem('ina_draft');
-  localStorage.removeItem('ina_note');
+  // localStorage-н session-specific зүйлсийг л устгана
+  // ✦ ina_draft нь үлдэнэ — дараа нэвтрэхэд буцаж харагдана!
+  // (Гэхдээ зөвхөн тухайн reg-ийн өгөгдөл л үлдэх ёстой)
   localStorage.removeItem('ina_chat_count');
-  localStorage.removeItem('ina_reg');
-  localStorage.removeItem('ina_org');
   // UI талбар цэвэрлэнэ
   document.querySelectorAll('.ci-field').forEach(el => { el.value = ''; });
   ['ci16','ci20','l-reg','l-code'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
@@ -1348,6 +1457,169 @@ function setInfoStatus(cls, txt) {
   el.textContent = txt;
 }
 
+// ✦ ШИНЭ: Үйл ажиллагааны чиглэлийн жагсаалт + multi-select state
+const ACTIVITY_OPTIONS = [
+  'Барилга',
+  'Худалдаа (бөөний)',
+  'Худалдаа (жижиглэн)',
+  'Үйлдвэрлэл',
+  'Уул уурхай',
+  'Хөдөө аж ахуй',
+  'Тээвэр, логистик',
+  'Зочид буудал, ресторан',
+  'Боловсрол',
+  'Эрүүл мэнд',
+  'Санхүү, банк',
+  'Даатгал',
+  'Үл хөдлөх хөрөнгө',
+  'Хууль, зөвлөх үйлчилгээ',
+  'Аудит, нягтлан бодох',
+  'Мэдээллийн технологи (IT)',
+  'Харилцаа холбоо',
+  'Эрчим хүч',
+  'Импорт-экспорт',
+  'Маркетинг, реклам',
+  'Бөөний агуулах',
+  'Үйлчилгээ (бусад)',
+  'Гар урлал',
+  'Хэвлэл мэдээлэл',
+  'Спорт, чөлөөт цаг',
+  'Гоо сайхан',
+  'Цэвэрлэгээ, хадгалалт',
+  'Мэдээгүй / Бусад',
+];
+
+let selectedActivities = [];
+
+function renderActivityChips() {
+  const wrap = document.getElementById('ci4-chips');
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  selectedActivities.forEach((act, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'ms-chip';
+    chip.innerHTML = `<span class="ms-chip-text">${act}</span><button type="button" class="ms-chip-x" onclick="removeActivity(${i});event.stopPropagation()">×</button>`;
+    wrap.appendChild(chip);
+  });
+  // hidden input-д comma-separated утгаар бичнэ
+  const hidden = document.getElementById('ci4');
+  if(hidden) {
+    hidden.value = selectedActivities.join(', ');
+    hidden.dispatchEvent(new Event('change'));
+  }
+}
+
+function setActivitiesFromString(str) {
+  if(!str || typeof str !== 'string') {
+    selectedActivities = [];
+  } else {
+    selectedActivities = str.split(',').map(s => s.trim()).filter(Boolean);
+  }
+  renderActivityChips();
+}
+
+function toggleActivityDropdown(e) {
+  const wrap = document.getElementById('ci4-wrap');
+  if(!wrap) return;
+  // Хэрэв chip-ийн x товч дээр дарсан бол тэлэлгүй orхино
+  if(e && e.target && e.target.classList && e.target.classList.contains('ms-chip-x')) return;
+  if(!wrap.classList.contains('open')) {
+    wrap.classList.add('open');
+    renderActivityOptions('');
+    setTimeout(() => document.getElementById('ci4-search')?.focus(), 50);
+  }
+}
+
+function closeActivityDropdown() {
+  document.getElementById('ci4-wrap')?.classList.remove('open');
+  const s = document.getElementById('ci4-search');
+  if(s) s.value = '';
+}
+
+function renderActivityOptions(filter) {
+  const dd = document.getElementById('ci4-dropdown');
+  if(!dd) return;
+  const q = (filter || '').toLowerCase().trim();
+  dd.innerHTML = '';
+  let shown = 0;
+  ACTIVITY_OPTIONS.forEach(opt => {
+    if(q && !opt.toLowerCase().includes(q)) return;
+    const isSelected = selectedActivities.includes(opt);
+    const div = document.createElement('div');
+    div.className = 'ms-option' + (isSelected ? ' selected' : '');
+    div.textContent = opt;
+    div.onclick = (e) => { e.stopPropagation(); toggleActivity(opt); };
+    dd.appendChild(div);
+    shown++;
+  });
+  // "Шинэ нэмэх" option (хэрэв текст бичсэн ба яг таарах option байхгүй бол)
+  if(q && !ACTIVITY_OPTIONS.some(o => o.toLowerCase() === q) && !selectedActivities.some(s => s.toLowerCase() === q)) {
+    const div = document.createElement('div');
+    div.className = 'ms-option add-new';
+    div.textContent = 'Шинэ нэмэх: "' + filter.trim() + '"';
+    div.onclick = (e) => { e.stopPropagation(); addCustomActivity(filter.trim()); };
+    dd.appendChild(div);
+    shown++;
+  }
+  if(shown === 0) {
+    dd.innerHTML = '<div style="padding:14px;text-align:center;color:var(--muted);font-size:12px">Олдсонгүй</div>';
+  }
+}
+
+function toggleActivity(opt) {
+  const idx = selectedActivities.indexOf(opt);
+  if(idx >= 0) selectedActivities.splice(idx, 1);
+  else selectedActivities.push(opt);
+  renderActivityChips();
+  renderActivityOptions(document.getElementById('ci4-search')?.value || '');
+}
+
+function removeActivity(idx) {
+  selectedActivities.splice(idx, 1);
+  renderActivityChips();
+}
+
+function addCustomActivity(text) {
+  if(!text) return;
+  if(!selectedActivities.includes(text)) selectedActivities.push(text);
+  renderActivityChips();
+  const s = document.getElementById('ci4-search');
+  if(s) s.value = '';
+  renderActivityOptions('');
+}
+
+function filterActivityOptions() {
+  const q = document.getElementById('ci4-search')?.value || '';
+  renderActivityOptions(q);
+}
+
+function onActivityKeydown(e) {
+  if(e.key === 'Enter') {
+    e.preventDefault();
+    const v = e.target.value.trim();
+    if(v) addCustomActivity(v);
+  } else if(e.key === 'Backspace' && !e.target.value && selectedActivities.length > 0) {
+    selectedActivities.pop();
+    renderActivityChips();
+  } else if(e.key === 'Escape') {
+    closeActivityDropdown();
+  }
+}
+
+// Гадна талд дарахад хаах
+document.addEventListener('click', (e) => {
+  const wrap = document.getElementById('ci4-wrap');
+  if(wrap && wrap.classList.contains('open') && !wrap.contains(e.target)) {
+    closeActivityDropdown();
+  }
+});
+
+// ✦ ШИНЭ: Системийн нэвтрэх accordion toggle
+function toggleCredsAccordion(){
+  const acc = document.getElementById('creds-accordion');
+  if(acc) acc.classList.toggle('open');
+}
+
 function buildFormData() {
   return {
     reg_number:       document.getElementById('ci2').value.trim()||SESSION.reg,
@@ -1430,7 +1702,57 @@ function loadFromLS() {
   const el2=document.getElementById('ci2'); if(el2&&!el2.value&&reg)el2.value=reg;
 }
 
-// ── TABS ──────────────────────────────────────────────────────
+// ✦ ШИНЭ: Хариуцсан аудиторын мэдээллийг dashboard карт дээр харуулна
+async function updateAssignedAuditorCard(clientData) {
+  const assignedEmail = String(clientData.auditor_email || '').trim();
+
+  const nameEl  = document.getElementById('cl-aud-name');
+  const roleEl  = document.getElementById('cl-aud-role');
+  const emailEl = document.getElementById('cl-aud-email');
+  const phoneEl = document.getElementById('cl-aud-phone');
+  const emailRow= document.getElementById('cl-aud-email-row');
+  const phoneRow= document.getElementById('cl-aud-phone-row');
+  const mailLnk = document.getElementById('cl-aud-mail-link');
+
+  // Хэрэв аудитор оноогдоогүй бол default Х. Ариунзул харуулна
+  if (!assignedEmail) {
+    if(nameEl)  nameEl.textContent  = 'Х. Ариунзул';
+    if(roleEl)  roleEl.textContent  = 'Захирал · МНБ · ТМЗ';
+    if(emailEl) emailEl.textContent = 'ikhnayadaudit@gmail.com';
+    if(phoneEl) phoneEl.textContent = '+976 9907-7062';
+    if(mailLnk) mailLnk.href = 'mailto:ikhnayadaudit@gmail.com';
+    if(emailRow) emailRow.style.display = 'flex';
+    if(phoneRow) phoneRow.style.display = 'flex';
+    return;
+  }
+
+  // Эхлээд default утгаар бөглөнө (loading үед)
+  if(nameEl)  nameEl.textContent = assignedEmail;
+  if(emailEl) emailEl.textContent = assignedEmail;
+  if(mailLnk) mailLnk.href = 'mailto:' + assignedEmail;
+
+  // Auditors sheet-ээс дэлгэрэнгүй мэдээллийг public endpoint-аар авах боломжгүй
+  // (admin password шаарддаг). Тиймээс одоохондоо email-ийг харуулаад,
+  // backend-д getMyAuditor public endpoint нэмэх хэрэгтэй болно.
+  // Одоогоор email-ээс нэрийг inferлоё (жишээ нь "bayar@example.com" → "Bayar")
+  try {
+    const r = await gasCall('getMyAuditor', {
+      reg_number: SESSION.reg,
+      access_code: SESSION.code,
+    });
+    if (r.ok && r.auditor) {
+      const a = r.auditor;
+      if(nameEl)  nameEl.textContent  = a.name || assignedEmail;
+      if(roleEl)  roleEl.textContent  = a.role || 'Аудитор';
+      if(emailEl) emailEl.textContent = a.email || assignedEmail;
+      if(phoneEl) phoneEl.textContent = a.phone || '';
+      if(mailLnk) mailLnk.href = 'mailto:' + (a.email || assignedEmail);
+      if(phoneRow) phoneRow.style.display = a.phone ? 'flex' : 'none';
+    }
+  } catch(e) {
+    console.warn('getMyAuditor:', e);
+  }
+}
 const TAB_ORDER=['t-info','t-perm','t-work'];
 function switchTab(id) {
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('act'));
