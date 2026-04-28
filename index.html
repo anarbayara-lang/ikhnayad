@@ -1002,7 +1002,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwXQa5QVmW-AlHIXe1P2MfBB-oj0JyhDz4_cDvteGYkJuywHfwm6bH_Fncd6W9PGitV/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzPc7ztDIZKLA6EDC1pmHrolc6yoglRAgEJt8vEPk0d69Dxja7XfA_4D3DsNEee27JW/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -1121,6 +1121,17 @@ async function doLogin() {
     const result = await gasCall('login',{reg_number:reg,access_code:code});
     if(!result.ok){showErr(err,result.error||'Нэвтрэх код буруу байна.');resetLoginBtn();return;}
     err.style.display='none';
+
+    // ✦ FIX: Өөр клиентэд нэвтрэх үед хуучин draft-г цэвэрлэнэ
+    const prevReg = localStorage.getItem('ina_reg');
+    if(prevReg && prevReg !== reg){
+      localStorage.removeItem('ina_draft');
+      localStorage.removeItem('ina_note');
+      localStorage.removeItem('ina_chat_count');
+      // UI талбаруудыг бас цэвэрлэнэ
+      document.querySelectorAll('.ci-field').forEach(el => { el.value = ''; });
+    }
+
     SESSION={reg,code,org:result.org_name};
     localStorage.setItem('ina_reg',reg);
     localStorage.setItem('ina_org',result.org_name);
@@ -1132,7 +1143,11 @@ async function doLogin() {
     // ✦ FIX: statusMap, commentMap-г login-аас авна
     if(result.statusMap) docStatuses = {...result.statusMap};
     if(result.commentMap) docComments = {...result.commentMap};
+
     loadFromLS();
+    // ✦ Серверээс ирсэн client_data-аар талбаруудыг гүйцэд дүүргэе (LS-ийг override хийнэ)
+    populateFormFromServer(result.client_data || {}, reg);
+
     initAutoSave();
     renderTables();
     updateProgress();
@@ -1149,6 +1164,45 @@ async function doLogin() {
   resetLoginBtn();
 }
 
+// ✦ ШИНЭ: Серверээс ирсэн client_data-г форм талбаруудад тарааж байрлуулна
+function populateFormFromServer(cd, reg) {
+  const map = {
+    ci2:  reg || cd.reg_number || '',
+    ci3:  cd.org_name        || '',
+    ci4:  cd.activity_type   || '',
+    ci5:  cd.ownership_type  || '',
+    ci6:  cd.address         || '',
+    ci7:  cd.district        || '',
+    ci8:  cd.branch_count    || '',
+    ci9:  cd.employee_count  || '',
+    ci10: cd.director_name   || '',
+    ci11: cd.contact_phone   || '',
+    ci12: cd.accountant_name || '',
+    ci13: cd.accountant_phone|| '',
+    ci14: cd.contact_email   || '',
+    ci15: cd.etax_username   || '',
+    ci17: cd.district        || '',
+    ci18: cd.nda_employer_id || '',
+    ci19: cd.nda_username    || '',
+  };
+  Object.entries(map).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if(el && val !== undefined && val !== null && val !== '') el.value = val;
+  });
+  // Огноо талбар (created_at дээр үндэслэн)
+  if(cd.created_at){
+    const el = document.getElementById('ci1');
+    if(el && !el.value){
+      try {
+        const d = new Date(cd.created_at);
+        if(!isNaN(d.getTime())) el.value = d.toISOString().split('T')[0];
+      } catch(_) {}
+    }
+  }
+  // localStorage-д шинэчилнэ
+  saveToLS();
+}
+
 function resetLoginBtn() {
   const btn=document.getElementById('l-btn');
   btn.disabled=false;
@@ -1158,9 +1212,20 @@ function resetLoginBtn() {
 function doLogout() {
   SESSION={reg:'',code:'',org:''};
   sentFiles=[]; chatMessages=[];
+  docStatuses={}; docComments={};
+  // docFileMap-г цэвэрлэнэ
+  Object.keys(docFileMap).forEach(k => delete docFileMap[k]);
+  // localStorage цэвэрлэх — өөр клиент дараа нь нэвтэрж болзошгүй
+  localStorage.removeItem('ina_draft');
+  localStorage.removeItem('ina_note');
+  localStorage.removeItem('ina_chat_count');
+  localStorage.removeItem('ina_reg');
+  localStorage.removeItem('ina_org');
+  // UI талбар цэвэрлэнэ
+  document.querySelectorAll('.ci-field').forEach(el => { el.value = ''; });
+  ['ci16','ci20','l-reg','l-code'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   document.getElementById('portal-login').style.display    = 'flex';
   document.getElementById('portal-dashboard').style.display = 'none';
-  ['ci16','ci20'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
 }
 
 function showErr(el,msg){el.style.display='flex';el.querySelector('span').textContent=msg;}
