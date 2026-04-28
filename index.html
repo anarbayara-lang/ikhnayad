@@ -209,6 +209,24 @@ textarea.fc{resize:vertical;min-height:80px}
 /* AUTO-SAVE INDICATOR — топ баруун */
 .save-indicator{font-size:11.5px;color:var(--ok);display:none;align-items:center;gap:4px}
 .save-indicator.show{display:flex}
+
+/* ✦ ШИНЭ: Дашбоардын статус мөр + horizontal stepper */
+.dash-status-row{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:22px}
+@media(max-width:900px){.dash-status-row{grid-template-columns:1fr}}
+.h-stepper{display:flex;align-items:flex-start;gap:0;margin:14px 0 6px;width:100%}
+.h-stepper .step{display:flex;flex-direction:column;align-items:center;flex:0 0 auto;position:relative;z-index:1}
+.h-stepper .step-dot{width:30px;height:30px;border-radius:50%;border:2px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--muted);transition:all .3s;flex-shrink:0}
+.h-stepper .step-dot.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.h-stepper .step-dot.active{background:var(--gold);border-color:var(--gold);color:#fff;box-shadow:0 0 0 4px rgba(184,148,58,.2)}
+.h-stepper .step-label{font-size:10.5px;color:var(--muted);margin-top:7px;font-weight:500;text-align:center;max-width:88px;line-height:1.35;min-height:28px}
+.h-stepper .step.active .step-label{color:var(--g800);font-weight:600}
+.h-stepper .step.done .step-label{color:var(--ok)}
+.h-stepper .step-line{flex:1;height:2px;background:var(--line);margin-top:14px;transition:background .3s;min-width:24px}
+.h-stepper .step-line.done{background:var(--ok)}
+@media(max-width:600px){
+  .h-stepper .step-label{font-size:9.5px;max-width:60px}
+  .h-stepper .step-dot{width:26px;height:26px;font-size:11px}
+}
 /* FIELD SAVING pulse */
 @keyframes fieldSaved{0%{border-color:var(--ok);box-shadow:0 0 0 3px rgba(26,122,60,.2)}100%{border-color:var(--line);box-shadow:none}}
 .field-saving{animation:fieldSaved 1.2s ease forwards}
@@ -251,6 +269,7 @@ textarea.fc{resize:vertical;min-height:80px}
 .cd strong{font-size:12.5px;font-weight:600;color:var(--ink);display:block;margin-bottom:2px}
 .cd span{font-size:13.5px;color:var(--slate)}
 @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
 .spinner{display:inline-block;width:13px;height:13px;border:2px solid rgba(255,255,255,.3);border-top-color:var(--accent-glow);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle}
 .spinner-dark{border-color:rgba(26,92,53,.2);border-top-color:var(--g700)}
 #toast{display:none;position:fixed;bottom:24px;right:24px;z-index:1000;background:linear-gradient(135deg,var(--g900),var(--g800));color:#fff;padding:12px 22px 12px 16px;border-radius:10px;font-size:13.5px;box-shadow:0 12px 48px rgba(15,45,28,.3);max-width:320px;border-left:3px solid var(--accent-glow)}
@@ -530,12 +549,17 @@ textarea.fc{resize:vertical;min-height:80px}
             </div>
           </div>
           <div class="topbar-acts">
-            <!-- ✦ ШИНЭ: auto-save indicator -->
+            <!-- ✦ Auto-save indicator -->
             <span id="save-indicator" class="save-indicator">
               <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
               Хадгалагдлаа
             </span>
             <span style="font-size:12px;color:var(--muted)">Аудитын жил: <strong style="color:var(--ink)">2024</strong></span>
+            <!-- ✦ ШИНЭ: Гар аргаар хадгалах товч -->
+            <button class="btn btn-p btn-sm" onclick="manualSaveAll()" id="manual-save-btn">
+              <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M11 1H3a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4l-3-3z"/><path d="M9 1v3h3M4 8h6M4 11h4"/></svg>
+              Хадгалах
+            </button>
             <button class="btn btn-g btn-sm" onclick="doLogout()">Гарах</button>
           </div>
         </div>
@@ -561,16 +585,43 @@ textarea.fc{resize:vertical;min-height:80px}
           <div class="prog-track"><div class="prog-fill" id="p-bar" style="width:0%"></div></div>
         </div>
 
+        <!-- ✦ ШИНЭ: Аудитын явц + аудиторын карт дашбоард дээр -->
+        <div class="dash-status-row">
+          <div class="card" style="padding:18px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+              <div style="min-width:0">
+                <div style="font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:600">Аудитын явц</div>
+                <div id="stage-current-title" style="font-family:var(--fd);font-size:17px;color:var(--ink);margin-top:4px;font-weight:600">Хүлээгдэж байна</div>
+              </div>
+              <div style="text-align:right">
+                <div id="stage-pct-badge" style="font-family:var(--fd);font-size:24px;font-weight:700;color:var(--g700);line-height:1">0%</div>
+                <div style="font-size:10.5px;color:var(--muted);margin-top:2px" id="stage-count-label">0 / 5 үе шат</div>
+              </div>
+            </div>
+            <div class="h-stepper" id="h-stepper"></div>
+            <div id="stage-current-desc" style="font-size:12.5px;color:var(--slate);margin-top:8px;line-height:1.55"></div>
+            <div id="stage-current-note" style="display:none;font-size:12px;color:var(--g700);margin-top:8px;padding:8px 11px;background:var(--g50);border-radius:6px;border-left:2px solid var(--g500);font-style:italic"></div>
+          </div>
+          <div class="card card-sm" style="padding:16px 18px">
+            <div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Хариуцсан аудитор</div>
+            <div style="font-size:14.5px;font-weight:600;color:var(--ink)">Х. Ариунзул</div>
+            <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Захирал · МНБ · ТМЗ</div>
+            <hr style="border:none;border-top:1px solid var(--line);margin:11px 0">
+            <div style="font-size:12.5px;color:var(--slate);line-height:1.7">
+              <div style="display:flex;align-items:center;gap:6px"><svg style="width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0" viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg> ikhnayadaudit@gmail.com</div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:3px"><svg style="width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0" viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg> +976 9907-7062</div>
+            </div>
+            <a href="mailto:ikhnayadaudit@gmail.com" class="btn btn-s btn-sm" style="margin-top:12px;width:100%;justify-content:center;text-decoration:none">
+              <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg>
+              И-мэйл илгээх
+            </a>
+          </div>
+        </div>
+
         <div class="tabs">
           <button class="tab act" onclick="switchTab('t-info')">Байгууллагын мэдээлэл</button>
           <button class="tab" onclick="switchTab('t-perm')">Байнгын баримт бичиг</button>
           <button class="tab" onclick="switchTab('t-work')">Ажлын баримт бичиг</button>
-          <button class="tab" onclick="switchTab('t-files')">Илгээсэн файлууд</button>
-          <button class="tab" onclick="switchTab('t-status')">Явцын төлөв</button>
-          <button class="tab" onclick="switchTab('t-chat')" id="tab-chat-btn">
-            Зурвас
-            <span class="unread-badge" id="unread-cnt" style="display:none">!</span>
-          </button>
         </div>
 
         <!-- PANEL: Company Info — ✦ ШИНЭ: автоматаар GAS-д хадгалагдана -->
@@ -613,6 +664,13 @@ textarea.fc{resize:vertical;min-height:80px}
               </div>
             </div>
             <div id="form-msg" style="display:none;margin-top:12px"></div>
+            <!-- ✦ ШИНЭ: Гар аргаар хадгалах товч -->
+            <div style="margin-top:18px;display:flex;justify-content:flex-end;gap:10px">
+              <button class="btn btn-p" id="manual-save-btn" onclick="manualSaveForm()" style="min-width:160px;justify-content:center">
+                <svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M11 1H3a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4l-3-3z"/><path d="M9 1v3h3M4 8h6M4 11h4"/></svg>
+                Хадгалах
+              </button>
+            </div>
           </div>
         </div>
 
@@ -626,95 +684,6 @@ textarea.fc{resize:vertical;min-height:80px}
         <div class="panel" id="t-work">
           <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>ХОЁР. АЖЛЫН БАРИМТ БИЧИГ</strong> — Тайлант жилийн санхүүгийн бүртгэл, татварын болон НД тайлангууд.</div></div>
           <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичиг</th><th>Хугацаа</th><th>Хэлбэр</th><th>Төлөв</th><th>Файл</th><th>Аудиторын тайлбар</th></tr></thead><tbody id="work-body"></tbody></table></div>
-        </div>
-
-        <!-- PANEL: Sent files -->
-        <div class="panel" id="t-files">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:10px">
-            <div>
-              <h3 style="font-size:15px;font-weight:600;color:var(--ink)">Илгээсэн файлууд</h3>
-              <p style="font-size:13px;color:var(--muted);margin-top:3px">Drive-д хадгалагдсан файлуудын жагсаалт</p>
-            </div>
-            <label style="display:inline-flex;align-items:center;gap:5px;padding:8px 15px;border-radius:var(--r);border:1.5px solid var(--g200);background:var(--g100);color:var(--g800);font-size:12px;font-weight:600;cursor:pointer">
-              <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
-              Файл нэмэх
-              <input type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" style="display:none" onchange="uploadGeneralFiles(this.files)">
-            </label>
-          </div>
-          <div class="sf-list" id="sf-list">
-            <div class="drop-zone" id="main-drop-zone" onclick="document.getElementById('gen-file-input').click()">
-              <div style="margin-bottom:12px"><svg style="width:36px;height:36px;stroke:var(--g600);fill:none;stroke-width:1.4;opacity:.7" viewBox="0 0 48 48"><path d="M24 8v24M16 16l8-8 8 8"/><rect x="8" y="32" width="32" height="10" rx="3" stroke-dasharray="4 2"/></svg></div>
-              <div style="font-size:14px;font-weight:600;color:var(--g800);margin-bottom:4px">Файл чирж оруулах эсвэл дарж сонгоно уу</div>
-              <div style="font-size:12.5px;color:var(--muted)">PDF · DOCX · XLSX · Хэд хэдэн файл нэгэн зэрэг</div>
-              <input id="gen-file-input" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx" style="display:none" onchange="uploadGeneralFiles(this.files)">
-            </div>
-          </div>
-        </div>
-
-        <!-- PANEL: Status / Audit timeline — ✦ ШИНЭ: явцын хувь нэмэгдсэн -->
-        <div class="panel" id="t-status">
-          <div class="status-grid">
-            <div class="card">
-              <h3 style="font-size:15px;font-weight:600;margin-bottom:14px;color:var(--ink)">Аудитын явц</h3>
-              <!-- ✦ ШИНЭ: Timeline progress bar -->
-              <div class="tl-progress-wrap" id="tl-progress-wrap" style="display:none">
-                <div class="tl-progress-label">
-                  <span class="tl-progress-title">Аудитын үе шатын явц</span>
-                  <span class="tl-progress-pct" id="tl-progress-pct">0%</span>
-                </div>
-                <div class="prog-track"><div class="prog-fill" id="tl-progress-bar" style="width:0%"></div></div>
-                <div style="font-size:11.5px;color:var(--muted);margin-top:6px" id="tl-progress-label">0 / 5 үе шат</div>
-              </div>
-              <div class="stl" id="audit-timeline">
-                <div style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Уншиж байна...</div>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:14px">
-              <div class="card card-sm">
-                <div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Аудитор</div>
-                <div style="font-size:14px;font-weight:600;color:var(--ink)">Х. Ариунзул</div>
-                <div style="font-size:12.5px;color:var(--muted);margin-top:2px">Захирал · Аудитор · МНБ · ТМЗ</div>
-                <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
-                <div style="font-size:13px;color:var(--slate)">ikhnayadaudit@gmail.com</div>
-                <div style="font-size:13px;color:var(--slate)">+976 9907-7062</div>
-                <button onclick="switchTab('t-chat')" class="btn btn-s btn-sm" style="margin-top:12px;width:100%;justify-content:center">
-                  <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 2h10a1 1 0 011 1v6a1 1 0 01-1 1H8l-3 2v-2H2a1 1 0 01-1-1V3a1 1 0 011-1z"/></svg>
-                  Зурвас илгээх
-                </button>
-              </div>
-              <div class="card card-sm">
-                <div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Аудиторт тэмдэглэл</div>
-                <textarea class="fc" id="s-note" placeholder="Аудиторт дамжуулах тэмдэглэл..." style="min-height:90px" oninput="localStorage.setItem('ina_note',this.value)"></textarea>
-                <div style="font-size:11.5px;color:var(--muted);margin-top:6px">✓ Автоматаар хадгалагдана</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PANEL: Chat — ✦ ШИНЭ: 30с тутамд auto-poll, мэндчилгээний зурвас -->
-        <div class="panel" id="t-chat">
-          <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
-            <div>
-              <h3 style="font-size:15px;font-weight:600;color:var(--ink)">Аудитортой харилцах зурвас</h3>
-              <p style="font-size:13px;color:var(--muted);margin-top:3px" id="chat-poll-status">Асуулт, тайлбар, хүсэлтийг энд бичнэ үү</p>
-            </div>
-            <button onclick="loadChatMessages(true)" class="btn btn-g btn-sm">
-              <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M12 7A5 5 0 112 7"/><path d="M12 4v3h-3"/></svg>
-              Шинэчлэх
-            </button>
-          </div>
-          <div class="chat-wrap">
-            <div class="chat-messages" id="chat-messages">
-              <div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Зурвас ачааллаж байна...</div>
-            </div>
-            <div class="chat-input-row">
-              <textarea id="chat-input" placeholder="Зурвас бичнэ үү... (Ctrl+Enter — илгээх)" rows="2"></textarea>
-              <button class="btn btn-p btn-sm" onclick="sendChatMessage()" id="chat-send-btn" style="align-self:flex-end;flex-shrink:0">
-                <svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M1 1l12 6-12 6V8l8-2-8-2V1z"/></svg>
-                Илгээх
-              </button>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -829,7 +798,7 @@ textarea.fc{resize:vertical;min-height:80px}
           </div>
           <div style="display:flex;gap:8px;align-items:center">
             <div id="cdm-pct-badge" style="font-family:var(--fd);font-size:22px;color:var(--g500);font-weight:700"></div>
-            <button onclick="document.getElementById('client-detail-modal').style.display='none'" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center">✕</button>
+            <button onclick="cdmStopChatPoll();document.getElementById('client-detail-modal').style.display='none'" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center">✕</button>
           </div>
         </div>
         <div style="height:4px;background:rgba(255,255,255,.1)"><div id="cdm-prog" style="height:100%;background:linear-gradient(90deg,var(--g700),var(--g500));transition:width .5s"></div></div>
@@ -842,7 +811,7 @@ textarea.fc{resize:vertical;min-height:80px}
         </div>
         <div id="cdm-body" style="padding:24px 28px;max-height:65vh;overflow-y:auto"></div>
         <div style="padding:16px 28px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">
-          <button onclick="document.getElementById('client-detail-modal').style.display='none'" class="btn btn-g btn-sm">Хаах</button>
+          <button onclick="cdmStopChatPoll();document.getElementById('client-detail-modal').style.display='none'" class="btn btn-g btn-sm">Хаах</button>
           <button onclick="saveAuditorStatuses()" class="btn btn-p btn-sm" id="cdm-save-btn">
             <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
             Хадгалах
@@ -873,6 +842,7 @@ let auditorStatuses   = {};
 let auditorStages     = {};
 let auditorComments   = {};   // ✦ ШИНЭ: docId → шинэ тайлбар (хадгалах гэж буй)
 let chatPollTimer     = null;
+let cdmChatPollTimer  = null;   // ✦ ШИНЭ: admin client-detail chat poll
 let formSaveTimer     = null;
 let formSavePending   = false;
 
@@ -907,25 +877,14 @@ async function gasCall(action, body={}) {
 
 // ── CONTACT ───────────────────────────────────────────────────
 function contactSubmit(btn) {
-  const org = document.getElementById('cnt-org')?.value || '';
-  const name = document.getElementById('cnt-name')?.value || '';
-  const email = document.getElementById('cnt-email')?.value || '';
-  const phone = document.getElementById('cnt-phone')?.value || '';
-  const msg = document.getElementById('cnt-msg')?.value || '';
-
-  // 👉 ШИНЭ (backend руу явуулна)
-  fetch("https://script.google.com/macros/s/AKfycbztW4YK0N290AQknxgsljG0KjAkhtC3H6iFIYpeNAmFPu0FuFgYo0xC9ulffb-Jw_Wy/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      action: "contact",
-      org, name, email, phone, msg
-    })
-  });
-
-  btn.disabled = true;
-  btn.textContent = 'Илгээгдэв ✓';
-  document.getElementById('contact-ok').style.display = 'flex';
+  const org=document.getElementById('cnt-org')?.value||'';
+  const name=document.getElementById('cnt-name')?.value||'';
+  const email=document.getElementById('cnt-email')?.value||'';
+  const phone=document.getElementById('cnt-phone')?.value||'';
+  const msg=document.getElementById('cnt-msg')?.value||'';
+  window.open('mailto:ikhnayadaudit@gmail.com?subject='+encodeURIComponent('Их Наяд Аудит — Хүсэлт: '+org)+'&body='+encodeURIComponent('Байгууллага: '+org+'\nХолбоо барих: '+name+'\nУтас: '+phone+'\nИ-мэйл: '+email+'\n\n'+msg),'_blank');
+  btn.disabled=true; btn.textContent='Илгэгдлээ ✓';
+  document.getElementById('contact-ok').style.display='flex';
 }
 
 // ── DOC DATA ──────────────────────────────────────────────────
@@ -1002,16 +961,11 @@ async function doLogin() {
     updateProgress();
     renderAuditTimeline(result.stageMap||{});
 
-    // ✦ ШИНЭ: мэндчилгээний зурвас оруулж chat-г ачаална
-    await loadChatMessages(false);
-    // Server-ийн файлуудыг ачаалах — statusMap-г дарахгүй
+    // ✦ ШИНЭ: Server-ийн файлуудыг ачаалах — statusMap-г дарахгүй
     loadClientFilesOnly();
 
     document.getElementById('portal-login').style.display    = 'none';
     document.getElementById('portal-dashboard').style.display = 'block';
-
-    // ✦ ШИНЭ: 30 секунд тутамд chat poll
-    startChatPoll();
   } catch(e) {
     showErr(err,'Холболтын алдаа: '+e.message);
   }
@@ -1025,7 +979,6 @@ function resetLoginBtn() {
 }
 
 function doLogout() {
-  stopChatPoll();
   SESSION={reg:'',code:'',org:''};
   sentFiles=[]; chatMessages=[];
   document.getElementById('portal-login').style.display    = 'flex';
@@ -1112,6 +1065,40 @@ async function autoSaveToGAS() {
   }
 }
 
+// ✦ ШИНЭ: Гар аргаар хадгалах товчны функц
+async function manualSaveForm() {
+  const btn = document.getElementById('manual-save-btn');
+  if(!btn) return;
+  btn.disabled = true;
+  const oldHtml = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Хадгалж байна...';
+  setInfoStatus('saving','⏳ Хадгалж байна...');
+  try {
+    if(!SESSION.reg){
+      setInfoStatus('error','⚠ Эхлээд нэвтэрнэ үү');
+      toast('Эхлээд нэвтэрнэ үү', true);
+      return;
+    }
+    saveToLS();
+    const data = buildFormData();
+    const r = await gasCall('saveForm', data);
+    if(r.ok){
+      setInfoStatus('saved','✓ Хадгалагдлаа');
+      showSaveIndicator();
+      toast('✓ Мэдээлэл амжилттай хадгалагдлаа');
+      setTimeout(()=>setInfoStatus('',''), 3000);
+    } else {
+      setInfoStatus('error','⚠ Алдаа: '+(r.error||''));
+      toast('Хадгалах алдаа: '+(r.error||''), true);
+    }
+  } catch(e){
+    setInfoStatus('error','⚠ Холболтын алдаа');
+    toast('Холболтын алдаа: '+e.message, true);
+  }
+  btn.disabled = false;
+  btn.innerHTML = oldHtml;
+}
+
 function setInfoStatus(cls, txt) {
   const el = document.getElementById('info-save-status');
   if(!el) return;
@@ -1152,6 +1139,36 @@ function saveToLS() {
   if(sn) localStorage.setItem('ina_note',sn.value);
 }
 
+// ✦ ШИНЭ: Гар аргаар бүх мэдээллийг GAS руу хадгална
+async function manualSaveAll() {
+  const btn = document.getElementById('manual-save-btn');
+  if(!btn) return;
+  if(!SESSION.reg){ toast('Эхлээд нэвтэрнэ үү', true); return; }
+
+  btn.disabled = true;
+  const oldHtml = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Хадгалж байна...';
+  saveToLS();
+  try {
+    const data = buildFormData();
+    const r = await gasCall('saveForm', data);
+    if(r.ok){
+      toast('✓ Бүх мэдээлэл хадгалагдлаа');
+      setInfoStatus('saved','✓ Хадгалагдлаа');
+      showSaveIndicator();
+      setTimeout(()=>setInfoStatus('',''), 3000);
+    } else {
+      toast('Алдаа: '+(r.error||'Тодорхойгүй'), true);
+      setInfoStatus('error','⚠ Алдаа гарлаа');
+    }
+  } catch(e){
+    toast('Холболтын алдаа: '+e.message, true);
+    setInfoStatus('error','⚠ Холболтын алдаа');
+  }
+  btn.disabled = false;
+  btn.innerHTML = oldHtml;
+}
+
 function showSaveIndicator() {
   const ind=document.getElementById('save-indicator');
   if(ind){ind.classList.add('show');setTimeout(()=>ind.classList.remove('show'),2500);}
@@ -1172,12 +1189,11 @@ function loadFromLS() {
 }
 
 // ── TABS ──────────────────────────────────────────────────────
-const TAB_ORDER=['t-info','t-perm','t-work','t-files','t-status','t-chat'];
+const TAB_ORDER=['t-info','t-perm','t-work'];
 function switchTab(id) {
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('act'));
   document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('act',TAB_ORDER[i]===id));
   document.getElementById(id)?.classList.add('act');
-  if(id==='t-chat') loadChatMessages(true);
 }
 
 // ── RENDER TABLES ─────────────────────────────────────────────
@@ -1376,45 +1392,86 @@ const AUDIT_STAGES_DEF = [
 ];
 
 function renderAuditTimeline(stageMap){
-  const el=document.getElementById('audit-timeline'); if(!el)return;
+  stageMap = stageMap || {};
+  const stepper = document.getElementById('h-stepper');
+  if(!stepper) return;
 
-  // ✦ ШИНЭ: явцын хувь тооцоолно
-  let doneStages=0;
-  AUDIT_STAGES_DEF.forEach(s=>{
-    const st=(stageMap[s.id]||{}).status||'';
-    if(st==='done'||st==='active') doneStages++;
+  // ✦ Явцын тооцоолол
+  let doneStages = 0;
+  let activeStage = null;
+
+  AUDIT_STAGES_DEF.forEach((s) => {
+    const st = (stageMap[s.id] || {}).status || '';
+    if(st === 'done') doneStages++;
+    if(st === 'active' && !activeStage) {
+      activeStage = { ...s, ...stageMap[s.id] };
+    }
   });
-  const tlPct=Math.round(doneStages/AUDIT_STAGES_DEF.length*100);
-  const wrap=document.getElementById('tl-progress-wrap');
-  if(wrap){
-    wrap.style.display = doneStages>0 ? 'block' : 'none';
-    const pctEl=document.getElementById('tl-progress-pct');
-    const barEl=document.getElementById('tl-progress-bar');
-    const lblEl=document.getElementById('tl-progress-label');
-    if(pctEl) pctEl.textContent=tlPct+'%';
-    if(barEl) barEl.style.width=tlPct+'%';
-    if(lblEl) lblEl.textContent=doneStages+' / '+AUDIT_STAGES_DEF.length+' үе шат';
+
+  // Active байхгүй бол дараагийн дуусаагүй stage-г "одоогийн" гэж үзнэ
+  if(!activeStage){
+    const nextIdx = AUDIT_STAGES_DEF.findIndex(s => {
+      const st = (stageMap[s.id] || {}).status || '';
+      return st !== 'done';
+    });
+    if(nextIdx >= 0){
+      activeStage = { ...AUDIT_STAGES_DEF[nextIdx], ...(stageMap[AUDIT_STAGES_DEF[nextIdx].id] || {}) };
+    } else {
+      const last = AUDIT_STAGES_DEF[AUDIT_STAGES_DEF.length - 1];
+      activeStage = { ...last, ...(stageMap[last.id] || {}) };
+    }
   }
 
-  let html='';
-  AUDIT_STAGES_DEF.forEach((stage,i)=>{
-    const isLast=i===AUDIT_STAGES_DEF.length-1;
-    const sData=(stageMap||{})[stage.id]||{};
-    const status=sData.status||'';
-    const note=sData.note||'';
-    let iconHtml='',iconClass='pending',titleClass='',dateText='Хүлээгдэж байна';
-    if(status==='done'){
-      iconClass='done';titleClass='done';dateText='✓ Дууссан';
-      iconHtml='<svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>';
-    } else if(status==='active'){
-      iconClass='active';titleClass='active';dateText='🔄 Явагдаж байна';
-      iconHtml='<svg style="width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 12 12"><circle cx="6" cy="6" r="3" fill="#fff"/></svg>';
+  const totalStages = AUDIT_STAGES_DEF.length;
+  const tlPct = Math.round((doneStages / totalStages) * 100);
+
+  // Header шинэчлэх
+  const titleEl = document.getElementById('stage-current-title');
+  const descEl  = document.getElementById('stage-current-desc');
+  const pctEl   = document.getElementById('stage-pct-badge');
+  const cntEl   = document.getElementById('stage-count-label');
+  const noteEl  = document.getElementById('stage-current-note');
+
+  if(titleEl) titleEl.textContent = activeStage ? activeStage.title : 'Хүлээгдэж байна';
+  if(descEl)  descEl.textContent  = activeStage ? activeStage.desc  : '';
+  if(pctEl)   pctEl.textContent   = tlPct + '%';
+  if(cntEl)   cntEl.textContent   = doneStages + ' / ' + totalStages + ' үе шат';
+
+  if(noteEl){
+    if(activeStage && activeStage.note){
+      noteEl.style.display = 'block';
+      noteEl.innerHTML = '💬 <strong>Аудиторын тэмдэглэл:</strong> ' + activeStage.note;
     } else {
-      iconHtml='<div style="width:8px;height:8px;border-radius:50%;background:var(--line)"></div>';
+      noteEl.style.display = 'none';
     }
-    html+=`<div class="stl-item"><div class="stl-track"><div class="stl-icon ${iconClass}">${iconHtml}</div>${!isLast?`<div class="stl-connector ${status==='done'?'done':''}"></div>`:''}</div><div class="stl-body"><div class="stl-title ${titleClass}">${stage.title}</div><div class="stl-desc">${stage.desc}</div>${note?`<div class="stl-note">${note}</div>`:''}<div class="stl-date">${dateText}</div></div></div>`;
+  }
+
+  // Horizontal stepper
+  stepper.innerHTML = '';
+  AUDIT_STAGES_DEF.forEach((stage, i) => {
+    const sData = stageMap[stage.id] || {};
+    const status = sData.status || '';
+    const isDone   = status === 'done';
+    const isActive = status === 'active';
+
+    const step = document.createElement('div');
+    step.className = 'step' + (isDone ? ' done' : '') + (isActive ? ' active' : '');
+    const dotCls = isDone ? 'done' : isActive ? 'active' : '';
+    const dotInner = isDone
+      ? '<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>'
+      : (i + 1);
+    step.innerHTML =
+      '<div class="step-dot ' + dotCls + '" title="' + stage.title + '">' + dotInner + '</div>' +
+      '<div class="step-label">' + stage.title + '</div>';
+    stepper.appendChild(step);
+
+    // Сүүлийн stage-ээс хойш зураас байхгүй
+    if(i < AUDIT_STAGES_DEF.length - 1){
+      const line = document.createElement('div');
+      line.className = 'step-line' + (isDone ? ' done' : '');
+      stepper.appendChild(line);
+    }
   });
-  el.innerHTML=html;
 }
 
 // ── FILE UPLOAD ───────────────────────────────────────────────
@@ -1517,7 +1574,8 @@ async function loadChatMessages(showLoader=true){
         const badge=document.getElementById('unread-cnt');
         if(badge) badge.style.display='inline';
         // Зурвас tab нээлттэй биш бол notification харуулна
-        if(!document.getElementById('t-chat').classList.contains('act')){
+        const chatTab = document.getElementById('t-chat');
+        if(!chatTab || !chatTab.classList.contains('act')){
           toast('📩 Аудиторын шинэ зурвас ирлээ');
         }
       }
@@ -1551,7 +1609,8 @@ function renderChatMessages(){
   el.scrollTop=el.scrollHeight;
 
   // Unread badge арилгана (tab нээлттэй бол)
-  if(document.getElementById('t-chat').classList.contains('act')){
+  const chatTab2 = document.getElementById('t-chat');
+  if(chatTab2 && chatTab2.classList.contains('act')){
     const badge=document.getElementById('unread-cnt');
     if(badge) badge.style.display='none';
   }
@@ -1804,18 +1863,47 @@ function cdmTab(tab){
     html+='</div>'; body.innerHTML=html||'<div style="text-align:center;padding:32px;color:var(--muted)">Мэдээлэл байхгүй</div>';
 
   } else if(tab==='chat'){
-    body.innerHTML=`<div style="margin-bottom:12px;font-size:13px;color:var(--muted)">Клиент: <strong>${client.org_name}</strong> — ${currentClientReg}</div><div id="cdm-chat-msgs" style="height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:8px;margin-bottom:10px"><div style="text-align:center;color:var(--muted);font-size:13px">Ачааллаж байна...</div></div><div style="display:flex;gap:8px"><input class="fc" id="cdm-chat-input" type="text" placeholder="Хариу зурвас бичнэ үү..."><button class="btn btn-p btn-sm" onclick="cdmSendReply()">Илгээх</button></div>`;
+    body.innerHTML=`<div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><div style="font-size:13px;color:var(--muted)">Клиент: <strong>${client.org_name}</strong> — ${currentClientReg}</div><div style="font-size:11px;color:var(--ok);display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite"></span> Автоматаар шинэчлэгдэж байна</div></div><div id="cdm-chat-msgs" style="height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:8px;margin-bottom:10px"><div style="text-align:center;color:var(--muted);font-size:13px">Ачааллаж байна...</div></div><div style="display:flex;gap:8px"><input class="fc" id="cdm-chat-input" type="text" placeholder="Хариу зурвас бичнэ үү..." onkeydown="if(event.key==='Enter'){event.preventDefault();cdmSendReply();}"><button class="btn btn-p btn-sm" onclick="cdmSendReply()">Илгээх</button></div>`;
     cdmLoadChat();
+    // ✦ ШИНЭ: 5 секунд тутам auto-refresh
+    cdmStartChatPoll();
+  } else {
+    // Бусад tab сонгоход poll-ыг зогсооно
+    cdmStopChatPoll();
   }
 }
 
-async function cdmLoadChat(){
+// ✦ ШИНЭ: Admin client-detail chat polling
+function cdmStartChatPoll(){
+  cdmStopChatPoll();
+  cdmChatPollTimer = setInterval(()=>{
+    if(currentClientReg && document.getElementById('cdm-chat-msgs')){
+      cdmLoadChat(true);  // silent refresh
+    } else {
+      cdmStopChatPoll();
+    }
+  }, 5000);
+}
+
+function cdmStopChatPoll(){
+  if(cdmChatPollTimer){clearInterval(cdmChatPollTimer);cdmChatPollTimer=null;}
+}
+
+async function cdmLoadChat(silent){
   const el=document.getElementById('cdm-chat-msgs'); if(!el)return;
   try {
     const pw=document.getElementById('a-pw').value;
     const r=await gasCall('adminGetClientMessages',{password:pw,reg_number:currentClientReg});
     const msgs=r.ok?r.messages:[];
-    if(!msgs.length){el.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">Зурвас байхгүй</div>';return;}
+
+    // ✦ Scroll position-ыг хадгална хэрэв silent refresh бол
+    const wasAtBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 30;
+    const prevCount = el.querySelectorAll('.chat-bubble').length;
+
+    if(!msgs.length){
+      el.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">Зурвас байхгүй</div>';
+      return;
+    }
     el.innerHTML='';
     msgs.forEach(m=>{
       const isClient=m.sender==='client';
@@ -1824,8 +1912,22 @@ async function cdmLoadChat(){
       div.innerHTML=`<div class="chat-who">${isClient?'Клиент':'Аудитор'}</div>${(m.text||'').replace(/\n/g,'<br>')}<div class="chat-time">${m.time||''}</div>`;
       el.appendChild(div);
     });
-    el.scrollTop=el.scrollHeight;
-  } catch(e){el.innerHTML='<div style="color:var(--muted);font-size:13px">Зурвас ачааллахад алдаа гарлаа.</div>';}
+
+    // Шинэ зурвас орж ирвэл доош scroll, эс бөгөөс position-ыг хадгална
+    if(!silent || wasAtBottom || msgs.length > prevCount){
+      el.scrollTop=el.scrollHeight;
+    }
+
+    // Шинэ клиент зурвас ирсэн бол toast
+    if(silent && msgs.length > prevCount){
+      const last = msgs[msgs.length-1];
+      if(last && last.sender==='client'){
+        toast('📩 '+(client?.org_name||'Клиент')+' зурвас илгээлээ');
+      }
+    }
+  } catch(e){
+    if(!silent) el.innerHTML='<div style="color:var(--muted);font-size:13px">Зурвас ачааллахад алдаа гарлаа.</div>';
+  }
 }
 
 async function cdmSendReply(){
@@ -1894,29 +1996,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const obs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target);}});},{threshold:0.10});
   document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 });
-</script>
-  <script>
-function contactSubmit(btn) {
-  const org = document.getElementById('cnt-org')?.value || '';
-  const name = document.getElementById('cnt-name')?.value || '';
-  const email = document.getElementById('cnt-email')?.value || '';
-  const phone = document.getElementById('cnt-phone')?.value || '';
-  const msg = document.getElementById('cnt-msg')?.value || '';
-
-  fetch("https://script.google.com/macros/s/AKfycbztW4YK0N290AQknxgsljG0KjAkhtC3H6iFIYpeNAmFPu0FuFgYo0xC9ulffb-Jw_Wy/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: JSON.stringify({
-      action: "contact",
-      org, name, email, phone, msg
-    })
-  });
-
-  btn.disabled = true;
-  btn.textContent = 'Илгээгдэв ✓';
-
-  document.getElementById('contact-ok').style.display = 'flex';
-}
 </script>
 </body>
 </html>
