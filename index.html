@@ -325,6 +325,142 @@ textarea.fc{resize:vertical;min-height:80px}
 #info-save-status.saving{color:var(--wait)}
 #info-save-status.saved{color:var(--ok)}
 #info-save-status.error{color:var(--miss)}
+/* ═══ ADMIN PORTAL — Big4 styled (NEW) ═══ */
+.ad-hero{background:linear-gradient(135deg,var(--g900) 0%,#0d2e1e 50%,#1a4530 100%);padding:32px 0 40px;position:relative;overflow:hidden}
+.ad-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(76,255,178,.07),transparent 60%)}
+.ad-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.ad-hero .wrap{position:relative;z-index:1}
+.ad-hero-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;margin-bottom:28px}
+.ad-eyebrow{font-size:10.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--g500);font-weight:700;margin-bottom:6px}
+.ad-title{font-family:var(--fd);font-size:30px;color:#fff;font-weight:700;line-height:1.15}
+.ad-hero-actions{display:flex;gap:8px}
+.ad-btn-ghost{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.85);font-size:12.5px;font-weight:500;cursor:pointer;font-family:var(--fb);transition:all .18s}
+.ad-btn-ghost:hover{background:rgba(255,255,255,.12);color:#fff}
+.ad-btn-ghost svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.ad-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.ad-kpi{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:15px 18px;backdrop-filter:blur(10px);transition:all .2s}
+.ad-kpi:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.18);transform:translateY(-1px)}
+.ad-kpi .kpi-lbl{font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:600;margin-bottom:7px}
+.ad-kpi .kpi-val{font-family:var(--fd);font-size:30px;font-weight:700;color:#fff;line-height:1}
+.ad-kpi .kpi-good{color:var(--accent-glow)}
+.ad-kpi .kpi-warn{color:#ffb84d}
+@media(max-width:700px){.ad-kpis{grid-template-columns:1fr 1fr}.ad-title{font-size:24px}}
+
+.ad-tools{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:62px;z-index:50;box-shadow:0 1px 0 rgba(15,45,28,.04)}
+.ad-tools-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
+.ad-tabs{display:flex;gap:2px;background:var(--g50);border:1px solid var(--line);border-radius:8px;padding:3px;flex-shrink:0}
+.ad-tab{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border-radius:5px;font-size:12.5px;font-weight:500;color:var(--slate);background:none;border:none;cursor:pointer;transition:all .18s;font-family:var(--fb)}
+.ad-tab svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2}
+.ad-tab.act{background:#fff;color:var(--g800);font-weight:600;box-shadow:0 1px 4px rgba(15,45,28,.08)}
+.ad-tab:hover:not(.act){color:var(--g800)}
+.ad-tab-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:18px;padding:0 6px;border-radius:100px;background:var(--g100);color:var(--g700);font-size:10.5px;font-weight:700;font-family:var(--fm)}
+.ad-tab.act .ad-tab-count{background:var(--g600);color:#fff}
+.ad-filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap;flex:1;justify-content:flex-end;min-width:0}
+.ad-fc{padding:7px 11px;border:1px solid var(--line);border-radius:7px;font-size:12.5px;font-family:var(--fb);outline:none;background:#fff;color:var(--ink);min-width:140px;transition:border-color .18s}
+.ad-fc:focus{border-color:var(--g600);box-shadow:0 0 0 3px rgba(46,139,87,.1)}
+.ad-fc-search{flex:1;max-width:240px;min-width:160px}
+select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234d6355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;cursor:pointer}
+
+.ad-list{display:flex;flex-direction:column;gap:10px}
+.ad-row{display:grid;grid-template-columns:auto 2.5fr 1.6fr 1.4fr auto;gap:18px;align-items:center;padding:16px 22px;background:#fff;border:1px solid var(--line);border-radius:12px;transition:all .2s;cursor:pointer;position:relative;overflow:hidden}
+.ad-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .2s}
+.ad-row:hover{box-shadow:0 6px 24px rgba(15,45,28,.08);border-color:var(--g200);transform:translateY(-1px)}
+.ad-row.s-good::before{background:var(--ok)}
+.ad-row.s-warn::before{background:var(--wait)}
+.ad-row.s-risk::before{background:var(--miss)}
+.ad-av{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--g700),var(--g900));border:1px solid var(--g800);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:13.5px;font-weight:700;color:#fff;flex-shrink:0;letter-spacing:-.3px}
+.ad-row-info{min-width:0}
+.ad-row-name{font-size:14.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ad-row-meta{display:flex;gap:10px;font-size:11.5px;font-family:var(--fm);color:var(--muted);margin-top:3px;flex-wrap:wrap}
+.ad-row-meta .sep{opacity:.4}
+.ad-row-aud{min-width:0}
+.ad-row-aud-lbl{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:3px}
+.ad-row-aud-name{font-size:12.5px;font-weight:500;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ad-row-aud-name.unassigned{color:var(--muted);font-style:italic;font-weight:400}
+.ad-row-prog{min-width:0}
+.ad-row-prog-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;gap:8px}
+.ad-row-prog-pct{font-size:13.5px;font-weight:700;font-family:var(--fd)}
+.ad-row-prog-pct.s-good{color:var(--ok)}
+.ad-row-prog-pct.s-warn{color:var(--wait)}
+.ad-row-prog-pct.s-risk{color:var(--miss)}
+.ad-row-prog-cnt{font-size:11px;font-family:var(--fm);color:var(--muted)}
+.ad-row-prog-bar{height:5px;background:var(--g50);border-radius:100px;overflow:hidden}
+.ad-row-prog-fill{height:100%;border-radius:100px;transition:width .6s cubic-bezier(.23,1,.32,1)}
+.ad-row-prog-fill.s-good{background:linear-gradient(90deg,var(--ok),#3aaa5e)}
+.ad-row-prog-fill.s-warn{background:linear-gradient(90deg,var(--wait),#e09800)}
+.ad-row-prog-fill.s-risk{background:linear-gradient(90deg,var(--miss),#e05040)}
+.ad-row-prog-meta{font-size:10.5px;color:var(--muted);margin-top:4px}
+.ad-row-arrow{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--g50);display:flex;align-items:center;justify-content:center;color:var(--g700);transition:all .2s}
+.ad-row:hover .ad-row-arrow{background:var(--g700);color:#fff;transform:translateX(2px)}
+.ad-row-arrow svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2}
+
+.ad-empty{text-align:center;padding:80px 24px;color:var(--muted)}
+.ad-empty svg{width:48px;height:48px;stroke:var(--g300,#cdd9d0);fill:none;stroke-width:1.4;margin-bottom:12px;opacity:.5}
+.ad-empty-title{font-size:16px;font-weight:600;color:var(--ink2);margin-bottom:5px}
+.ad-empty-desc{font-size:13px}
+
+@media(max-width:900px){
+  .ad-row{grid-template-columns:auto 1fr auto;gap:12px;padding:13px 16px}
+  .ad-row-aud,.ad-row-arrow{display:none}
+  .ad-row-prog{grid-column:1/-1}
+}
+
+/* AUDITORS LIST */
+.aud-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.aud-card{padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px;transition:all .2s}
+.aud-card:hover{border-color:var(--g200);box-shadow:var(--sh)}
+.aud-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.aud-av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-lt));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:15px;font-weight:700;color:#fff;flex-shrink:0}
+.aud-name{font-size:14.5px;font-weight:600;color:var(--ink)}
+.aud-role{font-size:11.5px;color:var(--muted);margin-top:2px}
+.aud-contact{font-size:12px;color:var(--slate);line-height:1.7;margin-bottom:14px}
+.aud-contact div{display:flex;align-items:center;gap:6px}
+.aud-contact svg{width:11px;height:11px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0}
+.aud-stats{display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line)}
+.aud-stat-num{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--g700)}
+.aud-stat-lbl{font-size:10.5px;color:var(--muted);letter-spacing:.6px;text-transform:uppercase}
+
+/* CLIENT DETAIL MODAL — refined */
+.cdm-shell{background:#fff;border-radius:18px;width:100%;max-width:920px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35);display:flex;flex-direction:column;max-height:calc(100vh - 48px)}
+.cdm-head{background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:14px}
+.cdm-org-name{font-family:var(--fd);font-size:21px;color:#fff;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cdm-reg{font-size:11.5px;font-family:var(--fm);color:rgba(255,255,255,.42);margin-top:4px;letter-spacing:.5px}
+.cdm-head-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.cdm-pct-block{text-align:right}
+.cdm-pct-num{font-family:var(--fd);font-size:24px;font-weight:700;color:var(--accent-glow);line-height:1}
+.cdm-pct-lbl{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:3px;font-weight:600}
+.cdm-close{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .18s}
+.cdm-close:hover{background:rgba(255,255,255,.2)}
+.cdm-prog-track{height:3px;background:rgba(255,255,255,.08);overflow:hidden}
+.cdm-prog-fill{height:100%;background:linear-gradient(90deg,var(--g500),var(--accent-glow));transition:width .6s cubic-bezier(.23,1,.32,1);width:0%}
+
+.cdm-meta{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:14px 28px;background:linear-gradient(to bottom,#fafdfb,#fff);border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.cdm-meta-item{min-width:0}
+.cdm-meta-flex{flex:1}
+.cdm-meta-lbl{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+.cdm-meta-val{font-size:14px;font-weight:600;color:var(--ink)}
+.cdm-pct{color:var(--g700)}
+.cdm-assign-row{display:flex;gap:6px;align-items:center}
+.cdm-auditor-sel{flex:1;min-width:140px;padding:6px 10px;border:1px solid var(--line);border-radius:7px;font-size:13px;font-family:var(--fb);outline:none;background:#fff;color:var(--ink);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234d6355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center;padding-right:26px;transition:border-color .18s}
+.cdm-auditor-sel:focus{border-color:var(--g600)}
+.cdm-assign-btn{padding:6px 13px;border-radius:7px;background:var(--g700);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all .18s;white-space:nowrap}
+.cdm-assign-btn:hover:not(:disabled){background:var(--g800)}
+.cdm-assign-btn:disabled{background:var(--g50);color:var(--muted);cursor:not-allowed;border:1px solid var(--line)}
+
+.cdm-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 28px;background:#fff;gap:4px;overflow-x:auto}
+.cdm-tab{padding:12px 14px;border:none;background:none;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;font-family:var(--fb);transition:all .15s;white-space:nowrap}
+.cdm-tab:hover{color:var(--g800)}
+.cdm-tab.act{color:var(--g800);border-bottom-color:var(--g800);font-weight:600}
+.cdm-body{padding:22px 28px;flex:1;overflow-y:auto;background:var(--bg)}
+.cdm-foot{padding:14px 28px;border-top:1px solid var(--line);background:#fff;display:flex;justify-content:flex-end;gap:8px}
+
+@media(max-width:600px){
+  .cdm-meta{grid-template-columns:1fr;gap:10px;padding:12px 18px}
+  .cdm-head{padding:18px 18px}
+  .cdm-tabs{padding:0 14px}
+  .cdm-body{padding:16px 18px}
+  .cdm-foot{padding:12px 18px}
+}
 </style>
 </head>
 <body>
@@ -693,17 +829,18 @@ textarea.fc{resize:vertical;min-height:80px}
 
 <!-- ═══ ADMIN ═══ -->
 <main id="page-admin" class="page">
+  <!-- LOGIN -->
   <div id="admin-login" style="min-height:calc(100vh - 62px);display:flex;align-items:stretch">
     <div id="admin-login-img" style="flex:1;background:linear-gradient(135deg,var(--g900),#0d2e1e);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:48px">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(76,255,178,.08),transparent 60%)"></div>
       <div style="position:relative;z-index:1">
-        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g500);margin-bottom:12px;font-weight:600">Аудиторын систем</div>
-        <div style="font-family:var(--fd);font-size:32px;color:#fff;line-height:1.2;margin-bottom:14px">Клиентийн баримт<br>бичгийн удирдлага</div>
-        <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;max-width:340px">Бүх клиентийн аудитын явц, баримт бичгийн бүрдэлт, файлуудыг нэг дороос хянана.</p>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g500);margin-bottom:12px;font-weight:600">Audit Management Platform</div>
+        <div style="font-family:var(--fd);font-size:32px;color:#fff;line-height:1.2;margin-bottom:14px">Үйлчлүүлэгчийн<br>хяналтын систем</div>
+        <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;max-width:340px">Бүх үйлчлүүлэгчийн аудитын явц, баримт бичгийн бүрдэлт, хариуцагч аудиторыг нэг дороос удирдана.</p>
         <div style="display:flex;gap:24px;margin-top:28px;flex-wrap:wrap">
           <div style="text-align:center"><div style="font-family:var(--fd);font-size:28px;color:#fff;font-weight:700">37</div><div style="font-size:11px;color:rgba(255,255,255,.38);margin-top:3px">Баримт бичиг</div></div>
           <div style="width:1px;background:rgba(255,255,255,.12)"></div>
-          <div style="text-align:center"><div style="font-family:var(--fd);font-size:28px;color:#fff;font-weight:700">150+</div><div style="font-size:11px;color:rgba(255,255,255,.38);margin-top:3px">Клиент</div></div>
+          <div style="text-align:center"><div style="font-family:var(--fd);font-size:28px;color:#fff;font-weight:700">150+</div><div style="font-size:11px;color:rgba(255,255,255,.38);margin-top:3px">Үйлчлүүлэгч</div></div>
           <div style="width:1px;background:rgba(255,255,255,.12)"></div>
           <div style="text-align:center"><div style="font-family:var(--fd);font-size:28px;color:#fff;font-weight:700">29+</div><div style="font-size:11px;color:rgba(255,255,255,.38);margin-top:3px">Жил</div></div>
         </div>
@@ -712,106 +849,147 @@ textarea.fc{resize:vertical;min-height:80px}
     <div style="width:100%;max-width:460px;display:flex;align-items:center;justify-content:center;padding:48px 2rem;background:#fff;box-shadow:-8px 0 40px rgba(0,0,0,.06)">
       <div style="width:100%">
         <div style="width:52px;height:52px;border-radius:14px;background:var(--g900);display:flex;align-items:center;justify-content:center;margin-bottom:24px">
-          <svg style="width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.7" viewBox="0 0 22 22"><circle cx="11" cy="8" r="4"/><path d="M3 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 3l2 2-2 2"/></svg>
+          <svg style="width:22px;height:22px;stroke:#fff;fill:none;stroke-width:1.7" viewBox="0 0 22 22"><circle cx="11" cy="8" r="4"/><path d="M3 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
         </div>
         <h2 style="font-family:var(--fd);font-size:26px;color:var(--ink);margin-bottom:6px">Аудиторын нэвтрэлт</h2>
         <p style="font-size:13.5px;color:var(--muted);margin-bottom:28px">Зөвхөн мэргэжлийн аудиторуудад зориулсан</p>
         <div style="display:flex;flex-direction:column;gap:14px">
           <div class="fg"><label style="font-size:12.5px;font-weight:600;color:var(--ink2)">Нууц үг</label><input class="fc" id="a-pw" type="password" placeholder="Нууц үгээ оруулна уу" style="padding:12px 14px;font-size:14px"></div>
-          <div id="a-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>Нууц үг буруу байна.</span></div>
+          <div id="a-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16" style="width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span>Нууц үг буруу.</span></div>
           <button class="btn btn-p" onclick="adminLogin()" style="width:100%;padding:13px;font-size:14.5px;border-radius:9px;justify-content:center">
             <svg style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><rect x="2" y="6" width="10" height="7" rx="1"/><path d="M5 6V4a3 3 0 016 0v2"/></svg>
             Нэвтрэх
           </button>
         </div>
-        <div style="margin-top:20px;padding:12px;background:var(--g50);border-radius:8px;border:1px solid var(--g200)">
-          <div style="font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Мэдэгдэл</div>
-          <div style="font-size:12.5px;color:var(--slate);line-height:1.6">Нэвтрэх нууц үгийг ахлах аудиторт хандаж авна уу.</div>
-        </div>
       </div>
     </div>
   </div>
 
+  <!-- DASHBOARD -->
   <div id="admin-dashboard" style="display:none;min-height:calc(100vh - 62px);background:var(--bg)">
-    <div style="background:var(--g900);padding:28px 0;position:relative;overflow:hidden">
-      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(76,255,178,.06),transparent 60%)"></div>
-      <div class="wrap" style="position:relative;z-index:1">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px">
+
+    <!-- HERO HEADER -->
+    <section class="ad-hero">
+      <div class="wrap">
+        <div class="ad-hero-top">
           <div>
-            <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--g500);margin-bottom:8px;font-weight:600">Аудиторын Dashboard</div>
-            <h2 style="font-family:var(--fd);font-size:26px;color:#fff;font-weight:700">Клиентийн баримт бичгийн хяналт</h2>
+            <div class="ad-eyebrow">Audit Management Platform</div>
+            <h1 class="ad-title">Үйлчлүүлэгчийн хяналт</h1>
           </div>
-          <div style="display:flex;gap:8px">
-            <button class="btn btn-sm" onclick="loadAdminData()" style="background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)">
-              <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M12 7A5 5 0 112 7"/><path d="M12 4v3h-3"/></svg>
+          <div class="ad-hero-actions">
+            <button class="ad-btn-ghost" onclick="loadAdminData()">
+              <svg viewBox="0 0 14 14"><path d="M12 7A5 5 0 112 7"/><path d="M12 4v3h-3"/></svg>
               Шинэчлэх
             </button>
-            <button class="btn btn-sm" onclick="adminLogout()" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.12)">Гарах</button>
+            <button class="ad-btn-ghost" onclick="adminLogout()">Гарах</button>
           </div>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px">
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px"><div style="font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px">Нийт клиент</div><div id="as-total" style="font-family:var(--fd);font-size:32px;color:#fff;font-weight:700">—</div></div>
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px"><div style="font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px">Бүрдэлт дунджаар</div><div id="as-avg" style="font-family:var(--fd);font-size:32px;color:var(--g500);font-weight:700">—</div></div>
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px"><div style="font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px">Нийт файл</div><div id="as-files" style="font-family:var(--fd);font-size:32px;color:#fff;font-weight:700">—</div></div>
-          <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px"><div style="font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:8px">Дутуу баримттай</div><div id="as-missing" style="font-family:var(--fd);font-size:32px;color:#f5a623;font-weight:700">—</div></div>
+        <div class="ad-kpis">
+          <div class="ad-kpi"><div class="kpi-lbl">Нийт үйлчлүүлэгч</div><div class="kpi-val" id="as-total">—</div></div>
+          <div class="ad-kpi"><div class="kpi-lbl">Дунджаар бүрдэлт</div><div class="kpi-val kpi-good" id="as-avg">—</div></div>
+          <div class="ad-kpi"><div class="kpi-lbl">Нийт файл</div><div class="kpi-val" id="as-files">—</div></div>
+          <div class="ad-kpi"><div class="kpi-lbl">Эрсдэлтэй</div><div class="kpi-val kpi-warn" id="as-missing">—</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLBAR -->
+    <div class="ad-tools">
+      <div class="wrap">
+        <div class="ad-tools-row">
+          <div class="ad-tabs">
+            <button class="ad-tab act" onclick="adminSwitchTab('clients')" id="ad-tab-clients">
+              <svg viewBox="0 0 14 14"><circle cx="7" cy="5" r="2.5"/><path d="M2 12c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg>
+              Үйлчлүүлэгчид <span class="ad-tab-count" id="tab-cnt-clients">—</span>
+            </button>
+            <button class="ad-tab" onclick="adminSwitchTab('auditors')" id="ad-tab-auditors">
+              <svg viewBox="0 0 14 14"><path d="M7 8l-4 4M7 8l4 4M7 8V2"/><circle cx="7" cy="2" r="1.5"/></svg>
+              Аудиторууд <span class="ad-tab-count" id="tab-cnt-auditors">—</span>
+            </button>
+          </div>
+          <div class="ad-filters" id="ad-filters-clients">
+            <select id="filter-auditor" class="ad-fc" onchange="applyServerFilter()">
+              <option value="">Бүх аудитор</option>
+            </select>
+            <select id="filter-year" class="ad-fc" onchange="applyServerFilter()">
+              <option value="">Бүх жил</option>
+            </select>
+            <input id="admin-search" type="text" class="ad-fc ad-fc-search" placeholder="Хайх..." oninput="filterAdminClients()">
+          </div>
         </div>
       </div>
     </div>
-    <div class="wrap" style="padding-top:28px;padding-bottom:48px">
-      <div class="tabs" style="margin-bottom:20px">
-        <button class="tab act" onclick="adminSwitchTab('clients')">Клиентүүд</button>
-        <button class="tab" onclick="adminSwitchTab('messages')">Зурвасууд <span class="unread-badge" id="admin-unread" style="display:none">!</span></button>
-      </div>
-      <div id="admin-tab-clients">
-        <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;align-items:center">
-          <input id="admin-search" type="text" class="fc" placeholder="Клиент хайх..." style="max-width:280px" oninput="filterAdminClients()">
-          <select id="admin-filter" class="fc" style="max-width:180px" onchange="filterAdminClients()">
-            <option value="">Бүгд</option>
-            <option value="done">Бүрдсэн (80%+)</option>
-            <option value="half">Дунд (40-80%)</option>
-            <option value="low">Дутуу (40%-)</option>
-          </select>
-          <span id="admin-count" style="font-size:12.5px;color:var(--muted)"></span>
+
+    <!-- BODY -->
+    <section style="padding:22px 0 50px">
+      <div class="wrap">
+        <!-- Tab: Clients -->
+        <div id="admin-tab-clients-body">
+          <div id="admin-list" class="ad-list"></div>
         </div>
-        <div id="admin-list"></div>
-      </div>
-      <div id="admin-tab-messages" style="display:none">
-        <div style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">
-          <h3 style="font-size:15px;font-weight:600;color:var(--ink)">Клиентийн зурвасууд</h3>
-          <button onclick="loadAdminMessages()" class="btn btn-g btn-sm">Шинэчлэх</button>
-        </div>
-        <div id="admin-messages-list" style="display:flex;flex-direction:column;gap:12px">
-          <div style="text-align:center;padding:40px;color:var(--muted)">Зурвасуудыг ачааллаж байна...</div>
+        <!-- Tab: Auditors -->
+        <div id="admin-tab-auditors-body" style="display:none">
+          <div id="auditor-list" class="aud-list"></div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 
   <!-- CLIENT DETAIL MODAL -->
-  <div id="client-detail-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.6);backdrop-filter:blur(5px);overflow-y:auto">
+  <div id="client-detail-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(8,28,18,.65);backdrop-filter:blur(6px);overflow-y:auto">
     <div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px">
-      <div style="background:#fff;border-radius:20px;width:100%;max-width:900px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.3)">
-        <div style="background:var(--g900);padding:24px 28px;display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div id="cdm-org" style="font-family:var(--fd);font-size:20px;color:#fff;font-weight:700"></div>
-            <div id="cdm-reg" style="font-size:12px;font-family:var(--fm);color:rgba(255,255,255,.4);margin-top:4px"></div>
+      <div class="cdm-shell">
+        <!-- Modal header -->
+        <div class="cdm-head">
+          <div style="flex:1;min-width:0">
+            <div id="cdm-org" class="cdm-org-name"></div>
+            <div id="cdm-reg" class="cdm-reg"></div>
           </div>
-          <div style="display:flex;gap:8px;align-items:center">
-            <div id="cdm-pct-badge" style="font-family:var(--fd);font-size:22px;color:var(--g500);font-weight:700"></div>
-            <button onclick="cdmStopChatPoll();document.getElementById('client-detail-modal').style.display='none'" style="background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center">✕</button>
+          <div class="cdm-head-right">
+            <div class="cdm-pct-block">
+              <div class="cdm-pct-num" id="cdm-pct-badge">0%</div>
+              <div class="cdm-pct-lbl">бүрдэлт</div>
+            </div>
+            <button onclick="closeCDM()" class="cdm-close" title="Хаах">✕</button>
           </div>
         </div>
-        <div style="height:4px;background:rgba(255,255,255,.1)"><div id="cdm-prog" style="height:100%;background:linear-gradient(90deg,var(--g700),var(--g500));transition:width .5s"></div></div>
-        <div style="display:flex;border-bottom:1px solid var(--line);padding:0 28px;background:var(--white)">
-          <button onclick="cdmTab('stages')" id="cdm-tab-stages" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:600;color:var(--g800);border-bottom:2px solid var(--g800);cursor:pointer;font-family:var(--fb)">Аудитын явц</button>
-          <button onclick="cdmTab('docs')" id="cdm-tab-docs" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;font-family:var(--fb)">Баримт бичиг</button>
-          <button onclick="cdmTab('files')" id="cdm-tab-files" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;font-family:var(--fb)">Файлууд</button>
-          <button onclick="cdmTab('info')" id="cdm-tab-info" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;font-family:var(--fb)">Мэдээлэл</button>
-          <button onclick="cdmTab('chat')" id="cdm-tab-chat" style="padding:14px 16px;border:none;background:none;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;font-family:var(--fb)">Зурвас</button>
+        <div class="cdm-prog-track"><div id="cdm-prog" class="cdm-prog-fill"></div></div>
+
+        <!-- Quick info bar — auditor assign + year + files count -->
+        <div class="cdm-meta">
+          <div class="cdm-meta-item">
+            <div class="cdm-meta-lbl">Аудитын жил</div>
+            <div class="cdm-meta-val" id="cdm-year">—</div>
+          </div>
+          <div class="cdm-meta-item cdm-meta-flex">
+            <div class="cdm-meta-lbl">Хариуцах аудитор</div>
+            <div class="cdm-assign-row">
+              <select id="cdm-auditor-sel" class="cdm-auditor-sel">
+                <option value="">— Сонгоно уу —</option>
+              </select>
+              <button id="cdm-assign-btn" onclick="assignAuditor()" class="cdm-assign-btn" disabled>Хадгалах</button>
+            </div>
+          </div>
+          <div class="cdm-meta-item">
+            <div class="cdm-meta-lbl">Файл</div>
+            <div class="cdm-meta-val" id="cdm-file-cnt">0</div>
+          </div>
         </div>
-        <div id="cdm-body" style="padding:24px 28px;max-height:65vh;overflow-y:auto"></div>
-        <div style="padding:16px 28px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">
-          <button onclick="cdmStopChatPoll();document.getElementById('client-detail-modal').style.display='none'" class="btn btn-g btn-sm">Хаах</button>
+
+        <!-- Tabs -->
+        <div class="cdm-tabs">
+          <button onclick="cdmTab('stages')" id="cdm-tab-stages" class="cdm-tab act">Аудитын явц</button>
+          <button onclick="cdmTab('docs')"   id="cdm-tab-docs"   class="cdm-tab">Баримт бичиг</button>
+          <button onclick="cdmTab('files')"  id="cdm-tab-files"  class="cdm-tab">Файлууд</button>
+          <button onclick="cdmTab('info')"   id="cdm-tab-info"   class="cdm-tab">Мэдээлэл</button>
+        </div>
+
+        <!-- Body -->
+        <div id="cdm-body" class="cdm-body"></div>
+
+        <!-- Footer -->
+        <div class="cdm-foot">
+          <button onclick="closeCDM()" class="btn btn-g btn-sm">Хаах</button>
           <button onclick="saveAuditorStatuses()" class="btn btn-p btn-sm" id="cdm-save-btn">
             <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
             Хадгалах
@@ -821,7 +999,6 @@ textarea.fc{resize:vertical;min-height:80px}
     </div>
   </div>
 </main>
-
 <div id="toast"></div>
 
 <script>
@@ -1638,139 +1815,331 @@ async function sendChatMessage(){
 }
 
 // ── ADMIN ─────────────────────────────────────────────────────
+// State for new auditor system
+let availableAuditors = [];     // [{email,name,role,phone},...]
+let availableYears    = [];     // ['2024','2023',...]
+let auditorCountMap   = {};     // email → number of clients
+let assignedAuditor   = '';     // current assigned (saved) for opened client
+
 async function adminLogin(){
   const pw=document.getElementById('a-pw').value;
   const err=document.getElementById('a-err'); err.style.display='none';
   if(!pw){err.style.display='flex';err.querySelector('span').textContent='Нууц үг оруулна уу';return;}
   try {
     const r=await gasCall('adminLogin',{password:pw});
-    if(!r.ok){err.style.display='flex';err.querySelector('span').textContent='Нууц үг буруу байна.';return;}
+    if(!r.ok){err.style.display='flex';err.querySelector('span').textContent='Нууц үг буруу.';return;}
     adminAuthed=true;
     document.getElementById('admin-login').style.display='none';
     document.getElementById('admin-dashboard').style.display='block';
+    // Initial load: auditors + years dropdowns, then clients
+    await Promise.all([loadAuditorsList(), loadAuditYearsList()]);
     loadAdminData();
   } catch(e){err.style.display='flex';err.querySelector('span').textContent='Холболтын алдаа: '+e.message;}
 }
 
 function adminLogout(){
-  adminAuthed=false; adminClientsCache=[];
+  adminAuthed=false; adminClientsCache=[]; availableAuditors=[]; availableYears=[];
   document.getElementById('admin-login').style.display='flex';
   document.getElementById('admin-dashboard').style.display='none';
   document.getElementById('a-err').style.display='none';
+  document.getElementById('a-pw').value='';
+}
+
+// Load auditors → fill filter dropdown + Auditors tab
+async function loadAuditorsList(){
+  try {
+    const pw=document.getElementById('a-pw').value;
+    const r=await gasCall('getAuditors',{password:pw});
+    if(r.ok && r.auditors){
+      availableAuditors = r.auditors;
+      // Filter dropdown
+      const fAud = document.getElementById('filter-auditor');
+      if(fAud){
+        const cur = fAud.value;
+        fAud.innerHTML = '<option value="">Бүх аудитор</option>' +
+          availableAuditors.map(a=>`<option value="${a.email}">${a.name}</option>`).join('');
+        fAud.value = cur;
+      }
+      // Tab counter
+      const tc=document.getElementById('tab-cnt-auditors');
+      if(tc) tc.textContent = availableAuditors.length;
+    }
+  } catch(e){console.warn('loadAuditorsList:',e);}
+}
+
+async function loadAuditYearsList(){
+  try {
+    const pw=document.getElementById('a-pw').value;
+    const r=await gasCall('getAuditYears',{password:pw});
+    if(r.ok && r.years){
+      availableYears = r.years;
+      const fY = document.getElementById('filter-year');
+      if(fY){
+        const cur = fY.value;
+        fY.innerHTML = '<option value="">Бүх жил</option>' +
+          availableYears.map(y=>`<option value="${y}">${y}</option>`).join('');
+        fY.value = cur;
+      }
+    }
+  } catch(e){console.warn('loadAuditYearsList:',e);}
+}
+
+function applyServerFilter(){
+  // Filter dropdown changed → reload from server with filter params
+  loadAdminData();
 }
 
 async function loadAdminData(){
   const list=document.getElementById('admin-list');
-  list.innerHTML='<div style="text-align:center;padding:60px;color:var(--muted)"><div class="spinner spinner-dark" style="margin:0 auto 12px"></div><div>Клиентийн мэдээлэл татаж байна...</div></div>';
+  list.innerHTML='<div class="ad-empty"><div class="spinner spinner-dark" style="margin:0 auto 12px"></div><div class="ad-empty-desc">Үйлчлүүлэгчийн мэдээлэл татаж байна...</div></div>';
   try {
     const pw=document.getElementById('a-pw').value;
-    const r=await gasCall('adminGetAll',{password:pw});
-    if(!r.ok){list.innerHTML='<div class="alert a-err">'+r.error+'</div>';return;}
+    const filterAuditor = document.getElementById('filter-auditor')?.value || '';
+    const filterYear    = document.getElementById('filter-year')?.value || '';
+    const r=await gasCall('adminGetAll',{
+      password:pw,
+      auditor_email: filterAuditor,
+      audit_year:    filterYear,
+    });
+    if(!r.ok){list.innerHTML='<div class="ad-empty"><div class="ad-empty-title">Алдаа</div><div class="ad-empty-desc">'+r.error+'</div></div>';return;}
     adminClientsCache=r.clients||[];
+    // Build auditor count map
+    auditorCountMap = {};
+    adminClientsCache.forEach(c=>{
+      const e=String(c.auditor_email||'').toLowerCase().trim();
+      if(e) auditorCountMap[e] = (auditorCountMap[e]||0)+1;
+    });
     updateAdminStats();
     renderAdminClients(adminClientsCache);
-  } catch(e){list.innerHTML='<div class="alert a-err">Холболтын алдаа: '+e.message+'</div>';}
+  } catch(e){list.innerHTML='<div class="ad-empty"><div class="ad-empty-title">Холболтын алдаа</div><div class="ad-empty-desc">'+e.message+'</div></div>';}
 }
 
 function adminSwitchTab(tab){
-  ['clients','messages'].forEach(t=>{const el=document.getElementById('admin-tab-'+t);if(el)el.style.display=t===tab?'block':'none';});
-  document.querySelectorAll('#admin-dashboard .tab').forEach((b,i)=>b.classList.toggle('act',i===['clients','messages'].indexOf(tab)));
-  if(tab==='messages')loadAdminMessages();
-}
-
-async function loadAdminMessages(){
-  const el=document.getElementById('admin-messages-list'); if(!el)return;
-  el.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Ачааллаж байна...</div>';
-  try {
-    const pw=document.getElementById('a-pw').value;
-    const r=await gasCall('adminGetMessages',{password:pw});
-    if(!r.ok||!r.messages||!r.messages.length){el.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Зурвас байхгүй байна.</div>';return;}
-    const grouped={};
-    r.messages.forEach(m=>{if(!grouped[m.reg_number])grouped[m.reg_number]={org:m.org_name,msgs:[]};grouped[m.reg_number].msgs.push(m);});
-    el.innerHTML='';
-    Object.entries(grouped).forEach(([reg,g])=>{
-      const div=document.createElement('div'); div.className='card card-sm'; div.style.marginBottom='12px';
-      const msgs=g.msgs.map(m=>`<div style="padding:10px 14px;border-radius:8px;background:${m.sender==='client'?'var(--g50)':'var(--rev-bg)'};margin-bottom:8px"><div style="font-size:10.5px;font-weight:600;color:var(--muted);margin-bottom:4px">${m.sender==='client'?g.org:'Аудитор'} · ${m.time||''}</div><div style="font-size:13px;color:var(--ink)">${(m.text||'').replace(/\n/g,'<br>')}</div></div>`).join('');
-      div.innerHTML=`<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">${g.org} <span style="font-size:11.5px;font-family:var(--fm);color:var(--muted)">${reg}</span></div>${msgs}<div style="display:flex;gap:8px;margin-top:10px"><input class="fc" id="reply-${reg}" type="text" placeholder="Хариу бичнэ үү..." style="flex:1"><button class="btn btn-p btn-sm" onclick="sendAdminReply('${reg}')">Илгээх</button></div>`;
-      el.appendChild(div);
-    });
-  } catch(e){el.innerHTML='<div class="alert a-err">Алдаа: '+e.message+'</div>';}
-}
-
-async function sendAdminReply(reg){
-  const inp=document.getElementById('reply-'+reg);
-  const text=inp?.value?.trim(); if(!text)return;
-  try {
-    const pw=document.getElementById('a-pw').value;
-    await gasCall('sendMessage',{password:pw,reg_number:reg,message:text,sender:'auditor'});
-    inp.value=''; toast('✓ Хариу илгэгдлээ'); loadAdminMessages();
-  } catch(e){toast('Алдаа: '+e.message,true);}
+  ['clients','auditors'].forEach(t=>{
+    const body = document.getElementById('admin-tab-'+t+'-body');
+    const btn  = document.getElementById('ad-tab-'+t);
+    if(body) body.style.display = (t===tab) ? 'block' : 'none';
+    if(btn)  btn.classList.toggle('act', t===tab);
+  });
+  // Filters харагдана зөвхөн clients tab дээр
+  const filtersEl = document.getElementById('ad-filters-clients');
+  if(filtersEl) filtersEl.style.display = (tab==='clients') ? 'flex' : 'none';
+  if(tab==='auditors') renderAuditorTab();
 }
 
 function updateAdminStats(){
-  const total=adminClientsCache.length;
-  const totalFiles=adminClientsCache.reduce((s,c)=>s+(c.file_count||0),0);
-  const avgPct=total?Math.round(adminClientsCache.reduce((s,c)=>s+Math.round((c.done_count||0)/37*100),0)/total):0;
-  const missingCount=adminClientsCache.filter(c=>Math.round((c.done_count||0)/37*100)<40).length;
-  document.getElementById('as-total').textContent=total;
-  document.getElementById('as-avg').textContent=avgPct+'%';
-  document.getElementById('as-files').textContent=totalFiles;
-  document.getElementById('as-missing').textContent=missingCount;
+  const total       = adminClientsCache.length;
+  const totalFiles  = adminClientsCache.reduce((s,c)=>s+(c.file_count||0),0);
+  const avgPct      = total ? Math.round(adminClientsCache.reduce((s,c)=>s+(c.progress_pct||0),0)/total) : 0;
+  const missingCnt  = adminClientsCache.filter(c=>(c.progress_pct||0)<40).length;
+  document.getElementById('as-total').textContent   = total;
+  document.getElementById('as-avg').textContent     = avgPct+'%';
+  document.getElementById('as-files').textContent   = totalFiles;
+  document.getElementById('as-missing').textContent = missingCnt;
+  // Tab counter
+  const tcc=document.getElementById('tab-cnt-clients');
+  if(tcc) tcc.textContent = total;
 }
 
 function filterAdminClients(){
-  const q=(document.getElementById('admin-search').value||'').toLowerCase();
-  const flt=document.getElementById('admin-filter').value;
+  // Зөвхөн search-ыг локалаар хийнэ; filter dropdown нь сервер дуудна
+  const q=(document.getElementById('admin-search').value||'').toLowerCase().trim();
   let list=adminClientsCache;
-  if(q)list=list.filter(c=>(c.org_name||'').toLowerCase().includes(q)||String(c.reg_number).includes(q));
-  if(flt==='done')list=list.filter(c=>Math.round((c.done_count||0)/37*100)>=80);
-  if(flt==='half')list=list.filter(c=>{const p=Math.round((c.done_count||0)/37*100);return p>=40&&p<80;});
-  if(flt==='low')list=list.filter(c=>Math.round((c.done_count||0)/37*100)<40);
+  if(q) list=list.filter(c=>
+    String(c.org_name||'').toLowerCase().includes(q) ||
+    String(c.reg_number||'').includes(q) ||
+    String(c.contact_email||'').toLowerCase().includes(q)
+  );
   renderAdminClients(list);
 }
 
 function renderAdminClients(clients){
   const list=document.getElementById('admin-list');
-  const cntEl=document.getElementById('admin-count');
-  if(cntEl)cntEl.textContent=clients.length+' клиент';
-  if(!clients.length){list.innerHTML='<div style="text-align:center;padding:60px;color:var(--muted)">Клиент олдсонгүй</div>';return;}
+  if(!clients.length){
+    list.innerHTML=`<div class="ad-empty">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>
+      <div class="ad-empty-title">Үйлчлүүлэгч олдсонгүй</div>
+      <div class="ad-empty-desc">Шүүлтүүрийн нөхцлийг өөрчилж үзнэ үү</div>
+    </div>`;
+    return;
+  }
   list.innerHTML='';
   clients.forEach(c=>{
-    const pct=Math.round((c.done_count||0)/37*100);
-    const miss=37-(c.done_count||0);
-    const pctColor=pct>=80?'var(--ok)':pct>=40?'var(--wait)':'var(--miss)';
-    const av=(c.org_name||'ХХ').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    const pct = c.progress_pct || 0;
+    const okCount = c.done_count || 0;
+    const sCls = pct>=80 ? 's-good' : pct>=40 ? 's-warn' : 's-risk';
+    const av = (c.org_name||'ХХ').split(/\s+/).filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    // Auditor info
+    const audEmail = String(c.auditor_email||'').toLowerCase().trim();
+    const aud = availableAuditors.find(a => String(a.email).toLowerCase().trim() === audEmail);
+    const audDisplay = aud ? aud.name : (audEmail || '<span class="ad-row-aud-name unassigned">— Хариуцагчгүй —</span>');
+
     const div=document.createElement('div');
-    div.style.cssText='display:grid;grid-template-columns:2.5fr 1.5fr 1fr auto;gap:16px;align-items:center;padding:16px 20px;background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;transition:all .18s;cursor:pointer';
-    div.onmouseover=()=>{div.style.boxShadow='var(--sh)';div.style.borderColor='var(--g200)';};
-    div.onmouseout=()=>{div.style.boxShadow='none';div.style.borderColor='var(--line)';};
+    div.className='ad-row '+sCls;
     div.onclick=()=>openClientDetail(c.reg_number);
-    div.innerHTML=`<div style="display:flex;gap:12px;align-items:center;min-width:0"><div style="width:42px;height:42px;border-radius:10px;background:var(--g100);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:14px;font-weight:700;color:var(--g800);flex-shrink:0">${av}</div><div style="min-width:0"><div style="font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.org_name||'—'}</div><div style="font-size:11.5px;font-family:var(--fm);color:var(--muted);margin-top:2px">${c.reg_number} · ${c.contact_email||''}</div></div></div><div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:11.5px;color:var(--slate)">${c.done_count||0} / 37</span><span style="font-size:11.5px;font-weight:700;color:${pctColor}">${pct}%</span></div><div class="prog-track"><div class="prog-fill" style="width:${pct}%;background:${pct>=80?'linear-gradient(90deg,var(--ok),#2ea84a)':pct>=40?'linear-gradient(90deg,var(--wait),#e09800)':'linear-gradient(90deg,var(--miss),#e05040)'}"></div></div><div style="font-size:11px;color:${pct===100?'var(--ok)':'var(--muted)'};margin-top:4px">${pct===100?'✓ Бүрэн бүрдсэн':miss+' баримт дутуу'}</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:600;color:var(--ink)">${c.file_count||0} файл</div><span class="badge ${pct>=80?'b-ok':pct>=40?'b-wait':'b-miss'}" style="margin-top:5px">${pct>=80?'Бүрдсэн':pct>=40?'Хагас':'Дутуу'}</span></div><button class="btn btn-s btn-sm" onclick="event.stopPropagation();openClientDetail('${c.reg_number}')">Дэлгэрэнгүй</button>`;
+    div.innerHTML=`
+      <div class="ad-av">${av}</div>
+      <div class="ad-row-info">
+        <div class="ad-row-name">${c.org_name||'—'}</div>
+        <div class="ad-row-meta">
+          <span>${c.reg_number}</span>
+          ${c.contact_email?`<span class="sep">·</span><span>${c.contact_email}</span>`:''}
+          ${c.audit_year?`<span class="sep">·</span><span>${c.audit_year} он</span>`:''}
+        </div>
+      </div>
+      <div class="ad-row-aud">
+        <div class="ad-row-aud-lbl">Хариуцах аудитор</div>
+        <div class="ad-row-aud-name ${!aud?'unassigned':''}">${aud?aud.name:(audEmail||'— Хариуцагчгүй —')}</div>
+      </div>
+      <div class="ad-row-prog">
+        <div class="ad-row-prog-top">
+          <span class="ad-row-prog-pct ${sCls}">${pct}%</span>
+          <span class="ad-row-prog-cnt">${okCount} / 37</span>
+        </div>
+        <div class="ad-row-prog-bar"><div class="ad-row-prog-fill ${sCls}" style="width:${pct}%"></div></div>
+        <div class="ad-row-prog-meta">${c.file_count||0} файл${c.rev_count?` · ${c.rev_count} хянагдаж байна`:''}</div>
+      </div>
+      <div class="ad-row-arrow"><svg viewBox="0 0 14 14"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>
+    `;
     list.appendChild(div);
   });
 }
 
+function renderAuditorTab(){
+  const list = document.getElementById('auditor-list');
+  if(!list) return;
+  if(!availableAuditors.length){
+    list.innerHTML=`<div class="ad-empty">
+      <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>
+      <div class="ad-empty-title">Аудитор бүртгэгдээгүй байна</div>
+      <div class="ad-empty-desc">Google Sheets → Auditors хуудсанд аудитор нэмнэ үү</div>
+    </div>`;
+    return;
+  }
+  list.innerHTML='';
+  availableAuditors.forEach(a=>{
+    const av = (a.name||'??').split(/\s+/).filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase();
+    const cnt = auditorCountMap[String(a.email).toLowerCase().trim()] || 0;
+    const card = document.createElement('div');
+    card.className='aud-card';
+    card.innerHTML=`
+      <div class="aud-head">
+        <div class="aud-av">${av}</div>
+        <div style="min-width:0">
+          <div class="aud-name">${a.name}</div>
+          <div class="aud-role">${a.role||'Аудитор'}</div>
+        </div>
+      </div>
+      <div class="aud-contact">
+        ${a.email?`<div><svg viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg><span>${a.email}</span></div>`:''}
+        ${a.phone?`<div><svg viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg><span>${a.phone}</span></div>`:''}
+      </div>
+      <div class="aud-stats">
+        <div>
+          <div class="aud-stat-num">${cnt}</div>
+          <div class="aud-stat-lbl">Хариуцаж буй</div>
+        </div>
+        <button onclick="filterByAuditor('${a.email}')" class="btn btn-s btn-sm" style="font-size:11.5px">Үзэх →</button>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function filterByAuditor(email){
+  const fAud = document.getElementById('filter-auditor');
+  if(fAud) fAud.value = email;
+  adminSwitchTab('clients');
+  applyServerFilter();
+}
+
+// ── CLIENT DETAIL MODAL ──────────────────────────────────────
 async function openClientDetail(reg){
-  currentClientReg=reg; auditorStatuses={}; auditorStages={}; auditorComments={};
-  const client=adminClientsCache.find(c=>String(c.reg_number)===String(reg))||{};
-  document.getElementById('cdm-org').textContent=client.org_name||reg;
-  document.getElementById('cdm-reg').textContent='Регистр: '+reg;
-  const pct=Math.round((client.done_count||0)/37*100);
-  document.getElementById('cdm-pct-badge').textContent=pct+'%';
-  document.getElementById('cdm-prog').style.width=pct+'%';
-  document.getElementById('client-detail-modal').style.display='block';
+  currentClientReg = reg;
+  auditorStatuses  = {};
+  auditorStages    = {};
+  auditorComments  = {};
+
+  const client = adminClientsCache.find(c=>String(c.reg_number)===String(reg))||{};
+  document.getElementById('cdm-org').textContent = client.org_name || reg;
+  document.getElementById('cdm-reg').textContent = 'Регистр: ' + reg;
+  document.getElementById('cdm-year').textContent = client.audit_year || '—';
+  document.getElementById('cdm-file-cnt').textContent = client.file_count || 0;
+  const pct = client.progress_pct || 0;
+  document.getElementById('cdm-pct-badge').textContent = pct + '%';
+  document.getElementById('cdm-prog').style.width = pct + '%';
+
+  // Populate auditor dropdown
+  assignedAuditor = String(client.auditor_email || '').trim();
+  const sel = document.getElementById('cdm-auditor-sel');
+  if(sel){
+    sel.innerHTML = '<option value="">— Сонгоно уу —</option>' +
+      availableAuditors.map(a=>`<option value="${a.email}" ${a.email===assignedAuditor?'selected':''}>${a.name}</option>`).join('');
+    sel.onchange = function(){
+      const btn = document.getElementById('cdm-assign-btn');
+      if(btn) btn.disabled = (this.value === assignedAuditor);
+    };
+  }
+  const btn = document.getElementById('cdm-assign-btn');
+  if(btn) btn.disabled = true;
+
+  document.getElementById('client-detail-modal').style.display = 'block';
   cdmTab('stages');
+
+  // Дэлгэрэнгүй файл татах
   try {
-    const pw=document.getElementById('a-pw').value;
-    const r=await gasCall('adminGetFiles',{password:pw,reg_number:reg});
-    currentClientData.files=r.ok?r.files:[];
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('adminGetFiles',{password:pw,reg_number:reg});
+    currentClientData.files = r.ok ? r.files : [];
+    // Re-render docs tab if active
+    const docsTab = document.getElementById('cdm-tab-docs');
+    if(docsTab && docsTab.classList.contains('act')) cdmTab('docs');
   } catch(e){currentClientData.files=[];}
 }
 
+function closeCDM(){
+  document.getElementById('client-detail-modal').style.display = 'none';
+  currentClientReg = null;
+}
+
+async function assignAuditor(){
+  const sel = document.getElementById('cdm-auditor-sel');
+  const btn = document.getElementById('cdm-assign-btn');
+  if(!sel || !currentClientReg) return;
+  const newEmail = sel.value;
+  if(newEmail === assignedAuditor){ toast('Өөрчлөлт байхгүй'); return; }
+  btn.disabled = true; btn.textContent = 'Хадгалж...';
+  try {
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('adminAssignAuditor',{password:pw,reg_number:currentClientReg,auditor_email:newEmail});
+    if(r.ok){
+      assignedAuditor = newEmail;
+      toast('✓ Аудитор хуваарилагдлаа');
+      // Update cache
+      const c = adminClientsCache.find(x=>String(x.reg_number)===String(currentClientReg));
+      if(c) c.auditor_email = newEmail;
+      // Refresh list (lightweight)
+      renderAdminClients(adminClientsCache);
+      // Update auditor counts
+      auditorCountMap = {};
+      adminClientsCache.forEach(cc=>{
+        const e=String(cc.auditor_email||'').toLowerCase().trim();
+        if(e) auditorCountMap[e] = (auditorCountMap[e]||0)+1;
+      });
+    } else {
+      toast('Алдаа: '+r.error, true);
+    }
+  } catch(e){
+    toast('Холболтын алдаа: '+e.message, true);
+  }
+  btn.textContent = 'Хадгалах';
+  btn.disabled = (sel.value === assignedAuditor);
+}
+
 function cdmTab(tab){
-  ['stages','docs','files','info','chat'].forEach(t=>{
+  ['stages','docs','files','info'].forEach(t=>{
     const btn=document.getElementById('cdm-tab-'+t);
-    if(btn){btn.style.color=t===tab?'var(--g800)':'var(--muted)';btn.style.borderBottomColor=t===tab?'var(--g800)':'transparent';btn.style.fontWeight=t===tab?'600':'500';}
+    if(btn) btn.classList.toggle('act', t===tab);
   });
   const body=document.getElementById('cdm-body');
   const client=adminClientsCache.find(c=>String(c.reg_number)===String(currentClientReg))||{};
@@ -1778,19 +2147,35 @@ function cdmTab(tab){
 
   if(tab==='stages'){
     const stageMap=client.stageMap||{};
-    let html='<div style="display:flex;flex-direction:column;gap:12px">';
+    let html='<div style="display:flex;flex-direction:column;gap:10px">';
     AUDIT_STAGES_DEF.forEach(stage=>{
       const sData=stageMap[stage.id]||{};
       const status=auditorStages[stage.id]?.status??(sData.status||'');
       const note=auditorStages[stage.id]?.note??(sData.note||'');
-      const badge=stage.auditorOnly?'<span style="font-size:10px;background:var(--g100);color:var(--g700);padding:2px 7px;border-radius:100px;font-weight:600;margin-left:6px">Аудитор</span>':'<span style="font-size:10px;background:var(--rev-bg);color:var(--rev);padding:2px 7px;border-radius:100px;font-weight:600;margin-left:6px">Автомат</span>';
-      const dotColor=status==='done'?'var(--ok)':status==='active'?'var(--wait)':'var(--line)';
-      html+=`<div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:${status==='done'?'#fafdf9':status==='active'?'#fffdf0':'#fff'}"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:10px;height:10px;border-radius:50%;background:${dotColor}"></div><div style="font-size:13.5px;font-weight:600;color:var(--ink);flex:1">${stage.title}${badge}</div></div><div style="font-size:12.5px;color:var(--muted);margin-bottom:10px">${stage.desc}</div>${stage.auditorOnly?`<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><select id="stage-sel-${stage.id}" style="padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-weight:600;background:#fff;cursor:pointer;outline:none;font-family:var(--fb)" onchange="auditorStages['${stage.id}']={status:this.value,note:(auditorStages['${stage.id}']?.note||'${note}')}"><option value="" ${!status?'selected':''}>— Тодорхойгүй —</option><option value="pending" ${status==='pending'?'selected':''}>⏳ Хүлээгдэж байна</option><option value="active" ${status==='active'?'selected':''}>🔄 Явагдаж байна</option><option value="done" ${status==='done'?'selected':''}>✓ Дууссан</option></select><input type="text" placeholder="Клиентэд харагдах тэмдэглэл..." value="${note}" id="stage-note-${stage.id}" oninput="auditorStages['${stage.id}']={status:(document.getElementById('stage-sel-${stage.id}').value),note:this.value}" style="flex:1;min-width:160px;padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-family:var(--fb);outline:none;color:var(--ink)"></div>`:`<div style="font-size:12px;color:var(--slate);font-style:italic">Клиент мэдээлэл бүртгэснээр автоматаар тохируулагдана</div>`}</div>`;
+      const dotColor=status==='done'?'var(--ok)':status==='active'?'var(--gold)':'var(--line)';
+      const bg=status==='done'?'#fafdf9':status==='active'?'#fffdf2':'#fff';
+      html+=`<div style="border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:${bg}">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <div style="width:11px;height:11px;border-radius:50%;background:${dotColor};flex-shrink:0;${status==='active'?'box-shadow:0 0 0 3px rgba(184,148,58,.2)':''}"></div>
+          <div style="font-size:13.5px;font-weight:600;color:var(--ink);flex:1">${stage.title}</div>
+        </div>
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:11px;padding-left:21px">${stage.desc}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:stretch;padding-left:21px">
+          <select id="stage-sel-${stage.id}" style="padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-weight:500;background:#fff;cursor:pointer;outline:none;font-family:var(--fb)" onchange="auditorStages['${stage.id}']={status:this.value,note:document.getElementById('stage-note-${stage.id}').value}">
+            <option value="" ${!status?'selected':''}>— Тодорхойгүй —</option>
+            <option value="pending" ${status==='pending'?'selected':''}>⏳ Хүлээгдэж байна</option>
+            <option value="active" ${status==='active'?'selected':''}>🔄 Явагдаж байна</option>
+            <option value="done" ${status==='done'?'selected':''}>✓ Дууссан</option>
+          </select>
+          <input type="text" placeholder="Клиентэд харагдах тэмдэглэл..." value="${note.replace(/"/g,'&quot;')}" id="stage-note-${stage.id}"
+            oninput="auditorStages['${stage.id}']={status:document.getElementById('stage-sel-${stage.id}').value,note:this.value}"
+            style="flex:1;min-width:180px;padding:6px 10px;border-radius:7px;border:1px solid var(--line);font-size:12.5px;font-family:var(--fb);outline:none;color:var(--ink)">
+        </div>
+      </div>`;
     });
     html+='</div>'; body.innerHTML=html;
 
   } else if(tab==='docs'){
-    // ✦ ШИНЭ: Файлуудыг doc_id-аар бүлэглэе
     const filesByDoc = {};
     files.forEach(f => {
       const k = f.doc_id || 'general';
@@ -1801,22 +2186,19 @@ function cdmTab(tab){
     const smap = client.statusMap || {};
     const allDocs = [...PERM,...WORK];
 
-    let html = `<div style="display:flex;flex-direction:column;gap:10px">
-      <div class="alert a-info" style="margin-bottom:6px;font-size:12.5px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div>Клиент файл хавсаргахад автоматаар <strong>"Хянагдаж байна"</strong> төлөвт орно. Та шалгаж <strong>"Бүрдсэн"</strong> эсвэл <strong>"Дутуу"</strong> гэж тэмдэглээд тайлбар бичнэ үү.</div></div>`;
+    let html = `<div style="display:flex;flex-direction:column;gap:9px">
+      <div class="alert a-info" style="margin-bottom:6px;font-size:12.5px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div>Файл хавсаргасан баримт автоматаар <strong>"Хянагдаж байна"</strong> төлөвт орно. Шалгасны дараа <strong>"Бүрдсэн"</strong> эсвэл <strong>"Дутуу"</strong> сонгоно.</div></div>`;
 
     allDocs.forEach(d => {
       const docFiles = filesByDoc[d.id] || [];
       const hasFile  = docFiles.length > 0;
-      const curStatus = auditorStatuses[d.id] ?? smap[d.id] ?? '';
+      const curStatus  = auditorStatuses[d.id] ?? smap[d.id] ?? '';
       const curComment = (auditorComments[d.id] !== undefined) ? auditorComments[d.id] : (cmap[d.id] || '');
-
-      // Эффектив төлөв (харагдах) — аудитор тогтоосон утга байгаа бол түүнийг, үгүй бол файл байгаа эсэхээр
-      const effStatus = curStatus || (hasFile ? 'rev' : 'miss');
+      const effStatus  = curStatus || (hasFile ? 'rev' : 'miss');
       const sLabel = {ok:'✓ Бүрдсэн', miss:'✗ Дутуу', wait:'⏳ Хүлээгдэж байна', rev:'👁 Хянагдаж байна'}[effStatus] || '— Тодорхойгүй —';
       const sCls   = {ok:'b-ok', miss:'b-miss', wait:'b-wait', rev:'b-rev'}[effStatus] || '';
       const bgColor = effStatus==='ok' ? '#fafdf9' : effStatus==='miss' ? '#fff5f4' : '#fff';
 
-      // Файлуудын HTML
       const filesHtml = hasFile
         ? `<div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:6px">${docFiles.map(f=>{
             const ext = (f.file_name||'').split('.').pop().toUpperCase();
@@ -1836,11 +2218,11 @@ function cdmTab(tab){
           </div>
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:stretch">
             <div style="display:flex;gap:4px">
-              <button onclick="adminSetStatus('${d.id}','ok',this)" class="adm-act-btn ${curStatus==='ok'?'on-ok':''}" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='ok'?'var(--ok)':'var(--line)'};background:${curStatus==='ok'?'var(--ok)':'#fff'};color:${curStatus==='ok'?'#fff':'var(--ok)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">✓ Бүрдсэн</button>
-              <button onclick="adminSetStatus('${d.id}','miss',this)" class="adm-act-btn ${curStatus==='miss'?'on-miss':''}" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='miss'?'var(--miss)':'var(--line)'};background:${curStatus==='miss'?'var(--miss)':'#fff'};color:${curStatus==='miss'?'#fff':'var(--miss)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">✗ Дутуу</button>
-              <button onclick="adminSetStatus('${d.id}','wait',this)" class="adm-act-btn ${curStatus==='wait'?'on-wait':''}" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='wait'?'var(--wait)':'var(--line)'};background:${curStatus==='wait'?'var(--wait)':'#fff'};color:${curStatus==='wait'?'#fff':'var(--wait)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">⏳ Хүлээгдэж байна</button>
+              <button onclick="adminSetStatus('${d.id}','ok')" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='ok'?'var(--ok)':'var(--line)'};background:${curStatus==='ok'?'var(--ok)':'#fff'};color:${curStatus==='ok'?'#fff':'var(--ok)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">✓ Бүрдсэн</button>
+              <button onclick="adminSetStatus('${d.id}','miss')" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='miss'?'var(--miss)':'var(--line)'};background:${curStatus==='miss'?'var(--miss)':'#fff'};color:${curStatus==='miss'?'#fff':'var(--miss)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">✗ Дутуу</button>
+              <button onclick="adminSetStatus('${d.id}','wait')" style="padding:5px 11px;border-radius:6px;border:1px solid ${curStatus==='wait'?'var(--wait)':'var(--line)'};background:${curStatus==='wait'?'var(--wait)':'#fff'};color:${curStatus==='wait'?'#fff':'var(--wait)'};font-size:11.5px;font-weight:600;cursor:pointer;font-family:var(--fb)">⏳ Хүлээгдэж</button>
             </div>
-            <input type="text" id="adm-cmt-${d.id}" value="${curComment.replace(/"/g,'&quot;')}" placeholder="Тайлбар (клиент харна)..." oninput="auditorComments['${d.id}']=this.value" style="flex:1;min-width:180px;padding:5px 10px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;font-family:var(--fb);outline:none">
+            <input type="text" id="adm-cmt-${d.id}" value="${curComment.replace(/"/g,'&quot;')}" placeholder="Клиентэд харагдах тайлбар..." oninput="auditorComments['${d.id}']=this.value" style="flex:1;min-width:180px;padding:5px 10px;border-radius:6px;border:1px solid var(--line);font-size:11.5px;font-family:var(--fb);outline:none">
           </div>
         </div>`;
     });
@@ -1848,96 +2230,21 @@ function cdmTab(tab){
     body.innerHTML = html;
 
   } else if(tab==='files'){
-    if(!files.length){body.innerHTML='<div style="text-align:center;padding:40px;color:var(--muted)">Файл байхгүй байна.</div>';return;}
+    if(!files.length){body.innerHTML='<div class="ad-empty"><svg viewBox="0 0 48 48"><path d="M14 6h14l8 8v22a4 4 0 01-4 4H14a4 4 0 01-4-4V10a4 4 0 014-4z"/><path d="M28 6v8h8"/></svg><div class="ad-empty-title">Файл байхгүй</div><div class="ad-empty-desc">Үйлчлүүлэгч файл оруулаагүй байна</div></div>';return;}
     let html='<div style="display:flex;flex-direction:column;gap:8px">';
     files.forEach(f=>{
       const ext=(f.file_name||'').split('.').pop().toUpperCase();
-      html+=`<div style="display:flex;gap:12px;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:8px"><div style="width:36px;height:36px;border-radius:7px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;font-weight:700;color:var(--g800);flex-shrink:0">${ext}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.file_name}</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">${f.doc_id||'general'}</div></div><a href="${f.drive_view_url}" target="_blank" class="btn btn-s btn-sm">Нээх</a></div>`;
+      html+=`<div style="display:flex;gap:12px;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:#fff"><div style="width:36px;height:36px;border-radius:7px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;font-weight:700;color:var(--g800);flex-shrink:0">${ext}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.file_name}</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">${f.doc_id||'general'}</div></div><a href="${f.drive_view_url}" target="_blank" class="btn btn-s btn-sm">Нээх →</a></div>`;
     });
     html+='</div>'; body.innerHTML=html;
 
   } else if(tab==='info'){
     const fields=[['Байгууллагын нэр',client.org_name],['Регистр',client.reg_number],['И-мэйл',client.contact_email],['Утас',client.contact_phone],['Захирал',client.director_name],['Нягтлан',client.accountant_name],['Үйл ажиллагаа',client.activity_type],['Өмчийн хэлбэр',client.ownership_type],['Хаяг',client.address],['Ажилтан тоо',client.employee_count],['Салбар тоо',client.branch_count]];
     let html='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">';
-    fields.forEach(([k,v])=>{if(!v)return;html+=`<div style="padding:12px 14px;border:1px solid var(--line);border-radius:8px"><div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px">${k}</div><div style="font-size:13.5px;color:var(--ink)">${v}</div></div>`;});
-    html+='</div>'; body.innerHTML=html||'<div style="text-align:center;padding:32px;color:var(--muted)">Мэдээлэл байхгүй</div>';
-
-  } else if(tab==='chat'){
-    body.innerHTML=`<div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><div style="font-size:13px;color:var(--muted)">Клиент: <strong>${client.org_name}</strong> — ${currentClientReg}</div><div style="font-size:11px;color:var(--ok);display:flex;align-items:center;gap:5px"><span style="width:7px;height:7px;border-radius:50%;background:var(--ok);animation:pulse 2s infinite"></span> Автоматаар шинэчлэгдэж байна</div></div><div id="cdm-chat-msgs" style="height:300px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);display:flex;flex-direction:column;gap:8px;margin-bottom:10px"><div style="text-align:center;color:var(--muted);font-size:13px">Ачааллаж байна...</div></div><div style="display:flex;gap:8px"><input class="fc" id="cdm-chat-input" type="text" placeholder="Хариу зурвас бичнэ үү..." onkeydown="if(event.key==='Enter'){event.preventDefault();cdmSendReply();}"><button class="btn btn-p btn-sm" onclick="cdmSendReply()">Илгээх</button></div>`;
-    cdmLoadChat();
-    // ✦ ШИНЭ: 5 секунд тутам auto-refresh
-    cdmStartChatPoll();
-  } else {
-    // Бусад tab сонгоход poll-ыг зогсооно
-    cdmStopChatPoll();
+    fields.forEach(([k,v])=>{if(!v)return;html+=`<div style="padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff"><div style="font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px">${k}</div><div style="font-size:13.5px;color:var(--ink)">${v}</div></div>`;});
+    html+='</div>';
+    body.innerHTML = html || '<div class="ad-empty"><div class="ad-empty-desc">Мэдээлэл байхгүй</div></div>';
   }
-}
-
-// ✦ ШИНЭ: Admin client-detail chat polling
-function cdmStartChatPoll(){
-  cdmStopChatPoll();
-  cdmChatPollTimer = setInterval(()=>{
-    if(currentClientReg && document.getElementById('cdm-chat-msgs')){
-      cdmLoadChat(true);  // silent refresh
-    } else {
-      cdmStopChatPoll();
-    }
-  }, 5000);
-}
-
-function cdmStopChatPoll(){
-  if(cdmChatPollTimer){clearInterval(cdmChatPollTimer);cdmChatPollTimer=null;}
-}
-
-async function cdmLoadChat(silent){
-  const el=document.getElementById('cdm-chat-msgs'); if(!el)return;
-  try {
-    const pw=document.getElementById('a-pw').value;
-    const r=await gasCall('adminGetClientMessages',{password:pw,reg_number:currentClientReg});
-    const msgs=r.ok?r.messages:[];
-
-    // ✦ Scroll position-ыг хадгална хэрэв silent refresh бол
-    const wasAtBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 30;
-    const prevCount = el.querySelectorAll('.chat-bubble').length;
-
-    if(!msgs.length){
-      el.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:20px">Зурвас байхгүй</div>';
-      return;
-    }
-    el.innerHTML='';
-    msgs.forEach(m=>{
-      const isClient=m.sender==='client';
-      const div=document.createElement('div');
-      div.className='chat-bubble '+(isClient?'client':'auditor');
-      div.innerHTML=`<div class="chat-who">${isClient?'Клиент':'Аудитор'}</div>${(m.text||'').replace(/\n/g,'<br>')}<div class="chat-time">${m.time||''}</div>`;
-      el.appendChild(div);
-    });
-
-    // Шинэ зурвас орж ирвэл доош scroll, эс бөгөөс position-ыг хадгална
-    if(!silent || wasAtBottom || msgs.length > prevCount){
-      el.scrollTop=el.scrollHeight;
-    }
-
-    // Шинэ клиент зурвас ирсэн бол toast
-    if(silent && msgs.length > prevCount){
-      const last = msgs[msgs.length-1];
-      if(last && last.sender==='client'){
-        toast('📩 '+(client?.org_name||'Клиент')+' зурвас илгээлээ');
-      }
-    }
-  } catch(e){
-    if(!silent) el.innerHTML='<div style="color:var(--muted);font-size:13px">Зурвас ачааллахад алдаа гарлаа.</div>';
-  }
-}
-
-async function cdmSendReply(){
-  const inp=document.getElementById('cdm-chat-input');
-  const text=inp?.value?.trim(); if(!text)return;
-  try {
-    const pw=document.getElementById('a-pw').value;
-    await gasCall('sendMessage',{password:pw,reg_number:currentClientReg,message:text,sender:'auditor'});
-    inp.value=''; toast('✓ Хариу илгэгдлээ'); cdmLoadChat();
-  } catch(e){toast('Алдаа: '+e.message,true);}
 }
 
 async function saveAuditorStatuses(){
@@ -1950,10 +2257,9 @@ async function saveAuditorStatuses(){
   try {
     const pw=document.getElementById('a-pw').value;
     const promises=[];
-    if(hasStatus)  promises.push(gasCall('adminSaveStatuses',{password:pw,reg_number:currentClientReg,statuses:auditorStatuses}));
-    if(hasStages)  promises.push(gasCall('adminSaveStages', {password:pw,reg_number:currentClientReg,stages:auditorStages}));
-    // ✦ ШИНЭ: тайлбаруудыг хадгалах
-    if(hasComments)promises.push(gasCall('adminSaveComments',{password:pw,reg_number:currentClientReg,comments:auditorComments}));
+    if(hasStatus)   promises.push(gasCall('adminSaveStatuses',{password:pw,reg_number:currentClientReg,statuses:auditorStatuses}));
+    if(hasStages)   promises.push(gasCall('adminSaveStages',  {password:pw,reg_number:currentClientReg,stages:auditorStages}));
+    if(hasComments) promises.push(gasCall('adminSaveComments',{password:pw,reg_number:currentClientReg,comments:auditorComments}));
     const results=await Promise.all(promises);
     const err=results.find(r=>!r.ok);
     if(err){toast('Алдаа: '+err.error,true);}
@@ -1962,13 +2268,15 @@ async function saveAuditorStatuses(){
   btn.disabled=false; btn.innerHTML='<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
 }
 
-// ✦ ШИНЭ: Аудитор approve/reject товч дээр дарахад
-function adminSetStatus(docId, status, btn) {
-  auditorStatuses[docId] = status;
-  // UI шинэчилнэ — тухайн мөрийг дахин зурна
+function adminSetStatus(docId, status) {
+  // Toggle: дахин дарвал unset
+  if(auditorStatuses[docId] === status){
+    delete auditorStatuses[docId];
+  } else {
+    auditorStatuses[docId] = status;
+  }
   cdmTab('docs');
 }
-
 // ── TOAST ─────────────────────────────────────────────────────
 let toastTimer;
 function toast(msg,isErr=false){
