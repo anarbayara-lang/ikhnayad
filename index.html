@@ -929,7 +929,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         </div>
         <!-- Tab: Auditors -->
         <div id="admin-tab-auditors-body" style="display:none">
-          <div id="auditor-list" class="aud-list"></div>
+          <div id="auditor-list"></div>
         </div>
       </div>
     </section>
@@ -1002,7 +1002,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzPc7ztDIZKLA6EDC1pmHrolc6yoglRAgEJt8vEPk0d69Dxja7XfA_4D3DsNEee27JW/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbysTr763VD_QPVrvzW_oPup3t6nTQcALwAOwn_sA-KwLHeQ6fTh4SV5DHYq_y3baZ2K/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -1955,7 +1955,8 @@ function applyServerFilter(){
 }
 
 async function loadAdminData(){
-  const list=document.getElementById('admin-list');
+  const list = document.getElementById('admin-list');
+  if(!list) return;
   list.innerHTML='<div class="ad-empty"><div class="spinner spinner-dark" style="margin:0 auto 12px"></div><div class="ad-empty-desc">Үйлчлүүлэгчийн мэдээлэл татаж байна...</div></div>';
   try {
     const pw=document.getElementById('a-pw').value;
@@ -1966,17 +1967,27 @@ async function loadAdminData(){
       auditor_email: filterAuditor,
       audit_year:    filterYear,
     });
-    if(!r.ok){list.innerHTML='<div class="ad-empty"><div class="ad-empty-title">Алдаа</div><div class="ad-empty-desc">'+r.error+'</div></div>';return;}
-    adminClientsCache=r.clients||[];
-    // Build auditor count map
-    auditorCountMap = {};
-    adminClientsCache.forEach(c=>{
-      const e=String(c.auditor_email||'').toLowerCase().trim();
-      if(e) auditorCountMap[e] = (auditorCountMap[e]||0)+1;
-    });
+    if(!r.ok){
+      list.innerHTML='<div class="ad-empty"><div class="ad-empty-title">Алдаа</div><div class="ad-empty-desc">'+(r.error||'Тодорхойгүй алдаа')+'</div></div>';
+      return;
+    }
+    adminClientsCache = r.clients || [];
+    // Аудиторын count map шинэчлэх (бүх клиентэд тулгуурлана, filter биш)
+    if(!filterAuditor && !filterYear){
+      auditorCountMap = {};
+      adminClientsCache.forEach(c=>{
+        const em=String(c.auditor_email||'').toLowerCase().trim();
+        if(em) auditorCountMap[em] = (auditorCountMap[em]||0)+1;
+      });
+    }
     updateAdminStats();
     renderAdminClients(adminClientsCache);
-  } catch(e){list.innerHTML='<div class="ad-empty"><div class="ad-empty-title">Холболтын алдаа</div><div class="ad-empty-desc">'+e.message+'</div></div>';}
+    // Search input хэрэв утгатай бол шүүж дахин харуулна
+    const q = (document.getElementById('admin-search')?.value || '').trim();
+    if(q) filterAdminClients();
+  } catch(e){
+    list.innerHTML='<div class="ad-empty"><div class="ad-empty-title">Холболтын алдаа</div><div class="ad-empty-desc">'+e.message+'</div></div>';
+  }
 }
 
 function adminSwitchTab(tab){
@@ -2073,21 +2084,28 @@ function renderAdminClients(clients){
 function renderAuditorTab(){
   const list = document.getElementById('auditor-list');
   if(!list) return;
+  // "Шинэ аудитор нэмэх" товч + жагсаалт
+  let headerHtml = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+    <div style="font-size:13px;color:var(--muted)">Идэвхтэй ${availableAuditors.length} аудитор</div>
+    <button onclick="openNewAuditorModal()" class="btn btn-p btn-sm">
+      <svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>
+      Шинэ аудитор нэмэх
+    </button>
+  </div>`;
+
   if(!availableAuditors.length){
-    list.innerHTML=`<div class="ad-empty">
+    list.innerHTML = headerHtml + `<div class="ad-empty">
       <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>
       <div class="ad-empty-title">Аудитор бүртгэгдээгүй байна</div>
-      <div class="ad-empty-desc">Google Sheets → Auditors хуудсанд аудитор нэмнэ үү</div>
+      <div class="ad-empty-desc">Дээрх "Шинэ аудитор нэмэх" товчийг дарж нэмнэ үү</div>
     </div>`;
     return;
   }
-  list.innerHTML='';
+  let cardsHtml = '<div class="aud-list">';
   availableAuditors.forEach(a=>{
     const av = (a.name||'??').split(/\s+/).filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase();
     const cnt = auditorCountMap[String(a.email).toLowerCase().trim()] || 0;
-    const card = document.createElement('div');
-    card.className='aud-card';
-    card.innerHTML=`
+    cardsHtml += `<div class="aud-card">
       <div class="aud-head">
         <div class="aud-av">${av}</div>
         <div style="min-width:0">
@@ -2106,9 +2124,102 @@ function renderAuditorTab(){
         </div>
         <button onclick="filterByAuditor('${a.email}')" class="btn btn-s btn-sm" style="font-size:11.5px">Үзэх →</button>
       </div>
-    `;
-    list.appendChild(card);
+    </div>`;
   });
+  cardsHtml += '</div>';
+  list.innerHTML = headerHtml + cardsHtml;
+}
+
+// ✦ ШИНЭ: Аудитор нэмэх modal
+function openNewAuditorModal(){
+  // Modal үүсгээд document-д нэмнэ
+  let m = document.getElementById('new-aud-modal');
+  if(!m){
+    m = document.createElement('div');
+    m.id = 'new-aud-modal';
+    m.style.cssText = 'display:none;position:fixed;inset:0;z-index:4000;background:rgba(8,28,18,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px';
+    m.innerHTML = `
+      <div style="background:#fff;border-radius:14px;width:100%;max-width:440px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35)">
+        <div style="background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">
+          <div style="font-family:var(--fd);font-size:18px;color:#fff;font-weight:700">Шинэ аудитор нэмэх</div>
+          <button onclick="closeNewAuditorModal()" class="cdm-close" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:15px">✕</button>
+        </div>
+        <div style="padding:22px 24px;display:flex;flex-direction:column;gap:13px">
+          <div class="fg"><label>Овог Нэр <span class="req">*</span></label><input class="fc" id="na-name" type="text" placeholder="Б. Баяр"></div>
+          <div class="fg"><label>И-мэйл <span class="req">*</span></label><input class="fc" id="na-email" type="email" placeholder="bayar@example.com" style="font-family:var(--fm)"></div>
+          <div class="fg"><label>Албан тушаал</label><input class="fc" id="na-role" type="text" placeholder="Аудитор" value="Аудитор"></div>
+          <div class="fg"><label>Утас</label><input class="fc" id="na-phone" type="tel" placeholder="+976"></div>
+          <div id="na-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span></span></div>
+        </div>
+        <div style="padding:14px 24px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">
+          <button onclick="closeNewAuditorModal()" class="btn btn-g btn-sm">Цуцлах</button>
+          <button onclick="saveNewAuditor()" id="na-save-btn" class="btn btn-p btn-sm">
+            <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
+            Хадгалах
+          </button>
+        </div>
+      </div>`;
+    document.body.appendChild(m);
+  }
+  // Талбаруудыг цэвэрлэх
+  ['na-name','na-email','na-role','na-phone'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.value = id==='na-role' ? 'Аудитор' : '';
+  });
+  document.getElementById('na-err').style.display='none';
+  m.style.display = 'flex';
+}
+
+function closeNewAuditorModal(){
+  const m = document.getElementById('new-aud-modal');
+  if(m) m.style.display = 'none';
+}
+
+async function saveNewAuditor(){
+  const name  = document.getElementById('na-name').value.trim();
+  const email = document.getElementById('na-email').value.trim();
+  const role  = document.getElementById('na-role').value.trim() || 'Аудитор';
+  const phone = document.getElementById('na-phone').value.trim();
+  const err   = document.getElementById('na-err');
+  err.style.display = 'none';
+
+  if(!name || !email){
+    err.style.display='flex';
+    err.querySelector('span').textContent='Нэр болон и-мэйл шаардлагатай';
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    err.style.display='flex';
+    err.querySelector('span').textContent='И-мэйл хаяг буруу байна';
+    return;
+  }
+
+  const btn = document.getElementById('na-save-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Хадгалж...';
+
+  try {
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('addAuditor', {
+      password: pw,
+      name, email, role, phone,
+    });
+    if(r.ok){
+      toast('✓ Аудитор нэмэгдлээ');
+      closeNewAuditorModal();
+      // Жагсаалтыг шинэчлэнэ
+      await loadAuditorsList();
+      renderAuditorTab();
+    } else {
+      err.style.display='flex';
+      err.querySelector('span').textContent = r.error || 'Алдаа гарлаа';
+    }
+  } catch(e){
+    err.style.display='flex';
+    err.querySelector('span').textContent = 'Холболтын алдаа: ' + e.message;
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
 }
 
 function filterByAuditor(email){
