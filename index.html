@@ -434,7 +434,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .cdm-prog-track{height:3px;background:rgba(255,255,255,.08);overflow:hidden}
 .cdm-prog-fill{height:100%;background:linear-gradient(90deg,var(--g500),var(--accent-glow));transition:width .6s cubic-bezier(.23,1,.32,1);width:0%}
 
-.cdm-meta{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:14px 28px;background:linear-gradient(to bottom,#fafdfb,#fff);border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap}
+.cdm-meta{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:16px 28px 18px;background:linear-gradient(to bottom,#fafdfb,#fff);border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap;flex-shrink:0}
 .cdm-meta-item{min-width:0}
 .cdm-meta-flex{flex:1}
 .cdm-meta-lbl{font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
@@ -447,10 +447,10 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .cdm-assign-btn:hover:not(:disabled){background:var(--g800)}
 .cdm-assign-btn:disabled{background:var(--g50);color:var(--muted);cursor:not-allowed;border:1px solid var(--line)}
 
-.cdm-tabs{display:flex;border-bottom:1px solid var(--line);padding:0 28px;background:#fff;gap:4px;overflow-x:auto}
-.cdm-tab{padding:12px 14px;border:none;background:none;font-size:13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;font-family:var(--fb);transition:all .15s;white-space:nowrap}
-.cdm-tab:hover{color:var(--g800)}
-.cdm-tab.act{color:var(--g800);border-bottom-color:var(--g800);font-weight:600}
+.cdm-tabs{display:flex;border-bottom:1px solid var(--line);padding:6px 28px 0;background:#fff;gap:4px;overflow-x:auto;flex-shrink:0}
+.cdm-tab{padding:14px 18px;border:none;background:none;font-size:14px;font-weight:500;color:var(--slate);border-bottom:3px solid transparent;cursor:pointer;font-family:var(--fb);transition:all .15s;white-space:nowrap;line-height:1.4}
+.cdm-tab:hover{color:var(--g800);background:var(--g50)}
+.cdm-tab.act{color:var(--g800);border-bottom-color:var(--g700);font-weight:700;background:var(--g50)}
 .cdm-body{padding:22px 28px;flex:1;overflow-y:auto;background:var(--bg)}
 .cdm-foot{padding:14px 28px;border-top:1px solid var(--line);background:#fff;display:flex;justify-content:flex-end;gap:8px}
 
@@ -1050,7 +1050,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxayJCP-M4ATFpFpFEzvvHmfWqFh_cIxnAQhm7jvwfrLhz5Mi6KEPHV4QDhRWzpeKhT/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwXQa5QVmW-AlHIXe1P2MfBB-oj0JyhDz4_cDvteGYkJuywHfwm6bH_Fncd6W9PGitV/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -1090,11 +1090,15 @@ function toggleMob(){document.getElementById('mobMenu').classList.toggle('open')
 function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
 
 // ── GAS ───────────────────────────────────────────────────────
+// ☆ ХАМГААЛАЛТ — API Token (Apps Script Properties дотор тохирсон утга)
+// Энэ утгыг setupSecurity() ажиллуулсны дараа Apps Script log-аас хуулна
+const API_TOKEN = 'PASTE_YOUR_TOKEN_HERE';
+
 async function gasCall(action, body={}) {
   const url = GAS_URL + '?action=' + encodeURIComponent(action);
   const res = await fetch(url, {
     method:'POST', headers:{'Content-Type':'text/plain'},
-    body: JSON.stringify({action,...body}),
+    body: JSON.stringify({ action, token: API_TOKEN, ...body }),
   });
   if(!res.ok) throw new Error('Network error '+res.status);
   return res.json();
