@@ -817,7 +817,16 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
               </div>
               <div class="fg"><label>5. Өмчийн хэлбэр</label><select class="fc ci-field" id="ci5" data-ls="ci5"><option value="">— Сонгоно уу —</option><option>ТШЗ</option><option>ТӨХХК</option><option>ТӨҮГ</option><option>ОНӨҮГ</option><option>ТЕЗ</option><option>ХХК</option><option>ГХО ХХК</option><option>ХК</option><option>ББСБ</option><option>Бусад</option></select></div>
               <div class="fg full"><label>6. Байгууллагын байршил, хаяг</label><input class="fc ci-field" type="text" id="ci6" data-ls="ci6" placeholder="Дүүрэг, хороо, дэлгэрэнгүй хаяг"></div>
-              <div class="fg"><label>7. Харьяа дүүрэг</label><select class="fc ci-field" id="ci7" data-ls="ci7"><option value="">— Сонгоно уу —</option><option>Баянгол</option><option>Баянзүрх</option><option>Сүхбаатар</option><option>Чингэлтэй</option><option>Хан-Уул</option><option>Налайх</option><option>Багануур</option><option>Орон нутаг</option></select></div>
+              <div class="fg"><label>7. Харьяа дүүрэг / Аймаг, сум</label>
+                <div id="ci7-wrap" class="multi-select" onclick="toggleDistrictDropdown('ci7', event)" tabindex="0" style="cursor:pointer">
+                  <span id="ci7-display" style="flex:1;font-size:13px;color:var(--muted);padding:4px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">Сонгоно уу...</span>
+                  <input type="text" id="ci7-search" class="ms-search" placeholder="Хайх (УБ, аймаг, сум)..." oninput="filterDistrictOptions('ci7')" onkeydown="onDistrictKeydown('ci7', event)" style="min-width:60px">
+                  <button type="button" onclick="clearDistrict('ci7', event)" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0 4px;flex-shrink:0" title="Цэвэрлэх">✕</button>
+                  <svg class="ms-arrow" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4"/></svg>
+                  <div id="ci7-dropdown" class="ms-dropdown"></div>
+                </div>
+                <input type="hidden" class="ci-field" id="ci7" data-ls="ci7">
+              </div>
               <div class="fg"><label>8. Салбар нэгжийн тоо</label><input class="fc ci-field" type="number" id="ci8" data-ls="ci8" min="0" placeholder="0"></div>
               <div class="fg"><label>9. Нийт ажилтны тоо</label><input class="fc ci-field" type="number" id="ci9" data-ls="ci9" min="1" placeholder="0"></div>
               <div class="fg"><label>10. Удирдлагын овог, нэр</label><input class="fc ci-field" type="text" id="ci10" data-ls="ci10" placeholder="Овог Нэр"></div>
@@ -840,7 +849,16 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
                 <div class="ci-grid">
                   <div class="fg"><label>15. Etax.mta.mn — Нэвтрэх нэр</label><input class="fc ci-field" type="text" id="ci15" data-ls="ci15" placeholder="Etax хэрэглэгчийн нэр" autocomplete="off"></div>
                   <div class="fg"><label>16. Etax — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci16" placeholder="••••••••" autocomplete="new-password"></div>
-                  <div class="fg"><label>17. НДаатгал — Дүүрэг</label><select class="fc ci-field" id="ci17" data-ls="ci17"><option value="">— Сонгоно уу —</option><option>Баянгол</option><option>Баянзүрх</option><option>Сүхбаатар</option><option>Чингэлтэй</option><option>Хан-Уул</option></select></div>
+                  <div class="fg"><label>17. НДаатгал — Дүүрэг / Сум</label>
+                    <div id="ci17-wrap" class="multi-select" onclick="toggleDistrictDropdown('ci17', event)" tabindex="0" style="cursor:pointer">
+                      <span id="ci17-display" style="flex:1;font-size:13px;color:var(--muted);padding:4px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0">Сонгоно уу...</span>
+                      <input type="text" id="ci17-search" class="ms-search" placeholder="Хайх..." oninput="filterDistrictOptions('ci17')" onkeydown="onDistrictKeydown('ci17', event)" style="min-width:60px">
+                      <button type="button" onclick="clearDistrict('ci17', event)" style="border:none;background:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0 4px;flex-shrink:0" title="Цэвэрлэх">✕</button>
+                      <svg class="ms-arrow" style="width:12px;height:12px;stroke:var(--muted);fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M3 5l4 4 4-4"/></svg>
+                      <div id="ci17-dropdown" class="ms-dropdown"></div>
+                    </div>
+                    <input type="hidden" class="ci-field" id="ci17" data-ls="ci17">
+                  </div>
                   <div class="fg"><label>18. Ажил олгогчийн дугаар</label><input class="fc ci-field" type="text" id="ci18" data-ls="ci18" placeholder="NDA дугаар" style="font-family:var(--fm)"></div>
                   <div class="fg"><label>19. НДаатгал — Нэвтрэх нэр</label><input class="fc ci-field" type="text" id="ci19" data-ls="ci19" placeholder="NDA хэрэглэгч" autocomplete="off"></div>
                   <div class="fg"><label>20. НДаатгал — Нууц үг <small style="color:#a06800">(хадгалагдахгүй)</small></label><input class="fc" type="password" id="ci20" placeholder="••••••••" autocomplete="new-password"></div>
@@ -1050,7 +1068,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwR3dNGCLezuA309s7TEzm6kpMcn6Qr3KxvKWGDN-NSKg3ZjOCTdmO5-XGB0dEVxH4/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwXQa5QVmW-AlHIXe1P2MfBB-oj0JyhDz4_cDvteGYkJuywHfwm6bH_Fncd6W9PGitV/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -1092,7 +1110,7 @@ function closeMob(){document.getElementById('mobMenu').classList.remove('open');
 // ── GAS ───────────────────────────────────────────────────────
 // ☆ ХАМГААЛАЛТ — API Token (Apps Script Properties дотор тохирсон утга)
 // Энэ утгыг setupSecurity() ажиллуулсны дараа Apps Script log-аас хуулна
-const API_TOKEN = '660a7ae5a1d744879df3886bc6d1813090b567b7233b40ba9ebd095af34ebfab';
+const API_TOKEN = 'PASTE_YOUR_TOKEN_HERE';
 
 async function gasCall(action, body={}) {
   const url = GAS_URL + '?action=' + encodeURIComponent(action);
@@ -1245,6 +1263,9 @@ function populateFormFromServer(cd, reg) {
   });
   // ✦ Үйл ажиллагааны чиглэл (multi-select)
   setActivitiesFromString(cd.activity_type || '');
+  // ✦ Дүүрэг/сум display талбарт буцаан харуулах
+  syncDistrictDisplay('ci7');
+  syncDistrictDisplay('ci17');
   // Огноо талбар (created_at дээр үндэслэн)
   if(cd.created_at){
     const el = document.getElementById('ci1');
@@ -1908,6 +1929,211 @@ const ACTIVITY_OPTIONS = [
 
 let selectedActivities = [];
 
+// ✦ ШИНЭ: Аймаг/Дүүргийн жагсаалт (УБ + 21 аймгийн бүх сум)
+const DISTRICT_OPTIONS = [
+  // ── Улаанбаатар ───────────────────────────────────────────
+  'Улаанбаатар — Баянгол',
+  'Улаанбаатар — Баянзүрх',
+  'Улаанбаатар — Сүхбаатар',
+  'Улаанбаатар — Чингэлтэй',
+  'Улаанбаатар — Сонгинохайрхан',
+  'Улаанбаатар — Хан-Уул',
+  'Улаанбаатар — Налайх',
+  'Улаанбаатар — Багануур',
+  'Улаанбаатар — Багахангай',
+
+  // ── Архангай ──────────────────────────────────────────────
+  'Архангай — Эрдэнэбулган (төв)','Архангай — Батцэнгэл','Архангай — Булган','Архангай — Жаргалант','Архангай — Ихтамир','Архангай — Өгийнуур','Архангай — Өлзийт','Архангай — Өндөр-Улаан','Архангай — Тариат','Архангай — Төвшрүүлэх','Архангай — Хайрхан','Архангай — Хангай','Архангай — Хотонт','Архангай — Цахир','Архангай — Цэнхэр','Архангай — Цэцэрлэг','Архангай — Чулуут','Архангай — Эрдэнэмандал',
+
+  // ── Баян-Өлгий ────────────────────────────────────────────
+  'Баян-Өлгий — Алтай','Баян-Өлгий — Алтанцөгц','Баян-Өлгий — Баяннуур','Баян-Өлгий — Бугат','Баян-Өлгий — Булган','Баян-Өлгий — Буянт','Баян-Өлгий — Дэлүүн','Баян-Өлгий — Ногооннуур','Баян-Өлгий — Сагсай','Баян-Өлгий — Толбо','Баян-Өлгий — Цагааннуур','Баян-Өлгий — Цэнгэл','Баян-Өлгий — Улаанхус',
+
+  // ── Баянхонгор ────────────────────────────────────────────
+  'Баянхонгор — Баянхонгор (төв)','Баянхонгор — Баацагаан','Баянхонгор — Баянбулаг','Баянхонгор — Баянговь','Баянхонгор — Баянлиг','Баянхонгор — Баян-Овоо','Баянхонгор — Баян-Өндөр','Баянхонгор — Баянцагаан','Баянхонгор — Бөмбөгөр','Баянхонгор — Бууцагаан','Баянхонгор — Галуут','Баянхонгор — Гурванбулаг','Баянхонгор — Жаргалант','Баянхонгор — Жинст','Баянхонгор — Заг','Баянхонгор — Өлзийт','Баянхонгор — Шинэжинст','Баянхонгор — Эрдэнэцогт',
+
+  // ── Булган ────────────────────────────────────────────────
+  'Булган — Булган (төв)','Булган — Баян-Агт','Булган — Баяннуур','Булган — Бугат','Булган — Бүрэгхангай','Булган — Гурванбулаг','Булган — Дашинчилэн','Булган — Могод','Булган — Орхон','Булган — Рашаант','Булган — Сайхан','Булган — Сэлэнгэ','Булган — Тэшиг','Булган — Хангал','Булган — Хишиг-Өндөр',
+
+  // ── Говь-Алтай ────────────────────────────────────────────
+  'Говь-Алтай — Алтай (төв)','Говь-Алтай — Баян-Уул','Говь-Алтай — Бигэр','Говь-Алтай — Бугат','Говь-Алтай — Дарви','Говь-Алтай — Дэлгэр','Говь-Алтай — Жаргалан','Говь-Алтай — Тайшир','Говь-Алтай — Тонхил','Говь-Алтай — Төгрөг','Говь-Алтай — Халиун','Говь-Алтай — Цогт','Говь-Алтай — Цээл','Говь-Алтай — Шарга','Говь-Алтай — Эрдэнэ',
+
+  // ── Говьсүмбэр ────────────────────────────────────────────
+  'Говьсүмбэр — Сүмбэр','Говьсүмбэр — Баянтал','Говьсүмбэр — Шивээговь',
+
+  // ── Дархан-Уул ────────────────────────────────────────────
+  'Дархан-Уул — Дархан','Дархан-Уул — Орхон','Дархан-Уул — Хонгор','Дархан-Уул — Шарын гол',
+
+  // ── Дорноговь ─────────────────────────────────────────────
+  'Дорноговь — Сайншанд (төв)','Дорноговь — Айраг','Дорноговь — Алтанширээ','Дорноговь — Даланжаргалан','Дорноговь — Дэлгэрэх','Дорноговь — Замын-Үүд','Дорноговь — Иххэт','Дорноговь — Мандах','Дорноговь — Өргөн','Дорноговь — Сайхандулаан','Дорноговь — Улаанбадрах','Дорноговь — Хатанбулаг','Дорноговь — Хөвсгөл','Дорноговь — Эрдэнэ',
+
+  // ── Дорнод ────────────────────────────────────────────────
+  'Дорнод — Чойбалсан (төв)','Дорнод — Баяндун','Дорнод — Баянтүмэн','Дорнод — Булган','Дорнод — Гурванзагал','Дорнод — Дашбалбар','Дорнод — Матад','Дорнод — Сэргэлэн','Дорнод — Халхгол','Дорнод — Хөлөнбуйр','Дорнод — Цагаан-Овоо','Дорнод — Чулуунхороот',
+
+  // ── Дундговь ──────────────────────────────────────────────
+  'Дундговь — Адаацаг','Дундговь — Баянжаргалан','Дундговь — Говь-Угтаал','Дундговь — Гурвансайхан','Дундговь — Дэлгэрхангай','Дундговь — Дэлгэрцогт','Дундговь — Дэрэн','Дундговь — Луус','Дундговь — Өлзийт','Дундговь — Сайхан-Овоо','Дундговь — Хулд','Дундговь — Цагаандэлгэр','Дундговь — Эрдэнэдалай',
+
+  // ── Завхан ────────────────────────────────────────────────
+  'Завхан — Алдархаан','Завхан — Асгат','Завхан — Баянтэс','Завхан — Баянхайрхан','Завхан — Дөрвөлжин','Завхан — Завханмандал','Завхан — Идэр','Завхан — Их-Уул','Завхан — Нөмрөг','Завхан — Отгон','Завхан — Сантмаргац','Завхан — Сонгино','Завхан — Тосонцэнгэл','Завхан — Түдэвтэй','Завхан — Ургамал','Завхан — Цагаанхайрхан','Завхан — Цэцэн-Уул','Завхан — Шилүүстэй','Завхан — Эрдэнэхайрхан','Завхан — Яруу',
+
+  // ── Орхон ─────────────────────────────────────────────────
+  'Орхон — Баян-Өндөр (Эрдэнэт)','Орхон — Жаргалант',
+
+  // ── Өвөрхангай ────────────────────────────────────────────
+  'Өвөрхангай — Арвайхээр (төв)','Өвөрхангай — Баруунбаян-Улаан','Өвөрхангай — Бат-Өлзий','Өвөрхангай — Баянгол','Өвөрхангай — Баян-Өндөр','Өвөрхангай — Бүрд','Өвөрхангай — Гучин-Ус','Өвөрхангай — Есөнзүйл','Өвөрхангай — Зүүнбаян-Улаан','Өвөрхангай — Нарийнтээл','Өвөрхангай — Өлзийт','Өвөрхангай — Сант','Өвөрхангай — Тарагт','Өвөрхангай — Төгрөг','Өвөрхангай — Уянга','Өвөрхангай — Хайрхандулаан','Өвөрхангай — Хархорин','Өвөрхангай — Хужирт',
+
+  // ── Өмнөговь ──────────────────────────────────────────────
+  'Өмнөговь — Даланзадгад (төв)','Өмнөговь — Баяндалай','Өмнөговь — Баян-Овоо','Өмнөговь — Булган','Өмнөговь — Гурвантэс','Өмнөговь — Манлай','Өмнөговь — Ноён','Өмнөговь — Номгон','Өмнөговь — Сэврэй','Өмнөговь — Ханбогд','Өмнөговь — Ханхонгор','Өмнөговь — Хүрмэн','Өмнөговь — Цогт-Овоо','Өмнөговь — Цогтцэций',
+
+  // ── Сэлэнгэ ───────────────────────────────────────────────
+  'Сэлэнгэ — Сүхбаатар (төв)','Сэлэнгэ — Алтанбулаг','Сэлэнгэ — Баруунбүрэн','Сэлэнгэ — Баянгол','Сэлэнгэ — Ерөө','Сэлэнгэ — Жавхлант','Сэлэнгэ — Зүүнбүрэн','Сэлэнгэ — Мандал','Сэлэнгэ — Орхон','Сэлэнгэ — Орхонтуул','Сэлэнгэ — Сайхан','Сэлэнгэ — Сант','Сэлэнгэ — Түшиг','Сэлэнгэ — Хушаат','Сэлэнгэ — Цагааннуур','Сэлэнгэ — Шаамар',
+
+  // ── Сүхбаатар ─────────────────────────────────────────────
+  'Сүхбаатар — Баруун-Урт (төв)','Сүхбаатар — Асгат','Сүхбаатар — Баяндэлгэр','Сүхбаатар — Дарьганга','Сүхбаатар — Мөнххаан','Сүхбаатар — Наран','Сүхбаатар — Онгон','Сүхбаатар — Сүхбаатар','Сүхбаатар — Түвшинширээ','Сүхбаатар — Уулбаян','Сүхбаатар — Халзан','Сүхбаатар — Эрдэнэцагаан',
+
+  // ── Төв ───────────────────────────────────────────────────
+  'Төв — Зуунмод (төв)','Төв — Аргалант','Төв — Архуст','Төв — Баян','Төв — Баян-Өнжүүл','Төв — Баянжаргалан','Төв — Баянцагаан','Төв — Баянцогт','Төв — Баянчандмань','Төв — Борнуур','Төв — Дэлгэрхаан','Төв — Жаргалант','Төв — Заамар','Төв — Лүн','Төв — Мөнгөнморьт','Төв — Өндөрширээт','Төв — Сэргэлэн','Төв — Сүмбэр','Төв — Угтаалцайдам','Төв — Цээл','Төв — Эрдэнэ','Төв — Эрдэнэсант',
+
+  // ── Увс ───────────────────────────────────────────────────
+  'Увс — Улаангом (төв)','Увс — Баруунтуруун','Увс — Бөхмөрөн','Увс — Давст','Увс — Зүүнговь','Увс — Зүүнхангай','Увс — Малчин','Увс — Наранбулаг','Увс — Өлгий','Увс — Өмнөговь','Увс — Өндөрхангай','Увс — Сагил','Увс — Тариалан','Увс — Түргэн','Увс — Тэс','Увс — Хархираа','Увс — Ховд','Увс — Цагаанхайрхан',
+
+  // ── Ховд ──────────────────────────────────────────────────
+  'Ховд — Ховд (төв)','Ховд — Алтай','Ховд — Булган','Ховд — Буянт','Ховд — Дарви','Ховд — Дөргөн','Ховд — Зэрэг','Ховд — Манхан','Ховд — Мөнххайрхан','Ховд — Мөст','Ховд — Мянгад','Ховд — Үенч','Ховд — Цэцэг','Ховд — Чандмань','Ховд — Эрдэнэбүрэн',
+
+  // ── Хөвсгөл ───────────────────────────────────────────────
+  'Хөвсгөл — Мөрөн (төв)','Хөвсгөл — Алаг-Эрдэнэ','Хөвсгөл — Арбулаг','Хөвсгөл — Баянзүрх','Хөвсгөл — Бүрэнтогтох','Хөвсгөл — Галт','Хөвсгөл — Жаргалант','Хөвсгөл — Их-Уул','Хөвсгөл — Рашаант','Хөвсгөл — Рэнчинлхүмбэ','Хөвсгөл — Тариалан','Хөвсгөл — Тосонцэнгэл','Хөвсгөл — Төмөрбулаг','Хөвсгөл — Түнэл','Хөвсгөл — Улаан-Уул','Хөвсгөл — Ханх','Хөвсгөл — Цагаан-Уул','Хөвсгөл — Цэцэрлэг','Хөвсгөл — Чандмань-Өндөр','Хөвсгөл — Шинэ-Идэр',
+
+  // ── Хэнтий ────────────────────────────────────────────────
+  'Хэнтий — Чингис (Өндөрхаан)','Хэнтий — Батноров','Хэнтий — Батширээт','Хэнтий — Баян-Адрага','Хэнтий — Баян-Овоо','Хэнтий — Баянхутаг','Хэнтий — Биндэр','Хэнтий — Галшар','Хэнтий — Дархан','Хэнтий — Дэлгэрхаан','Хэнтий — Жаргалтхаан','Хэнтий — Мөрөн','Хэнтий — Норовлин','Хэнтий — Өмнөдэлгэр','Хэнтий — Хэрлэн','Хэнтий — Цэнхэрмандал',
+];
+
+// ✦ Дүүрэг/сум сонгох dropdown функцууд (single-select, ci7 ба ci17 хоёрт хэрэгжинэ)
+function toggleDistrictDropdown(targetId, e){
+  const wrap = document.getElementById(targetId + '-wrap');
+  if(!wrap) return;
+  if(e && e.target && (e.target.tagName === 'BUTTON' || e.target.closest('button'))) return;
+  // Бусад нээлттэй district dropdown-уудыг хаах
+  ['ci7','ci17'].forEach(id => {
+    if(id !== targetId){
+      document.getElementById(id + '-wrap')?.classList.remove('open');
+    }
+  });
+  if(!wrap.classList.contains('open')){
+    wrap.classList.add('open');
+    renderDistrictOptions(targetId, '');
+    setTimeout(() => document.getElementById(targetId + '-search')?.focus(), 50);
+  }
+}
+
+function renderDistrictOptions(targetId, filter){
+  const dd = document.getElementById(targetId + '-dropdown');
+  if(!dd) return;
+  const q = (filter || '').toLowerCase().trim();
+  const currentVal = document.getElementById(targetId)?.value || '';
+  dd.innerHTML = '';
+  let shown = 0, countMatched = 0;
+  const MAX = 60;
+  for(const opt of DISTRICT_OPTIONS){
+    if(q && !opt.toLowerCase().includes(q)) continue;
+    countMatched++;
+    if(shown >= MAX) continue;
+    const isSelected = (opt === currentVal);
+    const div = document.createElement('div');
+    div.className = 'ms-option' + (isSelected ? ' selected' : '');
+    div.textContent = opt;
+    div.onclick = (e) => { e.stopPropagation(); selectDistrict(targetId, opt); };
+    dd.appendChild(div);
+    shown++;
+  }
+  if(countMatched > MAX){
+    const more = document.createElement('div');
+    more.style.cssText = 'padding:8px 13px;font-size:11px;color:var(--muted);text-align:center;font-style:italic;background:var(--g50);border-top:1px solid var(--line)';
+    more.textContent = '... мөн ' + (countMatched - MAX) + ' үр дүн. Илүү нарийн хайна уу.';
+    dd.appendChild(more);
+  }
+  // Шинэ нэмэх
+  if(q && !DISTRICT_OPTIONS.some(o => o.toLowerCase() === q)){
+    const div = document.createElement('div');
+    div.className = 'ms-option add-new';
+    div.textContent = 'Шинээр оруулах: "' + filter.trim() + '"';
+    div.onclick = (e) => { e.stopPropagation(); selectDistrict(targetId, filter.trim()); };
+    dd.appendChild(div);
+    shown++;
+  }
+  if(shown === 0){
+    dd.innerHTML = '<div style="padding:14px;text-align:center;color:var(--muted);font-size:12px">Олдсонгүй. Шинэ газар бичээд оруулна уу.</div>';
+  }
+}
+
+function selectDistrict(targetId, val){
+  const hidden = document.getElementById(targetId);
+  if(hidden){
+    hidden.value = val;
+    hidden.dispatchEvent(new Event('change'));
+  }
+  const display = document.getElementById(targetId + '-display');
+  if(display){
+    display.textContent = val || 'Сонгоно уу...';
+    display.style.color = val ? 'var(--ink)' : 'var(--muted)';
+  }
+  document.getElementById(targetId + '-wrap')?.classList.remove('open');
+  const s = document.getElementById(targetId + '-search');
+  if(s) s.value = '';
+}
+
+function clearDistrict(targetId, e){
+  if(e) e.stopPropagation();
+  const hidden = document.getElementById(targetId);
+  if(hidden){
+    hidden.value = '';
+    hidden.dispatchEvent(new Event('change'));
+  }
+  const display = document.getElementById(targetId + '-display');
+  if(display){
+    display.textContent = 'Сонгоно уу...';
+    display.style.color = 'var(--muted)';
+  }
+}
+
+function filterDistrictOptions(targetId){
+  const q = document.getElementById(targetId + '-search')?.value || '';
+  renderDistrictOptions(targetId, q);
+}
+
+function onDistrictKeydown(targetId, e){
+  if(e.key === 'Escape'){
+    document.getElementById(targetId + '-wrap')?.classList.remove('open');
+  } else if(e.key === 'Enter'){
+    e.preventDefault();
+    const v = e.target.value.trim();
+    if(v) selectDistrict(targetId, v);
+  }
+}
+
+// District dropdown-уудыг гадна дарахад хаах
+document.addEventListener('click', (e) => {
+  ['ci7','ci17'].forEach(id => {
+    const wrap = document.getElementById(id + '-wrap');
+    if(wrap && wrap.classList.contains('open') && !wrap.contains(e.target)){
+      wrap.classList.remove('open');
+    }
+  });
+});
+
+// Хадгалсан утгыг dropdown-д буцаан харуулах
+function syncDistrictDisplay(targetId){
+  const hidden  = document.getElementById(targetId);
+  const display = document.getElementById(targetId + '-display');
+  if(hidden && display){
+    if(hidden.value){
+      display.textContent = hidden.value;
+      display.style.color = 'var(--ink)';
+    } else {
+      display.textContent = 'Сонгоно уу...';
+      display.style.color = 'var(--muted)';
+    }
+  }
+}
+
 function renderActivityChips() {
   const wrap = document.getElementById('ci4-chips');
   if(!wrap) return;
@@ -2154,6 +2380,9 @@ function loadFromLS() {
   const reg=localStorage.getItem('ina_reg')||'';
   const el3=document.getElementById('ci3'); if(el3&&!el3.value&&org)el3.value=org;
   const el2=document.getElementById('ci2'); if(el2&&!el2.value&&reg)el2.value=reg;
+  // ✦ Дүүрэг/сум display sync
+  syncDistrictDisplay('ci7');
+  syncDistrictDisplay('ci17');
 }
 
 // ✦ ШИНЭ: Хариуцсан аудиторын мэдээллийг dashboard карт дээр харуулна
