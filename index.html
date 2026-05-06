@@ -789,6 +789,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <button class="tab act" onclick="switchTab('t-info')">Байгууллагын мэдээлэл</button>
           <button class="tab" onclick="switchTab('t-perm')">Байнгын баримт бичиг</button>
           <button class="tab" onclick="switchTab('t-work')">Ажлын баримт бичиг</button>
+          <button class="tab" onclick="switchTab('t-docs')">📋 Гэрээ / Нэхэмжлэх</button>
         </div>
 
         <!-- PANEL: Company Info — ✦ ШИНЭ: автоматаар GAS-д хадгалагдана -->
@@ -886,6 +887,36 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         <div class="panel" id="t-work">
           <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>ХОЁР. АЖЛЫН БАРИМТ БИЧИГ</strong> — Тайлант жилийн санхүүгийн бүртгэл, татварын болон НД тайлангууд.</div></div>
           <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичиг</th><th>Хугацаа</th><th>Хэлбэр</th><th>Төлөв</th><th>Файл</th><th>Аудиторын тайлбар</th></tr></thead><tbody id="work-body"></tbody></table></div>
+        </div>
+
+        <!-- ✦ V7: ГЭРЭЭ / НЭХЭМЖЛЭХ TAB -->
+        <div class="panel" id="t-docs">
+          <div class="alert a-info" style="margin-bottom:14px">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg>
+            <div><strong>ГЭРЭЭ / НЭХЭМЖЛЭХ</strong> — Аудитын үйлчилгээний гэрээ болон нэхэмжлэхээ хүсэлт явуулж, татаж аваарай.</div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px">
+            <div class="card" style="padding:18px;cursor:pointer;border:1.5px solid var(--line);transition:all .2s" onclick="clientRequestDoc('Гэрээ')" onmouseover="this.style.borderColor='var(--g600)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='none'">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                <div style="width:36px;height:36px;border-radius:8px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:18px">📄</div>
+                <div style="font-size:14px;font-weight:600;color:var(--ink)">Гэрээ хүсэх</div>
+              </div>
+              <div style="font-size:12.5px;color:var(--muted);line-height:1.55">Аудитын үйлчилгээний гэрээ үүсгэхийг хүсэх</div>
+            </div>
+            <div class="card" style="padding:18px;cursor:pointer;border:1.5px solid var(--line);transition:all .2s" onclick="clientRequestDoc('Нэхэмжлэх')" onmouseover="this.style.borderColor='var(--g600)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--line)';this.style.transform='none'">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+                <div style="width:36px;height:36px;border-radius:8px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:18px">💵</div>
+                <div style="font-size:14px;font-weight:600;color:var(--ink)">Нэхэмжлэх хүсэх</div>
+              </div>
+              <div style="font-size:12.5px;color:var(--muted);line-height:1.55">Төлбөрийн нэхэмжлэх дахин үүсгэхийг хүсэх</div>
+            </div>
+          </div>
+
+          <h3 style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">Үүсгэсэн / Хүсэлт ирсэн баримтууд</h3>
+          <div id="client-docs-list" style="display:flex;flex-direction:column;gap:8px">
+            <div style="text-align:center;color:var(--muted);font-size:13px;padding:32px">Ачааллаж байна...</div>
+          </div>
         </div>
 
       </div>
@@ -1047,6 +1078,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <button onclick="cdmTab('stages')" id="cdm-tab-stages" class="cdm-tab act">Аудитын явц</button>
           <button onclick="cdmTab('docs')"   id="cdm-tab-docs"   class="cdm-tab">Баримт бичиг</button>
           <button onclick="cdmTab('files')"  id="cdm-tab-files"  class="cdm-tab">Файлууд</button>
+          <button onclick="cdmTab('docs2')"  id="cdm-tab-docs2"  class="cdm-tab">📋 Гэрээ/Нэхэмжлэх</button>
           <button onclick="cdmTab('info')"   id="cdm-tab-info"   class="cdm-tab">Мэдээлэл</button>
         </div>
 
@@ -1068,7 +1100,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbwXQa5QVmW-AlHIXe1P2MfBB-oj0JyhDz4_cDvteGYkJuywHfwm6bH_Fncd6W9PGitV/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxNT_kUqKuGMxRW3rQlDhTfdO-mEjmcN35lNtZMqXIZX-eIgBG3ijfKrNaVrbjZZTJq/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -2436,11 +2468,13 @@ async function updateAssignedAuditorCard(clientData) {
     console.warn('getMyAuditor:', e);
   }
 }
-const TAB_ORDER=['t-info','t-perm','t-work'];
+const TAB_ORDER=['t-info','t-perm','t-work','t-docs'];
 function switchTab(id) {
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('act'));
   document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('act',TAB_ORDER[i]===id));
   document.getElementById(id)?.classList.add('act');
+  // ✦ Documents tab нээгдэх үед автоматаар сонгож ачаалах
+  if(id === 't-docs') loadClientDocuments();
 }
 
 // ── RENDER TABLES ─────────────────────────────────────────────
@@ -3318,13 +3352,19 @@ async function assignAuditor(){
 }
 
 function cdmTab(tab){
-  ['stages','docs','files','info'].forEach(t=>{
+  ['stages','docs','files','docs2','info'].forEach(t=>{
     const btn=document.getElementById('cdm-tab-'+t);
     if(btn) btn.classList.toggle('act', t===tab);
   });
   const body=document.getElementById('cdm-body');
   const client=adminClientsCache.find(c=>String(c.reg_number)===String(currentClientReg))||{};
   const files=currentClientData.files||[];
+
+  if(tab==='docs2'){
+    body.innerHTML = '<div style="text-align:center;color:var(--muted);padding:32px"><span class="spinner spinner-dark"></span> Ачааллаж байна...</div>';
+    loadAdminDocuments(currentClientReg);
+    return;
+  }
 
   if(tab==='stages'){
     const stageMap=client.stageMap||{};
@@ -3458,6 +3498,303 @@ function adminSetStatus(docId, status) {
   }
   cdmTab('docs');
 }
+
+// ═══════════════════════════════════════════════════════════════
+// ✦ V7: ГЭРЭЭ / НЭХЭМЖЛЭХ — Client + Admin
+// ═══════════════════════════════════════════════════════════════
+
+const DOC_STATUS_LABELS = {
+  requested: { l: '🔔 Хүсэлт ирсэн', cls: 'b-wait' },
+  created:   { l: '📝 Үүссэн',       cls: 'b-rev' },
+  sent:      { l: '✅ Илгээсэн',     cls: 'b-ok' },
+};
+
+function fmtMoney(n) {
+  if (n == null || n === '') return '—';
+  return Math.round(Number(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' ₮';
+}
+
+// ── CLIENT SIDE ────────────────────────────────────────────────
+async function loadClientDocuments(){
+  const list = document.getElementById('client-docs-list');
+  if(!list) return;
+  if(!SESSION.reg) {
+    list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Эхлээд нэвтэрнэ үү</div>';
+    return;
+  }
+  list.innerHTML = '<div style="text-align:center;color:var(--muted);padding:24px"><span class="spinner spinner-dark"></span> Ачааллаж байна...</div>';
+  try {
+    const r = await gasCall('listDocuments', { reg_number: SESSION.reg, access_code: SESSION.code });
+    if(!r.ok) {
+      list.innerHTML = '<div class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg><span>Алдаа: ' + (r.error || 'тодорхойгүй') + '</span></div>';
+      return;
+    }
+    if(!r.docs || !r.docs.length) {
+      list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:13px;padding:32px;background:var(--g50);border-radius:var(--r);border:1px dashed var(--line)">Одоогоор баримт байхгүй. Дээрх товчоор хүсэлт илгээгээрэй.</div>';
+      return;
+    }
+    list.innerHTML = '';
+    r.docs.forEach(d => {
+      const info = DOC_STATUS_LABELS[d.status] || { l: d.status, cls: 'b-wait' };
+      const card = document.createElement('div');
+      card.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:var(--r);transition:all .2s';
+      card.onmouseover = () => card.style.boxShadow = 'var(--sh)';
+      card.onmouseout  = () => card.style.boxShadow = 'none';
+      const icon = d.doc_type === 'Гэрээ' ? '📄' : '💵';
+      card.innerHTML =
+        '<div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0">' +
+          '<div style="width:38px;height:38px;border-radius:8px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">' + icon + '</div>' +
+          '<div style="min-width:0;flex:1">' +
+            '<div style="font-size:13.5px;font-weight:600;color:var(--ink)">' + d.doc_type + (d.doc_no ? ' № ' + d.doc_no : '') + '</div>' +
+            '<div style="font-size:11.5px;color:var(--muted);margin-top:3px;font-family:var(--fm)">' +
+              (d.created_at || '') +
+              (d.amount ? ' · ' + fmtMoney(d.amount) : '') +
+            '</div>' +
+            (d.notes ? '<div style="font-size:12px;color:var(--slate);margin-top:4px;font-style:italic">' + d.notes + '</div>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="display:flex;align-items:center;gap:8px;flex-shrink:0">' +
+          '<span class="badge ' + info.cls + '" style="white-space:nowrap">' + info.l + '</span>' +
+          (d.pdf_url ? '<a href="' + d.pdf_url + '" target="_blank" class="btn btn-s btn-sm" style="text-decoration:none">PDF →</a>' : '') +
+        '</div>';
+      list.appendChild(card);
+    });
+  } catch(e) {
+    list.innerHTML = '<div class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg><span>Холболтын алдаа: ' + e.message + '</span></div>';
+  }
+}
+
+async function clientRequestDoc(docType){
+  const notes = prompt(docType + ' хүсэх — нэмэлт тайлбар (заавал биш):', '');
+  if(notes === null) return; // canceled
+
+  toast('Хүсэлт илгээж байна...');
+  try {
+    const r = await gasCall('requestDocument', {
+      reg_number: SESSION.reg,
+      access_code: SESSION.code,
+      doc_type: docType,
+      notes: notes || '',
+    });
+    if(r.ok) {
+      toast('✓ ' + (r.message || 'Хүсэлт илгээгдлээ'));
+      loadClientDocuments();
+    } else {
+      toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
+    }
+  } catch(e) {
+    toast('Холболтын алдаа: ' + e.message, true);
+  }
+}
+
+// ── ADMIN SIDE ─────────────────────────────────────────────────
+let adminDocsCache = [];
+
+async function loadAdminDocuments(reg){
+  const body = document.getElementById('cdm-body');
+  if(!body) return;
+  try {
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('listDocuments', { password: pw, reg_number: reg });
+    if(!r.ok) {
+      body.innerHTML = '<div class="alert a-err">Алдаа: ' + (r.error || 'тодорхойгүй') + '</div>';
+      return;
+    }
+    adminDocsCache = r.docs || [];
+    renderAdminDocs(reg);
+  } catch(e) {
+    body.innerHTML = '<div class="alert a-err">Холболтын алдаа: ' + e.message + '</div>';
+  }
+}
+
+function renderAdminDocs(reg){
+  const body = document.getElementById('cdm-body');
+  if(!body) return;
+  let html = '<div style="margin-bottom:16px;display:flex;gap:8px;flex-wrap:wrap">' +
+    '<button onclick="openCreateDocModal(\'Гэрээ\')" class="btn btn-p btn-sm">' +
+      '<svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>' +
+      ' Гэрээ үүсгэх' +
+    '</button>' +
+    '<button onclick="openCreateDocModal(\'Нэхэмжлэх\')" class="btn btn-p btn-sm">' +
+      '<svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>' +
+      ' Нэхэмжлэх үүсгэх' +
+    '</button>' +
+    '</div>';
+
+  if(!adminDocsCache.length) {
+    html += '<div style="text-align:center;color:var(--muted);font-size:13px;padding:32px;background:#fff;border-radius:var(--r);border:1px dashed var(--line)">Энэ клиентэд одоогоор баримт байхгүй</div>';
+    body.innerHTML = html;
+    return;
+  }
+
+  html += '<div style="display:flex;flex-direction:column;gap:8px">';
+  adminDocsCache.forEach(d => {
+    const info = DOC_STATUS_LABELS[d.status] || { l: d.status, cls: 'b-wait' };
+    const icon = d.doc_type === 'Гэрээ' ? '📄' : '💵';
+    const isReq = d.status === 'requested';
+    html +=
+      '<div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fff;border:1px solid var(--line);border-radius:8px">' +
+        '<div style="width:36px;height:36px;border-radius:7px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">' + icon + '</div>' +
+        '<div style="flex:1;min-width:0">' +
+          '<div style="font-size:13px;font-weight:600;color:var(--ink)">' + d.doc_type + (d.doc_no ? ' № ' + d.doc_no : '') + '</div>' +
+          '<div style="font-size:11.5px;color:var(--muted);font-family:var(--fm);margin-top:2px">' +
+            (d.created_at || '') +
+            (d.amount ? ' · ' + fmtMoney(d.amount) : '') +
+            ' · ' + (d.requested_by === 'client' ? 'Клиент хүссэн' : 'Admin') +
+          '</div>' +
+          (d.notes ? '<div style="font-size:12px;color:var(--slate);margin-top:3px;font-style:italic">' + d.notes + '</div>' : '') +
+        '</div>' +
+        '<span class="badge ' + info.cls + '" style="white-space:nowrap;flex-shrink:0">' + info.l + '</span>' +
+        '<div style="display:flex;gap:4px;flex-shrink:0">' +
+          (isReq
+            ? '<button onclick="openCreateDocModal(\'' + d.doc_type + '\', \'' + d.id + '\')" class="btn btn-p btn-sm">Үүсгэх →</button>'
+            : (d.pdf_url
+                ? '<a href="' + d.pdf_url + '" target="_blank" class="btn btn-s btn-sm" title="PDF үзэх" style="text-decoration:none">👁</a>' +
+                  (d.status !== 'sent'
+                    ? '<button onclick="sendDocEmail(\'' + d.id + '\')" class="btn btn-p btn-sm" title="Клиентэд имэйлээр илгээх">📧</button>'
+                    : '<button onclick="sendDocEmail(\'' + d.id + '\')" class="btn btn-g btn-sm" title="Дахин илгээх">📧</button>')
+                : '')
+          ) +
+          '<button onclick="deleteDoc(\'' + d.id + '\')" class="btn btn-g btn-sm" style="color:var(--miss)" title="Устгах">×</button>' +
+        '</div>' +
+      '</div>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+}
+
+function openCreateDocModal(docType, fromRequestId){
+  let m = document.getElementById('create-doc-modal');
+  if(!m){
+    m = document.createElement('div');
+    m.id = 'create-doc-modal';
+    m.style.cssText = 'display:none;position:fixed;inset:0;z-index:5000;background:rgba(8,28,18,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px';
+    m.innerHTML =
+      '<div style="background:#fff;border-radius:14px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35)">' +
+        '<div style="background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">' +
+          '<div style="font-family:var(--fd);font-size:18px;color:#fff;font-weight:700" id="cd-title">Шинэ баримт</div>' +
+          '<button onclick="closeCreateDocModal()" class="cdm-close" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:15px">✕</button>' +
+        '</div>' +
+        '<div style="padding:22px 24px;display:flex;flex-direction:column;gap:13px">' +
+          '<input type="hidden" id="cd-type">' +
+          '<input type="hidden" id="cd-fromreq">' +
+          '<div class="fg"><label>Огноо <span class="req">*</span></label><input class="fc" id="cd-date" type="date"></div>' +
+          '<div class="fg"><label>Үнийн дүн (НӨАТтай) <span class="req">*</span></label><input class="fc" id="cd-amount" type="number" min="0" placeholder="5000000" style="font-family:var(--fm)"></div>' +
+          '<div class="fg" id="cd-paydue-row"><label>Төлбөр төлөх хугацаа</label><input class="fc" id="cd-paydue" type="text" placeholder="Ажлын 5 хоног" value="Ажлын 5 хоног"></div>' +
+          '<div class="fg" id="cd-contract-row" style="display:none"><label>Холбогдох гэрээний № <span style="color:var(--muted);font-weight:400;font-size:11px">(нэхэмжлэхэнд)</span></label><input class="fc" id="cd-contract" type="text" placeholder="СТА-ХХК-25/001" style="font-family:var(--fm)"></div>' +
+          '<div class="fg"><label>Тэмдэглэл (заавал биш)</label><input class="fc" id="cd-notes" type="text"></div>' +
+          '<div id="cd-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg><span></span></div>' +
+        '</div>' +
+        '<div style="padding:14px 24px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">' +
+          '<button onclick="closeCreateDocModal()" class="btn btn-g btn-sm">Цуцлах</button>' +
+          '<button onclick="submitCreateDoc()" id="cd-save-btn" class="btn btn-p btn-sm">' +
+            '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>' +
+            ' Үүсгэх' +
+          '</button>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(m);
+  }
+  document.getElementById('cd-title').textContent = 'Шинэ ' + docType;
+  document.getElementById('cd-type').value = docType;
+  document.getElementById('cd-fromreq').value = fromRequestId || '';
+  document.getElementById('cd-date').value = new Date().toISOString().split('T')[0];
+  document.getElementById('cd-amount').value = '';
+  document.getElementById('cd-notes').value = '';
+  document.getElementById('cd-err').style.display = 'none';
+  // Нэхэмжлэх бол гэрээний дугаарын талбар харуулна
+  const contractRow = document.getElementById('cd-contract-row');
+  if(contractRow) contractRow.style.display = (docType === 'Нэхэмжлэх') ? 'flex' : 'none';
+  m.style.display = 'flex';
+}
+
+function closeCreateDocModal(){
+  const m = document.getElementById('create-doc-modal');
+  if(m) m.style.display = 'none';
+}
+
+async function submitCreateDoc(){
+  const docType = document.getElementById('cd-type').value;
+  const date    = document.getElementById('cd-date').value;
+  const amount  = parseFloat(document.getElementById('cd-amount').value) || 0;
+  const payDue  = document.getElementById('cd-paydue').value.trim();
+  const contractNo = document.getElementById('cd-contract').value.trim();
+  const notes   = document.getElementById('cd-notes').value.trim();
+  const fromReq = document.getElementById('cd-fromreq').value;
+  const err     = document.getElementById('cd-err');
+  err.style.display = 'none';
+
+  if(!date) { err.style.display='flex'; err.querySelector('span').textContent='Огноо шаардлагатай'; return; }
+  if(!amount || amount <= 0) { err.style.display='flex'; err.querySelector('span').textContent='Үнийн дүнг зөв оруулна уу'; return; }
+
+  const btn = document.getElementById('cd-save-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Үүсгэж байна...';
+  try {
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('createDocument', {
+      password: pw,
+      reg_number: currentClientReg,
+      doc_type: docType,
+      doc_date: date,
+      amount: amount,
+      payment_due: payDue,
+      contract_no: contractNo,
+      notes: notes,
+    });
+    if(r.ok) {
+      toast('✓ ' + docType + ' үүслээ: ' + r.doc.doc_no);
+      // Хэрэв клиентийн хүсэлтээс үүсгэсэн бол хүсэлтийг устгана
+      if(fromReq) {
+        try { await gasCall('deleteDocument', { password: pw, doc_id: fromReq }); } catch(e){}
+      }
+      closeCreateDocModal();
+      loadAdminDocuments(currentClientReg);
+    } else {
+      err.style.display = 'flex';
+      err.querySelector('span').textContent = r.error || 'Алдаа гарлаа';
+    }
+  } catch(e) {
+    err.style.display = 'flex';
+    err.querySelector('span').textContent = 'Холболтын алдаа: ' + e.message;
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Үүсгэх';
+}
+
+async function sendDocEmail(docId){
+  if(!confirm('Энэ баримтыг клиентэд имэйлээр илгээх үү?')) return;
+  toast('Имэйл илгээж байна...');
+  try {
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('sendDocumentEmail', { password: pw, doc_id: docId });
+    if(r.ok) {
+      toast('✓ ' + (r.message || 'Илгээгдлээ'));
+      loadAdminDocuments(currentClientReg);
+    } else {
+      toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
+    }
+  } catch(e) {
+    toast('Холболтын алдаа: ' + e.message, true);
+  }
+}
+
+async function deleteDoc(docId){
+  if(!confirm('Энэ баримтыг устгах уу? PDF файл бас Drive-аас устана.')) return;
+  try {
+    const pw = document.getElementById('a-pw').value;
+    const r = await gasCall('deleteDocument', { password: pw, doc_id: docId });
+    if(r.ok) {
+      toast('✓ Устгагдлаа');
+      loadAdminDocuments(currentClientReg);
+    } else {
+      toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
+    }
+  } catch(e) {
+    toast('Холболтын алдаа: ' + e.message, true);
+  }
+}
+
 // ── TOAST ─────────────────────────────────────────────────────
 let toastTimer;
 function toast(msg,isErr=false){
