@@ -2933,6 +2933,7 @@ async function adminLogin(){
     const r=await gasCall('adminLogin',{password:pw});
     if(!r.ok){err.style.display='flex';err.querySelector('span').textContent='Нууц үг буруу.';return;}
     adminAuthed=true;
+    window._adminPw = pw;
     document.getElementById('admin-login').style.display='none';
     document.getElementById('admin-dashboard').style.display='block';
     // Initial load: auditors + years dropdowns, then clients
@@ -3325,7 +3326,7 @@ async function assignAuditor(){
   if(newEmail === assignedAuditor){ toast('Өөрчлөлт байхгүй'); return; }
   btn.disabled = true; btn.textContent = 'Хадгалж...';
   try {
-    const pw = document.getElementById('a-pw').value;
+    const pw = window._adminPw || document.getElementById('a-pw').value;
     const r = await gasCall('adminAssignAuditor',{password:pw,reg_number:currentClientReg,auditor_email:newEmail});
     if(r.ok){
       assignedAuditor = newEmail;
@@ -3731,7 +3732,7 @@ async function submitCreateDoc(){
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Үүсгэж байна...';
   try {
-    const pw = document.getElementById('a-pw').value;
+    const pw = window._adminPw || document.getElementById('a-pw').value;
     const r = await gasCall('createDocument', {
       password: pw,
       reg_number: currentClientReg,
