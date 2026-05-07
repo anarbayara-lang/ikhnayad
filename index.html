@@ -1075,11 +1075,11 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 
         <!-- Tabs -->
         <div class="cdm-tabs">
-          <button onclick="cdmTab('stages')" id="cdm-tab-stages" class="cdm-tab act">Аудитын явц</button>
-          <button onclick="cdmTab('docs')"   id="cdm-tab-docs"   class="cdm-tab">Баримт бичиг</button>
-          <button onclick="cdmTab('files')"  id="cdm-tab-files"  class="cdm-tab">Файлууд</button>
-          <button onclick="cdmTab('docs2')"  id="cdm-tab-docs2"  class="cdm-tab">📋 Гэрээ/Нэхэмжлэх</button>
-          <button onclick="cdmTab('info')"   id="cdm-tab-info"   class="cdm-tab">Мэдээлэл</button>
+          <button onclick="cdmTab('stages')"   id="cdm-tab-stages"   class="cdm-tab act">Аудитын явц</button>
+          <button onclick="cdmTab('docs')"     id="cdm-tab-docs"     class="cdm-tab">Баримт бичиг</button>
+          <button onclick="cdmTab('docs2')"    id="cdm-tab-docs2"    class="cdm-tab">📋 Гэрээ/Нэхэмжлэх</button>
+          <button onclick="cdmTab('planning')" id="cdm-tab-planning" class="cdm-tab">📊 Төлөвлөлтийн өмнөх</button>
+          <button onclick="cdmTab('info')"     id="cdm-tab-info"     class="cdm-tab">Мэдээлэл</button>
         </div>
 
         <!-- Body -->
@@ -1100,7 +1100,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxsS9iP0_7TPCm92l4ONwmE8wmaDBaszQXf2zGDyokLLiPcmOKeqc0cyWyw3mFSfLeX/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbzx5fCXiI0piIkR20KXmwC4LY9Ojw3bv3tE082wqHcX5ucm7rO3IX9n3vA84IxvLQHb/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -3359,7 +3359,7 @@ async function assignAuditor(){
 }
 
 function cdmTab(tab){
-  ['stages','docs','files','docs2','info'].forEach(t=>{
+  ['stages','docs','docs2','planning','info'].forEach(t=>{
     const btn=document.getElementById('cdm-tab-'+t);
     if(btn) btn.classList.toggle('act', t===tab);
   });
@@ -3370,6 +3370,12 @@ function cdmTab(tab){
   if(tab==='docs2'){
     body.innerHTML = '<div style="text-align:center;color:var(--muted);padding:32px"><span class="spinner spinner-dark"></span> Ачааллаж байна...</div>';
     loadAdminDocuments(currentClientReg);
+    return;
+  }
+
+  if(tab==='planning'){
+    body.innerHTML = '<div style="text-align:center;color:var(--muted);padding:32px"><span class="spinner spinner-dark"></span> Ачааллаж байна...</div>';
+    loadPlanningWorkbooks(currentClientReg, client);
     return;
   }
 
@@ -3456,15 +3462,6 @@ function cdmTab(tab){
     });
     html += '</div>';
     body.innerHTML = html;
-
-  } else if(tab==='files'){
-    if(!files.length){body.innerHTML='<div class="ad-empty"><svg viewBox="0 0 48 48"><path d="M14 6h14l8 8v22a4 4 0 01-4 4H14a4 4 0 01-4-4V10a4 4 0 014-4z"/><path d="M28 6v8h8"/></svg><div class="ad-empty-title">Файл байхгүй</div><div class="ad-empty-desc">Үйлчлүүлэгч файл оруулаагүй байна</div></div>';return;}
-    let html='<div style="display:flex;flex-direction:column;gap:8px">';
-    files.forEach(f=>{
-      const ext=(f.file_name||'').split('.').pop().toUpperCase();
-      html+=`<div style="display:flex;gap:12px;align-items:center;padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:#fff"><div style="width:36px;height:36px;border-radius:7px;background:var(--g100);display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:9px;font-weight:700;color:var(--g800);flex-shrink:0">${ext}</div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${f.file_name}</div><div style="font-size:11.5px;color:var(--muted);margin-top:2px">${f.doc_id||'general'}</div></div><a href="${f.drive_view_url}" target="_blank" class="btn btn-s btn-sm">Нээх →</a></div>`;
-    });
-    html+='</div>'; body.innerHTML=html;
 
   } else if(tab==='info'){
     const fields=[['Байгууллагын нэр',client.org_name],['Регистр',client.reg_number],['И-мэйл',client.contact_email],['Утас',client.contact_phone],['Захирал',client.director_name],['Нягтлан',client.accountant_name],['Үйл ажиллагаа',client.activity_type],['Өмчийн хэлбэр',client.ownership_type],['Хаяг',client.address],['Ажилтан тоо',client.employee_count],['Салбар тоо',client.branch_count]];
@@ -3798,6 +3795,166 @@ async function deleteDoc(docId){
       toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
     }
   } catch(e) {
+    toast('Холболтын алдаа: ' + e.message, true);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ✦ V8: ТӨЛӨВЛӨЛТИЙН ӨМНӨХ ҮЕ ШАТНЫ АЖЛЫН БАРИМТ (Excel)
+// ═══════════════════════════════════════════════════════════════
+
+let planningDocsCache = [];
+
+async function loadPlanningWorkbooks(reg, client){
+  const body = document.getElementById('cdm-body');
+  if(!body) return;
+  try {
+    const pw = getAdminPw();
+    const r = await gasCall('listPlanningWorkbooks', { password: pw, reg_number: reg });
+    if(!r.ok) {
+      body.innerHTML = '<div class="alert a-err">Алдаа: ' + (r.error || 'тодорхойгүй') + '</div>';
+      return;
+    }
+    planningDocsCache = r.docs || [];
+    renderPlanningWorkbooks(reg, client);
+  } catch(e) {
+    body.innerHTML = '<div class="alert a-err">Холболтын алдаа: ' + e.message + '</div>';
+  }
+}
+
+function renderPlanningWorkbooks(reg, client){
+  const body = document.getElementById('cdm-body');
+  if(!body) return;
+
+  const auditYear = client.audit_year || new Date().getFullYear();
+  const today = new Date().toISOString().split('T')[0].replace(/-/g, '.'); // 2026.05.07
+
+  let html = `
+    <div class="alert a-info" style="margin-bottom:14px;font-size:12.5px">
+      <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg>
+      <div><strong>📊 Төлөвлөлтийн өмнөх үе шатны ажлын баримт</strong> — 8 sheet-тэй Excel файл (ЧХ-3, A300, A200-3, А500-3, A500-6, А500-7, A600). Байгууллагын мэдээлэл автоматаар бөглөгдөнө.</div>
+    </div>
+
+    <div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;margin-bottom:16px">
+      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:12px">➕ Шинэ Excel үүсгэх</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="fg"><label>Аудитын жил <span class="req">*</span></label><input class="fc" id="pw-year" type="number" value="${auditYear}" min="2020" max="2099"></div>
+        <div class="fg"><label>Аудитын хугацаа</label><input class="fc" id="pw-period" type="text" placeholder="2024.01.01-2024.12.31"></div>
+        <div class="fg"><label>Уулзалтын огноо <small style="color:var(--muted);font-weight:400">(текст)</small></label><input class="fc" id="pw-meeting" type="text" placeholder="2024 оны 1-р сарын 17-ний өдөр"></div>
+        <div class="fg"><label>Бэлтгэсэн огноо</label><input class="fc" id="pw-date" type="text" value="${today}" placeholder="2025.01.15"></div>
+        <div class="fg"><label>Захирлын нэр</label><input class="fc" id="pw-director" type="text" value="${(client.director_name||'').replace(/"/g,'&quot;')}" placeholder="Овог.Нэр"></div>
+        <div class="fg"><label>Нягтлангийн нэр</label><input class="fc" id="pw-accountant" type="text" value="${(client.accountant_name||'').replace(/"/g,'&quot;')}" placeholder="Овог.Нэр"></div>
+        <div class="fg"><label>Аудитор</label><input class="fc" id="pw-auditor" type="text" placeholder="Х.Ариунтуяа"></div>
+        <div class="fg"><label>ЧХ-ын менежер</label><input class="fc" id="pw-cqc" type="text" value="Х. Ариунзул" placeholder="Х. Ариунзул"></div>
+      </div>
+      <div style="margin-top:14px;display:flex;justify-content:flex-end">
+        <button onclick="submitCreatePlanningWorkbook()" id="pw-create-btn" class="btn btn-p btn-sm">
+          <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>
+          Excel үүсгэх
+        </button>
+      </div>
+      <div id="pw-err" style="display:none;margin-top:10px" class="alert a-err">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span></span>
+      </div>
+    </div>
+
+    <h3 style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:10px">Үүсгэсэн файлууд (${planningDocsCache.length})</h3>`;
+
+  if(!planningDocsCache.length){
+    html += '<div style="text-align:center;color:var(--muted);font-size:13px;padding:24px;background:#fff;border-radius:8px;border:1px dashed var(--line)">Энэ клиентэд одоогоор Excel үүсгэгдээгүй</div>';
+  } else {
+    html += '<div style="display:flex;flex-direction:column;gap:8px">';
+    planningDocsCache.forEach(d => {
+      html +=
+        '<div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:#fff;border:1px solid var(--line);border-radius:8px">' +
+          '<div style="width:36px;height:36px;border-radius:7px;background:var(--ok-bg);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📊</div>' +
+          '<div style="flex:1;min-width:0">' +
+            '<div style="font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Ажлын баримт ' + d.audit_year + '</div>' +
+            '<div style="font-size:11.5px;color:var(--muted);font-family:var(--fm);margin-top:2px">' +
+              (d.created_at || '') + ' · ' + (d.audit_period || '') +
+              (d.meeting_date_text ? ' · уулз: ' + d.meeting_date_text : '') +
+            '</div>' +
+            '<div style="font-size:11px;color:var(--slate);margin-top:3px">' +
+              (d.director ? '👤 ' + d.director : '') +
+              (d.accountant ? ' · 📒 ' + d.accountant : '') +
+              (d.auditor ? ' · 🔍 ' + d.auditor : '') +
+            '</div>' +
+          '</div>' +
+          (d.view_url ? '<a href="' + d.view_url + '" target="_blank" class="btn btn-s btn-sm" style="text-decoration:none" title="Нээх">Нээх →</a>' : '') +
+          '<button onclick="deletePlanningWorkbook(\'' + d.id + '\')" class="btn btn-g btn-sm" style="color:var(--miss)" title="Устгах">×</button>' +
+        '</div>';
+    });
+    html += '</div>';
+  }
+
+  body.innerHTML = html;
+}
+
+async function submitCreatePlanningWorkbook(){
+  const year       = document.getElementById('pw-year').value.trim();
+  const period     = document.getElementById('pw-period').value.trim();
+  const meeting    = document.getElementById('pw-meeting').value.trim();
+  const date       = document.getElementById('pw-date').value.trim();
+  const director   = document.getElementById('pw-director').value.trim();
+  const accountant = document.getElementById('pw-accountant').value.trim();
+  const auditor    = document.getElementById('pw-auditor').value.trim();
+  const cqc        = document.getElementById('pw-cqc').value.trim();
+  const err        = document.getElementById('pw-err');
+  err.style.display = 'none';
+
+  if(!year || !/^\d{4}$/.test(year)){
+    err.style.display='flex';
+    err.querySelector('span').textContent='Аудитын жилийг 4 оронтой тоогоор оруулна уу';
+    return;
+  }
+
+  const btn = document.getElementById('pw-create-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Үүсгэж байна... (15-30 сек)';
+
+  try {
+    const pw = getAdminPw();
+    const r = await gasCall('createPlanningWorkbook', {
+      password:          pw,
+      reg_number:        currentClientReg,
+      audit_year:        year,
+      audit_period:      period,
+      meeting_date_text: meeting,
+      date:              date,
+      director:          director,
+      accountant:        accountant,
+      auditor:           auditor,
+      cqc_manager:       cqc,
+    });
+    if(r.ok){
+      toast('✓ Excel амжилттай үүслээ');
+      // Шинээр үүссэн файлыг автоматаар нээнэ
+      if(r.doc && r.doc.view_url) window.open(r.doc.view_url, '_blank');
+      loadPlanningWorkbooks(currentClientReg, adminClientsCache.find(c=>String(c.reg_number)===String(currentClientReg))||{});
+    } else {
+      err.style.display='flex';
+      err.querySelector('span').textContent = r.error || 'Алдаа гарлаа';
+    }
+  } catch(e){
+    err.style.display='flex';
+    err.querySelector('span').textContent = 'Холболтын алдаа: ' + e.message;
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg> Excel үүсгэх';
+}
+
+async function deletePlanningWorkbook(docId){
+  if(!confirm('Энэ Excel баримтыг устгах уу? (Drive дээрх файл бас устана)')) return;
+  try {
+    const pw = getAdminPw();
+    const r = await gasCall('deletePlanningWorkbook', { password: pw, doc_id: docId });
+    if(r.ok){
+      toast('✓ Устгагдлаа');
+      loadPlanningWorkbooks(currentClientReg, adminClientsCache.find(c=>String(c.reg_number)===String(currentClientReg))||{});
+    } else {
+      toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
+    }
+  } catch(e){
     toast('Холболтын алдаа: ' + e.message, true);
   }
 }
