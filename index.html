@@ -1100,7 +1100,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div id="toast"></div>
 
 <script>
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxOrR271Lhu6sEpnH0uKwSB3wiQNl6jCPG-VZKrqZ5bAWZUh1lLNmatYcNUQiP5SvON/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwXQa5QVmW-AlHIXe1P2MfBB-oj0JyhDz4_cDvteGYkJuywHfwm6bH_Fncd6W9PGitV/exec';
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
@@ -1142,7 +1142,7 @@ function closeMob(){document.getElementById('mobMenu').classList.remove('open');
 // ── GAS ───────────────────────────────────────────────────────
 // ☆ ХАМГААЛАЛТ — API Token (Apps Script Properties дотор тохирсон утга)
 // Энэ утгыг setupSecurity() ажиллуулсны дараа Apps Script log-аас хуулна
-const API_TOKEN = '660a7ae5a1d744879df3886bc6d1813090b567b7233b40ba9ebd095af34ebfab';
+const API_TOKEN = 'PASTE_YOUR_TOKEN_HERE';
 
 async function gasCall(action, body={}) {
   const url = GAS_URL + '?action=' + encodeURIComponent(action);
@@ -2926,14 +2926,14 @@ let auditorCountMap   = {};     // email → number of clients
 let assignedAuditor   = '';     // current assigned (saved) for opened client
 
 async function adminLogin(){
-  const pw=window._adminPw || document.getElementById('a-pw').value;
+  const pw=getAdminPw();
   const err=document.getElementById('a-err'); err.style.display='none';
   if(!pw){err.style.display='flex';err.querySelector('span').textContent='Нууц үг оруулна уу';return;}
   try {
     const r=await gasCall('adminLogin',{password:pw});
     if(!r.ok){err.style.display='flex';err.querySelector('span').textContent='Нууц үг буруу.';return;}
     adminAuthed=true;
-    window._adminPw = pw;
+    window._adminPw = pw;  // ✦ Login амжилттай болсны дараа cache хийнэ
     document.getElementById('admin-login').style.display='none';
     document.getElementById('admin-dashboard').style.display='block';
     // Initial load: auditors + years dropdowns, then clients
@@ -2944,16 +2944,22 @@ async function adminLogin(){
 
 function adminLogout(){
   adminAuthed=false; adminClientsCache=[]; availableAuditors=[]; availableYears=[];
+  window._adminPw = '';  // ✦ Cache-ийг цэвэрлэнэ
   document.getElementById('admin-login').style.display='flex';
   document.getElementById('admin-dashboard').style.display='none';
   document.getElementById('a-err').style.display='none';
-  window._adminPw || document.getElementById('a-pw').value='';
+  document.getElementById('a-pw').value='';
+}
+
+// ✦ ШИНЭ helper: admin password-г cache эсвэл талбараас уншина
+function getAdminPw(){
+  return window._adminPw || document.getElementById('a-pw')?.value || '';
 }
 
 // Load auditors → fill filter dropdown + Auditors tab
 async function loadAuditorsList(){
   try {
-    const pw=window._adminPw || document.getElementById('a-pw').value;
+    const pw=getAdminPw();
     const r=await gasCall('getAuditors',{password:pw});
     if(r.ok && r.auditors){
       availableAuditors = r.auditors;
@@ -2974,7 +2980,7 @@ async function loadAuditorsList(){
 
 async function loadAuditYearsList(){
   try {
-    const pw=window._adminPw || document.getElementById('a-pw').value;
+    const pw=getAdminPw();
     const r=await gasCall('getAuditYears',{password:pw});
     if(r.ok && r.years){
       availableYears = r.years;
@@ -2999,7 +3005,7 @@ async function loadAdminData(){
   if(!list) return;
   list.innerHTML='<div class="ad-empty"><div class="spinner spinner-dark" style="margin:0 auto 12px"></div><div class="ad-empty-desc">Үйлчлүүлэгчийн мэдээлэл татаж байна...</div></div>';
   try {
-    const pw=window._adminPw || document.getElementById('a-pw').value;
+    const pw=getAdminPw();
     const filterAuditor = document.getElementById('filter-auditor')?.value || '';
     const filterYear    = document.getElementById('filter-year')?.value || '';
     const r=await gasCall('adminGetAll',{
@@ -3239,7 +3245,7 @@ async function saveNewAuditor(){
   btn.innerHTML = '<span class="spinner"></span> Хадгалж...';
 
   try {
-    const pw = window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('addAuditor', {
       password: pw,
       name, email, role, phone,
@@ -3304,7 +3310,7 @@ async function openClientDetail(reg){
 
   // Дэлгэрэнгүй файл татах
   try {
-    const pw = window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('adminGetFiles',{password:pw,reg_number:reg});
     currentClientData.files = r.ok ? r.files : [];
     // Re-render docs tab if active
@@ -3326,7 +3332,7 @@ async function assignAuditor(){
   if(newEmail === assignedAuditor){ toast('Өөрчлөлт байхгүй'); return; }
   btn.disabled = true; btn.textContent = 'Хадгалж...';
   try {
-    const pw = window._adminPw || window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('adminAssignAuditor',{password:pw,reg_number:currentClientReg,auditor_email:newEmail});
     if(r.ok){
       assignedAuditor = newEmail;
@@ -3477,7 +3483,7 @@ async function saveAuditorStatuses(){
   if(!hasStatus&&!hasStages&&!hasComments){toast('Өөрчлөлт байхгүй');return;}
   btn.disabled=true; btn.innerHTML='<span class="spinner"></span> Хадгалж байна...';
   try {
-    const pw=window._adminPw || document.getElementById('a-pw').value;
+    const pw=getAdminPw();
     const promises=[];
     if(hasStatus)   promises.push(gasCall('adminSaveStatuses',{password:pw,reg_number:currentClientReg,statuses:auditorStatuses}));
     if(hasStages)   promises.push(gasCall('adminSaveStages',  {password:pw,reg_number:currentClientReg,stages:auditorStages}));
@@ -3595,7 +3601,7 @@ async function loadAdminDocuments(reg){
   const body = document.getElementById('cdm-body');
   if(!body) return;
   try {
-    const pw = window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('listDocuments', { password: pw, reg_number: reg });
     if(!r.ok) {
       body.innerHTML = '<div class="alert a-err">Алдаа: ' + (r.error || 'тодорхойгүй') + '</div>';
@@ -3732,7 +3738,7 @@ async function submitCreateDoc(){
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Үүсгэж байна...';
   try {
-    const pw = window._adminPw || window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('createDocument', {
       password: pw,
       reg_number: currentClientReg,
@@ -3767,7 +3773,7 @@ async function sendDocEmail(docId){
   if(!confirm('Энэ баримтыг клиентэд имэйлээр илгээх үү?')) return;
   toast('Имэйл илгээж байна...');
   try {
-    const pw = window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('sendDocumentEmail', { password: pw, doc_id: docId });
     if(r.ok) {
       toast('✓ ' + (r.message || 'Илгээгдлээ'));
@@ -3783,7 +3789,7 @@ async function sendDocEmail(docId){
 async function deleteDoc(docId){
   if(!confirm('Энэ баримтыг устгах уу? PDF файл бас Drive-аас устана.')) return;
   try {
-    const pw = window._adminPw || document.getElementById('a-pw').value;
+    const pw = getAdminPw();
     const r = await gasCall('deleteDocument', { password: pw, doc_id: docId });
     if(r.ok) {
       toast('✓ Устгагдлаа');
