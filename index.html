@@ -490,6 +490,79 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .creds-accordion.open .creds-toggle svg.chevron{transform:rotate(180deg)}
 .creds-toggle .creds-meta{font-size:11px;color:var(--muted);font-weight:400;margin-left:6px}
 .creds-body{display:none;padding:18px;border-top:1px solid var(--line);background:#fffdf6}
+  <style>
+/* ═══ V9: Modal-н checkbox + Шинэ клиент tab ═══ */
+.dt-check {
+  display: flex; align-items: center; gap: 8px;
+  padding: 11px 14px; border: 1.5px solid var(--line);
+  border-radius: 8px; cursor: pointer; flex: 1;
+  background: #fff; transition: all .15s; user-select: none;
+  font-family: var(--fb);
+}
+.dt-check:hover { border-color: var(--g600); background: var(--g50); }
+.dt-check input[type="checkbox"] {
+  cursor: pointer; width: 16px; height: 16px;
+  accent-color: var(--g700); margin: 0;
+}
+.dt-check.checked {
+  border-color: var(--g700); background: var(--g50);
+  box-shadow: 0 0 0 3px rgba(46,139,87,.08);
+}
+.dt-check span {
+  font-size: 13.5px; font-weight: 500; color: var(--ink);
+}
+.dt-check-row { display: flex; gap: 10px; }
+ 
+/* Шинэ клиент tab */
+.nc-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px;
+}
+@media (max-width: 900px) {
+  .nc-grid { grid-template-columns: 1fr; }
+}
+.nc-form-card {
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 12px; padding: 22px;
+}
+.nc-form-card h3 {
+  font-size: 15px; font-weight: 600; color: var(--ink);
+  margin-bottom: 4px;
+}
+.nc-form-card p.help {
+  font-size: 12px; color: var(--muted); margin-bottom: 16px;
+  line-height: 1.65;
+}
+.nc-code-row { display: flex; gap: 6px; }
+.nc-code-row input { flex: 1; }
+.nc-recent-list { display: flex; flex-direction: column; gap: 8px; }
+.nc-recent-item {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; padding: 11px 14px; border: 1px solid var(--line);
+  border-radius: 8px; background: #fff; transition: all .15s;
+}
+.nc-recent-item:hover { border-color: var(--g200); box-shadow: var(--sh); }
+.nc-recent-item .av {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--g700), var(--g900));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); font-size: 12px; font-weight: 700; flex-shrink: 0;
+}
+.client-actions { display: flex; gap: 4px; align-items: center; }
+.client-actions button {
+  padding: 5px 9px; border-radius: 6px; font-size: 13px;
+  font-weight: 500; cursor: pointer; font-family: var(--fb);
+  border: 1px solid var(--line); background: #fff; color: var(--slate);
+  transition: all .15s; line-height: 1;
+}
+.client-actions button:hover { background: var(--g50); border-color: var(--g600); color: var(--ink); }
+.client-actions button.danger:hover { background: var(--miss-bg); border-color: var(--miss); color: var(--miss); }
+.client-actions button.success:hover { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+.inactive-badge {
+  display: inline-block; font-size: 9.5px; font-weight: 700;
+  color: #fff; background: var(--miss); padding: 1px 7px;
+  border-radius: 100px; margin-left: 6px; letter-spacing: .3px;
+}
+</style>
 .creds-accordion.open .creds-body{display:block}
 .creds-warn{font-size:11.5px;color:#7a4f00;background:var(--wait-bg);border-left:2px solid var(--wait);padding:7px 11px;border-radius:5px;margin-bottom:14px;line-height:1.5}
 </style>
@@ -999,6 +1072,10 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
               <svg viewBox="0 0 14 14"><circle cx="7" cy="5" r="2.5"/><path d="M2 12c0-2.5 2.2-4 5-4s5 1.5 5 4"/></svg>
               Үйлчлүүлэгчид <span class="ad-tab-count" id="tab-cnt-clients">—</span>
             </button>
+            <button class="ad-tab" onclick="adminSwitchTab('newclient')" id="ad-tab-newclient">
+  <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/><path d="M7 4v6M4 7h6"/></svg>
+  Шинэ клиент
+</button>
             <button class="ad-tab" onclick="adminSwitchTab('auditors')" id="ad-tab-auditors">
               <svg viewBox="0 0 14 14"><path d="M7 8l-4 4M7 8l4 4M7 8V2"/><circle cx="7" cy="2" r="1.5"/></svg>
               Аудиторууд <span class="ad-tab-count" id="tab-cnt-auditors">—</span>
@@ -1025,6 +1102,89 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <div id="admin-list" class="ad-list"></div>
         </div>
         <!-- Tab: Auditors -->
+        <!-- Tab: New Client / Client Management -->
+<div id="admin-tab-newclient-body" style="display:none">
+  <div class="nc-grid">
+ 
+    <!-- ЗҮҮН: Шинэ клиент нэмэх форм -->
+    <div class="nc-form-card">
+      <h3>➕ Шинэ үйлчлүүлэгч бүртгэх</h3>
+      <p class="help">
+        Бүх талбарыг бөглөж <strong>"Бүртгэх + Email явуулах"</strong> товчийг дарна.
+        Клиентэд нэвтрэх код автоматаар имэйлээр илгээгдэн, портал ашиглах боломжтой болно.
+      </p>
+ 
+      <div class="g2">
+        <div class="fg full">
+          <label>Байгууллагын нэр <span class="req">*</span></label>
+          <input class="fc" id="nc-org" type="text" placeholder="Тунтун ХХК">
+        </div>
+        <div class="fg">
+          <label>Регистрийн дугаар <span class="req">*</span></label>
+          <input class="fc" id="nc-reg" type="text" placeholder="1234567" style="font-family:var(--fm)">
+        </div>
+        <div class="fg">
+          <label>Нэвтрэх код <span class="req">*</span></label>
+          <div class="nc-code-row">
+            <input class="fc" id="nc-code" type="text" placeholder="Авто үүсгэх..." style="font-family:var(--fm)">
+            <button onclick="generateAccessCode()" type="button" class="btn btn-s btn-sm" title="Санамсаргүй үүсгэх" style="padding:6px 10px">🔄</button>
+          </div>
+        </div>
+        <div class="fg full">
+          <label>И-мэйл <span class="req">*</span></label>
+          <input class="fc" id="nc-email" type="email" placeholder="contact@company.mn">
+        </div>
+        <div class="fg">
+          <label>Утас</label>
+          <input class="fc" id="nc-phone" type="tel" placeholder="+976">
+        </div>
+        <div class="fg">
+          <label>Аудитын жил</label>
+          <input class="fc" id="nc-year" type="text" value="2024" style="font-family:var(--fm)">
+        </div>
+        <div class="fg">
+          <label>Захирлын нэр</label>
+          <input class="fc" id="nc-director" type="text" placeholder="Овог Нэр">
+        </div>
+        <div class="fg">
+          <label>Өмчийн хэлбэр</label>
+          <select class="fc" id="nc-ownership">
+            <option value="">— Сонгох —</option>
+            <option>ХХК</option><option>ХК</option><option>ТӨХХК</option><option>ТӨҮГ</option>
+            <option>ТЕЗ</option><option>ОНӨҮГ</option><option>ТШЗ</option><option>ББСБ</option>
+            <option>ГХО ХХК</option><option>Бусад</option>
+          </select>
+        </div>
+      </div>
+ 
+      <div id="nc-err" style="display:none;margin-top:14px" class="alert a-err">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg>
+        <span></span>
+      </div>
+ 
+      <div style="display:flex;gap:8px;margin-top:16px">
+        <button class="btn btn-g btn-sm" onclick="clearNewClientForm()">Цэвэрлэх</button>
+        <button class="btn btn-p btn-sm" id="nc-submit-btn" onclick="submitNewClient()" style="flex:1;justify-content:center">
+          <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 6V4a3 3 0 016 0v2"/><rect x="2" y="6" width="10" height="7" rx="1"/></svg>
+          Бүртгэх + Email явуулах
+        </button>
+      </div>
+    </div>
+ 
+    <!-- БАРУУН: Бүх клиентийн жагсаалт + засах/хаах -->
+    <div class="nc-form-card">
+      <h3 style="margin-bottom:6px">📋 Бүх клиент</h3>
+      <p class="help" style="margin-bottom:12px">
+        Засах <strong>✏</strong> · Дахин код илгээх <strong>📧</strong> · Эрх хаах <strong>🚫</strong>
+      </p>
+      <input type="text" class="fc" id="nc-search" placeholder="🔍 Нэр, регистр, имэйл..." oninput="renderNewClientRecentList()" style="margin-bottom:12px">
+      <div id="nc-recent-list" class="nc-recent-list" style="max-height:560px;overflow-y:auto;padding-right:4px">
+        <div style="text-align:center;color:var(--muted);font-size:12px;padding:24px">Ачааллаж байна...</div>
+      </div>
+    </div>
+ 
+  </div>
+</div>
         <div id="admin-tab-auditors-body" style="display:none">
           <div id="auditor-list"></div>
         </div>
@@ -3036,18 +3196,21 @@ async function loadAdminData(){
   }
 }
 
+<script>
 function adminSwitchTab(tab){
-  ['clients','auditors'].forEach(t=>{
+  ['clients','auditors','newclient'].forEach(t=>{
     const body = document.getElementById('admin-tab-'+t+'-body');
     const btn  = document.getElementById('ad-tab-'+t);
     if(body) body.style.display = (t===tab) ? 'block' : 'none';
     if(btn)  btn.classList.toggle('act', t===tab);
   });
-  // Filters харагдана зөвхөн clients tab дээр
+  // Filter хэсэг зөвхөн clients tab-д харагдана
   const filtersEl = document.getElementById('ad-filters-clients');
   if(filtersEl) filtersEl.style.display = (tab==='clients') ? 'flex' : 'none';
-  if(tab==='auditors') renderAuditorTab();
+  if(tab==='auditors')  renderAuditorTab();
+  if(tab==='newclient') renderNewClientRecentList();
 }
+</script>
 
 function updateAdminStats(){
   const total       = adminClientsCache.length;
@@ -3614,16 +3777,17 @@ async function loadAdminDocuments(reg){
 function renderAdminDocs(reg){
   const body = document.getElementById('cdm-body');
   if(!body) return;
+  <script>
+// (renderAdminDocs функцийн ЭХЭНД байх энэ хэсгийг солино)
+/*
   let html = '<div style="margin-bottom:16px;display:flex;gap:8px;flex-wrap:wrap">' +
-    '<button onclick="openCreateDocModal(\'Гэрээ\')" class="btn btn-p btn-sm">' +
+    '<button onclick="openCreateDocModal()" class="btn btn-p btn-sm">' +
       '<svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>' +
-      ' Гэрээ үүсгэх' +
-    '</button>' +
-    '<button onclick="openCreateDocModal(\'Нэхэмжлэх\')" class="btn btn-p btn-sm">' +
-      '<svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>' +
-      ' Нэхэмжлэх үүсгэх' +
+      ' Шинэ баримт үүсгэх' +
     '</button>' +
     '</div>';
+*/
+</script>
 
   if(!adminDocsCache.length) {
     html += '<div style="text-align:center;color:var(--muted);font-size:13px;padding:32px;background:#fff;border-radius:var(--r);border:1px dashed var(--line)">Энэ клиентэд одоогоор баримт байхгүй</div>';
@@ -3674,24 +3838,43 @@ function openCreateDocModal(docType, fromRequestId){
     m.id = 'create-doc-modal';
     m.style.cssText = 'display:none;position:fixed;inset:0;z-index:5000;background:rgba(8,28,18,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px';
     m.innerHTML =
-      '<div style="background:#fff;border-radius:14px;width:100%;max-width:480px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35)">' +
+      '<div style="background:#fff;border-radius:14px;width:100%;max-width:520px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35)">' +
         '<div style="background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">' +
-          '<div style="font-family:var(--fd);font-size:18px;color:#fff;font-weight:700" id="cd-title">Шинэ баримт</div>' +
+          '<div style="font-family:var(--fd);font-size:18px;color:#fff;font-weight:700" id="cd-title">Шинэ баримт үүсгэх</div>' +
           '<button onclick="closeCreateDocModal()" class="cdm-close" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:15px">✕</button>' +
         '</div>' +
         '<div style="padding:22px 24px;display:flex;flex-direction:column;gap:13px">' +
-          '<input type="hidden" id="cd-type">' +
           '<input type="hidden" id="cd-fromreq">' +
+          // ✦ Checkbox row
+          '<div>' +
+            '<label style="font-size:12.5px;font-weight:600;color:var(--ink2);margin-bottom:6px;display:block">Үүсгэх баримт <span class="req">*</span></label>' +
+            '<div class="dt-check-row">' +
+              '<label class="dt-check" id="cd-ct-label">' +
+                '<input type="checkbox" id="cd-ct-contract" onchange="updateDocCheckboxes()">' +
+                '<span>📄 Гэрээ</span>' +
+              '</label>' +
+              '<label class="dt-check" id="cd-iv-label">' +
+                '<input type="checkbox" id="cd-ct-invoice" onchange="updateDocCheckboxes()">' +
+                '<span>💵 Нэхэмжлэх</span>' +
+              '</label>' +
+            '</div>' +
+            '<div style="font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5" id="cd-hint">Үүсгэх баримтын төрлийг сонгоно уу.</div>' +
+          '</div>' +
           '<div class="fg"><label>Огноо <span class="req">*</span></label><input class="fc" id="cd-date" type="date"></div>' +
           '<div class="fg"><label>Үнийн дүн (НӨАТтай) <span class="req">*</span></label><input class="fc" id="cd-amount" type="number" min="0" placeholder="5000000" style="font-family:var(--fm)"></div>' +
           '<div class="fg" id="cd-paydue-row"><label>Төлбөр төлөх хугацаа</label><input class="fc" id="cd-paydue" type="text" placeholder="Ажлын 5 хоног" value="Ажлын 5 хоног"></div>' +
-          '<div class="fg" id="cd-contract-row" style="display:none"><label>Холбогдох гэрээний № <span style="color:var(--muted);font-weight:400;font-size:11px">(нэхэмжлэхэнд)</span></label><input class="fc" id="cd-contract" type="text" placeholder="СТА-ХХК-25/001" style="font-family:var(--fm)"></div>' +
+          '<div class="fg" id="cd-contract-row" style="display:none">' +
+            '<label>Холбогдох гэрээний № <span style="color:var(--muted);font-weight:400;font-size:11px">(нэхэмжлэхэнд заавал)</span></label>' +
+            '<input class="fc" id="cd-contract" type="text" placeholder="СТА-ХХК-25/001" style="font-family:var(--fm)">' +
+          '</div>' +
           '<div class="fg"><label>Тэмдэглэл (заавал биш)</label><input class="fc" id="cd-notes" type="text"></div>' +
-          '<div id="cd-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/></svg><span></span></div>' +
+          '<div id="cd-err" style="display:none" class="alert a-err">' +
+            '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span></span>' +
+          '</div>' +
         '</div>' +
         '<div style="padding:14px 24px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">' +
           '<button onclick="closeCreateDocModal()" class="btn btn-g btn-sm">Цуцлах</button>' +
-          '<button onclick="submitCreateDoc()" id="cd-save-btn" class="btn btn-p btn-sm">' +
+          '<button onclick="submitCreateDoc()" id="cd-save-btn" class="btn btn-p btn-sm" disabled>' +
             '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>' +
             ' Үүсгэх' +
           '</button>' +
@@ -3699,17 +3882,67 @@ function openCreateDocModal(docType, fromRequestId){
       '</div>';
     document.body.appendChild(m);
   }
-  document.getElementById('cd-title').textContent = 'Шинэ ' + docType;
-  document.getElementById('cd-type').value = docType;
+ 
+  // Reset state
   document.getElementById('cd-fromreq').value = fromRequestId || '';
-  document.getElementById('cd-date').value = new Date().toISOString().split('T')[0];
-  document.getElementById('cd-amount').value = '';
-  document.getElementById('cd-notes').value = '';
+  document.getElementById('cd-date').value    = new Date().toISOString().split('T')[0];
+  document.getElementById('cd-amount').value  = '';
+  document.getElementById('cd-paydue').value  = 'Ажлын 5 хоног';
+  document.getElementById('cd-contract').value = '';
+  document.getElementById('cd-notes').value   = '';
   document.getElementById('cd-err').style.display = 'none';
-  // Нэхэмжлэх бол гэрээний дугаарын талбар харуулна
-  const contractRow = document.getElementById('cd-contract-row');
-  if(contractRow) contractRow.style.display = (docType === 'Нэхэмжлэх') ? 'flex' : 'none';
+ 
+  const cb_c = document.getElementById('cd-ct-contract');
+  const cb_i = document.getElementById('cd-ct-invoice');
+  cb_c.checked = false; cb_i.checked = false;
+  cb_c.disabled = false; cb_i.disabled = false;
+ 
+  // Хүсэлтээс үүсгэх бол тухайн төрлийг preselect
+  if (docType === 'Гэрээ') {
+    cb_c.checked = true;
+    document.getElementById('cd-title').textContent = fromRequestId ? 'Хүсэлтээс Гэрээ үүсгэх' : 'Шинэ Гэрээ үүсгэх';
+  } else if (docType === 'Нэхэмжлэх') {
+    cb_i.checked = true;
+    document.getElementById('cd-title').textContent = fromRequestId ? 'Хүсэлтээс Нэхэмжлэх үүсгэх' : 'Шинэ Нэхэмжлэх үүсгэх';
+  } else {
+    document.getElementById('cd-title').textContent = 'Шинэ баримт үүсгэх';
+  }
+ 
+  updateDocCheckboxes();
   m.style.display = 'flex';
+}
+ 
+function updateDocCheckboxes() {
+  const c = document.getElementById('cd-ct-contract').checked;
+  const i = document.getElementById('cd-ct-invoice').checked;
+ 
+  // Visual
+  document.getElementById('cd-ct-label').classList.toggle('checked', c);
+  document.getElementById('cd-iv-label').classList.toggle('checked', i);
+ 
+  const cRow = document.getElementById('cd-contract-row');
+  const hint = document.getElementById('cd-hint');
+ 
+  if (i && !c) {
+    cRow.style.display = 'flex';
+    hint.innerHTML = '<strong>Нэхэмжлэх</strong> үүсгэх бол холбогдох гэрээний дугаарыг бичнэ үү.';
+    hint.style.color = 'var(--wait)';
+  } else if (i && c) {
+    cRow.style.display = 'none';
+    hint.innerHTML = '✓ <strong>Гэрээ + Нэхэмжлэх зэрэг үүснэ.</strong> Шинэ гэрээний дугаар автоматаар нэхэмжлэхэнд орно.';
+    hint.style.color = 'var(--ok)';
+  } else if (c) {
+    cRow.style.display = 'none';
+    hint.innerHTML = 'Зөвхөн <strong>Гэрээ</strong> үүсгэнэ.';
+    hint.style.color = 'var(--slate)';
+  } else {
+    cRow.style.display = 'none';
+    hint.innerHTML = 'Үүсгэх баримтын төрлийг сонгоно уу.';
+    hint.style.color = 'var(--muted)';
+  }
+ 
+  const btn = document.getElementById('cd-save-btn');
+  if (btn) btn.disabled = !(c || i);
 }
 
 function closeCreateDocModal(){
@@ -3717,87 +3950,111 @@ function closeCreateDocModal(){
   if(m) m.style.display = 'none';
 }
 
-async function submitCreateDoc(){
-  const docType = document.getElementById('cd-type').value;
+async function submitCreateDoc() {
+  const makeContract = document.getElementById('cd-ct-contract').checked;
+  const makeInvoice  = document.getElementById('cd-ct-invoice').checked;
+ 
+  if (!makeContract && !makeInvoice) {
+    return _cdShowErr('Дор хаяж нэг төрөл сонгоно уу');
+  }
+ 
   const date    = document.getElementById('cd-date').value;
   const amount  = parseFloat(document.getElementById('cd-amount').value) || 0;
   const payDue  = document.getElementById('cd-paydue').value.trim();
-  const contractNo = document.getElementById('cd-contract').value.trim();
   const notes   = document.getElementById('cd-notes').value.trim();
   const fromReq = document.getElementById('cd-fromreq').value;
-  const err     = document.getElementById('cd-err');
-  err.style.display = 'none';
-
-  if(!date) { err.style.display='flex'; err.querySelector('span').textContent='Огноо шаардлагатай'; return; }
-  if(!amount || amount <= 0) { err.style.display='flex'; err.querySelector('span').textContent='Үнийн дүнг зөв оруулна уу'; return; }
-
+ 
+  if (!date)                  return _cdShowErr('Огноо шаардлагатай');
+  if (!amount || amount <= 0) return _cdShowErr('Үнийн дүнг зөв оруулна уу');
+ 
+  let manualContractNo = '';
+  if (makeInvoice && !makeContract) {
+    manualContractNo = document.getElementById('cd-contract').value.trim();
+    if (!manualContractNo) {
+      return _cdShowErr('Нэхэмжлэх үүсгэхдээ гэрээний дугаарыг бичнэ үү');
+    }
+  }
+ 
   const btn = document.getElementById('cd-save-btn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Үүсгэж байна...';
-  try {
-    const pw = getAdminPw();
-    const r = await gasCall('createDocument', {
-      password: pw,
-      reg_number: currentClientReg,
-      doc_type: docType,
-      doc_date: date,
-      amount: amount,
-      payment_due: payDue,
-      contract_no: contractNo,
-      notes: notes,
-    });
-    if(r.ok) {
-      toast('✓ ' + docType + ' үүслээ: ' + r.doc.doc_no);
-      // Хэрэв клиентийн хүсэлтээс үүсгэсэн бол хүсэлтийг устгана
-      if(fromReq) {
-        try { await gasCall('deleteDocument', { password: pw, doc_id: fromReq }); } catch(e){}
+  const pw = getAdminPw();
+  let createdContractNo = '';
+  const createdMsgs = [];
+ 
+  // Step 1: Гэрээ
+  if (makeContract) {
+    btn.innerHTML = '<span class="spinner"></span> Гэрээ үүсгэж...';
+    try {
+      const r = await gasCall('createDocument', {
+        password: pw,
+        reg_number: currentClientReg,
+        doc_type: 'Гэрээ',
+        doc_date: date, amount: amount,
+        payment_due: payDue, notes: notes,
+      });
+      if (r.ok) {
+        createdContractNo = r.doc.doc_no;
+        createdMsgs.push('Гэрээ ' + r.doc.doc_no);
+      } else {
+        _cdShowErr('Гэрээ үүсгэхэд алдаа: ' + (r.error || ''));
+        return _cdResetBtn(btn);
       }
-      closeCreateDocModal();
-      loadAdminDocuments(currentClientReg);
-    } else {
-      err.style.display = 'flex';
-      err.querySelector('span').textContent = r.error || 'Алдаа гарлаа';
+    } catch (e) {
+      _cdShowErr('Холболтын алдаа: ' + e.message);
+      return _cdResetBtn(btn);
     }
-  } catch(e) {
-    err.style.display = 'flex';
-    err.querySelector('span').textContent = 'Холболтын алдаа: ' + e.message;
   }
+ 
+  // Step 2: Нэхэмжлэх
+  if (makeInvoice) {
+    btn.innerHTML = '<span class="spinner"></span> Нэхэмжлэх үүсгэж...';
+    const contractRef = createdContractNo || manualContractNo;
+    try {
+      const r = await gasCall('createDocument', {
+        password: pw,
+        reg_number: currentClientReg,
+        doc_type: 'Нэхэмжлэх',
+        doc_date: date, amount: amount,
+        payment_due: payDue, notes: notes,
+        contract_no: contractRef,
+      });
+      if (r.ok) {
+        createdMsgs.push('Нэхэмжлэх ' + r.doc.doc_no);
+      } else {
+        const partial = createdContractNo ? ' (Гэрээ ' + createdContractNo + ' нь үүссэн)' : '';
+        _cdShowErr('Нэхэмжлэх үүсгэхэд алдаа: ' + (r.error || '') + partial);
+        loadAdminDocuments(currentClientReg);  // partial-аа харуулна
+        return _cdResetBtn(btn);
+      }
+    } catch (e) {
+      _cdShowErr('Холболтын алдаа: ' + e.message);
+      return _cdResetBtn(btn);
+    }
+  }
+ 
+  // Step 3: Cleanup if from request
+  if (fromReq) {
+    try { await gasCall('deleteDocument', { password: pw, doc_id: fromReq }); } catch (_) {}
+  }
+ 
+  toast('✓ ' + createdMsgs.join(' + ') + ' амжилттай үүслээ');
+  closeCreateDocModal();
+  loadAdminDocuments(currentClientReg);
+}
+ 
+function _cdShowErr(msg) {
+  const err = document.getElementById('cd-err');
+  if (err) {
+    err.style.display = 'flex';
+    err.querySelector('span').textContent = msg;
+  }
+}
+ 
+function _cdResetBtn(btn) {
   btn.disabled = false;
   btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Үүсгэх';
 }
-
-async function sendDocEmail(docId){
-  if(!confirm('Энэ баримтыг клиентэд имэйлээр илгээх үү?')) return;
-  toast('Имэйл илгээж байна...');
-  try {
-    const pw = getAdminPw();
-    const r = await gasCall('sendDocumentEmail', { password: pw, doc_id: docId });
-    if(r.ok) {
-      toast('✓ ' + (r.message || 'Илгээгдлээ'));
-      loadAdminDocuments(currentClientReg);
-    } else {
-      toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
-    }
-  } catch(e) {
-    toast('Холболтын алдаа: ' + e.message, true);
-  }
-}
-
-async function deleteDoc(docId){
-  if(!confirm('Энэ баримтыг устгах уу? PDF файл бас Drive-аас устана.')) return;
-  try {
-    const pw = getAdminPw();
-    const r = await gasCall('deleteDocument', { password: pw, doc_id: docId });
-    if(r.ok) {
-      toast('✓ Устгагдлаа');
-      loadAdminDocuments(currentClientReg);
-    } else {
-      toast('Алдаа: ' + (r.error || 'тодорхойгүй'), true);
-    }
-  } catch(e) {
-    toast('Холболтын алдаа: ' + e.message, true);
-  }
-}
+</script>
 
 // ═══════════════════════════════════════════════════════════════
 // ✦ V8: ТӨЛӨВЛӨЛТИЙН ӨМНӨХ ҮЕ ШАТНЫ АЖЛЫН БАРИМТ (Excel)
@@ -3989,3 +4246,313 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 </body>
 </html>
+<script>
+// ═══════════════════════════════════════════════════════════════
+// V9: Шинэ клиент бүртгэх + удирдах
+// ═══════════════════════════════════════════════════════════════
+ 
+function generateAccessCode() {
+  // Хүний нүдэнд балархай тэмдэгтгүй — O, 0, I, 1 хасна
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code = '';
+  for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  const el = document.getElementById('nc-code');
+  if (el) el.value = code;
+}
+ 
+function clearNewClientForm() {
+  ['nc-org','nc-reg','nc-code','nc-email','nc-phone','nc-director'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  const y = document.getElementById('nc-year');         if (y) y.value = '2024';
+  const o = document.getElementById('nc-ownership');    if (o) o.value = '';
+  const err = document.getElementById('nc-err');        if (err) err.style.display = 'none';
+}
+ 
+function _ncShowErr(msg) {
+  const err = document.getElementById('nc-err');
+  if (err) {
+    err.style.display = 'flex';
+    err.querySelector('span').textContent = msg;
+  }
+}
+ 
+async function submitNewClient() {
+  const org    = document.getElementById('nc-org').value.trim();
+  const reg    = document.getElementById('nc-reg').value.trim();
+  let   code   = document.getElementById('nc-code').value.trim();
+  const email  = document.getElementById('nc-email').value.trim();
+  const phone  = document.getElementById('nc-phone').value.trim();
+  const dir    = document.getElementById('nc-director').value.trim();
+  const year   = document.getElementById('nc-year').value.trim() || '2024';
+  const own    = document.getElementById('nc-ownership').value;
+  const err    = document.getElementById('nc-err');
+  err.style.display = 'none';
+ 
+  // Validation
+  if (!org)   return _ncShowErr('Байгууллагын нэр шаардлагатай');
+  if (!reg)   return _ncShowErr('Регистрийн дугаар шаардлагатай');
+  if (!/^[a-zA-Z0-9]+$/.test(reg)) return _ncShowErr('Регистр зөвхөн үсэг, тоо агуулна');
+  if (!email) return _ncShowErr('Имэйл шаардлагатай');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return _ncShowErr('Имэйл хаяг буруу');
+ 
+  // Код байхгүй бол автомат үүсгэе
+  if (!code) {
+    generateAccessCode();
+    code = document.getElementById('nc-code').value.trim();
+  }
+ 
+  const btn = document.getElementById('nc-submit-btn');
+  btn.disabled = true;
+  const oldHtml = btn.innerHTML;
+  btn.innerHTML = '<span class="spinner"></span> Бүртгэж байна...';
+ 
+  try {
+    const pw = getAdminPw();
+    const r = await gasCall('adminAddClient', {
+      password: pw,
+      org_name: org,
+      reg_number: reg,
+      access_code: code,
+      contact_email: email,
+      contact_phone: phone,
+      director_name: dir,
+      audit_year: year,
+      ownership_type: own,
+    });
+    if (r.ok) {
+      toast('✓ Клиент бүртгэгдлээ — Имэйл илгээгдсэн: ' + email);
+      clearNewClientForm();
+      await loadAdminData();
+      renderNewClientRecentList();
+    } else {
+      _ncShowErr(r.error || 'Алдаа гарлаа');
+    }
+  } catch (e) {
+    _ncShowErr('Холболтын алдаа: ' + e.message);
+  }
+ 
+  btn.disabled = false;
+  btn.innerHTML = oldHtml;
+}
+ 
+function renderNewClientRecentList() {
+  const list = document.getElementById('nc-recent-list');
+  if (!list) return;
+ 
+  const q = (document.getElementById('nc-search')?.value || '').toLowerCase().trim();
+  let clients = [...adminClientsCache];
+ 
+  if (q) {
+    clients = clients.filter(c =>
+      String(c.org_name      || '').toLowerCase().includes(q) ||
+      String(c.reg_number    || '').includes(q) ||
+      String(c.contact_email || '').toLowerCase().includes(q)
+    );
+  }
+ 
+  // Шинэ нь дээр (status active нь эхэнд)
+  clients.sort((a, b) => {
+    const aA = String(a.status || 'active').toLowerCase() !== 'inactive';
+    const bA = String(b.status || 'active').toLowerCase() !== 'inactive';
+    if (aA !== bA) return aA ? -1 : 1;
+    return 0;
+  });
+ 
+  if (!clients.length) {
+    list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:12px;padding:24px">Клиент олдсонгүй</div>';
+    return;
+  }
+ 
+  list.innerHTML = '';
+  clients.forEach(c => {
+    const av = (c.org_name || '??').split(/\s+/).filter(Boolean).map(w => w[0]).join('').substring(0, 2).toUpperCase();
+    const isActive = String(c.status || 'active').trim().toLowerCase() !== 'inactive';
+    const safeEmail = (c.contact_email || '').replace(/'/g, "\\'");
+ 
+    const item = document.createElement('div');
+    item.className = 'nc-recent-item';
+    if (!isActive) item.style.opacity = '0.6';
+    item.innerHTML =
+      '<div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">' +
+        '<div class="av">' + av + '</div>' +
+        '<div style="min-width:0;flex:1">' +
+          '<div style="font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' +
+            (c.org_name || '—') +
+            (!isActive ? '<span class="inactive-badge">ХААСАН</span>' : '') +
+          '</div>' +
+          '<div style="font-size:11px;color:var(--muted);font-family:var(--fm);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' +
+            c.reg_number + ' · ' + (c.contact_email || '—') +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="client-actions">' +
+        '<button onclick="editClient(\'' + c.reg_number + '\')" title="Засах">✏</button>' +
+        '<button onclick="resendClientCredentials(\'' + c.reg_number + '\', \'' + safeEmail + '\')" title="Нэвтрэх мэдээлэл дахин илгээх">📧</button>' +
+        (isActive
+          ? '<button onclick="toggleClientStatus(\'' + c.reg_number + '\', \'active\')" class="danger" title="Эрх хаах">🚫</button>'
+          : '<button onclick="toggleClientStatus(\'' + c.reg_number + '\', \'inactive\')" class="success" title="Эрх нээх">✓</button>'
+        ) +
+      '</div>';
+    list.appendChild(item);
+  });
+}
+ 
+async function editClient(reg) {
+  const c = adminClientsCache.find(x => String(x.reg_number) === String(reg));
+  if (!c) { toast('Клиент олдсонгүй', true); return; }
+  await openClientDetail(reg);
+  // CDM нээгдсэний дараа info tab руу шилжүүлээд edit form-р солих
+  setTimeout(() => {
+    cdmTab('info');
+    setTimeout(() => makeInfoTabEditable(c), 80);
+  }, 100);
+}
+ 
+function makeInfoTabEditable(client) {
+  const body = document.getElementById('cdm-body');
+  if (!body) return;
+ 
+  const escAttr = s => String(s == null ? '' : s).replace(/"/g, '&quot;');
+  const curStatus = String(client.status || 'active').trim().toLowerCase();
+  const safeEmail = (client.contact_email || '').replace(/'/g, "\\'");
+ 
+  body.innerHTML =
+    '<div style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">' +
+      '<h4 style="font-size:14px;font-weight:600;color:var(--ink);margin:0">✏ Клиентийн мэдээлэл засах</h4>' +
+      '<div style="display:flex;gap:6px">' +
+        '<button onclick="resendClientCredentials(\'' + client.reg_number + '\', \'' + safeEmail + '\')" class="btn btn-s btn-sm">' +
+          '📧 Код дахин илгээх' +
+        '</button>' +
+        '<button onclick="toggleClientStatus(\'' + client.reg_number + '\', \'' + curStatus + '\')" class="btn btn-s btn-sm" style="color:' + (curStatus === 'inactive' ? 'var(--ok)' : 'var(--miss)') + '">' +
+          (curStatus === 'inactive' ? '✓ Эрх нээх' : '🚫 Эрх хаах') +
+        '</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="g2">' +
+      '<div class="fg full"><label>Байгууллагын нэр</label><input class="fc edit-fld" data-fld="org_name" type="text" value="' + escAttr(client.org_name) + '"></div>' +
+      '<div class="fg"><label>Регистр <small style="color:var(--muted);font-weight:400">(өөрчилж болохгүй)</small></label><input class="fc" type="text" value="' + client.reg_number + '" disabled style="background:var(--g50);font-family:var(--fm)"></div>' +
+      '<div class="fg"><label>Нэвтрэх код</label><input class="fc edit-fld" data-fld="access_code" type="text" value="' + escAttr(client.access_code) + '" style="font-family:var(--fm)"></div>' +
+      '<div class="fg"><label>И-мэйл</label><input class="fc edit-fld" data-fld="contact_email" type="email" value="' + escAttr(client.contact_email) + '"></div>' +
+      '<div class="fg"><label>Утас</label><input class="fc edit-fld" data-fld="contact_phone" type="tel" value="' + escAttr(client.contact_phone) + '"></div>' +
+      '<div class="fg"><label>Захирал</label><input class="fc edit-fld" data-fld="director_name" type="text" value="' + escAttr(client.director_name) + '"></div>' +
+      '<div class="fg"><label>Нягтлан</label><input class="fc edit-fld" data-fld="accountant_name" type="text" value="' + escAttr(client.accountant_name) + '"></div>' +
+      '<div class="fg"><label>Өмчийн хэлбэр</label>' +
+        '<select class="fc edit-fld" data-fld="ownership_type">' +
+          ['','ХХК','ХК','ТӨХХК','ТӨҮГ','ТЕЗ','ОНӨҮГ','ТШЗ','ББСБ','ГХО ХХК','Бусад'].map(v =>
+            '<option value="' + v + '"' + (v === (client.ownership_type || '') ? ' selected' : '') + '>' + (v || '— Сонгох —') + '</option>'
+          ).join('') +
+        '</select>' +
+      '</div>' +
+      '<div class="fg"><label>Аудитын жил</label><input class="fc edit-fld" data-fld="audit_year" type="text" value="' + escAttr(client.audit_year) + '" style="font-family:var(--fm)"></div>' +
+      '<div class="fg full"><label>Хаяг</label><input class="fc edit-fld" data-fld="address" type="text" value="' + escAttr(client.address) + '"></div>' +
+    '</div>' +
+    '<div id="cdm-edit-err" style="display:none;margin-top:12px" class="alert a-err">' +
+      '<svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span></span>' +
+    '</div>' +
+    '<div style="margin-top:16px;display:flex;justify-content:flex-end;gap:8px">' +
+      '<button class="btn btn-g btn-sm" onclick="cdmTab(\'info\')">Цуцлах</button>' +
+      '<button class="btn btn-p btn-sm" id="cdm-edit-save" onclick="saveClientEdits(\'' + client.reg_number + '\')">' +
+        '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах' +
+      '</button>' +
+    '</div>';
+}
+ 
+async function saveClientEdits(reg) {
+  const fields = document.querySelectorAll('.edit-fld');
+  const body = { reg_number: reg };
+  fields.forEach(f => {
+    const k = f.getAttribute('data-fld');
+    if (k) body[k] = f.value.trim();
+  });
+ 
+  if (!body.org_name)
+    return _cdmEditShowErr('Байгууллагын нэр шаардлагатай');
+  if (body.contact_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.contact_email))
+    return _cdmEditShowErr('Имэйл хаяг буруу');
+ 
+  const btn = document.getElementById('cdm-edit-save');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Хадгалж...';
+ 
+  try {
+    body.password = getAdminPw();
+    const r = await gasCall('adminUpdateClient', body);
+    if (r.ok) {
+      toast('✓ ' + (r.message || 'Шинэчлэгдлээ'));
+      const c = adminClientsCache.find(x => String(x.reg_number) === String(reg));
+      if (c) Object.assign(c, body);
+      await loadAdminData();
+      renderNewClientRecentList();
+      closeCDM();
+    } else {
+      _cdmEditShowErr(r.error || 'Алдаа');
+    }
+  } catch (e) {
+    _cdmEditShowErr('Холболтын алдаа: ' + e.message);
+  }
+ 
+  btn.disabled = false;
+  btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
+}
+ 
+function _cdmEditShowErr(msg) {
+  const err = document.getElementById('cdm-edit-err');
+  if (err) {
+    err.style.display = 'flex';
+    err.querySelector('span').textContent = msg;
+  }
+}
+ 
+async function toggleClientStatus(reg, currentStatus) {
+  const isCurrentlyActive = currentStatus !== 'inactive';
+  const confirmMsg = isCurrentlyActive
+    ? '🚫 Энэ клиентийн эрхийг ХААХ уу?\n\nКлиент порталд нэвтрэх боломжгүй болно.\nХожим дахин нээж болно.'
+    : '✓ Энэ клиентийн эрхийг НЭЭХ үү?\n\nКлиент дахин порталд нэвтэрч чадна.';
+  if (!confirm(confirmMsg)) return;
+ 
+  try {
+    const r = await gasCall('adminToggleClientStatus', {
+      password: getAdminPw(),
+      reg_number: reg,
+      new_status: isCurrentlyActive ? 'inactive' : 'active',
+    });
+    if (r.ok) {
+      toast('✓ ' + (r.message || 'Шинэчлэгдлээ'));
+      const c = adminClientsCache.find(x => String(x.reg_number) === String(reg));
+      if (c) c.status = r.new_status;
+      renderAdminClients(adminClientsCache);
+      renderNewClientRecentList();
+      // CDM нээлттэй бол шинэчлэх
+      const modalOpen = document.getElementById('client-detail-modal').style.display === 'block';
+      if (currentClientReg === reg && modalOpen) {
+        await openClientDetail(reg);
+      }
+    } else {
+      toast('Алдаа: ' + (r.error || ''), true);
+    }
+  } catch (e) {
+    toast('Холболтын алдаа: ' + e.message, true);
+  }
+}
+ 
+async function resendClientCredentials(reg, email) {
+  const target = email || 'клиентэд';
+  if (!confirm('Нэвтрэх мэдээллийг ' + target + '-руу дахин илгээх үү?')) return;
+ 
+  try {
+    const r = await gasCall('adminResendCredentials', {
+      password: getAdminPw(),
+      reg_number: reg,
+    });
+    if (r.ok) {
+      toast('✓ ' + (r.message || 'Илгээгдлээ'));
+    } else {
+      toast('Алдаа: ' + (r.error || ''), true);
+    }
+  } catch (e) {
+    toast('Холболтын алдаа: ' + e.message, true);
+  }
+}
+</script>
