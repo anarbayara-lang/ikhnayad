@@ -138,17 +138,14 @@ textarea.fc{resize:vertical;min-height:80px}
 .doc-req{font-size:12px;color:var(--slate)}
 .ssel{padding:5px 8px;border-radius:var(--r);border:1px solid var(--line);font-size:12px;font-weight:600;cursor:pointer;outline:none;background:var(--white);min-width:128px;font-family:var(--fb)}
 .ssel:focus{border-color:var(--g600)}
-/* AUTO STATUS BADGE — client can't edit */
 .status-auto{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:100px;font-size:11.5px;font-weight:700;white-space:nowrap;min-width:128px;justify-content:center}
 .status-auto.s-ok{background:var(--ok-bg);color:var(--ok);border:1px solid #a3d4b3}
 .status-auto.s-miss{background:var(--miss-bg);color:var(--miss);border:1px solid #f5c6c3}
 .status-auto.s-rev{background:var(--rev-bg);color:var(--rev);border:1px solid #b3ccee}
 .status-auto.s-wait{background:var(--wait-bg);color:var(--wait);border:1px solid #f2cc82}
-/* AUDITOR COMMENT — read only for client */
 .auditor-comment{font-size:12px;line-height:1.5;padding:7px 10px;border-radius:var(--r);min-width:160px;max-width:240px}
 .auditor-comment.has-comment{background:#fffbf0;border-left:3px solid var(--gold);color:#5a4400;font-style:italic}
 .auditor-comment.no-comment{color:var(--muted);font-size:11px;font-style:italic}
-/* INLINE FILE LIST in row */
 .row-files-list{display:flex;flex-direction:column;gap:4px;margin-top:6px}
 .row-file-item{display:inline-flex;align-items:center;gap:6px;background:var(--g50);border:1px solid var(--g200);border-radius:5px;padding:3px 8px;font-size:11px;max-width:220px}
 .row-file-item a{color:var(--g700);text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-weight:500}
@@ -169,7 +166,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .sf-del{background:none;border:none;cursor:pointer;color:var(--muted);padding:4px;border-radius:4px;transition:color .15s;display:flex}
 .sf-del:hover{color:var(--miss)}
 .sf-del svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
-/* AUDIT TIMELINE */
 .stl{display:flex;flex-direction:column;gap:0}
 .stl-item{display:flex;gap:16px;position:relative}
 .stl-track{display:flex;flex-direction:column;align-items:center;width:24px;flex-shrink:0}
@@ -186,16 +182,13 @@ textarea.fc{resize:vertical;min-height:80px}
 .stl-desc{font-size:12.5px;color:var(--muted);margin-top:3px}
 .stl-note{font-size:12px;color:var(--g700);margin-top:5px;padding:7px 10px;background:var(--g50);border-radius:var(--r);border-left:2px solid var(--g500);font-style:italic}
 .stl-date{font-size:11.5px;font-family:var(--fm);color:var(--muted);margin-top:4px}
-/* TIMELINE PROGRESS BAR */
 .tl-progress-wrap{background:var(--g50);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:18px}
 .tl-progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .tl-progress-title{font-size:12px;font-weight:600;color:var(--slate)}
 .tl-progress-pct{font-size:13px;font-weight:700;color:var(--g800);font-family:var(--fd)}
 .status-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:22px}
-/* PORTAL LOGIN */
 #portal-login{min-height:calc(100vh - 62px);display:flex;align-items:center;justify-content:center;padding:48px 1.5rem;background:linear-gradient(135deg,var(--bg),#eef6f1)}
 .login-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:40px;box-shadow:0 24px 80px rgba(15,45,28,.12)}
-/* CHAT */
 .chat-wrap{display:flex;flex-direction:column;height:420px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
 .chat-bubble{max-width:78%;padding:10px 14px;border-radius:12px;font-size:13.5px;line-height:1.55}
@@ -206,11 +199,8 @@ textarea.fc{resize:vertical;min-height:80px}
 .chat-input-row{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);background:var(--white)}
 .chat-input-row textarea{flex:1;padding:9px 12px;border:1.5px solid var(--line);border-radius:var(--r);font-size:13px;font-family:var(--fb);outline:none;resize:none;min-height:40px;max-height:80px}
 .chat-input-row textarea:focus{border-color:var(--g600)}
-/* AUTO-SAVE INDICATOR — топ баруун */
 .save-indicator{font-size:11.5px;color:var(--ok);display:none;align-items:center;gap:4px}
 .save-indicator.show{display:flex}
-
-/* ✦ ШИНЭ: Дашбоардын статус мөр + horizontal stepper */
 .dash-status-row{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:22px}
 @media(max-width:900px){.dash-status-row{grid-template-columns:1fr}}
 .h-stepper{display:flex;align-items:flex-start;gap:0;margin:14px 0 6px;width:100%}
@@ -227,12 +217,9 @@ textarea.fc{resize:vertical;min-height:80px}
   .h-stepper .step-label{font-size:9.5px;max-width:60px}
   .h-stepper .step-dot{width:26px;height:26px;font-size:11px}
 }
-/* FIELD SAVING pulse */
 @keyframes fieldSaved{0%{border-color:var(--ok);box-shadow:0 0 0 3px rgba(26,122,60,.2)}100%{border-color:var(--line);box-shadow:none}}
 .field-saving{animation:fieldSaved 1.2s ease forwards}
-/* ADMIN */
 #admin-login{min-height:calc(100vh - 62px);display:flex;align-items:stretch}
-/* SERVICES */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
 .svc-card{background:var(--white);border:1px solid var(--line);border-radius:var(--rlg);padding:24px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
 .svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--g500));transform:scaleX(0);transform-origin:left;transition:transform .35s}
@@ -242,7 +229,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .svc-name{font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:7px}
 .svc-desc{font-size:13px;color:var(--slate);line-height:1.65}
 .svc-lnk{margin-top:14px;font-size:13px;font-weight:600;color:var(--g700);display:flex;align-items:center;gap:4px}
-/* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
 .tl-item{display:flex;gap:14px;margin-bottom:22px}
 .tl-year{min-width:44px;font-family:var(--fm);font-size:11px;font-weight:500;color:var(--g700);text-align:right;padding-top:4px;flex-shrink:0}
@@ -261,7 +247,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .as{text-align:center;padding:18px 10px;background:var(--white);border:1px solid var(--line);border-radius:var(--r)}
 .as-n{font-family:var(--fd);font-size:30px;font-weight:700;color:var(--g800)}
 .as-l{font-size:11.5px;color:var(--muted);margin-top:4px}
-/* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
 .cd{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
 .cd-icon{width:36px;height:36px;border-radius:var(--r);background:var(--g100);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -320,12 +305,10 @@ textarea.fc{resize:vertical;min-height:80px}
 .fu2{animation:fadeUp .5s .1s ease both}
 .fu3{animation:fadeUp .5s .2s ease both}
 .fu4{animation:fadeUp .5s .3s ease both}
-/* INFO SAVE STATUS inline */
 #info-save-status{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;transition:all .3s}
 #info-save-status.saving{color:var(--wait)}
 #info-save-status.saved{color:var(--ok)}
 #info-save-status.error{color:var(--miss)}
-/* ═══ ADMIN PORTAL — Big4 styled (NEW) ═══ */
 .ad-hero{background:linear-gradient(135deg,var(--g900) 0%,#0d2e1e 50%,#1a4530 100%);padding:32px 0 40px;position:relative;overflow:hidden}
 .ad-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 50%,rgba(76,255,178,.07),transparent 60%)}
 .ad-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
@@ -345,7 +328,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .ad-kpi .kpi-good{color:var(--accent-glow)}
 .ad-kpi .kpi-warn{color:#ffb84d}
 @media(max-width:700px){.ad-kpis{grid-template-columns:1fr 1fr}.ad-title{font-size:24px}}
-
 .ad-tools{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:62px;z-index:50;box-shadow:0 1px 0 rgba(15,45,28,.04)}
 .ad-tools-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
 .ad-tabs{display:flex;gap:2px;background:var(--g50);border:1px solid var(--line);border-radius:8px;padding:3px;flex-shrink:0}
@@ -360,7 +342,6 @@ textarea.fc{resize:vertical;min-height:80px}
 .ad-fc:focus{border-color:var(--g600);box-shadow:0 0 0 3px rgba(46,139,87,.1)}
 .ad-fc-search{flex:1;max-width:240px;min-width:160px}
 select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%234d6355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;cursor:pointer}
-
 .ad-list{display:flex;flex-direction:column;gap:10px}
 .ad-row{display:grid;grid-template-columns:auto 2.5fr 1.6fr 1.4fr auto;gap:18px;align-items:center;padding:16px 22px;background:#fff;border:1px solid var(--line);border-radius:12px;transition:all .2s;cursor:pointer;position:relative;overflow:hidden}
 .ad-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .2s}
@@ -393,19 +374,15 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .ad-row-arrow{flex-shrink:0;width:32px;height:32px;border-radius:8px;background:var(--g50);display:flex;align-items:center;justify-content:center;color:var(--g700);transition:all .2s}
 .ad-row:hover .ad-row-arrow{background:var(--g700);color:#fff;transform:translateX(2px)}
 .ad-row-arrow svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.2}
-
 .ad-empty{text-align:center;padding:80px 24px;color:var(--muted)}
 .ad-empty svg{width:48px;height:48px;stroke:var(--g300,#cdd9d0);fill:none;stroke-width:1.4;margin-bottom:12px;opacity:.5}
 .ad-empty-title{font-size:16px;font-weight:600;color:var(--ink2);margin-bottom:5px}
 .ad-empty-desc{font-size:13px}
-
 @media(max-width:900px){
   .ad-row{grid-template-columns:auto 1fr auto;gap:12px;padding:13px 16px}
   .ad-row-aud,.ad-row-arrow{display:none}
   .ad-row-prog{grid-column:1/-1}
 }
-
-/* AUDITORS LIST */
 .aud-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
 .aud-card{padding:18px;background:#fff;border:1px solid var(--line);border-radius:12px;transition:all .2s}
 .aud-card:hover{border-color:var(--g200);box-shadow:var(--sh)}
@@ -419,8 +396,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .aud-stats{display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid var(--line)}
 .aud-stat-num{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--g700)}
 .aud-stat-lbl{font-size:10.5px;color:var(--muted);letter-spacing:.6px;text-transform:uppercase}
-
-/* CLIENT DETAIL MODAL — refined */
 .cdm-shell{background:#fff;border-radius:18px;width:100%;max-width:920px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35);display:flex;flex-direction:column;max-height:calc(100vh - 48px)}
 .cdm-head{background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:22px 28px;display:flex;justify-content:space-between;align-items:center;gap:14px}
 .cdm-org-name{font-family:var(--fd);font-size:21px;color:#fff;font-weight:700;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -433,7 +408,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .cdm-close:hover{background:rgba(255,255,255,.2)}
 .cdm-prog-track{height:3px;background:rgba(255,255,255,.08);overflow:hidden}
 .cdm-prog-fill{height:100%;background:linear-gradient(90deg,var(--g500),var(--accent-glow));transition:width .6s cubic-bezier(.23,1,.32,1);width:0%}
-
 .cdm-meta{display:grid;grid-template-columns:auto 1fr auto;gap:18px;padding:16px 28px 18px;background:linear-gradient(to bottom,#fafdfb,#fff);border-bottom:1px solid var(--line);align-items:center;flex-wrap:wrap;flex-shrink:0}
 .cdm-meta-item{min-width:0}
 .cdm-meta-flex{flex:1}
@@ -446,14 +420,12 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .cdm-assign-btn{padding:6px 13px;border-radius:7px;background:var(--g700);color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--fb);transition:all .18s;white-space:nowrap}
 .cdm-assign-btn:hover:not(:disabled){background:var(--g800)}
 .cdm-assign-btn:disabled{background:var(--g50);color:var(--muted);cursor:not-allowed;border:1px solid var(--line)}
-
 .cdm-tabs{display:flex;border-bottom:1px solid var(--line);padding:6px 28px 0;background:#fff;gap:4px;overflow-x:auto;flex-shrink:0}
 .cdm-tab{padding:14px 18px;border:none;background:none;font-size:14px;font-weight:500;color:var(--slate);border-bottom:3px solid transparent;cursor:pointer;font-family:var(--fb);transition:all .15s;white-space:nowrap;line-height:1.4}
 .cdm-tab:hover{color:var(--g800);background:var(--g50)}
 .cdm-tab.act{color:var(--g800);border-bottom-color:var(--g700);font-weight:700;background:var(--g50)}
 .cdm-body{padding:22px 28px;flex:1;overflow-y:auto;background:var(--bg)}
 .cdm-foot{padding:14px 28px;border-top:1px solid var(--line);background:#fff;display:flex;justify-content:flex-end;gap:8px}
-
 @media(max-width:600px){
   .cdm-meta{grid-template-columns:1fr;gap:10px;padding:12px 18px}
   .cdm-head{padding:18px 18px}
@@ -461,7 +433,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   .cdm-body{padding:16px 18px}
   .cdm-foot{padding:12px 18px}
 }
-/* ✦ ШИНЭ: Multi-select chips field */
 .multi-select{position:relative;min-height:42px;padding:6px 32px 6px 9px;border:1.5px solid var(--line);border-radius:var(--r);background:#fff;cursor:text;transition:border-color .18s,box-shadow .18s;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .multi-select:focus-within{border-color:var(--g600);box-shadow:0 0 0 3px rgba(46,139,87,.12)}
 .ms-chips{display:contents}
@@ -480,8 +451,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .ms-option.selected::before{content:'✓';color:var(--ok);font-weight:700;margin-right:2px}
 .ms-option.add-new{border-top:1px solid var(--line);color:var(--g700);font-weight:500;font-style:italic}
 .ms-option.add-new::before{content:'+ ';color:var(--g700)}
-
-/* ✦ ШИНЭ: Системийн нэвтрэх — accordion (нуусан) */
 .creds-accordion{margin-top:22px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--white)}
 .creds-toggle{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;background:var(--g50);border:none;width:100%;text-align:left;font-family:var(--fb);font-size:13px;font-weight:600;color:var(--ink2);transition:background .15s}
 .creds-toggle:hover{background:var(--g100)}
@@ -490,7 +459,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .creds-accordion.open .creds-toggle svg.chevron{transform:rotate(180deg)}
 .creds-toggle .creds-meta{font-size:11px;color:var(--muted);font-weight:400;margin-left:6px}
 .creds-body{display:none;padding:18px;border-top:1px solid var(--line);background:#fffdf6}
-  <style>
 /* ═══ V9: Modal-н checkbox + Шинэ клиент tab ═══ */
 .dt-check {
   display: flex; align-items: center; gap: 8px;
@@ -512,8 +480,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   font-size: 13.5px; font-weight: 500; color: var(--ink);
 }
 .dt-check-row { display: flex; gap: 10px; }
- 
-/* Шинэ клиент tab */
 .nc-grid {
   display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px;
 }
@@ -562,7 +528,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   color: #fff; background: var(--miss); padding: 1px 7px;
   border-radius: 100px; margin-left: 6px; letter-spacing: .3px;
 }
-</style>
 .creds-accordion.open .creds-body{display:block}
 .creds-warn{font-size:11.5px;color:#7a4f00;background:var(--wait-bg);border-left:2px solid var(--wait);padding:7px 11px;border-radius:5px;margin-bottom:14px;line-height:1.5}
 </style>
@@ -683,7 +648,7 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       <div class="vision-box"><span class="label-tag" style="color:rgba(255,255,255,.4)">Алсын Хараа</span><p>"Монгол Улсад аудит, санхүүгийн үйлчилгээний итгэлцэл, ил тод байдлыг төлөвшүүлж, хараат бус үнэлгээний жишиг компани байх."</p></div>
       <div class="val-grid">
         <div class="val-item"><div class="val-name">Хараат бус байдал</div><div class="val-desc">Дүгнэлт зөвхөн бодит нотолгоонд тулгуурлана.</div></div>
-        <div class="val-item"><div class="val-name">Мэргэжлийн ур чадвар</div><div class="val-desc">Олон улсын стандартаар тасралтгүй хөгжинэ.</div></div>
+        <div class="val-item"><div class="val-name">Мэргэжлийн ур чадвар</div><div class="val-desc">Олон улсын стандартаар тасралтгүй хөгжинө.</div></div>
         <div class="val-item"><div class="val-name">Ёс зүй & Хариуцлага</div><div class="val-desc">Бүх шатанд шударга, хүндэтгэлтэй хандана.</div></div>
         <div class="val-item"><div class="val-name">Итгэлцэл</div><div class="val-desc">Урт хугацааны түншлэлийг эрхэмлэнэ.</div></div>
       </div>
@@ -789,13 +754,11 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
             </div>
           </div>
           <div class="topbar-acts">
-            <!-- ✦ Auto-save indicator -->
             <span id="save-indicator" class="save-indicator">
               <svg style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
               Хадгалагдлаа
             </span>
             <span style="font-size:12px;color:var(--muted)">Аудитын жил: <strong style="color:var(--ink)">2024</strong></span>
-            <!-- ✦ ШИНЭ: Гар аргаар хадгалах товч -->
             <button class="btn btn-p btn-sm" onclick="manualSaveAll()" id="manual-save-btn">
               <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M11 1H3a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4l-3-3z"/><path d="M9 1v3h3M4 8h6M4 11h4"/></svg>
               Хадгалах
@@ -825,7 +788,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <div class="prog-track"><div class="prog-fill" id="p-bar" style="width:0%"></div></div>
         </div>
 
-        <!-- ✦ ШИНЭ: Аудитын явц + аудиторын карт дашбоард дээр -->
         <div class="dash-status-row">
           <div class="card" style="padding:18px 22px">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
@@ -865,7 +827,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <button class="tab" onclick="switchTab('t-docs')">📋 Гэрээ / Нэхэмжлэх</button>
         </div>
 
-        <!-- PANEL: Company Info — ✦ ШИНЭ: автоматаар GAS-д хадгалагдана -->
         <div class="panel act" id="t-info">
           <div class="card">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:8px">
@@ -873,7 +834,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
                 <h3 style="font-size:16px;font-weight:600;color:var(--ink)">Байгууллагын үндсэн мэдээлэл</h3>
                 <p style="font-size:12px;color:var(--muted);margin-top:3px">Талбар бөглөхөд автоматаар хадгалагдана</p>
               </div>
-              <!-- ✦ ШИНЭ: inline save status -->
               <div id="info-save-status"></div>
             </div>
             <div class="ci-grid">
@@ -940,7 +900,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
               </div>
             </div>
             <div id="form-msg" style="display:none;margin-top:12px"></div>
-            <!-- ✦ ШИНЭ: Гар аргаар хадгалах товч -->
             <div style="margin-top:18px;display:flex;justify-content:flex-end;gap:10px">
               <button class="btn btn-p" id="manual-save-btn" onclick="manualSaveForm()" style="min-width:160px;justify-content:center">
                 <svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M11 1H3a1 1 0 00-1 1v10a1 1 0 001 1h8a1 1 0 001-1V4l-3-3z"/><path d="M9 1v3h3M4 8h6M4 11h4"/></svg>
@@ -950,19 +909,16 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           </div>
         </div>
 
-        <!-- PANEL: Perm docs -->
         <div class="panel" id="t-perm">
           <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>НЭГ. БАЙНГЫН БАРИМТ БИЧИГ</strong> — Байгууллагын үндсэн бүртгэл, эрхийн баримтууд. Нэг баримтад хэд хэдэн файл хавсаргаж болно.</div></div>
           <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичгийн нэр</th><th>Шаардлага</th><th>Төлөв</th><th>Файл</th><th>Аудиторын тайлбар</th></tr></thead><tbody id="perm-body"></tbody></table></div>
         </div>
 
-        <!-- PANEL: Work docs -->
         <div class="panel" id="t-work">
           <div class="alert a-info" style="margin-bottom:14px"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg><div><strong>ХОЁР. АЖЛЫН БАРИМТ БИЧИГ</strong> — Тайлант жилийн санхүүгийн бүртгэл, татварын болон НД тайлангууд.</div></div>
           <div class="tbl-wrap"><table class="doc-tbl"><thead><tr><th>№</th><th>Баримт бичиг</th><th>Хугацаа</th><th>Хэлбэр</th><th>Төлөв</th><th>Файл</th><th>Аудиторын тайлбар</th></tr></thead><tbody id="work-body"></tbody></table></div>
         </div>
 
-        <!-- ✦ V7: ГЭРЭЭ / НЭХЭМЖЛЭХ TAB -->
         <div class="panel" id="t-docs">
           <div class="alert a-info" style="margin-bottom:14px">
             <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg>
@@ -1038,7 +994,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   <!-- DASHBOARD -->
   <div id="admin-dashboard" style="display:none;min-height:calc(100vh - 62px);background:var(--bg)">
 
-    <!-- HERO HEADER -->
     <section class="ad-hero">
       <div class="wrap">
         <div class="ad-hero-top">
@@ -1063,7 +1018,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       </div>
     </section>
 
-    <!-- TOOLBAR -->
     <div class="ad-tools">
       <div class="wrap">
         <div class="ad-tools-row">
@@ -1073,9 +1027,9 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
               Үйлчлүүлэгчид <span class="ad-tab-count" id="tab-cnt-clients">—</span>
             </button>
             <button class="ad-tab" onclick="adminSwitchTab('newclient')" id="ad-tab-newclient">
-  <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/><path d="M7 4v6M4 7h6"/></svg>
-  Шинэ клиент
-</button>
+              <svg viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/><path d="M7 4v6M4 7h6"/></svg>
+              Шинэ клиент
+            </button>
             <button class="ad-tab" onclick="adminSwitchTab('auditors')" id="ad-tab-auditors">
               <svg viewBox="0 0 14 14"><path d="M7 8l-4 4M7 8l4 4M7 8V2"/><circle cx="7" cy="2" r="1.5"/></svg>
               Аудиторууд <span class="ad-tab-count" id="tab-cnt-auditors">—</span>
@@ -1094,97 +1048,87 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       </div>
     </div>
 
-    <!-- BODY -->
     <section style="padding:22px 0 50px">
       <div class="wrap">
-        <!-- Tab: Clients -->
         <div id="admin-tab-clients-body">
           <div id="admin-list" class="ad-list"></div>
         </div>
-        <!-- Tab: Auditors -->
-        <!-- Tab: New Client / Client Management -->
-<div id="admin-tab-newclient-body" style="display:none">
-  <div class="nc-grid">
- 
-    <!-- ЗҮҮН: Шинэ клиент нэмэх форм -->
-    <div class="nc-form-card">
-      <h3>➕ Шинэ үйлчлүүлэгч бүртгэх</h3>
-      <p class="help">
-        Бүх талбарыг бөглөж <strong>"Бүртгэх + Email явуулах"</strong> товчийг дарна.
-        Клиентэд нэвтрэх код автоматаар имэйлээр илгээгдэн, портал ашиглах боломжтой болно.
-      </p>
- 
-      <div class="g2">
-        <div class="fg full">
-          <label>Байгууллагын нэр <span class="req">*</span></label>
-          <input class="fc" id="nc-org" type="text" placeholder="Тунтун ХХК">
-        </div>
-        <div class="fg">
-          <label>Регистрийн дугаар <span class="req">*</span></label>
-          <input class="fc" id="nc-reg" type="text" placeholder="1234567" style="font-family:var(--fm)">
-        </div>
-        <div class="fg">
-          <label>Нэвтрэх код <span class="req">*</span></label>
-          <div class="nc-code-row">
-            <input class="fc" id="nc-code" type="text" placeholder="Авто үүсгэх..." style="font-family:var(--fm)">
-            <button onclick="generateAccessCode()" type="button" class="btn btn-s btn-sm" title="Санамсаргүй үүсгэх" style="padding:6px 10px">🔄</button>
+
+        <div id="admin-tab-newclient-body" style="display:none">
+          <div class="nc-grid">
+            <div class="nc-form-card">
+              <h3>➕ Шинэ үйлчлүүлэгч бүртгэх</h3>
+              <p class="help">
+                Бүх талбарыг бөглөж <strong>"Бүртгэх + Email явуулах"</strong> товчийг дарна.
+                Клиентэд нэвтрэх код автоматаар имэйлээр илгээгдэн, портал ашиглах боломжтой болно.
+              </p>
+              <div class="g2">
+                <div class="fg full">
+                  <label>Байгууллагын нэр <span class="req">*</span></label>
+                  <input class="fc" id="nc-org" type="text" placeholder="Тунтун ХХК">
+                </div>
+                <div class="fg">
+                  <label>Регистрийн дугаар <span class="req">*</span></label>
+                  <input class="fc" id="nc-reg" type="text" placeholder="1234567" style="font-family:var(--fm)">
+                </div>
+                <div class="fg">
+                  <label>Нэвтрэх код <span class="req">*</span></label>
+                  <div class="nc-code-row">
+                    <input class="fc" id="nc-code" type="text" placeholder="Авто үүсгэх..." style="font-family:var(--fm)">
+                    <button onclick="generateAccessCode()" type="button" class="btn btn-s btn-sm" title="Санамсаргүй үүсгэх" style="padding:6px 10px">🔄</button>
+                  </div>
+                </div>
+                <div class="fg full">
+                  <label>И-мэйл <span class="req">*</span></label>
+                  <input class="fc" id="nc-email" type="email" placeholder="contact@company.mn">
+                </div>
+                <div class="fg">
+                  <label>Утас</label>
+                  <input class="fc" id="nc-phone" type="tel" placeholder="+976">
+                </div>
+                <div class="fg">
+                  <label>Аудитын жил</label>
+                  <input class="fc" id="nc-year" type="text" value="2024" style="font-family:var(--fm)">
+                </div>
+                <div class="fg">
+                  <label>Захирлын нэр</label>
+                  <input class="fc" id="nc-director" type="text" placeholder="Овог Нэр">
+                </div>
+                <div class="fg">
+                  <label>Өмчийн хэлбэр</label>
+                  <select class="fc" id="nc-ownership">
+                    <option value="">— Сонгох —</option>
+                    <option>ХХК</option><option>ХК</option><option>ТӨХХК</option><option>ТӨҮГ</option>
+                    <option>ТЕЗ</option><option>ОНӨҮГ</option><option>ТШЗ</option><option>ББСБ</option>
+                    <option>ГХО ХХК</option><option>Бусад</option>
+                  </select>
+                </div>
+              </div>
+              <div id="nc-err" style="display:none;margin-top:14px" class="alert a-err">
+                <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg>
+                <span></span>
+              </div>
+              <div style="display:flex;gap:8px;margin-top:16px">
+                <button class="btn btn-g btn-sm" onclick="clearNewClientForm()">Цэвэрлэх</button>
+                <button class="btn btn-p btn-sm" id="nc-submit-btn" onclick="submitNewClient()" style="flex:1;justify-content:center">
+                  <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 6V4a3 3 0 016 0v2"/><rect x="2" y="6" width="10" height="7" rx="1"/></svg>
+                  Бүртгэх + Email явуулах
+                </button>
+              </div>
+            </div>
+            <div class="nc-form-card">
+              <h3 style="margin-bottom:6px">📋 Бүх клиент</h3>
+              <p class="help" style="margin-bottom:12px">
+                Засах <strong>✏</strong> · Дахин код илгээх <strong>📧</strong> · Эрх хаах <strong>🚫</strong>
+              </p>
+              <input type="text" class="fc" id="nc-search" placeholder="🔍 Нэр, регистр, имэйл..." oninput="renderNewClientRecentList()" style="margin-bottom:12px">
+              <div id="nc-recent-list" class="nc-recent-list" style="max-height:560px;overflow-y:auto;padding-right:4px">
+                <div style="text-align:center;color:var(--muted);font-size:12px;padding:24px">Ачааллаж байна...</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="fg full">
-          <label>И-мэйл <span class="req">*</span></label>
-          <input class="fc" id="nc-email" type="email" placeholder="contact@company.mn">
-        </div>
-        <div class="fg">
-          <label>Утас</label>
-          <input class="fc" id="nc-phone" type="tel" placeholder="+976">
-        </div>
-        <div class="fg">
-          <label>Аудитын жил</label>
-          <input class="fc" id="nc-year" type="text" value="2024" style="font-family:var(--fm)">
-        </div>
-        <div class="fg">
-          <label>Захирлын нэр</label>
-          <input class="fc" id="nc-director" type="text" placeholder="Овог Нэр">
-        </div>
-        <div class="fg">
-          <label>Өмчийн хэлбэр</label>
-          <select class="fc" id="nc-ownership">
-            <option value="">— Сонгох —</option>
-            <option>ХХК</option><option>ХК</option><option>ТӨХХК</option><option>ТӨҮГ</option>
-            <option>ТЕЗ</option><option>ОНӨҮГ</option><option>ТШЗ</option><option>ББСБ</option>
-            <option>ГХО ХХК</option><option>Бусад</option>
-          </select>
-        </div>
-      </div>
- 
-      <div id="nc-err" style="display:none;margin-top:14px" class="alert a-err">
-        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg>
-        <span></span>
-      </div>
- 
-      <div style="display:flex;gap:8px;margin-top:16px">
-        <button class="btn btn-g btn-sm" onclick="clearNewClientForm()">Цэвэрлэх</button>
-        <button class="btn btn-p btn-sm" id="nc-submit-btn" onclick="submitNewClient()" style="flex:1;justify-content:center">
-          <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 6V4a3 3 0 016 0v2"/><rect x="2" y="6" width="10" height="7" rx="1"/></svg>
-          Бүртгэх + Email явуулах
-        </button>
-      </div>
-    </div>
- 
-    <!-- БАРУУН: Бүх клиентийн жагсаалт + засах/хаах -->
-    <div class="nc-form-card">
-      <h3 style="margin-bottom:6px">📋 Бүх клиент</h3>
-      <p class="help" style="margin-bottom:12px">
-        Засах <strong>✏</strong> · Дахин код илгээх <strong>📧</strong> · Эрх хаах <strong>🚫</strong>
-      </p>
-      <input type="text" class="fc" id="nc-search" placeholder="🔍 Нэр, регистр, имэйл..." oninput="renderNewClientRecentList()" style="margin-bottom:12px">
-      <div id="nc-recent-list" class="nc-recent-list" style="max-height:560px;overflow-y:auto;padding-right:4px">
-        <div style="text-align:center;color:var(--muted);font-size:12px;padding:24px">Ачааллаж байна...</div>
-      </div>
-    </div>
- 
-  </div>
-</div>
+
         <div id="admin-tab-auditors-body" style="display:none">
           <div id="auditor-list"></div>
         </div>
@@ -1196,7 +1140,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   <div id="client-detail-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(8,28,18,.65);backdrop-filter:blur(6px);overflow-y:auto">
     <div style="min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:24px 16px">
       <div class="cdm-shell">
-        <!-- Modal header -->
         <div class="cdm-head">
           <div style="flex:1;min-width:0">
             <div id="cdm-org" class="cdm-org-name"></div>
@@ -1212,7 +1155,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         </div>
         <div class="cdm-prog-track"><div id="cdm-prog" class="cdm-prog-fill"></div></div>
 
-        <!-- Quick info bar — auditor assign + year + files count -->
         <div class="cdm-meta">
           <div class="cdm-meta-item">
             <div class="cdm-meta-lbl">Аудитын жил</div>
@@ -1233,7 +1175,6 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           </div>
         </div>
 
-        <!-- Tabs -->
         <div class="cdm-tabs">
           <button onclick="cdmTab('stages')"   id="cdm-tab-stages"   class="cdm-tab act">Аудитын явц</button>
           <button onclick="cdmTab('docs')"     id="cdm-tab-docs"     class="cdm-tab">Баримт бичиг</button>
@@ -1242,10 +1183,8 @@ select.ad-fc{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <button onclick="cdmTab('info')"     id="cdm-tab-info"     class="cdm-tab">Мэдээлэл</button>
         </div>
 
-        <!-- Body -->
         <div id="cdm-body" class="cdm-body"></div>
 
-        <!-- Footer -->
         <div class="cdm-foot">
           <button onclick="closeCDM()" class="btn btn-g btn-sm">Хаах</button>
           <button onclick="saveAuditorStatuses()" class="btn btn-p btn-sm" id="cdm-save-btn">
@@ -1264,9 +1203,9 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycbzx5fCXiI0piIkR20KXmwC4
 
 // ── STATE ─────────────────────────────────────────────────────
 let SESSION       = { reg: '', code: '', org: '' };
-let docStatuses   = {};   // ✦ Зөвхөн АУДИТОР-ын тогтоосон төлөв (ok/miss/wait/rev)
-let docComments   = {};   // ✦ ШИНЭ: docId → аудиторын тайлбар
-const docFileMap  = {};   // ✦ ШИНЭ: docId → [{name,viewUrl,id}, ...]
+let docStatuses   = {};
+let docComments   = {};
+const docFileMap  = {};
 let sentFiles     = [];
 let chatMessages  = [];
 let adminAuthed   = false;
@@ -1275,9 +1214,9 @@ let currentClientReg  = null;
 let currentClientData = {};
 let auditorStatuses   = {};
 let auditorStages     = {};
-let auditorComments   = {};   // ✦ ШИНЭ: docId → шинэ тайлбар (хадгалах гэж буй)
+let auditorComments   = {};
 let chatPollTimer     = null;
-let cdmChatPollTimer  = null;   // ✦ ШИНЭ: admin client-detail chat poll
+let cdmChatPollTimer  = null;
 let formSaveTimer     = null;
 let formSavePending   = false;
 
@@ -1300,8 +1239,6 @@ function toggleMob(){document.getElementById('mobMenu').classList.toggle('open')
 function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
 
 // ── GAS ───────────────────────────────────────────────────────
-// ☆ ХАМГААЛАЛТ — API Token (Apps Script Properties дотор тохирсон утга)
-// Энэ утгыг setupSecurity() ажиллуулсны дараа Apps Script log-аас хуулна
 const API_TOKEN = '660a7ae5a1d744879df3886bc6d1813090b567b7233b40ba9ebd095af34ebfab';
 
 async function gasCall(action, body={}) {
@@ -1384,13 +1321,11 @@ async function doLogin() {
     if(!result.ok){showErr(err,result.error||'Нэвтрэх код буруу байна.');resetLoginBtn();return;}
     err.style.display='none';
 
-    // ✦ FIX: Өөр клиентэд нэвтрэх үед хуучин draft-г цэвэрлэнэ
     const prevReg = localStorage.getItem('ina_reg');
     if(prevReg && prevReg !== reg){
       localStorage.removeItem('ina_draft');
       localStorage.removeItem('ina_note');
       localStorage.removeItem('ina_chat_count');
-      // UI талбаруудыг бас цэвэрлэнэ
       document.querySelectorAll('.ci-field').forEach(el => { el.value = ''; });
     }
 
@@ -1402,14 +1337,11 @@ async function doLogin() {
     document.getElementById('d-name').textContent = result.org_name;
     document.getElementById('d-reg').textContent  = 'Регистр: '+reg;
 
-    // ✦ FIX: statusMap, commentMap-г login-аас авна
     if(result.statusMap) docStatuses = {...result.statusMap};
     if(result.commentMap) docComments = {...result.commentMap};
 
     loadFromLS();
-    // ✦ Серверээс ирсэн client_data-аар талбаруудыг гүйцэд дүүргэе (LS-ийг override хийнэ)
     populateFormFromServer(result.client_data || {}, reg);
-    // ✦ ШИНЭ: Хариуцсан аудиторын мэдээллийг шинэчлэх
     updateAssignedAuditorCard(result.client_data || {});
 
     initAutoSave();
@@ -1417,7 +1349,6 @@ async function doLogin() {
     updateProgress();
     renderAuditTimeline(result.stageMap||{});
 
-    // ✦ ШИНЭ: Server-ийн файлуудыг ачаалах — statusMap-г дарахгүй
     loadClientFilesOnly();
 
     document.getElementById('portal-login').style.display    = 'none';
@@ -1428,12 +1359,10 @@ async function doLogin() {
   resetLoginBtn();
 }
 
-// ✦ ШИНЭ: Серверээс ирсэн client_data-г форм талбаруудад тарааж байрлуулна
 function populateFormFromServer(cd, reg) {
   const map = {
     ci2:  reg || cd.reg_number || '',
     ci3:  cd.org_name        || '',
-    // ci4 нь multi-select учир тусдаа тохируулна (доор)
     ci5:  cd.ownership_type  || '',
     ci6:  cd.address         || '',
     ci7:  cd.district        || '',
@@ -1453,12 +1382,9 @@ function populateFormFromServer(cd, reg) {
     const el = document.getElementById(id);
     if(el && val !== undefined && val !== null && val !== '') el.value = val;
   });
-  // ✦ Үйл ажиллагааны чиглэл (multi-select)
   setActivitiesFromString(cd.activity_type || '');
-  // ✦ Дүүрэг/сум display талбарт буцаан харуулах
   syncDistrictDisplay('ci7');
   syncDistrictDisplay('ci17');
-  // Огноо талбар (created_at дээр үндэслэн)
   if(cd.created_at){
     const el = document.getElementById('ci1');
     if(el && !el.value){
@@ -1468,7 +1394,6 @@ function populateFormFromServer(cd, reg) {
       } catch(_) {}
     }
   }
-  // localStorage-д шинэчилнэ
   saveToLS();
 }
 
@@ -1478,7 +1403,6 @@ function resetLoginBtn() {
   btn.innerHTML='<svg style="width:13px;height:13px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M5 7h7M9 5l3 2-3 2"/><path d="M5 4H3a1 1 0 00-1 1v4a1 1 0 001 1h2"/></svg> Нэвтрэх';
 }
 
-// ✦ ШИНЭ: Бүртгэлийн заавал шаардлагатай талбарууд
 const REQUIRED_INFO_FIELDS = [
   { id: 'ci3',  label: 'Байгууллагын нэр' },
   { id: 'ci2',  label: 'Регистрийн дугаар' },
@@ -1497,7 +1421,6 @@ function getMissingRequiredFields() {
 }
 
 async function doLogout() {
-  // ✦ ШИНЭ: Заавал шаардлагатай мэдээлэл дутуу бол анхааруулна
   if (SESSION.reg) {
     const missing = getMissingRequiredFields();
     if (missing.length > 0) {
@@ -1509,9 +1432,7 @@ async function doLogout() {
         'Гарах уу?'
       );
       if (!proceed) {
-        // Хэрэглэгч "Цуцлах" сонгосон → Байгууллагын мэдээлэл tab руу шилжүүлнэ
         switchTab('t-info');
-        // Эхний дутуу талбар руу focus хийнэ
         for (const f of REQUIRED_INFO_FIELDS) {
           const el = document.getElementById(f.id);
           if(el && !String(el.value || '').trim()) {
@@ -1528,7 +1449,6 @@ async function doLogout() {
         return;
       }
     }
-    // Сүүлийн өөрчлөлтийг GAS-д хадгална
     try {
       saveToLS();
       const data = buildFormData();
@@ -1541,13 +1461,8 @@ async function doLogout() {
   SESSION={reg:'',code:'',org:''};
   sentFiles=[]; chatMessages=[];
   docStatuses={}; docComments={};
-  // docFileMap-г цэвэрлэнэ
   Object.keys(docFileMap).forEach(k => delete docFileMap[k]);
-  // localStorage-н session-specific зүйлсийг л устгана
-  // ✦ ina_draft нь үлдэнэ — дараа нэвтрэхэд буцаж харагдана!
-  // (Гэхдээ зөвхөн тухайн reg-ийн өгөгдөл л үлдэх ёстой)
   localStorage.removeItem('ina_chat_count');
-  // UI талбар цэвэрлэнэ
   document.querySelectorAll('.ci-field').forEach(el => { el.value = ''; });
   ['ci16','ci20','l-reg','l-code'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   document.getElementById('portal-login').style.display    = 'flex';
@@ -1556,19 +1471,16 @@ async function doLogout() {
 
 function showErr(el,msg){el.style.display='flex';el.querySelector('span').textContent=msg;}
 
-// ✦ FIX: файл ачаалах үед statusMap дарахгүй — merge хийнэ
 async function loadClientFilesOnly() {
   try {
     const r = await gasCall('getClientData',{reg_number:SESSION.reg,access_code:SESSION.code});
     if(r.ok) {
-      // Файлууд
       if(r.files) {
         sentFiles = r.files.map(f=>({
           name:f.file_name,size:f.file_size,ext:f.file_type,
           id:f.id,viewUrl:f.drive_view_url,docId:f.doc_id,fromServer:true,
         }));
         renderSentFiles();
-        // Файл бүрийг docFileMap-д хуваарилна
         sentFiles.forEach(f => {
           if(f.docId && f.docId !== 'general') {
             if(!docFileMap[f.docId]) docFileMap[f.docId] = [];
@@ -1577,18 +1489,15 @@ async function loadClientFilesOnly() {
             }
           }
         });
-        // Бүх мөрийн файлын жагсаалт + status badge-г шинэчлэнэ
         [...PERM,...WORK].forEach(d => {
           renderDocFileList(d.id);
           refreshStatusBadge(d.id);
         });
       }
-      // Аудиторын тогтоосон status (зөвхөн серверээс ирсэн)
       if(r.statusMap) {
         docStatuses = {...r.statusMap};
         [...PERM,...WORK].forEach(d => refreshStatusBadge(d.id));
       }
-      // ✦ ШИНЭ: Аудиторын тайлбарууд
       if(r.commentMap) {
         docComments = {...r.commentMap};
         [...PERM,...WORK].forEach(d => refreshAuditorNote(d.id));
@@ -1599,7 +1508,7 @@ async function loadClientFilesOnly() {
   } catch(e){console.warn('loadClientFilesOnly:',e);}
 }
 
-// ── ✦ ШИНЭ: AUTO-SAVE TO GAS ─────────────────────────────────
+// ── AUTO-SAVE TO GAS ─────────────────────────────────────────
 function initAutoSave() {
   document.querySelectorAll('.ci-field').forEach(el => {
     el.addEventListener('input', onFieldChange);
@@ -1633,7 +1542,6 @@ async function autoSaveToGAS() {
   }
 }
 
-// ✦ ШИНЭ: Гар аргаар хадгалах товчны функц
 async function manualSaveForm() {
   const btn = document.getElementById('manual-save-btn');
   if(!btn) return;
@@ -1674,10 +1582,8 @@ function setInfoStatus(cls, txt) {
   el.textContent = txt;
 }
 
-// ✦ ШИНЭ: Үйл ажиллагааны чиглэлийн жагсаалт (Монгол Улсын ҮЭЗА кодлогч)
-// Формат: 'код. нэр' — хайлтад код болон нэрээр шүүж болно
+// ── ACTIVITY OPTIONS (Монгол Улсын ҮЭЗА кодлогч) ─────────────
 const ACTIVITY_OPTIONS = [
-  // ── ХӨДӨӨ АЖ АХУЙ, ОЙН АЖ АХУЙ, ЗАГАС БАРИЛТ ───────────────
   '0111. Үр тариа, буурцагт болон тосны ургамал тариалалт',
   '0112. Цагаан будаа тариалалт',
   '0113. Хүнсний ногоо, амтат гуа, үндэст болон булцуут ургамал тариалалт',
@@ -1709,8 +1615,6 @@ const ACTIVITY_OPTIONS = [
   '0312. Цэнгэг усны загас барих',
   '0321. Далайн загас үржүүлэг',
   '0322. Цэнгэг усны загас үржүүлэг',
-
-  // ── УУЛ УУРХАЙ, ОЛБОРЛОЛТ ──────────────────────────────────
   '0510. Чулуун нүүрс олборлолт',
   '0520. Хүрэн нүүрс олборлолт',
   '0610. Газрын тос олборлолт',
@@ -1725,8 +1629,6 @@ const ACTIVITY_OPTIONS = [
   '0899. Дээрх ангид ороогүй бусад ашигт малтмалын олборлолт',
   '0910. Газрын тос, байгалийн хий олборлолттой холбогдох туслах үйл ажиллагаа',
   '0990. Уул уурхай, олборлолтын туслах бусад үйл ажиллагаа',
-
-  // ── БОЛОВСРУУЛАХ ҮЙЛДВЭРЛЭЛ ────────────────────────────────
   '1010. Мах, махан бүтээгдэхүүний үйлдвэрлэл болон хадгалалт',
   '1020. Загас, загасан бүтээгдэхүүний үйлдвэрлэл болон хадгалалт',
   '1030. Жимс болон хүнсний ногооны боловсруулалт, хадгалалт',
@@ -1857,8 +1759,6 @@ const ACTIVITY_OPTIONS = [
   '3315. Тээврийн хэрэгслийн засварын үйл ажиллагаа',
   '3319. Бусад тоног төхөөрөмжийн засвар үйлчилгээ',
   '3320. Аж үйлдвэрийн машин, тоног төхөөрөмжийг угсрах, суурилуулах',
-
-  // ── ЦАХИЛГААН, ХИЙ, УУР, УС, ХОГ ХАЯГДАЛ ──────────────────
   '3510. Цахилгаан эрчим хүч үйлдвэрлэх, дамжуулах, түгээх',
   '3520. Хийн аж ахуй, хийн түлшийг хуваарилах үйл ажиллагаа',
   '3530. Уур, агааржуулагчийн хангамжийн үйл ажиллагаа',
@@ -1870,8 +1770,6 @@ const ACTIVITY_OPTIONS = [
   '3822. Аюултай хог хаягдлыг ариутгах, боловсруулах',
   '3830. Хог хаягдлаас хоёрдогч түүхий эд гарган авах',
   '3900. Хог, хаягдлын менежментийн бусад болон цэвэрлэх үйл ажиллагаа',
-
-  // ── БАРИЛГА УГСРАЛТ ────────────────────────────────────────
   '4100. Барилга угсралт',
   '4210. Төмөр зам болон авто замын байгууламж барих',
   '4220. Нийтийн аж ахуйн барилга угсралт',
@@ -1883,8 +1781,6 @@ const ACTIVITY_OPTIONS = [
   '4329. Барилгын бусад суурилуулах үйл ажиллагаа',
   '4330. Барилгыг дуусгах шатны ажил',
   '4390. Барилгын бусад тусгай үйл ажиллагаа',
-
-  // ── БӨӨНИЙ БА ЖИЖИГЛЭН ХУДАЛДАА ───────────────────────────
   '4510. Моторт тээврийн хэрэгслийн худалдаа',
   '4520. Моторт тээврийн хэрэгслийн засвар, үйлчилгээ',
   '4530. Моторт тээврийн хэрэгслийн сэлбэг, эд ангийн худалдаа',
@@ -1928,8 +1824,6 @@ const ACTIVITY_OPTIONS = [
   '4789. Захиалгаар хийгддэг бусад барааны жижиглэн худалдаа',
   '4791. Шуудан, интернэт захиалгаар хийгддэг жижиглэн худалдаа',
   '4799. Дэлгүүрээр дамжин хийгддэггүй бусад жижиглэн худалдаа',
-
-  // ── ТЭЭВЭР, АГУУЛАХ ────────────────────────────────────────
   '4911. Төмөр замын зорчигч тээвэр',
   '4912. Төмөр замын ачаа тээвэр',
   '4921. Хотын болон хот орчмын зорчигч тээвэр',
@@ -1949,8 +1843,6 @@ const ACTIVITY_OPTIONS = [
   '5229. Тээврийн бусад туслах үйл ажиллагаа',
   '5310. Шуудангийн үйл ажиллагаа',
   '5320. Буухиа шуудангийн үйлчилгээ',
-
-  // ── ЗОЧИД БУУДАЛ, НИЙТИЙН ХООЛ ─────────────────────────────
   '5510. Богино хугацаагаар байр, сууцаар хангах үйл ажиллагаа',
   '5520. Зуслан, чөлөөт цаг өнгөрөөх хоноглох байраар хангах',
   '5590. Бусад төрлийн байраар хангах үйл ажиллагаа',
@@ -1958,8 +1850,6 @@ const ACTIVITY_OPTIONS = [
   '5621. Тусгай захиалгат хоолоор үйлчлэх үйлчилгээ',
   '5629. Хоол хүнсээр үйлчлэх бусад үйл ажиллагаа',
   '5630. Ундаагаар үйлчлэх үйл ажиллагаа',
-
-  // ── МЭДЭЭЛЭЛ, ХОЛБОО ───────────────────────────────────────
   '5811. Номын эх бэлтгэх, нийтлэх үйл ажиллагаа',
   '5812. Лавлагаа, хаягийн жагсаалтын эх бэлтгэх, нийтлэх',
   '5813. Сонин, сэтгүүлийн эх бэлтгэх, нийтлэх үйл ажиллагаа',
@@ -1983,8 +1873,6 @@ const ACTIVITY_OPTIONS = [
   '6312. Вэб гарцын үйл ажиллагаа',
   '6391. Мэдээллийн агентлагийн үйл ажиллагаа',
   '6399. Бусад мэдээллийн үйлчилгээний үйл ажиллагаа',
-
-  // ── САНХҮҮ, ДААТГАЛ ────────────────────────────────────────
   '6411. Төв банкны үйл ажиллагаа',
   '6419. Мөнгөний зуучлалын бусад үйл ажиллагаа',
   '6420. Холдинг компаний үйл ажиллагаа',
@@ -2002,12 +1890,8 @@ const ACTIVITY_OPTIONS = [
   '6622. Даатгалын төлөөлөгч, зуучлагчийн үйл ажиллагаа',
   '6629. Даатгал ба тэтгэврийн бусад туслах үйл ажиллагаа',
   '6630. Хөрөнгө оруулалтын сангийн удирдлага',
-
-  // ── ҮЛ ХӨДЛӨХ ХӨРӨНГӨ ──────────────────────────────────────
   '6810. Өөрийн болон лизингийн үл хөдлөх хөрөнгийн үйл ажиллагаа',
   '6820. Гэрээний үндсэн дээр хийгддэг үл хөдлөх хөрөнгийн үйл ажиллагаа',
-
-  // ── МЭРГЭЖЛИЙН, ШИНЖЛЭХ УХААНЫ ҮЙЛ АЖИЛЛАГАА ──────────────
   '6910. Хуулийн үйл ажиллагаа',
   '6920. Бүртгэл, нягтлан бодох бүртгэл, аудит, татварын зөвлөгөө',
   '7010. Аж ахуйн нэгжийн удирдах дээд байгууллагын үйл ажиллагаа',
@@ -2022,8 +1906,6 @@ const ACTIVITY_OPTIONS = [
   '7420. Гэрэл зургийн үйл ажиллагаа',
   '7490. Мэргэжлийн, шинжлэх ухааны бусад үйл ажиллагаа',
   '7500. Мал эмнэлгийн үйл ажиллагаа',
-
-  // ── УДИРДЛАГА, ТУСЛАХ ҮЙЛ АЖИЛЛАГАА ───────────────────────
   '7710. Моторт тээврийн хэрэгслийн түрээс, лизинг',
   '7721. Амралт, спортын барааны түрээс, лизинг',
   '7722. Видео хуурцаг, дискний түрээсийн үйл ажиллагаа',
@@ -2050,8 +1932,6 @@ const ACTIVITY_OPTIONS = [
   '8291. Өр барагдуулах алба, зээлийн товчоо',
   '8292. Савлах үйл ажиллагаа',
   '8299. Бизнесийн бусад туслах үйл ажиллагаа',
-
-  // ── ТӨРИЙН УДИРДЛАГА, БАТЛАН ХАМГААЛАХ ────────────────────
   '8411. Төрийн удирдлагын үйл ажиллагаа',
   '8412. Эрүүл мэнд, боловсрол, соёл урлагийн үйлчилгээний удирдлага',
   '8413. Бизнес дэмжих, зохицуулах үйл ажиллагаа',
@@ -2059,8 +1939,6 @@ const ACTIVITY_OPTIONS = [
   '8422. Батлан хамгаалах үйл ажиллагаа',
   '8423. Нийгмийн хэв журам, аюулгүй байдлын үйл ажиллагаа',
   '8430. Нийгмийн зайлшгүй хамгааллын үйл ажиллагаа',
-
-  // ── БОЛОВСРОЛ ──────────────────────────────────────────────
   '8510. Сургуулийн өмнөх болон бага боловсрол',
   '8521. Суурь болон бүрэн дунд боловсрол',
   '8522. Техник, мэргэжлийн дунд боловсрол',
@@ -2069,8 +1947,6 @@ const ACTIVITY_OPTIONS = [
   '8542. Соёлын боловсрол',
   '8549. Боловсролын бусад үйл ажиллагаа',
   '8550. Боловсролын туслах үйл ажиллагаа',
-
-  // ── ЭРҮҮЛ МЭНД, НИЙГМИЙН ХАЛАМЖ ───────────────────────────
   '8610. Эмнэлгийн үйл ажиллагаа',
   '8620. Шүдний болон эмнэлгийн бусад үйл ажиллагаа',
   '8690. Хүний эрүүл мэндийн бусад үйл ажиллагаа',
@@ -2080,8 +1956,6 @@ const ACTIVITY_OPTIONS = [
   '8790. Бусад асаргаа, сувилгааны үйл ажиллагаа',
   '8810. Зориулалтын байргүй ахмад настан, бэрхшээлтэйд тусламж',
   '8890. Зориулалтын байргүй нийгмийн тусламжийн бусад үйл ажиллагаа',
-
-  // ── СОЁЛ, УРЛАГ, СПОРТ ─────────────────────────────────────
   '9000. Бүтээл туурвих, урлаг, үзвэр үйлчилгээний үйл ажиллагаа',
   '9101. Номын сан, архивын үйл ажиллагаа',
   '9102. Музей, түүхийн дурсгалт газар үзүүлэх',
@@ -2092,8 +1966,6 @@ const ACTIVITY_OPTIONS = [
   '9319. Спортын бусад үйл ажиллагаа',
   '9321. Цэнгэлдэх хүрээлэн, цэцэрлэгт хүрээлэн',
   '9329. Амралт, зугаа цэнгэлийн бусад үйл ажиллагаа',
-
-  // ── НИЙГМИЙН БУСАД ҮЙЛЧИЛГЭЭ ───────────────────────────────
   '9411. Бизнесийн ажил олгогчийн гишүүнчлэлтэй байгууллага',
   '9412. Мэргэжлийн гишүүнчлэлтэй байгууллагууд',
   '9420. Үйлдвэрчний эвлэлийн үйл ажиллагаа',
@@ -2111,8 +1983,6 @@ const ACTIVITY_OPTIONS = [
   '9602. Үсчин, гоо сайхны салоны үйлчилгээ',
   '9603. Оршуулга, түүнд холбогдох үйл ажиллагаа',
   '9609. Хувийн болон өрхийн хэрэглээний барааны засвар, үйлчилгээ',
-
-  // ── ӨРХИЙН БА ОУ-ЫН БАЙГУУЛЛАГА ───────────────────────────
   '9700. Хүн хөлслөн ажиллуулдаг өрхийн үйл ажиллагаа',
   '9810. Өрх өөрийн хэрэглээнд зориулсан бараа үйлдвэрлэлт',
   '9820. Өрх өөрийн хэрэглээнд зориулсан үйлчилгээний үйлдвэрлэлт',
@@ -2121,9 +1991,8 @@ const ACTIVITY_OPTIONS = [
 
 let selectedActivities = [];
 
-// ✦ ШИНЭ: Аймаг/Дүүргийн жагсаалт (УБ + 21 аймгийн бүх сум)
+// ── DISTRICT OPTIONS (УБ + 21 аймаг + бүх сум) ───────────────
 const DISTRICT_OPTIONS = [
-  // ── Улаанбаатар ───────────────────────────────────────────
   'Улаанбаатар — Баянгол',
   'Улаанбаатар — Баянзүрх',
   'Улаанбаатар — Сүхбаатар',
@@ -2133,77 +2002,34 @@ const DISTRICT_OPTIONS = [
   'Улаанбаатар — Налайх',
   'Улаанбаатар — Багануур',
   'Улаанбаатар — Багахангай',
-
-  // ── Архангай ──────────────────────────────────────────────
   'Архангай — Эрдэнэбулган (төв)','Архангай — Батцэнгэл','Архангай — Булган','Архангай — Жаргалант','Архангай — Ихтамир','Архангай — Өгийнуур','Архангай — Өлзийт','Архангай — Өндөр-Улаан','Архангай — Тариат','Архангай — Төвшрүүлэх','Архангай — Хайрхан','Архангай — Хангай','Архангай — Хотонт','Архангай — Цахир','Архангай — Цэнхэр','Архангай — Цэцэрлэг','Архангай — Чулуут','Архангай — Эрдэнэмандал',
-
-  // ── Баян-Өлгий ────────────────────────────────────────────
   'Баян-Өлгий — Алтай','Баян-Өлгий — Алтанцөгц','Баян-Өлгий — Баяннуур','Баян-Өлгий — Бугат','Баян-Өлгий — Булган','Баян-Өлгий — Буянт','Баян-Өлгий — Дэлүүн','Баян-Өлгий — Ногооннуур','Баян-Өлгий — Сагсай','Баян-Өлгий — Толбо','Баян-Өлгий — Цагааннуур','Баян-Өлгий — Цэнгэл','Баян-Өлгий — Улаанхус',
-
-  // ── Баянхонгор ────────────────────────────────────────────
   'Баянхонгор — Баянхонгор (төв)','Баянхонгор — Баацагаан','Баянхонгор — Баянбулаг','Баянхонгор — Баянговь','Баянхонгор — Баянлиг','Баянхонгор — Баян-Овоо','Баянхонгор — Баян-Өндөр','Баянхонгор — Баянцагаан','Баянхонгор — Бөмбөгөр','Баянхонгор — Бууцагаан','Баянхонгор — Галуут','Баянхонгор — Гурванбулаг','Баянхонгор — Жаргалант','Баянхонгор — Жинст','Баянхонгор — Заг','Баянхонгор — Өлзийт','Баянхонгор — Шинэжинст','Баянхонгор — Эрдэнэцогт',
-
-  // ── Булган ────────────────────────────────────────────────
   'Булган — Булган (төв)','Булган — Баян-Агт','Булган — Баяннуур','Булган — Бугат','Булган — Бүрэгхангай','Булган — Гурванбулаг','Булган — Дашинчилэн','Булган — Могод','Булган — Орхон','Булган — Рашаант','Булган — Сайхан','Булган — Сэлэнгэ','Булган — Тэшиг','Булган — Хангал','Булган — Хишиг-Өндөр',
-
-  // ── Говь-Алтай ────────────────────────────────────────────
   'Говь-Алтай — Алтай (төв)','Говь-Алтай — Баян-Уул','Говь-Алтай — Бигэр','Говь-Алтай — Бугат','Говь-Алтай — Дарви','Говь-Алтай — Дэлгэр','Говь-Алтай — Жаргалан','Говь-Алтай — Тайшир','Говь-Алтай — Тонхил','Говь-Алтай — Төгрөг','Говь-Алтай — Халиун','Говь-Алтай — Цогт','Говь-Алтай — Цээл','Говь-Алтай — Шарга','Говь-Алтай — Эрдэнэ',
-
-  // ── Говьсүмбэр ────────────────────────────────────────────
   'Говьсүмбэр — Сүмбэр','Говьсүмбэр — Баянтал','Говьсүмбэр — Шивээговь',
-
-  // ── Дархан-Уул ────────────────────────────────────────────
   'Дархан-Уул — Дархан','Дархан-Уул — Орхон','Дархан-Уул — Хонгор','Дархан-Уул — Шарын гол',
-
-  // ── Дорноговь ─────────────────────────────────────────────
   'Дорноговь — Сайншанд (төв)','Дорноговь — Айраг','Дорноговь — Алтанширээ','Дорноговь — Даланжаргалан','Дорноговь — Дэлгэрэх','Дорноговь — Замын-Үүд','Дорноговь — Иххэт','Дорноговь — Мандах','Дорноговь — Өргөн','Дорноговь — Сайхандулаан','Дорноговь — Улаанбадрах','Дорноговь — Хатанбулаг','Дорноговь — Хөвсгөл','Дорноговь — Эрдэнэ',
-
-  // ── Дорнод ────────────────────────────────────────────────
   'Дорнод — Чойбалсан (төв)','Дорнод — Баяндун','Дорнод — Баянтүмэн','Дорнод — Булган','Дорнод — Гурванзагал','Дорнод — Дашбалбар','Дорнод — Матад','Дорнод — Сэргэлэн','Дорнод — Халхгол','Дорнод — Хөлөнбуйр','Дорнод — Цагаан-Овоо','Дорнод — Чулуунхороот',
-
-  // ── Дундговь ──────────────────────────────────────────────
   'Дундговь — Адаацаг','Дундговь — Баянжаргалан','Дундговь — Говь-Угтаал','Дундговь — Гурвансайхан','Дундговь — Дэлгэрхангай','Дундговь — Дэлгэрцогт','Дундговь — Дэрэн','Дундговь — Луус','Дундговь — Өлзийт','Дундговь — Сайхан-Овоо','Дундговь — Хулд','Дундговь — Цагаандэлгэр','Дундговь — Эрдэнэдалай',
-
-  // ── Завхан ────────────────────────────────────────────────
   'Завхан — Алдархаан','Завхан — Асгат','Завхан — Баянтэс','Завхан — Баянхайрхан','Завхан — Дөрвөлжин','Завхан — Завханмандал','Завхан — Идэр','Завхан — Их-Уул','Завхан — Нөмрөг','Завхан — Отгон','Завхан — Сантмаргац','Завхан — Сонгино','Завхан — Тосонцэнгэл','Завхан — Түдэвтэй','Завхан — Ургамал','Завхан — Цагаанхайрхан','Завхан — Цэцэн-Уул','Завхан — Шилүүстэй','Завхан — Эрдэнэхайрхан','Завхан — Яруу',
-
-  // ── Орхон ─────────────────────────────────────────────────
   'Орхон — Баян-Өндөр (Эрдэнэт)','Орхон — Жаргалант',
-
-  // ── Өвөрхангай ────────────────────────────────────────────
   'Өвөрхангай — Арвайхээр (төв)','Өвөрхангай — Баруунбаян-Улаан','Өвөрхангай — Бат-Өлзий','Өвөрхангай — Баянгол','Өвөрхангай — Баян-Өндөр','Өвөрхангай — Бүрд','Өвөрхангай — Гучин-Ус','Өвөрхангай — Есөнзүйл','Өвөрхангай — Зүүнбаян-Улаан','Өвөрхангай — Нарийнтээл','Өвөрхангай — Өлзийт','Өвөрхангай — Сант','Өвөрхангай — Тарагт','Өвөрхангай — Төгрөг','Өвөрхангай — Уянга','Өвөрхангай — Хайрхандулаан','Өвөрхангай — Хархорин','Өвөрхангай — Хужирт',
-
-  // ── Өмнөговь ──────────────────────────────────────────────
   'Өмнөговь — Даланзадгад (төв)','Өмнөговь — Баяндалай','Өмнөговь — Баян-Овоо','Өмнөговь — Булган','Өмнөговь — Гурвантэс','Өмнөговь — Манлай','Өмнөговь — Ноён','Өмнөговь — Номгон','Өмнөговь — Сэврэй','Өмнөговь — Ханбогд','Өмнөговь — Ханхонгор','Өмнөговь — Хүрмэн','Өмнөговь — Цогт-Овоо','Өмнөговь — Цогтцэций',
-
-  // ── Сэлэнгэ ───────────────────────────────────────────────
   'Сэлэнгэ — Сүхбаатар (төв)','Сэлэнгэ — Алтанбулаг','Сэлэнгэ — Баруунбүрэн','Сэлэнгэ — Баянгол','Сэлэнгэ — Ерөө','Сэлэнгэ — Жавхлант','Сэлэнгэ — Зүүнбүрэн','Сэлэнгэ — Мандал','Сэлэнгэ — Орхон','Сэлэнгэ — Орхонтуул','Сэлэнгэ — Сайхан','Сэлэнгэ — Сант','Сэлэнгэ — Түшиг','Сэлэнгэ — Хушаат','Сэлэнгэ — Цагааннуур','Сэлэнгэ — Шаамар',
-
-  // ── Сүхбаатар ─────────────────────────────────────────────
   'Сүхбаатар — Баруун-Урт (төв)','Сүхбаатар — Асгат','Сүхбаатар — Баяндэлгэр','Сүхбаатар — Дарьганга','Сүхбаатар — Мөнххаан','Сүхбаатар — Наран','Сүхбаатар — Онгон','Сүхбаатар — Сүхбаатар','Сүхбаатар — Түвшинширээ','Сүхбаатар — Уулбаян','Сүхбаатар — Халзан','Сүхбаатар — Эрдэнэцагаан',
-
-  // ── Төв ───────────────────────────────────────────────────
   'Төв — Зуунмод (төв)','Төв — Аргалант','Төв — Архуст','Төв — Баян','Төв — Баян-Өнжүүл','Төв — Баянжаргалан','Төв — Баянцагаан','Төв — Баянцогт','Төв — Баянчандмань','Төв — Борнуур','Төв — Дэлгэрхаан','Төв — Жаргалант','Төв — Заамар','Төв — Лүн','Төв — Мөнгөнморьт','Төв — Өндөрширээт','Төв — Сэргэлэн','Төв — Сүмбэр','Төв — Угтаалцайдам','Төв — Цээл','Төв — Эрдэнэ','Төв — Эрдэнэсант',
-
-  // ── Увс ───────────────────────────────────────────────────
   'Увс — Улаангом (төв)','Увс — Баруунтуруун','Увс — Бөхмөрөн','Увс — Давст','Увс — Зүүнговь','Увс — Зүүнхангай','Увс — Малчин','Увс — Наранбулаг','Увс — Өлгий','Увс — Өмнөговь','Увс — Өндөрхангай','Увс — Сагил','Увс — Тариалан','Увс — Түргэн','Увс — Тэс','Увс — Хархираа','Увс — Ховд','Увс — Цагаанхайрхан',
-
-  // ── Ховд ──────────────────────────────────────────────────
   'Ховд — Ховд (төв)','Ховд — Алтай','Ховд — Булган','Ховд — Буянт','Ховд — Дарви','Ховд — Дөргөн','Ховд — Зэрэг','Ховд — Манхан','Ховд — Мөнххайрхан','Ховд — Мөст','Ховд — Мянгад','Ховд — Үенч','Ховд — Цэцэг','Ховд — Чандмань','Ховд — Эрдэнэбүрэн',
-
-  // ── Хөвсгөл ───────────────────────────────────────────────
   'Хөвсгөл — Мөрөн (төв)','Хөвсгөл — Алаг-Эрдэнэ','Хөвсгөл — Арбулаг','Хөвсгөл — Баянзүрх','Хөвсгөл — Бүрэнтогтох','Хөвсгөл — Галт','Хөвсгөл — Жаргалант','Хөвсгөл — Их-Уул','Хөвсгөл — Рашаант','Хөвсгөл — Рэнчинлхүмбэ','Хөвсгөл — Тариалан','Хөвсгөл — Тосонцэнгэл','Хөвсгөл — Төмөрбулаг','Хөвсгөл — Түнэл','Хөвсгөл — Улаан-Уул','Хөвсгөл — Ханх','Хөвсгөл — Цагаан-Уул','Хөвсгөл — Цэцэрлэг','Хөвсгөл — Чандмань-Өндөр','Хөвсгөл — Шинэ-Идэр',
-
-  // ── Хэнтий ────────────────────────────────────────────────
   'Хэнтий — Чингис (Өндөрхаан)','Хэнтий — Батноров','Хэнтий — Батширээт','Хэнтий — Баян-Адрага','Хэнтий — Баян-Овоо','Хэнтий — Баянхутаг','Хэнтий — Биндэр','Хэнтий — Галшар','Хэнтий — Дархан','Хэнтий — Дэлгэрхаан','Хэнтий — Жаргалтхаан','Хэнтий — Мөрөн','Хэнтий — Норовлин','Хэнтий — Өмнөдэлгэр','Хэнтий — Хэрлэн','Хэнтий — Цэнхэрмандал',
 ];
 
-// ✦ Дүүрэг/сум сонгох dropdown функцууд (single-select, ci7 ба ci17 хоёрт хэрэгжинэ)
+// ── DISTRICT DROPDOWN FUNCTIONS ─────────────────────────────
 function toggleDistrictDropdown(targetId, e){
   const wrap = document.getElementById(targetId + '-wrap');
   if(!wrap) return;
   if(e && e.target && (e.target.tagName === 'BUTTON' || e.target.closest('button'))) return;
-  // Бусад нээлттэй district dropdown-уудыг хаах
   ['ci7','ci17'].forEach(id => {
     if(id !== targetId){
       document.getElementById(id + '-wrap')?.classList.remove('open');
@@ -2242,7 +2068,6 @@ function renderDistrictOptions(targetId, filter){
     more.textContent = '... мөн ' + (countMatched - MAX) + ' үр дүн. Илүү нарийн хайна уу.';
     dd.appendChild(more);
   }
-  // Шинэ нэмэх
   if(q && !DISTRICT_OPTIONS.some(o => o.toLowerCase() === q)){
     const div = document.createElement('div');
     div.className = 'ms-option add-new';
@@ -2301,7 +2126,6 @@ function onDistrictKeydown(targetId, e){
   }
 }
 
-// District dropdown-уудыг гадна дарахад хаах
 document.addEventListener('click', (e) => {
   ['ci7','ci17'].forEach(id => {
     const wrap = document.getElementById(id + '-wrap');
@@ -2311,7 +2135,6 @@ document.addEventListener('click', (e) => {
   });
 });
 
-// Хадгалсан утгыг dropdown-д буцаан харуулах
 function syncDistrictDisplay(targetId){
   const hidden  = document.getElementById(targetId);
   const display = document.getElementById(targetId + '-display');
@@ -2326,6 +2149,7 @@ function syncDistrictDisplay(targetId){
   }
 }
 
+// ── ACTIVITY MULTI-SELECT FUNCTIONS ─────────────────────────
 function renderActivityChips() {
   const wrap = document.getElementById('ci4-chips');
   if(!wrap) return;
@@ -2333,10 +2157,9 @@ function renderActivityChips() {
   selectedActivities.forEach((act, i) => {
     const chip = document.createElement('span');
     chip.className = 'ms-chip';
-    chip.innerHTML = `<span class="ms-chip-text">${act}</span><button type="button" class="ms-chip-x" onclick="removeActivity(${i});event.stopPropagation()">×</button>`;
+    chip.innerHTML = '<span class="ms-chip-text">' + act + '</span><button type="button" class="ms-chip-x" onclick="removeActivity(' + i + ');event.stopPropagation()">×</button>';
     wrap.appendChild(chip);
   });
-  // hidden input-д comma-separated утгаар бичнэ
   const hidden = document.getElementById('ci4');
   if(hidden) {
     hidden.value = selectedActivities.join(', ');
@@ -2356,7 +2179,6 @@ function setActivitiesFromString(str) {
 function toggleActivityDropdown(e) {
   const wrap = document.getElementById('ci4-wrap');
   if(!wrap) return;
-  // Хэрэв chip-ийн x товч дээр дарсан бол тэлэлгүй orхино
   if(e && e.target && e.target.classList && e.target.classList.contains('ms-chip-x')) return;
   if(!wrap.classList.contains('open')) {
     wrap.classList.add('open');
@@ -2377,9 +2199,8 @@ function renderActivityOptions(filter) {
   const q = (filter || '').toLowerCase().trim();
   dd.innerHTML = '';
   let shown = 0;
-  const MAX_SHOWN = 50;  // Performance — анхдагч хязгаар
+  const MAX_SHOWN = 50;
 
-  // Эхлээд сонгогдсонуудыг харуулна (top-д)
   if(!q && selectedActivities.length > 0) {
     const sep = document.createElement('div');
     sep.style.cssText = 'padding:6px 13px;font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;background:var(--g50);border-bottom:1px solid var(--line)';
@@ -2402,10 +2223,9 @@ function renderActivityOptions(filter) {
   let countMatched = 0;
   for (const opt of ACTIVITY_OPTIONS) {
     if(q && !opt.toLowerCase().includes(q)) continue;
-    if(selectedActivities.includes(opt) && !q) continue;  // дээр харуулсан
+    if(selectedActivities.includes(opt) && !q) continue;
     countMatched++;
-    if(shown >= MAX_SHOWN) continue;  // limit заасан тоонд хүрсэн бол үлдсэнийг алгасна
-
+    if(shown >= MAX_SHOWN) continue;
     const isSelected = selectedActivities.includes(opt);
     const div = document.createElement('div');
     div.className = 'ms-option' + (isSelected ? ' selected' : '');
@@ -2415,7 +2235,6 @@ function renderActivityOptions(filter) {
     shown++;
   }
 
-  // Илүү үр дүн байгаа бол хэлж өгнө
   if(countMatched > MAX_SHOWN) {
     const more = document.createElement('div');
     more.style.cssText = 'padding:8px 13px;font-size:11px;color:var(--muted);text-align:center;font-style:italic;background:var(--g50);border-top:1px solid var(--line)';
@@ -2423,7 +2242,6 @@ function renderActivityOptions(filter) {
     dd.appendChild(more);
   }
 
-  // "Шинэ нэмэх" option
   if(q && !ACTIVITY_OPTIONS.some(o => o.toLowerCase() === q) && !selectedActivities.some(s => s.toLowerCase() === q)) {
     const div = document.createElement('div');
     div.className = 'ms-option add-new';
@@ -2478,7 +2296,6 @@ function onActivityKeydown(e) {
   }
 }
 
-// Гадна талд дарахад хаах
 document.addEventListener('click', (e) => {
   const wrap = document.getElementById('ci4-wrap');
   if(wrap && wrap.classList.contains('open') && !wrap.contains(e.target)) {
@@ -2486,7 +2303,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// ✦ ШИНЭ: Системийн нэвтрэх accordion toggle
 function toggleCredsAccordion(){
   const acc = document.getElementById('creds-accordion');
   if(acc) acc.classList.toggle('open');
@@ -2520,17 +2336,14 @@ function saveToLS() {
   const d={};
   LS_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el)d[id]=el.value;});
   localStorage.setItem('ina_draft',JSON.stringify(d));
-  // ✦ docStatuses-г локалд хадгалахгүй — энэ нь зөвхөн серверээс ирнэ
   const sn=document.getElementById('s-note');
   if(sn) localStorage.setItem('ina_note',sn.value);
 }
 
-// ✦ ШИНЭ: Гар аргаар бүх мэдээллийг GAS руу хадгална
 async function manualSaveAll() {
   const btn = document.getElementById('manual-save-btn');
   if(!btn) return;
   if(!SESSION.reg){ toast('Эхлээд нэвтэрнэ үү', true); return; }
-
   btn.disabled = true;
   const oldHtml = btn.innerHTML;
   btn.innerHTML = '<span class="spinner"></span> Хадгалж байна...';
@@ -2565,22 +2378,18 @@ function loadFromLS() {
     const d=JSON.parse(localStorage.getItem('ina_draft')||'{}');
     LS_FIELDS.forEach(id=>{const el=document.getElementById(id);if(el&&d[id]!==undefined)el.value=d[id];});
   } catch(e){}
-  // ✦ docStatuses нь зөвхөн серверээс ирнэ
   const sn=document.getElementById('s-note');
   if(sn) sn.value=localStorage.getItem('ina_note')||'';
   const org=localStorage.getItem('ina_org')||'';
   const reg=localStorage.getItem('ina_reg')||'';
   const el3=document.getElementById('ci3'); if(el3&&!el3.value&&org)el3.value=org;
   const el2=document.getElementById('ci2'); if(el2&&!el2.value&&reg)el2.value=reg;
-  // ✦ Дүүрэг/сум display sync
   syncDistrictDisplay('ci7');
   syncDistrictDisplay('ci17');
 }
 
-// ✦ ШИНЭ: Хариуцсан аудиторын мэдээллийг dashboard карт дээр харуулна
 async function updateAssignedAuditorCard(clientData) {
   const assignedEmail = String(clientData.auditor_email || '').trim();
-
   const nameEl  = document.getElementById('cl-aud-name');
   const roleEl  = document.getElementById('cl-aud-role');
   const emailEl = document.getElementById('cl-aud-email');
@@ -2589,7 +2398,6 @@ async function updateAssignedAuditorCard(clientData) {
   const phoneRow= document.getElementById('cl-aud-phone-row');
   const mailLnk = document.getElementById('cl-aud-mail-link');
 
-  // Хэрэв аудитор оноогдоогүй бол default Х. Ариунзул харуулна
   if (!assignedEmail) {
     if(nameEl)  nameEl.textContent  = 'Х. Ариунзул';
     if(roleEl)  roleEl.textContent  = 'Захирал · МНБ · ТМЗ';
@@ -2601,15 +2409,10 @@ async function updateAssignedAuditorCard(clientData) {
     return;
   }
 
-  // Эхлээд default утгаар бөглөнө (loading үед)
   if(nameEl)  nameEl.textContent = assignedEmail;
   if(emailEl) emailEl.textContent = assignedEmail;
   if(mailLnk) mailLnk.href = 'mailto:' + assignedEmail;
 
-  // Auditors sheet-ээс дэлгэрэнгүй мэдээллийг public endpoint-аар авах боломжгүй
-  // (admin password шаарддаг). Тиймээс одоохондоо email-ийг харуулаад,
-  // backend-д getMyAuditor public endpoint нэмэх хэрэгтэй болно.
-  // Одоогоор email-ээс нэрийг inferлоё (жишээ нь "bayar@example.com" → "Bayar")
   try {
     const r = await gasCall('getMyAuditor', {
       reg_number: SESSION.reg,
@@ -2628,26 +2431,21 @@ async function updateAssignedAuditorCard(clientData) {
     console.warn('getMyAuditor:', e);
   }
 }
+
 const TAB_ORDER=['t-info','t-perm','t-work','t-docs'];
 function switchTab(id) {
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('act'));
   document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('act',TAB_ORDER[i]===id));
   document.getElementById(id)?.classList.add('act');
-  // ✦ Documents tab нээгдэх үед автоматаар сонгож ачаалах
   if(id === 't-docs') loadClientDocuments();
 }
 
-// ── RENDER TABLES ─────────────────────────────────────────────
-// docFileMap, docComments дээр (let) тодорхойлогдсон
-
-// ✦ ШИНЭ: Файлын тоо болон аудиторын баталгаагаар автомат төлөв тодорхойлно
+// ── RENDER TABLES + STATUS + PROGRESS ──────────────────────
 function getEffectiveStatus(docId) {
-  // Аудитор тодорхой төлөв оноосон бол түүнийг ашиглана
   const auditorSet = docStatuses[docId];
   if (auditorSet === 'ok' || auditorSet === 'miss' || auditorSet === 'wait') {
     return auditorSet;
   }
-  // Үгүй бол файлын тоо — байвал "Хянагдаж байна", байхгүй бол "Дутуу"
   const fileCount = (docFileMap[docId] || []).length;
   return fileCount > 0 ? 'rev' : 'miss';
 }
@@ -2659,7 +2457,6 @@ const STATUS_LABELS = {
   rev:  {l:'👁 Хянагдаж байна',   cls:'b-rev'},
 };
 
-// ✦ ШИНЭ: Read-only status badge
 function mkStatusBadge(docId) {
   const wrap = document.createElement('div');
   wrap.id = 'badge-wrap-' + docId;
@@ -2672,7 +2469,7 @@ function refreshStatusBadge(docId, wrap) {
   if (!w) return;
   const status = getEffectiveStatus(docId);
   const info = STATUS_LABELS[status] || STATUS_LABELS.miss;
-  w.innerHTML = `<span class="badge ${info.cls}" style="white-space:nowrap;font-size:12px;padding:5px 12px">${info.l}</span>`;
+  w.innerHTML = '<span class="badge ' + info.cls + '" style="white-space:nowrap;font-size:12px;padding:5px 12px">' + info.l + '</span>';
   applyRowCls(docId, status);
 }
 
@@ -2695,12 +2492,11 @@ function mkUpload(docId, docName) {
     label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалагдлаа';
     setTimeout(()=>{label.style.background='var(--g50)';label.style.color='var(--slate)';label.style.borderColor='var(--line)';label.innerHTML='<svg style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M7 1v8M4 5l3-4 3 4"/><path d="M1 10v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg> Нэмэх файл';},2000);
     renderDocFileList(docId);
-    refreshStatusBadge(docId);   // ✦ Status автоматаар шинэчлэгдэнэ
+    refreshStatusBadge(docId);
     updateProgress();
   });
   label.appendChild(inp);
   wrap.appendChild(label);
-  // ✦ Файлын дэлгэрэнгүй жагсаалт энд гарна
   const list=document.createElement('div');
   list.id='filelist-'+docId;
   list.style.cssText='display:flex;flex-direction:column;gap:4px';
@@ -2708,7 +2504,6 @@ function mkUpload(docId, docName) {
   return wrap;
 }
 
-// ✦ ШИНЭ: Тухайн баримтын файлын дэлгэрэнгүй жагсаалт
 function renderDocFileList(docId) {
   const el = document.getElementById('filelist-' + docId);
   if (!el) return;
@@ -2723,18 +2518,16 @@ function renderDocFileList(docId) {
     const row = document.createElement('div');
     row.style.cssText = 'display:flex;align-items:center;gap:6px;padding:4px 8px;background:var(--ok-bg);border-radius:6px;border:1px solid #c0e3cd';
     const fnameHtml = f.viewUrl
-      ? `<a href="${f.viewUrl}" target="_blank" style="font-size:11.5px;color:var(--ok);font-weight:500;text-decoration:none;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${f.name}">${f.name}</a>`
-      : `<span style="font-size:11.5px;color:var(--ok);font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${f.name}">${f.name}</span>`;
-    row.innerHTML = `
-      <span style="font-size:9px;font-weight:700;font-family:var(--fm);color:var(--ok);background:#fff;padding:1px 5px;border-radius:3px">${ext}</span>
-      ${fnameHtml}
-      <button onclick="removeDocFile('${docId}',${i})" title="Устгах" style="background:none;border:none;cursor:pointer;color:var(--ok);padding:0;font-size:14px;line-height:1;flex-shrink:0">×</button>
-    `;
+      ? '<a href="' + f.viewUrl + '" target="_blank" style="font-size:11.5px;color:var(--ok);font-weight:500;text-decoration:none;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="' + f.name + '">' + f.name + '</a>'
+      : '<span style="font-size:11.5px;color:var(--ok);font-weight:500;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="' + f.name + '">' + f.name + '</span>';
+    row.innerHTML =
+      '<span style="font-size:9px;font-weight:700;font-family:var(--fm);color:var(--ok);background:#fff;padding:1px 5px;border-radius:3px">' + ext + '</span>' +
+      fnameHtml +
+      '<button onclick="removeDocFile(\'' + docId + '\',' + i + ')" title="Устгах" style="background:none;border:none;cursor:pointer;color:var(--ok);padding:0;font-size:14px;line-height:1;flex-shrink:0">×</button>';
     el.appendChild(row);
   });
 }
 
-// ✦ ШИНЭ: Аудиторын тайлбар — read-only клиент талд
 function mkNote(docId){
   const wrap = document.createElement('div');
   wrap.id = 'note-wrap-inner-' + docId;
@@ -2751,25 +2544,15 @@ function refreshAuditorNote(docId, wrap) {
     w.innerHTML = '<div style="font-size:11px;color:var(--muted);font-style:italic">Тайлбар байхгүй</div>';
     return;
   }
-  w.innerHTML = `<div style="font-size:11.5px;color:var(--ink2);background:var(--wait-bg);border-left:2px solid var(--wait);padding:6px 9px;border-radius:4px;line-height:1.45"><div style="font-size:9.5px;font-weight:700;text-transform:uppercase;color:var(--wait);letter-spacing:.5px;margin-bottom:2px">Аудитор</div>${comment}</div>`;
+  w.innerHTML = '<div style="font-size:11.5px;color:var(--ink2);background:var(--wait-bg);border-left:2px solid var(--wait);padding:6px 9px;border-radius:4px;line-height:1.45"><div style="font-size:9.5px;font-weight:700;text-transform:uppercase;color:var(--wait);letter-spacing:.5px;margin-bottom:2px">Аудитор</div>' + comment + '</div>';
 }
 
-// ✦ Файл устгахад status дахин тооцоологдоно
 function removeDocFile(docId,idx){
   if(!docFileMap[docId])return;
   docFileMap[docId].splice(idx,1);
   renderDocFileList(docId);
   refreshStatusBadge(docId);
   updateProgress();
-}
-
-function _oldMkNote(docId){
-  const inp=document.createElement('input');
-  inp.type='text';inp.className='note-mini';inp.placeholder='Тайлбар...';
-  const key='ina_n_'+docId;
-  inp.value=localStorage.getItem(key)||'';
-  inp.addEventListener('change',()=>localStorage.setItem(key,inp.value));
-  return inp;
 }
 
 function applyRowCls(docId,val){
@@ -2783,7 +2566,7 @@ function renderTables(){
   const pb=document.getElementById('perm-body'); pb.innerHTML='';
   PERM.forEach((d,i)=>{
     const tr=document.createElement('tr'); tr.id='row-'+d.id;
-    tr.innerHTML=`<td class="doc-num">${i+1}</td><td class="doc-name">${d.n}</td><td class="doc-req">${d.r}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
+    tr.innerHTML='<td class="doc-num">' + (i+1) + '</td><td class="doc-name">' + d.n + '</td><td class="doc-req">' + d.r + '</td><td id="sel-wrap-' + d.id + '"></td><td id="up-wrap-' + d.id + '"></td><td id="note-wrap-' + d.id + '"></td>';
     pb.appendChild(tr);
     document.getElementById('sel-wrap-'+d.id).appendChild(mkStatusBadge(d.id));
     document.getElementById('up-wrap-'+d.id).appendChild(mkUpload(d.id,d.n));
@@ -2793,7 +2576,7 @@ function renderTables(){
   const wb=document.getElementById('work-body'); wb.innerHTML='';
   WORK.forEach((d,i)=>{
     const tr=document.createElement('tr'); tr.id='row-'+d.id;
-    tr.innerHTML=`<td class="doc-num">${i+11}</td><td class="doc-name">${d.n}</td><td>${d.p}</td><td class="doc-req">${d.f}</td><td id="sel-wrap-${d.id}"></td><td id="up-wrap-${d.id}"></td><td id="note-wrap-${d.id}"></td>`;
+    tr.innerHTML='<td class="doc-num">' + (i+11) + '</td><td class="doc-name">' + d.n + '</td><td>' + d.p + '</td><td class="doc-req">' + d.f + '</td><td id="sel-wrap-' + d.id + '"></td><td id="up-wrap-' + d.id + '"></td><td id="note-wrap-' + d.id + '"></td>';
     wb.appendChild(tr);
     document.getElementById('sel-wrap-'+d.id).appendChild(mkStatusBadge(d.id));
     document.getElementById('up-wrap-'+d.id).appendChild(mkUpload(d.id,d.n));
@@ -2802,10 +2585,8 @@ function renderTables(){
   });
 }
 
-// ── PROGRESS ──────────────────────────────────────────────────
 function updateProgress(){
   const all=[...PERM,...WORK]; const tot=all.length; let done=0;
-  // ✦ Зөвхөн аудитор "ok" болгосон баримт л "Бүрдсэн" гэж тооцно
   all.forEach(d=>{ if(getEffectiveStatus(d.id)==='ok') done++; });
   const pct=Math.round(done/tot*100);
   document.getElementById('p-tot').textContent=tot;
@@ -2820,10 +2601,10 @@ function updateProgress(){
 function renderProgressCircle(pct,id){
   const c=document.getElementById(id); if(!c)return;
   const r=36,circ=2*Math.PI*r,offset=circ-(pct/100)*circ;
-  c.innerHTML=`<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#22733f"/><stop offset="100%" stop-color="#4CFFB2"/></linearGradient></defs><circle class="track" cx="45" cy="45" r="${r}"/><circle class="fill" cx="45" cy="45" r="${r}" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg><div class="label">${pct}%</div>`;
+  c.innerHTML='<svg width="90" height="90" viewBox="0 0 90 90"><defs><linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#22733f"/><stop offset="100%" stop-color="#4CFFB2"/></linearGradient></defs><circle class="track" cx="45" cy="45" r="' + r + '"/><circle class="fill" cx="45" cy="45" r="' + r + '" stroke-dasharray="' + circ + '" stroke-dashoffset="' + offset + '"/></svg><div class="label">' + pct + '%</div>';
 }
 
-// ── ✦ ШИНЭ: AUDIT TIMELINE + ЯВЦЫН ХУВЬ ─────────────────────
+// ── AUDIT TIMELINE ─────────────────────────────────────────
 const AUDIT_STAGES_DEF = [
   {id:'s1',title:'Ерөнхий мэдээлэл бүртгэгдлээ',desc:'Клиент порталд бүртгэл хийсэн',auditorOnly:false},
   {id:'s2',title:'Баримт бичиг цуглуулалт',desc:'Үйлчлүүлэгч баримтуудыг илгээж байна',auditorOnly:false},
@@ -2837,7 +2618,6 @@ function renderAuditTimeline(stageMap){
   const stepper = document.getElementById('h-stepper');
   if(!stepper) return;
 
-  // ✦ Явцын тооцоолол
   let doneStages = 0;
   let activeStage = null;
 
@@ -2849,7 +2629,6 @@ function renderAuditTimeline(stageMap){
     }
   });
 
-  // Active байхгүй бол дараагийн дуусаагүй stage-г "одоогийн" гэж үзнэ
   if(!activeStage){
     const nextIdx = AUDIT_STAGES_DEF.findIndex(s => {
       const st = (stageMap[s.id] || {}).status || '';
@@ -2866,7 +2645,6 @@ function renderAuditTimeline(stageMap){
   const totalStages = AUDIT_STAGES_DEF.length;
   const tlPct = Math.round((doneStages / totalStages) * 100);
 
-  // Header шинэчлэх
   const titleEl = document.getElementById('stage-current-title');
   const descEl  = document.getElementById('stage-current-desc');
   const pctEl   = document.getElementById('stage-pct-badge');
@@ -2887,7 +2665,6 @@ function renderAuditTimeline(stageMap){
     }
   }
 
-  // Horizontal stepper
   stepper.innerHTML = '';
   AUDIT_STAGES_DEF.forEach((stage, i) => {
     const sData = stageMap[stage.id] || {};
@@ -2906,7 +2683,6 @@ function renderAuditTimeline(stageMap){
       '<div class="step-label">' + stage.title + '</div>';
     stepper.appendChild(step);
 
-    // Сүүлийн stage-ээс хойш зураас байхгүй
     if(i < AUDIT_STAGES_DEF.length - 1){
       const line = document.createElement('div');
       line.className = 'step-line' + (isDone ? ' done' : '');
@@ -2964,16 +2740,14 @@ function renderSentFiles(){
     const cls=FT[f.ext]||'ft-docx';
     const kb=typeof f.size==='number'?(f.size/1024).toFixed(1)+' KB':'';
     const item=document.createElement('div'); item.className='sf-item';
-    item.innerHTML=`<div class="ft-badge ${cls}">${(f.ext||'').toUpperCase()}</div><div class="sf-info"><div class="sf-name">${f.name}</div><div class="sf-meta">${kb}${f.docId&&f.docId!=='general'?' · '+f.docId:''}</div></div>${f.fromServer&&f.viewUrl?`<a style="font-size:12px;color:var(--g600);font-weight:500;white-space:nowrap" href="${f.viewUrl}" target="_blank">Drive →</a>`:'<span style="font-size:11px;color:var(--muted)">Локал</span>'}<button class="sf-del" onclick="removeFile(${i})"><svg viewBox="0 0 14 14"><path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8"/></svg></button>`;
+    item.innerHTML='<div class="ft-badge ' + cls + '">' + (f.ext||'').toUpperCase() + '</div><div class="sf-info"><div class="sf-name">' + f.name + '</div><div class="sf-meta">' + kb + (f.docId&&f.docId!=='general'?' · '+f.docId:'') + '</div></div>' + (f.fromServer&&f.viewUrl?'<a style="font-size:12px;color:var(--g600);font-weight:500;white-space:nowrap" href="' + f.viewUrl + '" target="_blank">Drive →</a>':'<span style="font-size:11px;color:var(--muted)">Локал</span>') + '<button class="sf-del" onclick="removeFile(' + i + ')"><svg viewBox="0 0 14 14"><path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8"/></svg></button>';
     el.appendChild(item);
   });
 }
 
 function removeFile(i){sentFiles.splice(i,1);renderSentFiles();}
 
-// ── ✦ ШИНЭ: CHAT AUTO-POLL ────────────────────────────────────
-// Login хийхэд аудиторын мэндчилгээний зурвас + 30с тутамд poll
-
+// ── CHAT ──────────────────────────────────────────────────
 const WELCOME_MSG = {
   sender:'auditor',
   text:'Сайн байна уу! Их Наяд Аудит порталд тавтай морилно уу.\n\nБаримт бичгийн жагсаалтыг харж, файлуудаа илгээж эхэлнэ үү. Дутуу баримт байвал тухайн баримтыг "Дутуу" гэж тэмдэглэнэ үү.\n\nАсуулт, хүсэлт байвал энэ зурвасаар бичнэ үү. Ажлын өдрүүдэд 24 цагийн дотор хариу өгнө.\n\nАмжилт хүсье! 🌿',
@@ -2993,28 +2767,21 @@ function stopChatPoll(){
 async function loadChatMessages(showLoader=true){
   const el=document.getElementById('chat-messages'); if(!el)return;
   if(showLoader) el.innerHTML='<div style="text-align:center;color:var(--muted);font-size:13px;padding:24px">Ачааллаж байна...</div>';
-
   try {
     const r=await gasCall('getMessages',{reg_number:SESSION.reg,access_code:SESSION.code});
     const serverMsgs = r.ok ? (r.messages||[]) : [];
-
-    // ✦ ШИНЭ: сервер зурвас хоосон бол мэндчилгээний зурвас харуулна
     if(serverMsgs.length===0){
       chatMessages=[WELCOME_MSG];
     } else {
       chatMessages=serverMsgs;
     }
-
-    // Шинэ зурвас ирсэн эсэх шалгана (poll)
     const lastCount = parseInt(localStorage.getItem('ina_chat_count')||'0');
     if(serverMsgs.length > lastCount && lastCount > 0){
-      // Шинэ аудиторын зурвас ирсэн
       const newMsgs = serverMsgs.slice(lastCount);
       const hasNewAuditor = newMsgs.some(m=>m.sender==='auditor');
       if(hasNewAuditor){
         const badge=document.getElementById('unread-cnt');
         if(badge) badge.style.display='inline';
-        // Зурвас tab нээлттэй биш бол notification харуулна
         const chatTab = document.getElementById('t-chat');
         if(!chatTab || !chatTab.classList.contains('act')){
           toast('📩 Аудиторын шинэ зурвас ирлээ');
@@ -3022,15 +2789,11 @@ async function loadChatMessages(showLoader=true){
       }
     }
     localStorage.setItem('ina_chat_count', serverMsgs.length);
-
     renderChatMessages();
   } catch(e){
-    // Алдаа гарвал мэндчилгээний зурвас харуулна
     chatMessages=[WELCOME_MSG];
     renderChatMessages();
   }
-
-  // Poll status шинэчлэх
   const ps=document.getElementById('chat-poll-status');
   if(ps) ps.textContent='Сүүлд шинэчлэгдсэн: '+new Date().toLocaleTimeString('mn-MN',{hour:'2-digit',minute:'2-digit'});
 }
@@ -3042,14 +2805,11 @@ function renderChatMessages(){
     const isClient=m.sender==='client';
     const div=document.createElement('div');
     div.className='chat-bubble '+(isClient?'client':'auditor');
-    // Зурвасын текстийг мөр мөрөөр харуулна
     const textHtml = (m.text||'').replace(/\n/g,'<br>');
-    div.innerHTML=`<div class="chat-who">${isClient?'Та':'Аудитор'}</div>${textHtml}<div class="chat-time">${m.time||''}</div>`;
+    div.innerHTML='<div class="chat-who">' + (isClient?'Та':'Аудитор') + '</div>' + textHtml + '<div class="chat-time">' + (m.time||'') + '</div>';
     el.appendChild(div);
   });
   el.scrollTop=el.scrollHeight;
-
-  // Unread badge арилгана (tab нээлттэй бол)
   const chatTab2 = document.getElementById('t-chat');
   if(chatTab2 && chatTab2.classList.contains('act')){
     const badge=document.getElementById('unread-cnt');
@@ -3063,7 +2823,6 @@ async function sendChatMessage(){
   const btn=document.getElementById('chat-send-btn');
   btn.disabled=true;
   const msg={sender:'client',text,time:new Date().toLocaleString('mn-MN')};
-  // Welcome msg-г хэвээр үлдээж шинэ зурвас нэмнэ
   if(chatMessages.length===1&&chatMessages[0].isWelcome){
     chatMessages=[WELCOME_MSG,msg];
   } else {
@@ -3079,11 +2838,10 @@ async function sendChatMessage(){
 }
 
 // ── ADMIN ─────────────────────────────────────────────────────
-// State for new auditor system
-let availableAuditors = [];     // [{email,name,role,phone},...]
-let availableYears    = [];     // ['2024','2023',...]
-let auditorCountMap   = {};     // email → number of clients
-let assignedAuditor   = '';     // current assigned (saved) for opened client
+let availableAuditors = [];
+let availableYears    = [];
+let auditorCountMap   = {};
+let assignedAuditor   = '';
 
 async function adminLogin(){
   const pw=getAdminPw();
@@ -3093,10 +2851,9 @@ async function adminLogin(){
     const r=await gasCall('adminLogin',{password:pw});
     if(!r.ok){err.style.display='flex';err.querySelector('span').textContent='Нууц үг буруу.';return;}
     adminAuthed=true;
-    window._adminPw = pw;  // ✦ Login амжилттай болсны дараа cache хийнэ
+    window._adminPw = pw;
     document.getElementById('admin-login').style.display='none';
     document.getElementById('admin-dashboard').style.display='block';
-    // Initial load: auditors + years dropdowns, then clients
     await Promise.all([loadAuditorsList(), loadAuditYearsList()]);
     loadAdminData();
   } catch(e){err.style.display='flex';err.querySelector('span').textContent='Холболтын алдаа: '+e.message;}
@@ -3104,34 +2861,30 @@ async function adminLogin(){
 
 function adminLogout(){
   adminAuthed=false; adminClientsCache=[]; availableAuditors=[]; availableYears=[];
-  window._adminPw = '';  // ✦ Cache-ийг цэвэрлэнэ
+  window._adminPw = '';
   document.getElementById('admin-login').style.display='flex';
   document.getElementById('admin-dashboard').style.display='none';
   document.getElementById('a-err').style.display='none';
   document.getElementById('a-pw').value='';
 }
 
-// ✦ ШИНЭ helper: admin password-г cache эсвэл талбараас уншина
 function getAdminPw(){
   return window._adminPw || document.getElementById('a-pw')?.value || '';
 }
 
-// Load auditors → fill filter dropdown + Auditors tab
 async function loadAuditorsList(){
   try {
     const pw=getAdminPw();
     const r=await gasCall('getAuditors',{password:pw});
     if(r.ok && r.auditors){
       availableAuditors = r.auditors;
-      // Filter dropdown
       const fAud = document.getElementById('filter-auditor');
       if(fAud){
         const cur = fAud.value;
         fAud.innerHTML = '<option value="">Бүх аудитор</option>' +
-          availableAuditors.map(a=>`<option value="${a.email}">${a.name}</option>`).join('');
+          availableAuditors.map(a=>'<option value="' + a.email + '">' + a.name + '</option>').join('');
         fAud.value = cur;
       }
-      // Tab counter
       const tc=document.getElementById('tab-cnt-auditors');
       if(tc) tc.textContent = availableAuditors.length;
     }
@@ -3148,7 +2901,7 @@ async function loadAuditYearsList(){
       if(fY){
         const cur = fY.value;
         fY.innerHTML = '<option value="">Бүх жил</option>' +
-          availableYears.map(y=>`<option value="${y}">${y}</option>`).join('');
+          availableYears.map(y=>'<option value="' + y + '">' + y + '</option>').join('');
         fY.value = cur;
       }
     }
@@ -3156,7 +2909,6 @@ async function loadAuditYearsList(){
 }
 
 function applyServerFilter(){
-  // Filter dropdown changed → reload from server with filter params
   loadAdminData();
 }
 
@@ -3178,7 +2930,6 @@ async function loadAdminData(){
       return;
     }
     adminClientsCache = r.clients || [];
-    // Аудиторын count map шинэчлэх (бүх клиентэд тулгуурлана, filter биш)
     if(!filterAuditor && !filterYear){
       auditorCountMap = {};
       adminClientsCache.forEach(c=>{
@@ -3188,7 +2939,6 @@ async function loadAdminData(){
     }
     updateAdminStats();
     renderAdminClients(adminClientsCache);
-    // Search input хэрэв утгатай бол шүүж дахин харуулна
     const q = (document.getElementById('admin-search')?.value || '').trim();
     if(q) filterAdminClients();
   } catch(e){
@@ -3196,7 +2946,6 @@ async function loadAdminData(){
   }
 }
 
-<script>
 function adminSwitchTab(tab){
   ['clients','auditors','newclient'].forEach(t=>{
     const body = document.getElementById('admin-tab-'+t+'-body');
@@ -3204,13 +2953,11 @@ function adminSwitchTab(tab){
     if(body) body.style.display = (t===tab) ? 'block' : 'none';
     if(btn)  btn.classList.toggle('act', t===tab);
   });
-  // Filter хэсэг зөвхөн clients tab-д харагдана
   const filtersEl = document.getElementById('ad-filters-clients');
   if(filtersEl) filtersEl.style.display = (tab==='clients') ? 'flex' : 'none';
   if(tab==='auditors')  renderAuditorTab();
   if(tab==='newclient') renderNewClientRecentList();
 }
-</script>
 
 function updateAdminStats(){
   const total       = adminClientsCache.length;
@@ -3221,13 +2968,11 @@ function updateAdminStats(){
   document.getElementById('as-avg').textContent     = avgPct+'%';
   document.getElementById('as-files').textContent   = totalFiles;
   document.getElementById('as-missing').textContent = missingCnt;
-  // Tab counter
   const tcc=document.getElementById('tab-cnt-clients');
   if(tcc) tcc.textContent = total;
 }
 
 function filterAdminClients(){
-  // Зөвхөн search-ыг локалаар хийнэ; filter dropdown нь сервер дуудна
   const q=(document.getElementById('admin-search').value||'').toLowerCase().trim();
   let list=adminClientsCache;
   if(q) list=list.filter(c=>
@@ -3241,11 +2986,11 @@ function filterAdminClients(){
 function renderAdminClients(clients){
   const list=document.getElementById('admin-list');
   if(!clients.length){
-    list.innerHTML=`<div class="ad-empty">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>
-      <div class="ad-empty-title">Үйлчлүүлэгч олдсонгүй</div>
-      <div class="ad-empty-desc">Шүүлтүүрийн нөхцлийг өөрчилж үзнэ үү</div>
-    </div>`;
+    list.innerHTML='<div class="ad-empty">' +
+      '<svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>' +
+      '<div class="ad-empty-title">Үйлчлүүлэгч олдсонгүй</div>' +
+      '<div class="ad-empty-desc">Шүүлтүүрийн нөхцлийг өөрчилж үзнэ үү</div>' +
+      '</div>';
     return;
   }
   list.innerHTML='';
@@ -3254,38 +2999,35 @@ function renderAdminClients(clients){
     const okCount = c.done_count || 0;
     const sCls = pct>=80 ? 's-good' : pct>=40 ? 's-warn' : 's-risk';
     const av = (c.org_name||'ХХ').split(/\s+/).filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase();
-    // Auditor info
     const audEmail = String(c.auditor_email||'').toLowerCase().trim();
     const aud = availableAuditors.find(a => String(a.email).toLowerCase().trim() === audEmail);
-    const audDisplay = aud ? aud.name : (audEmail || '<span class="ad-row-aud-name unassigned">— Хариуцагчгүй —</span>');
 
     const div=document.createElement('div');
     div.className='ad-row '+sCls;
     div.onclick=()=>openClientDetail(c.reg_number);
-    div.innerHTML=`
-      <div class="ad-av">${av}</div>
-      <div class="ad-row-info">
-        <div class="ad-row-name">${c.org_name||'—'}</div>
-        <div class="ad-row-meta">
-          <span>${c.reg_number}</span>
-          ${c.contact_email?`<span class="sep">·</span><span>${c.contact_email}</span>`:''}
-          ${c.audit_year?`<span class="sep">·</span><span>${c.audit_year} он</span>`:''}
-        </div>
-      </div>
-      <div class="ad-row-aud">
-        <div class="ad-row-aud-lbl">Хариуцах аудитор</div>
-        <div class="ad-row-aud-name ${!aud?'unassigned':''}">${aud?aud.name:(audEmail||'— Хариуцагчгүй —')}</div>
-      </div>
-      <div class="ad-row-prog">
-        <div class="ad-row-prog-top">
-          <span class="ad-row-prog-pct ${sCls}">${pct}%</span>
-          <span class="ad-row-prog-cnt">${okCount} / 37</span>
-        </div>
-        <div class="ad-row-prog-bar"><div class="ad-row-prog-fill ${sCls}" style="width:${pct}%"></div></div>
-        <div class="ad-row-prog-meta">${c.file_count||0} файл${c.rev_count?` · ${c.rev_count} хянагдаж байна`:''}</div>
-      </div>
-      <div class="ad-row-arrow"><svg viewBox="0 0 14 14"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>
-    `;
+    div.innerHTML=
+      '<div class="ad-av">' + av + '</div>' +
+      '<div class="ad-row-info">' +
+        '<div class="ad-row-name">' + (c.org_name||'—') + '</div>' +
+        '<div class="ad-row-meta">' +
+          '<span>' + c.reg_number + '</span>' +
+          (c.contact_email?'<span class="sep">·</span><span>' + c.contact_email + '</span>':'') +
+          (c.audit_year?'<span class="sep">·</span><span>' + c.audit_year + ' он</span>':'') +
+        '</div>' +
+      '</div>' +
+      '<div class="ad-row-aud">' +
+        '<div class="ad-row-aud-lbl">Хариуцах аудитор</div>' +
+        '<div class="ad-row-aud-name ' + (!aud?'unassigned':'') + '">' + (aud?aud.name:(audEmail||'— Хариуцагчгүй —')) + '</div>' +
+      '</div>' +
+      '<div class="ad-row-prog">' +
+        '<div class="ad-row-prog-top">' +
+          '<span class="ad-row-prog-pct ' + sCls + '">' + pct + '%</span>' +
+          '<span class="ad-row-prog-cnt">' + okCount + ' / 37</span>' +
+        '</div>' +
+        '<div class="ad-row-prog-bar"><div class="ad-row-prog-fill ' + sCls + '" style="width:' + pct + '%"></div></div>' +
+        '<div class="ad-row-prog-meta">' + (c.file_count||0) + ' файл' + (c.rev_count?' · ' + c.rev_count + ' хянагдаж байна':'') + '</div>' +
+      '</div>' +
+      '<div class="ad-row-arrow"><svg viewBox="0 0 14 14"><path d="M3 7h8M7 3l4 4-4 4"/></svg></div>';
     list.appendChild(div);
   });
 }
@@ -3293,84 +3035,79 @@ function renderAdminClients(clients){
 function renderAuditorTab(){
   const list = document.getElementById('auditor-list');
   if(!list) return;
-  // "Шинэ аудитор нэмэх" товч + жагсаалт
-  let headerHtml = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-    <div style="font-size:13px;color:var(--muted)">Идэвхтэй ${availableAuditors.length} аудитор</div>
-    <button onclick="openNewAuditorModal()" class="btn btn-p btn-sm">
-      <svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>
-      Шинэ аудитор нэмэх
-    </button>
-  </div>`;
+  let headerHtml = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">' +
+    '<div style="font-size:13px;color:var(--muted)">Идэвхтэй ' + availableAuditors.length + ' аудитор</div>' +
+    '<button onclick="openNewAuditorModal()" class="btn btn-p btn-sm">' +
+      '<svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>' +
+      ' Шинэ аудитор нэмэх' +
+    '</button>' +
+  '</div>';
 
   if(!availableAuditors.length){
-    list.innerHTML = headerHtml + `<div class="ad-empty">
-      <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>
-      <div class="ad-empty-title">Аудитор бүртгэгдээгүй байна</div>
-      <div class="ad-empty-desc">Дээрх "Шинэ аудитор нэмэх" товчийг дарж нэмнэ үү</div>
-    </div>`;
+    list.innerHTML = headerHtml + '<div class="ad-empty">' +
+      '<svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="8"/><path d="M8 42c0-8 7-13 16-13s16 5 16 13"/></svg>' +
+      '<div class="ad-empty-title">Аудитор бүртгэгдээгүй байна</div>' +
+      '<div class="ad-empty-desc">Дээрх "Шинэ аудитор нэмэх" товчийг дарж нэмнэ үү</div>' +
+      '</div>';
     return;
   }
   let cardsHtml = '<div class="aud-list">';
   availableAuditors.forEach(a=>{
     const av = (a.name||'??').split(/\s+/).filter(Boolean).map(w=>w[0]).join('').substring(0,2).toUpperCase();
     const cnt = auditorCountMap[String(a.email).toLowerCase().trim()] || 0;
-    cardsHtml += `<div class="aud-card">
-      <div class="aud-head">
-        <div class="aud-av">${av}</div>
-        <div style="min-width:0">
-          <div class="aud-name">${a.name}</div>
-          <div class="aud-role">${a.role||'Аудитор'}</div>
-        </div>
-      </div>
-      <div class="aud-contact">
-        ${a.email?`<div><svg viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg><span>${a.email}</span></div>`:''}
-        ${a.phone?`<div><svg viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg><span>${a.phone}</span></div>`:''}
-      </div>
-      <div class="aud-stats">
-        <div>
-          <div class="aud-stat-num">${cnt}</div>
-          <div class="aud-stat-lbl">Хариуцаж буй</div>
-        </div>
-        <button onclick="filterByAuditor('${a.email}')" class="btn btn-s btn-sm" style="font-size:11.5px">Үзэх →</button>
-      </div>
-    </div>`;
+    cardsHtml += '<div class="aud-card">' +
+      '<div class="aud-head">' +
+        '<div class="aud-av">' + av + '</div>' +
+        '<div style="min-width:0">' +
+          '<div class="aud-name">' + a.name + '</div>' +
+          '<div class="aud-role">' + (a.role||'Аудитор') + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="aud-contact">' +
+        (a.email?'<div><svg viewBox="0 0 14 14"><rect x="1" y="3" width="12" height="9" rx="1"/><path d="M1 5l6 4 6-4"/></svg><span>' + a.email + '</span></div>':'') +
+        (a.phone?'<div><svg viewBox="0 0 14 14"><path d="M2 2a1 1 0 011-1h2l1 3-1.5 1.5a9 9 0 004 4L10 8l3 1v2a1 1 0 01-1 1C5.4 12 2 8.6 2 5V2z"/></svg><span>' + a.phone + '</span></div>':'') +
+      '</div>' +
+      '<div class="aud-stats">' +
+        '<div>' +
+          '<div class="aud-stat-num">' + cnt + '</div>' +
+          '<div class="aud-stat-lbl">Хариуцаж буй</div>' +
+        '</div>' +
+        '<button onclick="filterByAuditor(\'' + a.email + '\')" class="btn btn-s btn-sm" style="font-size:11.5px">Үзэх →</button>' +
+      '</div>' +
+    '</div>';
   });
   cardsHtml += '</div>';
   list.innerHTML = headerHtml + cardsHtml;
 }
 
-// ✦ ШИНЭ: Аудитор нэмэх modal
 function openNewAuditorModal(){
-  // Modal үүсгээд document-д нэмнэ
   let m = document.getElementById('new-aud-modal');
   if(!m){
     m = document.createElement('div');
     m.id = 'new-aud-modal';
     m.style.cssText = 'display:none;position:fixed;inset:0;z-index:4000;background:rgba(8,28,18,.65);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px';
-    m.innerHTML = `
-      <div style="background:#fff;border-radius:14px;width:100%;max-width:440px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35)">
-        <div style="background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">
-          <div style="font-family:var(--fd);font-size:18px;color:#fff;font-weight:700">Шинэ аудитор нэмэх</div>
-          <button onclick="closeNewAuditorModal()" class="cdm-close" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:15px">✕</button>
-        </div>
-        <div style="padding:22px 24px;display:flex;flex-direction:column;gap:13px">
-          <div class="fg"><label>Овог Нэр <span class="req">*</span></label><input class="fc" id="na-name" type="text" placeholder="Б. Баяр"></div>
-          <div class="fg"><label>И-мэйл <span class="req">*</span></label><input class="fc" id="na-email" type="email" placeholder="bayar@example.com" style="font-family:var(--fm)"></div>
-          <div class="fg"><label>Албан тушаал</label><input class="fc" id="na-role" type="text" placeholder="Аудитор" value="Аудитор"></div>
-          <div class="fg"><label>Утас</label><input class="fc" id="na-phone" type="tel" placeholder="+976"></div>
-          <div id="na-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span></span></div>
-        </div>
-        <div style="padding:14px 24px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">
-          <button onclick="closeNewAuditorModal()" class="btn btn-g btn-sm">Цуцлах</button>
-          <button onclick="saveNewAuditor()" id="na-save-btn" class="btn btn-p btn-sm">
-            <svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>
-            Хадгалах
-          </button>
-        </div>
-      </div>`;
+    m.innerHTML = '<div style="background:#fff;border-radius:14px;width:100%;max-width:440px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.35)">' +
+        '<div style="background:linear-gradient(135deg,var(--g900),#0d2e1e);padding:20px 24px;display:flex;justify-content:space-between;align-items:center">' +
+          '<div style="font-family:var(--fd);font-size:18px;color:#fff;font-weight:700">Шинэ аудитор нэмэх</div>' +
+          '<button onclick="closeNewAuditorModal()" class="cdm-close" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:32px;height:32px;border-radius:7px;cursor:pointer;font-size:15px">✕</button>' +
+        '</div>' +
+        '<div style="padding:22px 24px;display:flex;flex-direction:column;gap:13px">' +
+          '<div class="fg"><label>Овог Нэр <span class="req">*</span></label><input class="fc" id="na-name" type="text" placeholder="Б. Баяр"></div>' +
+          '<div class="fg"><label>И-мэйл <span class="req">*</span></label><input class="fc" id="na-email" type="email" placeholder="bayar@example.com" style="font-family:var(--fm)"></div>' +
+          '<div class="fg"><label>Албан тушаал</label><input class="fc" id="na-role" type="text" placeholder="Аудитор" value="Аудитор"></div>' +
+          '<div class="fg"><label>Утас</label><input class="fc" id="na-phone" type="tel" placeholder="+976"></div>' +
+          '<div id="na-err" style="display:none" class="alert a-err"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 5v4M8 11v1"/></svg><span></span></div>' +
+        '</div>' +
+        '<div style="padding:14px 24px;border-top:1px solid var(--line);background:var(--g50);display:flex;justify-content:flex-end;gap:8px">' +
+          '<button onclick="closeNewAuditorModal()" class="btn btn-g btn-sm">Цуцлах</button>' +
+          '<button onclick="saveNewAuditor()" id="na-save-btn" class="btn btn-p btn-sm">' +
+            '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg>' +
+            ' Хадгалах' +
+          '</button>' +
+        '</div>' +
+      '</div>';
     document.body.appendChild(m);
   }
-  // Талбаруудыг цэвэрлэх
   ['na-name','na-email','na-role','na-phone'].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.value = id==='na-role' ? 'Аудитор' : '';
@@ -3416,7 +3153,6 @@ async function saveNewAuditor(){
     if(r.ok){
       toast('✓ Аудитор нэмэгдлээ');
       closeNewAuditorModal();
-      // Жагсаалтыг шинэчлэнэ
       await loadAuditorsList();
       renderAuditorTab();
     } else {
@@ -3454,7 +3190,6 @@ async function openClientDetail(reg){
   document.getElementById('cdm-pct-badge').textContent = pct + '%';
   document.getElementById('cdm-prog').style.width = pct + '%';
 
-  // Populate auditor dropdown
   assignedAuditor = String(client.auditor_email || '').trim();
   const sel = document.getElementById('cdm-auditor-sel');
   if(sel){
@@ -3471,12 +3206,10 @@ async function openClientDetail(reg){
   document.getElementById('client-detail-modal').style.display = 'block';
   cdmTab('stages');
 
-  // Дэлгэрэнгүй файл татах
   try {
     const pw = getAdminPw();
     const r = await gasCall('adminGetFiles',{password:pw,reg_number:reg});
     currentClientData.files = r.ok ? r.files : [];
-    // Re-render docs tab if active
     const docsTab = document.getElementById('cdm-tab-docs');
     if(docsTab && docsTab.classList.contains('act')) cdmTab('docs');
   } catch(e){currentClientData.files=[];}
@@ -3500,12 +3233,9 @@ async function assignAuditor(){
     if(r.ok){
       assignedAuditor = newEmail;
       toast('✓ Аудитор хуваарилагдлаа');
-      // Update cache
       const c = adminClientsCache.find(x=>String(x.reg_number)===String(currentClientReg));
       if(c) c.auditor_email = newEmail;
-      // Refresh list (lightweight)
       renderAdminClients(adminClientsCache);
-      // Update auditor counts
       auditorCountMap = {};
       adminClientsCache.forEach(cc=>{
         const e=String(cc.auditor_email||'').toLowerCase().trim();
@@ -3657,7 +3387,6 @@ async function saveAuditorStatuses(){
 }
 
 function adminSetStatus(docId, status) {
-  // Toggle: дахин дарвал unset
   if(auditorStatuses[docId] === status){
     delete auditorStatuses[docId];
   } else {
@@ -3667,7 +3396,7 @@ function adminSetStatus(docId, status) {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// ✦ V7: ГЭРЭЭ / НЭХЭМЖЛЭХ — Client + Admin
+// V7: ГЭРЭЭ / НЭХЭМЖЛЭХ — Client + Admin
 // ═══════════════════════════════════════════════════════════════
 
 const DOC_STATUS_LABELS = {
@@ -3681,7 +3410,6 @@ function fmtMoney(n) {
   return Math.round(Number(n)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' ₮';
 }
 
-// ── CLIENT SIDE ────────────────────────────────────────────────
 async function loadClientDocuments(){
   const list = document.getElementById('client-docs-list');
   if(!list) return;
@@ -3733,7 +3461,7 @@ async function loadClientDocuments(){
 
 async function clientRequestDoc(docType){
   const notes = prompt(docType + ' хүсэх — нэмэлт тайлбар (заавал биш):', '');
-  if(notes === null) return; // canceled
+  if(notes === null) return;
 
   toast('Хүсэлт илгээж байна...');
   try {
@@ -3754,7 +3482,6 @@ async function clientRequestDoc(docType){
   }
 }
 
-// ── ADMIN SIDE ─────────────────────────────────────────────────
 let adminDocsCache = [];
 
 async function loadAdminDocuments(reg){
@@ -3777,17 +3504,13 @@ async function loadAdminDocuments(reg){
 function renderAdminDocs(reg){
   const body = document.getElementById('cdm-body');
   if(!body) return;
-  <script>
-// (renderAdminDocs функцийн ЭХЭНД байх энэ хэсгийг солино)
-/*
+
   let html = '<div style="margin-bottom:16px;display:flex;gap:8px;flex-wrap:wrap">' +
     '<button onclick="openCreateDocModal()" class="btn btn-p btn-sm">' +
       '<svg style="width:11px;height:11px;stroke:#fff;fill:none;stroke-width:2.5" viewBox="0 0 14 14"><path d="M7 1v12M1 7h12"/></svg>' +
       ' Шинэ баримт үүсгэх' +
     '</button>' +
     '</div>';
-*/
-</script>
 
   if(!adminDocsCache.length) {
     html += '<div style="text-align:center;color:var(--muted);font-size:13px;padding:32px;background:#fff;border-radius:var(--r);border:1px dashed var(--line)">Энэ клиентэд одоогоор баримт байхгүй</div>';
@@ -3845,7 +3568,6 @@ function openCreateDocModal(docType, fromRequestId){
         '</div>' +
         '<div style="padding:22px 24px;display:flex;flex-direction:column;gap:13px">' +
           '<input type="hidden" id="cd-fromreq">' +
-          // ✦ Checkbox row
           '<div>' +
             '<label style="font-size:12.5px;font-weight:600;color:var(--ink2);margin-bottom:6px;display:block">Үүсгэх баримт <span class="req">*</span></label>' +
             '<div class="dt-check-row">' +
@@ -3882,8 +3604,7 @@ function openCreateDocModal(docType, fromRequestId){
       '</div>';
     document.body.appendChild(m);
   }
- 
-  // Reset state
+
   document.getElementById('cd-fromreq').value = fromRequestId || '';
   document.getElementById('cd-date').value    = new Date().toISOString().split('T')[0];
   document.getElementById('cd-amount').value  = '';
@@ -3891,13 +3612,12 @@ function openCreateDocModal(docType, fromRequestId){
   document.getElementById('cd-contract').value = '';
   document.getElementById('cd-notes').value   = '';
   document.getElementById('cd-err').style.display = 'none';
- 
+
   const cb_c = document.getElementById('cd-ct-contract');
   const cb_i = document.getElementById('cd-ct-invoice');
   cb_c.checked = false; cb_i.checked = false;
   cb_c.disabled = false; cb_i.disabled = false;
- 
-  // Хүсэлтээс үүсгэх бол тухайн төрлийг preselect
+
   if (docType === 'Гэрээ') {
     cb_c.checked = true;
     document.getElementById('cd-title').textContent = fromRequestId ? 'Хүсэлтээс Гэрээ үүсгэх' : 'Шинэ Гэрээ үүсгэх';
@@ -3907,22 +3627,21 @@ function openCreateDocModal(docType, fromRequestId){
   } else {
     document.getElementById('cd-title').textContent = 'Шинэ баримт үүсгэх';
   }
- 
+
   updateDocCheckboxes();
   m.style.display = 'flex';
 }
- 
+
 function updateDocCheckboxes() {
   const c = document.getElementById('cd-ct-contract').checked;
   const i = document.getElementById('cd-ct-invoice').checked;
- 
-  // Visual
+
   document.getElementById('cd-ct-label').classList.toggle('checked', c);
   document.getElementById('cd-iv-label').classList.toggle('checked', i);
- 
+
   const cRow = document.getElementById('cd-contract-row');
   const hint = document.getElementById('cd-hint');
- 
+
   if (i && !c) {
     cRow.style.display = 'flex';
     hint.innerHTML = '<strong>Нэхэмжлэх</strong> үүсгэх бол холбогдох гэрээний дугаарыг бичнэ үү.';
@@ -3940,7 +3659,7 @@ function updateDocCheckboxes() {
     hint.innerHTML = 'Үүсгэх баримтын төрлийг сонгоно уу.';
     hint.style.color = 'var(--muted)';
   }
- 
+
   const btn = document.getElementById('cd-save-btn');
   if (btn) btn.disabled = !(c || i);
 }
@@ -3953,20 +3672,20 @@ function closeCreateDocModal(){
 async function submitCreateDoc() {
   const makeContract = document.getElementById('cd-ct-contract').checked;
   const makeInvoice  = document.getElementById('cd-ct-invoice').checked;
- 
+
   if (!makeContract && !makeInvoice) {
     return _cdShowErr('Дор хаяж нэг төрөл сонгоно уу');
   }
- 
+
   const date    = document.getElementById('cd-date').value;
   const amount  = parseFloat(document.getElementById('cd-amount').value) || 0;
   const payDue  = document.getElementById('cd-paydue').value.trim();
   const notes   = document.getElementById('cd-notes').value.trim();
   const fromReq = document.getElementById('cd-fromreq').value;
- 
+
   if (!date)                  return _cdShowErr('Огноо шаардлагатай');
   if (!amount || amount <= 0) return _cdShowErr('Үнийн дүнг зөв оруулна уу');
- 
+
   let manualContractNo = '';
   if (makeInvoice && !makeContract) {
     manualContractNo = document.getElementById('cd-contract').value.trim();
@@ -3974,14 +3693,13 @@ async function submitCreateDoc() {
       return _cdShowErr('Нэхэмжлэх үүсгэхдээ гэрээний дугаарыг бичнэ үү');
     }
   }
- 
+
   const btn = document.getElementById('cd-save-btn');
   btn.disabled = true;
   const pw = getAdminPw();
   let createdContractNo = '';
   const createdMsgs = [];
- 
-  // Step 1: Гэрээ
+
   if (makeContract) {
     btn.innerHTML = '<span class="spinner"></span> Гэрээ үүсгэж...';
     try {
@@ -4004,8 +3722,7 @@ async function submitCreateDoc() {
       return _cdResetBtn(btn);
     }
   }
- 
-  // Step 2: Нэхэмжлэх
+
   if (makeInvoice) {
     btn.innerHTML = '<span class="spinner"></span> Нэхэмжлэх үүсгэж...';
     const contractRef = createdContractNo || manualContractNo;
@@ -4023,7 +3740,7 @@ async function submitCreateDoc() {
       } else {
         const partial = createdContractNo ? ' (Гэрээ ' + createdContractNo + ' нь үүссэн)' : '';
         _cdShowErr('Нэхэмжлэх үүсгэхэд алдаа: ' + (r.error || '') + partial);
-        loadAdminDocuments(currentClientReg);  // partial-аа харуулна
+        loadAdminDocuments(currentClientReg);
         return _cdResetBtn(btn);
       }
     } catch (e) {
@@ -4031,17 +3748,16 @@ async function submitCreateDoc() {
       return _cdResetBtn(btn);
     }
   }
- 
-  // Step 3: Cleanup if from request
+
   if (fromReq) {
     try { await gasCall('deleteDocument', { password: pw, doc_id: fromReq }); } catch (_) {}
   }
- 
+
   toast('✓ ' + createdMsgs.join(' + ') + ' амжилттай үүслээ');
   closeCreateDocModal();
   loadAdminDocuments(currentClientReg);
 }
- 
+
 function _cdShowErr(msg) {
   const err = document.getElementById('cd-err');
   if (err) {
@@ -4049,15 +3765,14 @@ function _cdShowErr(msg) {
     err.querySelector('span').textContent = msg;
   }
 }
- 
+
 function _cdResetBtn(btn) {
   btn.disabled = false;
   btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Үүсгэх';
 }
-</script>
 
 // ═══════════════════════════════════════════════════════════════
-// ✦ V8: ТӨЛӨВЛӨЛТИЙН ӨМНӨХ ҮЕ ШАТНЫ АЖЛЫН БАРИМТ (Excel)
+// V8: ТӨЛӨВЛӨЛТИЙН ӨМНӨХ ҮЕ ШАТНЫ АЖЛЫН БАРИМТ (Excel)
 // ═══════════════════════════════════════════════════════════════
 
 let planningDocsCache = [];
@@ -4084,7 +3799,7 @@ function renderPlanningWorkbooks(reg, client){
   if(!body) return;
 
   const auditYear = client.audit_year || new Date().getFullYear();
-  const today = new Date().toISOString().split('T')[0].replace(/-/g, '.'); // 2026.05.07
+  const today = new Date().toISOString().split('T')[0].replace(/-/g, '.');
 
   let html = `
     <div class="alert a-info" style="margin-bottom:14px;font-size:12.5px">
@@ -4185,7 +3900,6 @@ async function submitCreatePlanningWorkbook(){
     });
     if(r.ok){
       toast('✓ Excel амжилттай үүслээ');
-      // Шинээр үүссэн файлыг автоматаар нээнэ
       if(r.doc && r.doc.view_url) window.open(r.doc.view_url, '_blank');
       loadPlanningWorkbooks(currentClientReg, adminClientsCache.find(c=>String(c.reg_number)===String(currentClientReg))||{});
     } else {
@@ -4244,22 +3958,20 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 });
 </script>
-</body>
-</html>
+
 <script>
 // ═══════════════════════════════════════════════════════════════
 // V9: Шинэ клиент бүртгэх + удирдах
 // ═══════════════════════════════════════════════════════════════
- 
+
 function generateAccessCode() {
-  // Хүний нүдэнд балархай тэмдэгтгүй — O, 0, I, 1 хасна
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
   let code = '';
   for (let i = 0; i < 8; i++) code += chars[Math.floor(Math.random() * chars.length)];
   const el = document.getElementById('nc-code');
   if (el) el.value = code;
 }
- 
+
 function clearNewClientForm() {
   ['nc-org','nc-reg','nc-code','nc-email','nc-phone','nc-director'].forEach(id => {
     const el = document.getElementById(id);
@@ -4269,7 +3981,7 @@ function clearNewClientForm() {
   const o = document.getElementById('nc-ownership');    if (o) o.value = '';
   const err = document.getElementById('nc-err');        if (err) err.style.display = 'none';
 }
- 
+
 function _ncShowErr(msg) {
   const err = document.getElementById('nc-err');
   if (err) {
@@ -4277,7 +3989,7 @@ function _ncShowErr(msg) {
     err.querySelector('span').textContent = msg;
   }
 }
- 
+
 async function submitNewClient() {
   const org    = document.getElementById('nc-org').value.trim();
   const reg    = document.getElementById('nc-reg').value.trim();
@@ -4289,25 +4001,23 @@ async function submitNewClient() {
   const own    = document.getElementById('nc-ownership').value;
   const err    = document.getElementById('nc-err');
   err.style.display = 'none';
- 
-  // Validation
+
   if (!org)   return _ncShowErr('Байгууллагын нэр шаардлагатай');
   if (!reg)   return _ncShowErr('Регистрийн дугаар шаардлагатай');
   if (!/^[a-zA-Z0-9]+$/.test(reg)) return _ncShowErr('Регистр зөвхөн үсэг, тоо агуулна');
   if (!email) return _ncShowErr('Имэйл шаардлагатай');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return _ncShowErr('Имэйл хаяг буруу');
- 
-  // Код байхгүй бол автомат үүсгэе
+
   if (!code) {
     generateAccessCode();
     code = document.getElementById('nc-code').value.trim();
   }
- 
+
   const btn = document.getElementById('nc-submit-btn');
   btn.disabled = true;
   const oldHtml = btn.innerHTML;
   btn.innerHTML = '<span class="spinner"></span> Бүртгэж байна...';
- 
+
   try {
     const pw = getAdminPw();
     const r = await gasCall('adminAddClient', {
@@ -4332,18 +4042,18 @@ async function submitNewClient() {
   } catch (e) {
     _ncShowErr('Холболтын алдаа: ' + e.message);
   }
- 
+
   btn.disabled = false;
   btn.innerHTML = oldHtml;
 }
- 
+
 function renderNewClientRecentList() {
   const list = document.getElementById('nc-recent-list');
   if (!list) return;
- 
+
   const q = (document.getElementById('nc-search')?.value || '').toLowerCase().trim();
   let clients = [...adminClientsCache];
- 
+
   if (q) {
     clients = clients.filter(c =>
       String(c.org_name      || '').toLowerCase().includes(q) ||
@@ -4351,26 +4061,25 @@ function renderNewClientRecentList() {
       String(c.contact_email || '').toLowerCase().includes(q)
     );
   }
- 
-  // Шинэ нь дээр (status active нь эхэнд)
+
   clients.sort((a, b) => {
     const aA = String(a.status || 'active').toLowerCase() !== 'inactive';
     const bA = String(b.status || 'active').toLowerCase() !== 'inactive';
     if (aA !== bA) return aA ? -1 : 1;
     return 0;
   });
- 
+
   if (!clients.length) {
     list.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:12px;padding:24px">Клиент олдсонгүй</div>';
     return;
   }
- 
+
   list.innerHTML = '';
   clients.forEach(c => {
     const av = (c.org_name || '??').split(/\s+/).filter(Boolean).map(w => w[0]).join('').substring(0, 2).toUpperCase();
     const isActive = String(c.status || 'active').trim().toLowerCase() !== 'inactive';
     const safeEmail = (c.contact_email || '').replace(/'/g, "\\'");
- 
+
     const item = document.createElement('div');
     item.className = 'nc-recent-item';
     if (!isActive) item.style.opacity = '0.6';
@@ -4398,26 +4107,25 @@ function renderNewClientRecentList() {
     list.appendChild(item);
   });
 }
- 
+
 async function editClient(reg) {
   const c = adminClientsCache.find(x => String(x.reg_number) === String(reg));
   if (!c) { toast('Клиент олдсонгүй', true); return; }
   await openClientDetail(reg);
-  // CDM нээгдсэний дараа info tab руу шилжүүлээд edit form-р солих
   setTimeout(() => {
     cdmTab('info');
     setTimeout(() => makeInfoTabEditable(c), 80);
   }, 100);
 }
- 
+
 function makeInfoTabEditable(client) {
   const body = document.getElementById('cdm-body');
   if (!body) return;
- 
+
   const escAttr = s => String(s == null ? '' : s).replace(/"/g, '&quot;');
   const curStatus = String(client.status || 'active').trim().toLowerCase();
   const safeEmail = (client.contact_email || '').replace(/'/g, "\\'");
- 
+
   body.innerHTML =
     '<div style="margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">' +
       '<h4 style="font-size:14px;font-weight:600;color:var(--ink);margin:0">✏ Клиентийн мэдээлэл засах</h4>' +
@@ -4458,7 +4166,7 @@ function makeInfoTabEditable(client) {
       '</button>' +
     '</div>';
 }
- 
+
 async function saveClientEdits(reg) {
   const fields = document.querySelectorAll('.edit-fld');
   const body = { reg_number: reg };
@@ -4466,16 +4174,16 @@ async function saveClientEdits(reg) {
     const k = f.getAttribute('data-fld');
     if (k) body[k] = f.value.trim();
   });
- 
+
   if (!body.org_name)
     return _cdmEditShowErr('Байгууллагын нэр шаардлагатай');
   if (body.contact_email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.contact_email))
     return _cdmEditShowErr('Имэйл хаяг буруу');
- 
+
   const btn = document.getElementById('cdm-edit-save');
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Хадгалж...';
- 
+
   try {
     body.password = getAdminPw();
     const r = await gasCall('adminUpdateClient', body);
@@ -4492,11 +4200,11 @@ async function saveClientEdits(reg) {
   } catch (e) {
     _cdmEditShowErr('Холболтын алдаа: ' + e.message);
   }
- 
+
   btn.disabled = false;
   btn.innerHTML = '<svg style="width:12px;height:12px;stroke:#fff;fill:none;stroke-width:2" viewBox="0 0 14 14"><path d="M2 7l4 4 6-6"/></svg> Хадгалах';
 }
- 
+
 function _cdmEditShowErr(msg) {
   const err = document.getElementById('cdm-edit-err');
   if (err) {
@@ -4504,14 +4212,14 @@ function _cdmEditShowErr(msg) {
     err.querySelector('span').textContent = msg;
   }
 }
- 
+
 async function toggleClientStatus(reg, currentStatus) {
   const isCurrentlyActive = currentStatus !== 'inactive';
   const confirmMsg = isCurrentlyActive
     ? '🚫 Энэ клиентийн эрхийг ХААХ уу?\n\nКлиент порталд нэвтрэх боломжгүй болно.\nХожим дахин нээж болно.'
     : '✓ Энэ клиентийн эрхийг НЭЭХ үү?\n\nКлиент дахин порталд нэвтэрч чадна.';
   if (!confirm(confirmMsg)) return;
- 
+
   try {
     const r = await gasCall('adminToggleClientStatus', {
       password: getAdminPw(),
@@ -4524,7 +4232,6 @@ async function toggleClientStatus(reg, currentStatus) {
       if (c) c.status = r.new_status;
       renderAdminClients(adminClientsCache);
       renderNewClientRecentList();
-      // CDM нээлттэй бол шинэчлэх
       const modalOpen = document.getElementById('client-detail-modal').style.display === 'block';
       if (currentClientReg === reg && modalOpen) {
         await openClientDetail(reg);
@@ -4536,11 +4243,11 @@ async function toggleClientStatus(reg, currentStatus) {
     toast('Холболтын алдаа: ' + e.message, true);
   }
 }
- 
+
 async function resendClientCredentials(reg, email) {
   const target = email || 'клиентэд';
   if (!confirm('Нэвтрэх мэдээллийг ' + target + '-руу дахин илгээх үү?')) return;
- 
+
   try {
     const r = await gasCall('adminResendCredentials', {
       password: getAdminPw(),
@@ -4556,3 +4263,5 @@ async function resendClientCredentials(reg, email) {
   }
 }
 </script>
+</body>
+</html>
