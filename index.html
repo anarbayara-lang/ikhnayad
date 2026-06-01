@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Их Наяд Аудит — Клиент Портал</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --g900:#0B3D2E;--g800:#1a5c35;--g700:#22733f;--g600:#2e8b57;
@@ -20,11 +22,84 @@
   --r:6px;--rlg:14px;
   --sh:0 2px 12px rgba(15,45,28,.08);
   --shlg:0 8px 40px rgba(15,45,28,.13);
-  --fd:'Playfair Display',serif;
-  --fb:'IBM Plex Sans',sans-serif;
-  --fm:'IBM Plex Mono',monospace;
+  /* ═══ Typography: Inter for premium Mongolian Cyrillic ═══ */
+  --font-sans:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --font-mono:'JetBrains Mono','IBM Plex Mono',ui-monospace,'SF Mono',Consolas,monospace;
+  --fd:var(--font-sans);
+  --fb:var(--font-sans);
+  --fm:var(--font-mono);
+  /* Fluid type scale — mobile→desktop, no media-query needed */
+  --text-xs:clamp(.6875rem,.65rem + .2vw,.75rem);
+  --text-sm:clamp(.8125rem,.78rem + .2vw,.875rem);
+  --text-base:clamp(.9375rem,.9rem + .25vw,1rem);
+  --text-lg:clamp(1.0625rem,1rem + .4vw,1.125rem);
+  --text-xl:clamp(1.25rem,1.15rem + .6vw,1.5rem);
+  --text-2xl:clamp(1.5rem,1.35rem + .8vw,1.875rem);
+  --text-3xl:clamp(1.875rem,1.6rem + 1.4vw,2.5rem);
+  --text-4xl:clamp(2.25rem,1.85rem + 2vw,3.5rem);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+/* ═══ TYPOGRAPHY SYSTEM — Premium Mongolian Cyrillic ═══ */
+html{font-size:16px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  font-family:var(--font-sans);
+  font-size:var(--text-base);
+  line-height:1.65;
+  font-weight:400;
+  letter-spacing:-.005em;
+  color:var(--ink);
+  background:var(--bg);
+  font-feature-settings:'cv11','ss01','cv02';
+  font-variant-numeric:tabular-nums;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family:var(--font-sans);
+  font-weight:700;
+  letter-spacing:-.025em;
+  line-height:1.15;
+  color:var(--ink);
+}
+h1{font-size:var(--text-4xl);letter-spacing:-.035em;line-height:1.05;font-weight:800}
+h2{font-size:var(--text-3xl);letter-spacing:-.03em;line-height:1.1}
+h3{font-size:var(--text-2xl);letter-spacing:-.025em;line-height:1.2}
+h4{font-size:var(--text-xl);letter-spacing:-.02em;line-height:1.3}
+h5{font-size:var(--text-lg);letter-spacing:-.015em;line-height:1.4}
+h6{font-size:var(--text-base);letter-spacing:-.01em;font-weight:600;line-height:1.45}
+p{line-height:1.7}
+/* Long-form prose — 65-75 chars per line */
+.prose,article p,.tl-body p,.svc-desc,.banner p{max-width:68ch}
+/* Mongolian Cyrillic locale tuning — enables OpenType 'locl' */
+:lang(mn){font-feature-settings:'cv11','ss01','cv02','locl'}
+/* Monospace context — regs, dates, amounts, codes */
+code,kbd,samp,.font-mono,.doc-num,.client-reg,.ad-row-meta{
+  font-family:var(--font-mono);
+  font-feature-settings:'zero','tnum','calt';
+  font-variant-numeric:tabular-nums slashed-zero;
+}
+.tabular,td:has(input[type='number']){font-variant-numeric:tabular-nums;font-feature-settings:'tnum'}
+/* Form fields — prevent iOS zoom + match family */
+input,select,textarea,button{font-family:var(--font-sans)}
+input,select,textarea{font-size:max(16px,var(--text-base))}
+/* Selection */
+::selection{background:var(--g200);color:var(--g900)}
+/* Focus accessibility — clear keyboard ring */
+:focus-visible{outline:2px solid var(--g600);outline-offset:2px;border-radius:4px}
+/* Reduced motion preference */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+/* Mobile tuning */
+@media (max-width:600px){
+  html{font-size:15.5px}
+  body{line-height:1.6}
+  p{line-height:1.65;max-width:none}
+  h1{letter-spacing:-.025em;line-height:1.1}
+  h2{letter-spacing:-.02em;line-height:1.15}
+}
+/* ═══ END TYPOGRAPHY SYSTEM ═══ */
 html{font-size:15px;scroll-behavior:smooth}
 body{font-family:var(--fb);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
