@@ -4335,302 +4335,94 @@ async function resendClientCredentials(reg, email) {
       toast('Алдаа: ' + (r.error || ''), true);
     }
   } catch (e) {
-    toast('Холболтын алдаа: ' + e.message, true);
+   toast('Холболтын алдаа: ' + e.message, true);
   }
 }
-  /* ═══════════════════════════════════════════════════════════════
-   📱 MOBILE FIX — Их Наяд Аудит портал
-   Энэ блокыг index.html доторх </style> тагийн ЯГ ӨМНӨ хуулж тавина.
-   (Бусад код өөрчлөх шаардлагагүй)
-═══════════════════════════════════════════════════════════════ */
-
-/* ───────── Бүх элемент дэлгэцнээс хальж гарахаас сэргийлэх ───────── */
+</script>
+<style>
+/* ═══ 📱 MOBILE FIX ═══ */
 @media (max-width: 768px) {
   html, body { overflow-x: hidden; }
   .wrap { padding: 0 16px; }
-  h1 { font-size: clamp(26px, 8vw, 38px) !important; }
-}
 
-/* ═══════════════ НҮҮР ХУУДАС (HOME) ═══════════════ */
-@media (max-width: 768px) {
-  /* Hero — 2 баганаас 1 багана болгох */
-  #page-home section:first-child .wrap > div[style*="grid-template-columns:1.1fr 0.9fr"]{
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
-  }
-  #page-home section:first-child { padding: 52px 0 44px !important; }
-
-  /* Hero доторх товчнууд бүтэн өргөнтэй */
-  #page-home section:first-child button {
-    width: 100%;
-    justify-content: center;
-  }
-  #page-home .fu4 { flex-direction: column; }
-
-  /* "Танилцуулга" статистик карт */
-  #page-home div[style*="repeat(3,1fr)"] { gap: 10px !important; }
-
-  /* Trust strip — мөрөнд эвхэгдэх, голлуулах */
+  #page-home > section:first-of-type { padding: 40px 0 40px !important; }
+  #page-home div[style*="1.1fr 0.9fr"] { grid-template-columns: 1fr !important; gap: 28px !important; }
+  #page-home h1 { font-size: clamp(38px, 12vw, 52px) !important; line-height: 1.06 !important; }
+  #page-home p[style*="max-width:420px"] { max-width: none !important; }
+  #page-home .fu4 { flex-direction: column !important; gap: 10px !important; }
+  #page-home .fu4 > button { width: 100% !important; justify-content: center !important; }
+  #page-home div[style*="repeat(3,1fr)"] { gap: 8px !important; }
   .trust-inner { justify-content: center; gap: 10px 16px; }
   .tsep { display: none; }
-  .ti span { font-size: 12px; }
-
-  /* Үйлчилгээний карт */
   .svc-grid { grid-template-columns: 1fr !important; gap: 14px; }
-}
 
-/* ═══════════════ ҮЙЛЧИЛГЭЭ (SERVICES) ═══════════════ */
-@media (max-width: 768px) {
-  /* "180px 1fr" мөрүүдийг босоо болгох */
-  #page-services div[style*="grid-template-columns:180px 1fr"]{
-    grid-template-columns: 1fr !important;
-    gap: 16px !important;
-    padding: 28px 0 !important;
-  }
-}
+  #page-services div[style*="grid-template-columns:180px 1fr"] { grid-template-columns: 1fr !important; gap: 16px !important; padding: 28px 0 !important; }
 
-/* ═══════════════ ХОЛБОО БАРИХ (CONTACT) ═══════════════ */
-@media (max-width: 768px) {
   .contact-grid { grid-template-columns: 1fr !important; gap: 28px; }
   .g2 { grid-template-columns: 1fr !important; }
-}
-
-/* ═══════════════ БИДНИЙ ТУХАЙ (ABOUT) ═══════════════ */
-@media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr !important; gap: 32px; }
   .val-grid { grid-template-columns: 1fr 1fr !important; }
-  .a-stats { gap: 8px; }
-}
 
-/* ═══════════════ КЛИЕНТ ПОРТАЛ — DASHBOARD ═══════════════ */
-@media (max-width: 768px) {
   .topbar-inner { flex-direction: column; align-items: stretch; gap: 12px; }
   .topbar-acts { justify-content: space-between; }
   .topbar-acts .btn { flex: 1; justify-content: center; }
-
   .prog-cards { grid-template-columns: 1fr 1fr !important; gap: 10px; }
   .dash-status-row { grid-template-columns: 1fr !important; }
-
-  /* Tab-ууд хэвтээ гүйдэг болгох */
-  .tabs {
-    width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
+  .tabs { width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
   .tab { flex: 0 0 auto; }
-
-  /* Байгууллагын мэдээллийн форм */
   .ci-grid { grid-template-columns: 1fr !important; }
   .full { grid-column: 1 / -1 !important; }
-
-  /* Баримтын хүсэх 2 карт → 1 багана */
-  #t-docs div[style*="grid-template-columns:1fr 1fr"]{
-    grid-template-columns: 1fr !important;
-  }
-
-  /* Баримтын хүснэгт — хуруугаар гүйлгэх боломжтой хэвээр */
+  #t-docs div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
   .doc-tbl { min-width: 640px; }
-}
 
-/* ═══════════════ АУДИТОР — НЭВТРЭХ (ADMIN LOGIN) ═══════════════ */
-@media (max-width: 768px) {
   #admin-login { flex-direction: column; }
   #admin-login-img { display: none !important; }
-  #admin-login > div:last-child {
-    max-width: 100% !important;
-    box-shadow: none !important;
-    padding: 40px 20px !important;
-  }
-}
+  #admin-login > div:last-child { max-width: 100% !important; box-shadow: none !important; padding: 40px 20px !important; }
 
-/* ═══════════════ АУДИТОР — DASHBOARD ═══════════════ */
-@media (max-width: 768px) {
   .ad-hero { padding: 24px 0 28px; }
   .ad-hero-top { flex-direction: column; align-items: stretch; gap: 12px; }
   .ad-title { font-size: 22px !important; }
   .ad-hero-actions { display: flex; }
   .ad-hero-actions .ad-btn-ghost { flex: 1; justify-content: center; }
-
-  /* KPI картууд 2x2 */
   .ad-kpis { grid-template-columns: 1fr 1fr !important; gap: 9px; }
   .ad-kpi .kpi-val { font-size: 24px; }
-
-  /* Хэрэгслийн мөр — таб + шүүлтүүр босоо */
   .ad-tools-row { flex-direction: column; align-items: stretch; gap: 10px; }
-  .ad-tabs {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: nowrap;
-  }
+  .ad-tabs { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; }
   .ad-tab { flex: 0 0 auto; }
-  .ad-filters {
-    justify-content: stretch;
-    flex-wrap: wrap;
-  }
+  .ad-filters { justify-content: stretch; flex-wrap: wrap; }
   .ad-fc { flex: 1; min-width: 0; }
   .ad-fc-search { max-width: none; width: 100%; flex-basis: 100%; }
-}
-
-@media (max-width: 480px) {
-  .ad-kpis { grid-template-columns: 1fr 1fr !important; }
-  /* Клиент мөрийг авсаархан болгох */
-  .ad-row {
-    grid-template-columns: auto 1fr !important;
-    gap: 12px;
-    padding: 14px 14px;
-  }
-  .ad-row-aud, .ad-row-arrow { display: none !important; }
-  .ad-row-prog { grid-column: 1 / -1 !important; }
-}
-
-/* ═══════════════ АУДИТОР — ШИНЭ КЛИЕНТ / АУДИТОР ЖАГСААЛТ ═══════════════ */
-@media (max-width: 768px) {
   .nc-grid { grid-template-columns: 1fr !important; gap: 14px; }
-  .nc-form-card { padding: 18px; }
   .aud-list { grid-template-columns: 1fr !important; }
-}
 
-/* ═══════════════ КЛИЕНТ ДЭЛГЭРЭНГҮЙ ЦОНХ (CDM MODAL) ═══════════════ */
-@media (max-width: 768px) {
-  /* Цонхыг бараг бүтэн дэлгэц болгох */
-  #client-detail-modal > div {
-    padding: 0 !important;
-    align-items: stretch !important;
-  }
-  .cdm-shell {
-    max-width: 100% !important;
-    max-height: 100vh !important;
-    height: 100vh;
-    border-radius: 0 !important;
-  }
-  .cdm-head { padding: 16px 16px !important; }
-  .cdm-org-name { font-size: 17px !important; }
-  .cdm-pct-num { font-size: 20px; }
-
-  /* Мета мэдээлэл босоо */
-  .cdm-meta {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    padding: 14px 16px !important;
-  }
-  .cdm-assign-row { flex-wrap: wrap; }
-  .cdm-auditor-sel { min-width: 0; flex: 1; }
-
-  /* Таб хэвтээ гүйдэг */
+  #client-detail-modal > div { padding: 0 !important; align-items: stretch !important; }
+  .cdm-shell { max-width: 100% !important; max-height: 100vh !important; height: 100vh; border-radius: 0 !important; }
+  .cdm-meta { grid-template-columns: 1fr !important; gap: 12px !important; padding: 14px 16px !important; }
   .cdm-tabs { padding: 0 12px !important; }
   .cdm-tab { padding: 12px 12px !important; font-size: 13px; }
-
   .cdm-body { padding: 16px 14px !important; }
-  .cdm-foot { padding: 12px 14px !important; }
 
-  /* Modal доторх статусын товчнууд эвхэгдэх */
-  .cdm-body .badge { font-size: 10.5px; }
-}
-
-/* ═══════════════ НИЙТЛЭГ MODAL-УУД (Шинэ аудитор / Баримт үүсгэх) ═══════════════ */
-@media (max-width: 768px) {
-  #new-aud-modal > div,
-  #create-doc-modal > div { max-width: 100% !important; }
+  #new-aud-modal > div, #create-doc-modal > div { max-width: 100% !important; }
   .dt-check-row { flex-direction: column; }
-}
 
-/* ═══════════════ FOOTER ═══════════════ */
-@media (max-width: 768px) {
   .ft-grid { grid-template-columns: 1fr !important; gap: 22px; }
   .ft-cr { flex-direction: column; text-align: center; gap: 6px; }
 }
 
-/* ═══════════════ TOAST мэдэгдэл — утсан дээр доод талд бүтэн ═══════════════ */
 @media (max-width: 600px) {
-  #toast {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    max-width: none;
-    text-align: center;
-  }
-}
-  <style>
-/* ═══════════════════════════════════════════════════════════════
-   📱 НҮҮР ХУУДАС — Mobile сайжруулалт (v2)
-   Энэ блокыг </body> тагийн өмнө тавина.
-   !important тул өмнөх кодыг дарж, баттай ажиллана.
-═══════════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-
-  /* ── Hero section: дотор зай тааруулах ── */
-  #page-home > section:first-of-type {
-    padding: 36px 0 40px !important;
-  }
-
-  /* ── 2 баганыг 1 БОЛГОХ (хамгийн чухал) ── */
-  #page-home div[style*="1.1fr 0.9fr"] {
-    grid-template-columns: 1fr !important;
-    gap: 28px !important;
-  }
-
-  /* ── Гарчиг: тэнцвэртэй хэмжээ ── */
-  #page-home h1 {
-    font-size: clamp(38px, 12vw, 52px) !important;
-    line-height: 1.06 !important;
-    margin-bottom: 14px !important;
-    word-break: keep-all;
-  }
-
-  /* ── "ТАНЫ ИТГЭЛТ АУДИТОР" дэд гарчиг ── */
-  #page-home p[style*="letter-spacing:2.5px"] {
-    font-size: 13px !important;
-    letter-spacing: 2px !important;
-    margin-bottom: 18px !important;
-  }
-
-  /* ── Тайлбар текст бүтэн өргөнтэй ── */
-  #page-home p[style*="max-width:420px"] {
-    max-width: none !important;
-    font-size: 15px !important;
-    line-height: 1.7 !important;
-    margin-bottom: 26px !important;
-  }
-
-  /* ── CTA товчнууд: босоо, бүтэн өргөн ── */
-  #page-home .fu4 {
-    flex-direction: column !important;
-    gap: 10px !important;
-  }
-  #page-home .fu4 > button {
-    width: 100% !important;
-    justify-content: center !important;
-    padding: 16px 24px !important;
-  }
-
-  /* ── Баруун талын картууд: бүтэн өргөн, доош ── */
-  #page-home div[style*="gap:13px"][style*="flex-direction:column"] {
-    gap: 12px !important;
-  }
-
-  /* "Танилцуулга" статистик карт */
-  #page-home div[style*="repeat(3,1fr)"] {
-    gap: 6px !important;
-  }
-  #page-home div[style*="repeat(3,1fr)"] > div {
-    text-align: center;
-  }
-
-  /* Карт доторх том тоонууд (29+, 150+, 80+) тааруулах */
-  #page-home div[style*="repeat(3,1fr)"] div[style*="font-size:28px"] {
-    font-size: 26px !important;
-  }
+  #toast { left: 16px; right: 16px; bottom: 16px; max-width: none; text-align: center; }
 }
 
-/* Маш жижиг утас (≤380px) дээр гарчгийг бага зэрэг багасгах */
+@media (max-width: 480px) {
+  .ad-row { grid-template-columns: auto 1fr !important; gap: 12px; padding: 14px; }
+  .ad-row-aud, .ad-row-arrow { display: none !important; }
+  .ad-row-prog { grid-column: 1 / -1 !important; }
+}
+
 @media (max-width: 380px) {
-  #page-home h1 {
-    font-size: 34px !important;
-  }
+  #page-home h1 { font-size: 34px !important; }
 }
 </style>
-</script>
+
 </body>
 </html>
