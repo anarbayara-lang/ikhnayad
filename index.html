@@ -4552,6 +4552,85 @@ async function resendClientCredentials(reg, email) {
     text-align: center;
   }
 }
+  <style>
+/* ═══════════════════════════════════════════════════════════════
+   📱 НҮҮР ХУУДАС — Mobile сайжруулалт (v2)
+   Энэ блокыг </body> тагийн өмнө тавина.
+   !important тул өмнөх кодыг дарж, баттай ажиллана.
+═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── Hero section: дотор зай тааруулах ── */
+  #page-home > section:first-of-type {
+    padding: 36px 0 40px !important;
+  }
+
+  /* ── 2 баганыг 1 БОЛГОХ (хамгийн чухал) ── */
+  #page-home div[style*="1.1fr 0.9fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* ── Гарчиг: тэнцвэртэй хэмжээ ── */
+  #page-home h1 {
+    font-size: clamp(38px, 12vw, 52px) !important;
+    line-height: 1.06 !important;
+    margin-bottom: 14px !important;
+    word-break: keep-all;
+  }
+
+  /* ── "ТАНЫ ИТГЭЛТ АУДИТОР" дэд гарчиг ── */
+  #page-home p[style*="letter-spacing:2.5px"] {
+    font-size: 13px !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* ── Тайлбар текст бүтэн өргөнтэй ── */
+  #page-home p[style*="max-width:420px"] {
+    max-width: none !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 26px !important;
+  }
+
+  /* ── CTA товчнууд: босоо, бүтэн өргөн ── */
+  #page-home .fu4 {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  #page-home .fu4 > button {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 16px 24px !important;
+  }
+
+  /* ── Баруун талын картууд: бүтэн өргөн, доош ── */
+  #page-home div[style*="gap:13px"][style*="flex-direction:column"] {
+    gap: 12px !important;
+  }
+
+  /* "Танилцуулга" статистик карт */
+  #page-home div[style*="repeat(3,1fr)"] {
+    gap: 6px !important;
+  }
+  #page-home div[style*="repeat(3,1fr)"] > div {
+    text-align: center;
+  }
+
+  /* Карт доторх том тоонууд (29+, 150+, 80+) тааруулах */
+  #page-home div[style*="repeat(3,1fr)"] div[style*="font-size:28px"] {
+    font-size: 26px !important;
+  }
+}
+
+/* Маш жижиг утас (≤380px) дээр гарчгийг бага зэрэг багасгах */
+@media (max-width: 380px) {
+  #page-home h1 {
+    font-size: 34px !important;
+  }
+}
+</style>
 </script>
 </body>
 </html>
